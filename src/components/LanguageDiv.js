@@ -5,7 +5,6 @@ export default function LanguageDiv() {
   const context = useContext(Context);
   const language = context.setLanguage;
   const langVal = context.language;
-  console.log(langVal);
 
   function selects(e) {
     const divs = document.querySelectorAll("nav .lang p");
