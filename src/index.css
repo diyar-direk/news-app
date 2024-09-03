@@ -1,0 +1,651 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: cairo;
+  outline: none;
+  transition: 0.4s;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+:root {
+  --font-color: black;
+  --body-color: white;
+  --var-color: #ce0f2e;
+  --border-color: #83838340;
+  --hover-color: #b3142e;
+  --section-color: #f6f6f6;
+}
+body {
+  background: var(--body-color);
+}
+.container {
+  width: 80%;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-1 {
+  flex: 1;
+}
+.w-100 {
+  width: 100%;
+}
+.image-hover {
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 15px;
+}
+.image-hover img:hover {
+  transform: scale(1.1);
+  object-fit: cover;
+}
+input {
+  caret-color: var(--var-color);
+}
+.relative {
+  position: relative;
+}
+
+/* navbar start  */
+
+nav.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  padding-top: 10px;
+  text-transform: capitalize;
+  z-index: 3;
+  background: var(--body-color);
+  top: 0;
+}
+nav > div.container {
+  padding: 10px 0;
+  position: relative;
+  align-items: center;
+}
+/* start search div  */
+nav.navbar > div.container > article.search {
+  position: absolute;
+  width: 100%;
+  background-color: var(--section-color);
+  top: 100%;
+  left: 0;
+  padding: 20px;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+nav.navbar > div.container > article.search.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+nav.navbar > div.container > article.search input {
+  padding: 5px 10px;
+  flex: 1;
+  border: none;
+  font-size: 14px;
+  caret-color: var(--var-color);
+  border-radius: 4px 0 0 4px;
+  background-color: var(--border-color);
+  color: var(--font-color);
+}
+nav.navbar > div.container > article.search h3 {
+  background: var(--var-color);
+  color: white;
+  padding: 3px 8px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+}
+nav.navbar > div.container > article.search h3 i {
+  margin-left: 5px;
+}
+nav.navbar > div.container > article.search h3:hover {
+  background-color: var(--hover-color);
+}
+/* end search div  */
+/* start more link   */
+nav.navbar > div.container > aside.more-link {
+  position: absolute;
+  top: 100%;
+  background: var(--section-color);
+  padding: 20px;
+  width: 100%;
+  left: 0;
+  display: none;
+}
+nav.navbar > div.container > aside.more-link.active {
+  display: block;
+}
+nav.navbar > div.container > aside.more-link .between {
+  gap: 20px;
+}
+
+nav.navbar > div.container > aside.more-link a {
+  display: block;
+  width: 100%;
+  padding: 7px 0;
+  color: var(--font-color);
+}
+
+nav.navbar > div.container > aside.more-link a:not(:last-of-type) {
+  margin-bottom: 5px;
+  border-bottom: solid 1px var(--border-color);
+}
+nav.navbar > div.container > aside.more-link a:hover,
+nav.navbar > div.container > aside.more-link a.active {
+  color: var(--var-color);
+}
+nav.navbar > div.container > aside.more-link a:not(:last-of-type):hover,
+nav.navbar > div.container > aside.more-link a.active:not(:last-of-type) {
+  border-bottom: solid 1px var(--var-color);
+}
+/* end more link  */
+nav > div.container > .logo img {
+  max-width: 70px;
+  height: 100%;
+  max-height: 70px;
+  object-fit: cover;
+}
+nav > div.container > .links {
+  border-right: solid 1px var(--border-color);
+  padding: 0 10px;
+  flex: 1;
+}
+nav > div.container > .links a,
+nav > div.container > .links i {
+  color: var(--font-color);
+  margin: 0 10px;
+  font-size: 19px;
+  cursor: pointer;
+}
+nav > div.container > .links a:hover,
+nav > div.container > .links a.active {
+  color: var(--var-color);
+}
+nav > div.container > .more i {
+  margin: 0 10px;
+  font-size: 18px;
+  color: var(--font-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav > div.container > .more > div {
+  position: relative;
+  cursor: pointer;
+}
+nav > div.container > .more > div i {
+  pointer-events: none;
+}
+div.lang {
+  position: absolute;
+  background: var(--section-color);
+  width: 150px;
+  top: 30px;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+div.lang.active {
+  pointer-events: all;
+  opacity: 1;
+  z-index: 2;
+}
+nav > div.container > .more > div.active > div {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+nav > div.container > .more > div.active > div p.active::after {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  position: absolute;
+  right: 10px;
+}
+nav > div.container > .more > div > div::before {
+  content: "";
+  position: absolute;
+  border: solid 7px;
+  border-color: transparent transparent var(--section-color) transparent;
+  left: 37%;
+  top: -12px;
+}
+div.lang p {
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+nav div.more div.lang {
+  left: calc(-100% - 2px);
+}
+nav div.lang p {
+  color: var(--font-color);
+}
+div.lang p:first-of-type {
+  border-bottom: solid 1px var(--border-color);
+}
+div.lang p:not(nav div.more div.lang p):hover {
+  background-color: var(--border-color);
+}
+nav > div.container > .more i.fa-sun {
+  font-weight: normal;
+}
+nav > div.bottom-link {
+  width: 100%;
+  background-color: var(--var-color);
+}
+nav > div.bottom-link a {
+  color: white;
+  font-size: 18px;
+  width: 70px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  display: inline-block;
+  background-color: var(--var-color);
+  border: solid 1px;
+  border-color: transparent #ab2a2a transparent #ab2a2a;
+}
+nav > div.bottom-link a:hover,
+nav > div.bottom-link a.active {
+  background-color: var(--hover-color);
+}
+
+/* navbar end  */
+
+/* start home page  */
+main {
+  position: relative;
+  margin-top: 109px;
+}
+main > div.landing {
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+main > div.landing > div.w-100 {
+  position: absolute;
+  max-height: 500px;
+  opacity: 0;
+  z-index: -1;
+  height: 100%;
+}
+.center.w-100.active::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to top, #0000008a, transparent);
+  width: 100%;
+  height: 100%;
+}
+main > div.landing > div.w-100.active {
+  opacity: 1;
+  z-index: 1;
+}
+main > div.landing img {
+  object-fit: cover;
+  width: 100%;
+}
+
+main > div.landing .container {
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  font-weight: bold;
+  top: 0;
+  padding-bottom: 60px;
+}
+main > div.landing .container * {
+  display: block;
+  color: white;
+  width: fit-content;
+}
+main > div.landing .container a.category {
+  font-size: 18px;
+  background: #2a29293b;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+main > div.landing .container a.title {
+  margin: 20px 0;
+  font-size: 25px;
+}
+main > div.landing .container a.title:hover {
+  color: var(--var-color);
+}
+main > div.landing .container p {
+  color: #dddddd;
+}
+main > div.landing .dots {
+  position: absolute;
+  top: 90%;
+  z-index: 2;
+}
+main > div.landing .dots span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #8d8a87;
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+}
+main > div.landing .dots span:hover,
+main > div.landing .dots span.active {
+  background-color: var(--var-color);
+}
+main > div.news {
+  margin: 20px 0;
+}
+main > div.news > div.category {
+  padding: 20px 0;
+  border-top: solid 1px var(--border-color);
+  margin: auto;
+}
+main > div.news > div.category > a {
+  position: relative;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding-left: 20px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-size: 40px;
+  color: var(--font-color);
+}
+main > div.news > div.category > a:hover {
+  color: var(--var-color);
+}
+main > div.news > div.category > a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--var-color);
+  border-radius: 50%;
+}
+main > div.news > div.category > article {
+  gap: 25px;
+}
+main > div.news > div.category > article > div.sub {
+  flex: 35%;
+}
+main > div.news > div.category > article > div.important {
+  flex: 60%;
+}
+main > div.news > div.category div.time a {
+  color: var(--var-color);
+  text-transform: capitalize;
+  margin-right: 8px;
+  font-size: 14px;
+  padding-right: 8px;
+  border-right: solid 1px var(--border-color);
+}
+main > div.news > div.category p.time {
+  font-size: 13px;
+  color: #8d8a87;
+  border-left: solid 2px;
+  border: 0px;
+}
+main > div.news > div.category > article > div > a:not(.image-hover) {
+  color: var(--font-color);
+  margin: 10px 0;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.5;
+}
+main > div.news > div.category > article > div > a:hover {
+  color: var(--var-color);
+}
+main > div.news > div.category > article > div > p {
+  font-size: 17px;
+  border: none;
+  color: #8d8a87;
+  line-height: 1.5;
+}
+main > div.news > div.category > article > div.sub > div a.image-hover {
+  max-width: 120px;
+  margin: 0;
+}
+main > div.news > div.category > article > div.sub > div:not(:last-of-type) {
+  padding-bottom: 10px;
+  border-bottom: solid 1px var(--border-color);
+  margin-bottom: 20px;
+}
+main > div.news > div.category > article > div.sub .flex-1 {
+  padding-left: 15px;
+}
+main > div.news > div.category > article > div.sub .flex-1 > a {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  color: var(--font-color);
+}
+main > div.news > div.category > article > div.sub .flex-1 > a:hover {
+  color: var(--var-color);
+}
+main > div.news > div.category > article > div.sub a.all {
+  font-weight: normal;
+  color: var(--var-color);
+  width: 100%;
+  padding: 4px 0;
+  background: var(--body-color);
+  font-size: 18px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 20px auto 0 auto;
+  border: 1px solid var(--var-color);
+}
+main > div.news > div.category > article > div.sub a.all:hover {
+  background: var(--var-color);
+  color: white;
+}
+.important img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+/* end home page  */
+
+@media (max-width: 1100px) {
+  .container {
+    width: 90%;
+  }
+  main > div.news > div.category > article > div.sub > div a.image-hover {
+    max-width: 120px;
+  }
+}
+@media (max-width: 950px) {
+  main > div.news > div.category > article > div.sub {
+    flex: 38%;
+  }
+  main > div.landing .container a.category {
+    font-size: 16px;
+  }
+  main > div.landing .dots span {
+    width: 10px;
+    height: 10px;
+  }
+  nav > div.container > .more i {
+    font-size: 16px;
+  }
+  nav > div.container > .links a,
+  nav > div.container > .links i {
+    margin: 0 8px;
+    font-size: 18px;
+  }
+  nav > div.bottom-link a {
+    font-size: 16px;
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+  }
+  main {
+    margin-top: 104px;
+  }
+}
+@media (max-width: 750px) {
+  nav > div.container > .links {
+    display: none;
+  }
+  nav > div.container > .more i:not(.fa-magnifying-glass) {
+    display: none;
+  }
+  nav.navbar > div.container > article.search.active {
+    padding: 10px 15px;
+  }
+  nav .logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-right: solid 1px var(--border-color);
+  }
+  nav.navbar > div.container > article.search input {
+    padding: 3px 10px;
+    font-size: 13px;
+  }
+  nav.navbar > div.container > article.search h3 {
+    font-size: 12px;
+  }
+  main {
+    margin-top: 101px;
+  }
+  main > div.news > div.category > article > div.sub > div a.image-hover {
+    max-width: 110px;
+  }
+  main > div.news > div.category > article > div.sub .flex-1 > a {
+    font-size: 16px;
+    margin-top: 3px;
+  }
+  main > div.news > div.category div.time a {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  main > div.news > div.category p.time {
+    font-size: 12px;
+  }
+  main > div.news > div.category > article > div.sub a.all {
+    padding: 3px 0;
+    font-size: 16px;
+  }
+}
+@media (max-width: 560px) {
+  main > div.landing .container a.title {
+    margin: 5px 0;
+    font-size: 18px;
+  }
+  main > div.landing .container a.category {
+    font-size: 14px;
+    padding: 3px 8px;
+  }
+  main > div.news > div.category > article > div > p,
+  main > div.news > div.category > article > div.sub .flex-1 > a {
+    font-size: 15px;
+  }
+  main > div.news > div.category > article > div > a:not(.image-hover) {
+    font-size: 17px;
+  }
+  main > div.news > div.category div.time a,
+  main > div.landing .container p {
+    font-size: 13px;
+  }
+  main > div.news > div.category > article > div.sub a.all {
+    font-size: 16px;
+    padding: 3px 0;
+  }
+  main > div.news > div.category > a {
+    margin-bottom: 0;
+    font-size: 34px;
+    padding-left: 15px;
+  }
+  main > div.news > div.category > a::before {
+    height: 8px;
+    width: 8px;
+  }
+  .container {
+    width: 94%;
+  }
+  nav > div.bottom-link a {
+    font-size: 14px;
+    width: 50px;
+    height: 38px;
+    line-height: 38px;
+  }
+  div.lang p {
+    font-size: 13px;
+    padding: 8px;
+  }
+  footer .lang {
+    top: -80px;
+  }
+}
+@media (max-width: 480px) {
+  main > div.landing .container {
+    padding-bottom: 40px;
+  }
+  main > div.landing .dots span {
+    width: 8px;
+    height: 8px;
+    margin: 0 8px;
+  }
+  main > div.landing .container a.title {
+    font-size: 15px;
+  }
+  main > div.landing .container a.category {
+    font-size: 12px;
+  }
+  main > div.news > div.category > article > div > a:not(.image-hover) {
+    font-size: 15px;
+  }
+  main > div.news > div.category > article > div > p,
+  main > div.news > div.category > article > div.sub .flex-1 > a,
+  main > div.news > div.category > article > div.sub a.all {
+    font-size: 13px;
+  }
+  main > div.news > div.category > article > div.sub > div a.image-hover {
+    max-width: 100px;
+  }
+  main > div.news > div.category div.time a,
+  main > div.landing .container p {
+    font-size: 12px;
+  }
+  nav > div.container > .more i,
+  nav > .container > i.fa-bars {
+    font-size: 15px;
+  }
+}

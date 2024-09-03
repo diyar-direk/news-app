@@ -1,0 +1,95 @@
+footer {
+  background-color: black;
+  padding: 10px 0;
+  color: white;
+}
+footer .footer-row {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+footer .footer-row article {
+  flex: calc((100% / 3) - 20px);
+}
+footer .footer-row article > a {
+  display: block;
+  color: #e5e5e5;
+  font-size: 19px;
+  text-transform: capitalize;
+}
+footer .footer-row article:hover > a,
+footer .footer-row article > div.language-div {
+  color: #777;
+}
+footer .footer-row article > a:hover,
+footer .footer-row article > div.language-div:hover,
+footer .footer-row article > div.language-div.active,
+footer .footer-row article > a.active {
+  color: #e5e5e5;
+}
+footer .footer-row article > div a {
+  color: #777;
+  font-size: 18px;
+  margin-right: 10px;
+}
+footer .footer-row article > div a:hover {
+  color: #e5e5e5;
+}
+footer .container > div.w-100 {
+  text-align: center;
+  color: #888;
+  padding-top: 10px;
+  border-top: solid 1px #333;
+}
+footer .footer-row article > div.language-div {
+  width: fit-content;
+  cursor: pointer;
+  text-transform: capitalize;
+  position: relative;
+}
+
+footer .footer-row article > div.language-div i {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  font-size: 14px;
+}
+footer .footer-row article > div.language-div i.fa-chevron-down {
+  margin: 0 0 0 5px;
+}
+footer .lang {
+  top: -100px;
+  background: #333;
+}
+footer .footer-row article > div.language-div.active i.fa-chevron-down {
+  rotate: 180deg;
+}
+footer .footer-row article > div.language-div.active .lang {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+@media (max-width: 700px) {
+  footer .footer-row article {
+    flex: 48%;
+  }
+  footer .footer-row article > a {
+    width: fit-content;
+    font-size: 17px;
+  }
+}
+@media (max-width: 560px) {
+  footer .container > div.w-100 {
+    font-size: 13px;
+  }
+  footer .footer-row article > a {
+    font-size: 15px;
+  }
+  footer .footer-row article > div a {
+    font-size: 15px;
+  }
+  footer .footer-row article > div.language-div i {
+    font-size: 12px;
+  }
+}
