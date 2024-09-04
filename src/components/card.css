@@ -1,16 +1,16 @@
-.grid-card {
+.flex-card {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
-.grid-card > div.card {
+.flex-card > div.card {
   flex: calc(30% - 20px);
 }
-.grid-card > div.card > .important {
+.flex-card > div.card > .important {
   position: relative;
   margin-bottom: 20px;
 }
-.grid-card > div.card a.title {
+.flex-card > div.card a.title {
   position: relative;
   display: inline-block;
   padding-left: 15px;
@@ -19,7 +19,7 @@
   font-size: 30px;
   color: var(--font-color);
 }
-.grid-card > div.card a.title::before {
+.flex-card > div.card a.title::before {
   content: "";
   position: absolute;
   left: 0;
@@ -30,7 +30,7 @@
   background: var(--var-color);
   border-radius: 50%;
 }
-.grid-card > div.card .info {
+.flex-card > div.card .info {
   position: absolute;
   padding: 20px;
   z-index: 1;
@@ -41,36 +41,36 @@
   justify-content: flex-end;
   background: linear-gradient(to top, #0000008a, transparent);
 }
-.grid-card > div.card .info h2 {
+.flex-card > div.card .info h2 {
   color: white;
   line-height: 1.2;
   font-size: 18px;
 }
-.grid-card > div.card .info:hover + .image-hover img {
+.flex-card > div.card .info:hover + .image-hover img {
   object-fit: cover;
   transform: scale(1.1);
 }
 
-.grid-card > div.card .image-hover {
+.flex-card > div.card .image-hover {
   margin-bottom: 0;
   border-radius: 4px;
 }
-.grid-card > div.card .center {
+.flex-card > div.card .center {
   border-top: solid 1px var(--border-color);
   padding: 20px 0 10px;
 }
-.grid-card > div.card .center .image-hover {
+.flex-card > div.card .center .image-hover {
   width: 100px;
   margin-right: 10px;
 }
-.grid-card > div.card .center .flex-1 a {
+.flex-card > div.card .center .flex-1 a {
   color: var(--font-color);
 }
 
-.grid-card > div.card a:not(.all):hover {
+.flex-card > div.card a:not(.all):hover {
   color: var(--var-color) !important;
 }
-.grid-card > div.card a.all {
+.flex-card > div.card a.all {
   font-weight: normal;
   color: var(--var-color);
   width: 100%;
@@ -83,20 +83,20 @@
   border: 1px solid var(--var-color);
   text-transform: capitalize;
 }
-.grid-card > div.card a.all:hover {
+.flex-card > div.card a.all:hover {
   background: var(--var-color);
   color: white;
 }
 @media (max-width: 1100px) {
-  .grid-card > div.card {
+  .flex-card > div.card {
     flex: calc(35% - 20px);
   }
 }
 @media (max-width: 700px) {
-  .grid-card > div.card {
+  .flex-card > div.card {
     flex: 100%;
   }
-  .grid-card > div.card a.all {
+  .flex-card > div.card a.all {
     font-size: 16px;
   }
 }
@@ -104,22 +104,22 @@
   main > div.news > div.category p.time {
     font-size: 11px;
   }
-  .grid-card > div.card .info h2 {
+  .flex-card > div.card .info h2 {
     font-size: 16px;
   }
-  .grid-card > div.card .center .flex-1 a {
+  .flex-card > div.card .center .flex-1 a {
     font-size: 14px;
   }
-  .grid-card > div.card a.all {
+  .flex-card > div.card a.all {
     font-size: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .grid-card > div.card a.all {
+  .flex-card > div.card a.all {
     font-size: 13px;
   }
-  .grid-card > div.card .center .flex-1 a {
+  .flex-card > div.card .center .flex-1 a {
     font-size: 12px;
   }
 }
