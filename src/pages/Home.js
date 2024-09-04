@@ -5,6 +5,9 @@ import Videos from "../components/Videos";
 let counter = 0;
 let intervlaValue;
 export default function Home() {
+
+
+  
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -170,18 +173,20 @@ intervalFun(counter);
 function intervalFun(counter) {
   intervlaValue = setInterval(() => {
     const divs = document.querySelectorAll("main > div.landing > div.w-100");
-    divs.forEach((ele) => {
-      ele.classList.remove("active");
-    });
-    divs[counter].classList.add("active");
-    const dots = document.querySelectorAll("main > div.landing .dots span");
-    dots.forEach((ele) => {
-      ele.classList.remove("active");
-    });
-    dots[counter].classList.add("active");
-    counter++;
-    if (counter === 3) {
-      counter = 0;
+    if (divs.length !== 0) {
+      divs.forEach((ele) => {
+        ele.classList.remove("active");
+      });
+      divs[counter].classList.add("active");
+      const dots = document.querySelectorAll("main > div.landing .dots span");
+      dots.forEach((ele) => {
+        ele.classList.remove("active");
+      });
+      dots[counter].classList.add("active");
+      counter++;
+      if (counter === 3) {
+        counter = 0;
+      }
     }
   }, 10000);
 }
