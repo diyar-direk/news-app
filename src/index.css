@@ -63,7 +63,10 @@ input {
 .relative {
   position: relative;
 }
-
+.flex-start {
+  display: flex;
+  justify-content: center;
+}
 /* navbar start  */
 
 nav.navbar {
@@ -281,6 +284,7 @@ nav > div.bottom-link a.active {
 main {
   position: relative;
   margin-top: 109px;
+  min-height: 50svh;
 }
 main > div.landing {
   height: 500px;
@@ -366,6 +370,11 @@ main > div.landing .dots span.active {
 }
 main > div.news {
   margin: 20px 0;
+}
+main > div.news > h1 {
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: var(--font-color);
 }
 main > div.news > div.category {
   padding: 20px 0;
@@ -459,7 +468,8 @@ main > div.news > div.category > article > div.sub .flex-1 > a {
 main > div.news > div.category > article > div.sub .flex-1 > a:hover {
   color: var(--var-color);
 }
-main > div.news > div.category > article > div.sub a.all {
+main > div.news > div.category > article > div.sub a.all,
+.btn {
   font-weight: normal;
   color: var(--var-color);
   width: 100%;
@@ -471,7 +481,8 @@ main > div.news > div.category > article > div.sub a.all {
   margin: 20px auto 0 auto;
   border: 1px solid var(--var-color);
 }
-main > div.news > div.category > article > div.sub a.all:hover {
+main > div.news > div.category > article > div.sub a.all:hover,
+.btn:hover {
   background: var(--var-color);
   color: white;
 }
@@ -559,7 +570,8 @@ main > div.news > div.category > article > div.sub a.all:hover {
   main > div.news > div.category p.time {
     font-size: 12px;
   }
-  main > div.news > div.category > article > div.sub a.all {
+  main > div.news > div.category > article > div.sub a.all,
+  .btn {
     padding: 3px 0;
     font-size: 16px;
   }
@@ -584,7 +596,8 @@ main > div.news > div.category > article > div.sub a.all:hover {
   main > div.landing .container p {
     font-size: 13px;
   }
-  main > div.news > div.category > article > div.sub a.all {
+  main > div.news > div.category > article > div.sub a.all,
+  .btn {
     font-size: 16px;
     padding: 3px 0;
   }
@@ -634,7 +647,8 @@ main > div.news > div.category > article > div.sub a.all:hover {
   }
   main > div.news > div.category > article > div > p,
   main > div.news > div.category > article > div.sub .flex-1 > a,
-  main > div.news > div.category > article > div.sub a.all {
+  main > div.news > div.category > article > div.sub a.all,
+  .btn {
     font-size: 13px;
   }
   main > div.news > div.category > article > div.sub > div a.image-hover {
