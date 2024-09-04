@@ -5,7 +5,9 @@ const Category = () => {
   return (
     <main className="flex-start">
       <div className="news">
-        <h1 className="center">category : link1</h1>
+        <h1 className="center">
+          category : <span> link1</span>
+        </h1>
         <NewsComponents title={false} />
         <GridCard />
       </div>
