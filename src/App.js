@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 
 import Category from "./pages/Category";
 import Read from "./pages/Read";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 
         <Route path="/category" element={<Category />} />
         <Route path="/read" element={<Read />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>
