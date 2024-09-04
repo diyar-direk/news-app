@@ -8,6 +8,7 @@ import About from "./components/About";
 import NotFound from "./components/NotFound";
 
 import Category from "./pages/Category";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route path="/category" element={<Category />} />
-
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>
