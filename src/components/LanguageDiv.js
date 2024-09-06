@@ -30,7 +30,7 @@ export default function LanguageDiv() {
         onClick={selects}
         data-lang="arabic"
       >
-        arabic
+        عربي
       </p>
     </div>
   );

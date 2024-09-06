@@ -29,6 +29,7 @@ nav > aside.mobile-link > i {
   cursor: pointer;
   font-size: 19px;
   color: var(--font-color);
+  transition: 0.4s;
 }
 nav > aside.mobile-link > i:hover {
   color: rgb(236, 13, 13);
@@ -155,6 +156,7 @@ aside.mobile-link > div.sitting div.menu-lang.active * {
 aside.mobile-link > div.sitting div.menu-lang i {
   font-size: 12px;
   margin-left: 10px;
+  transition: 0.4s;
 }
 aside.mobile-link > div.sitting div.menu-lang.active i {
   rotate: 180deg;

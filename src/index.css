@@ -4,6 +4,8 @@
   box-sizing: border-box;
   font-family: cairo;
   outline: none;
+}
+*:not(i) {
   transition: 0.4s;
 }
 a {
@@ -18,7 +20,7 @@ img {
   --var-color: #ce0f2e;
   --border-color: #83838340;
   --hover-color: #b3142e;
-  --section-color: #f6f6f6;
+  --section-color: #f0f0f0;
 }
 body {
   background: var(--body-color);
@@ -67,6 +69,12 @@ input {
   display: flex;
   justify-content: center;
 }
+h1 > span.inside-span {
+  color: var(--var-color);
+}
+.section-color {
+  background-color: var(--section-color);
+}
 /* navbar start  */
 
 nav.navbar {
@@ -95,6 +103,7 @@ nav.navbar > div.container > article.search {
   opacity: 0;
   z-index: -1;
   pointer-events: none;
+  border-radius: 0px 0px 10px 10px;
 }
 nav.navbar > div.container > article.search.active {
   opacity: 1;
@@ -120,9 +129,7 @@ nav.navbar > div.container > article.search h3 {
   cursor: pointer;
   border-radius: 0 4px 4px 0;
 }
-nav.navbar > div.container > article.search h3 i {
-  margin-left: 5px;
-}
+
 nav.navbar > div.container > article.search h3:hover {
   background-color: var(--hover-color);
 }
@@ -131,11 +138,12 @@ nav.navbar > div.container > article.search h3:hover {
 nav.navbar > div.container > aside.more-link {
   position: absolute;
   top: 100%;
-  background: var(--section-color);
+  background: var(--body-color);
   padding: 20px;
   width: 100%;
   left: 0;
   display: none;
+  border-top: solid 1px var(--border-color);
 }
 nav.navbar > div.container > aside.more-link.active {
   display: block;
@@ -284,7 +292,7 @@ nav > div.bottom-link a.active {
 main {
   position: relative;
   margin-top: 109px;
-  min-height: 50svh;
+  min-height: 80svh;
 }
 main > div.landing {
   height: 500px;
@@ -376,6 +384,7 @@ main > div.news > h1 {
   text-transform: capitalize;
   color: var(--font-color);
 }
+
 main > div.news > div.category {
   padding: 20px 0;
   border-top: solid 1px var(--border-color);
@@ -554,7 +563,7 @@ main > div.news > div.category > article > div.sub a.all:hover,
     font-size: 12px;
   }
   main {
-    margin-top: 101px;
+    margin-top: 100px;
   }
   main > div.news > div.category > article > div.sub > div a.image-hover {
     max-width: 110px;

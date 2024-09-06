@@ -1,0 +1,53 @@
+{
+    "links":{
+        "about":"about us",
+        "contact":"contact us"
+    },
+    "home":{
+        "pages":"home pages",
+        "btn":"see all ",
+        "search":"search ...",
+        "theme":"select theme : ",
+        "language":"select language : "
+    },
+    "footer":{
+        "copyRight":"© 2024, All rights reserved"
+    },
+    "contact":{
+        "pageName":"contact",
+        "insideSpan":"us",
+        "detail":"contact detail",
+        "phone":"PHONE : ",
+        "email":"EMAIL : ",
+        "address":"ADDRESS : ",
+        "name":"Name",
+        "FormEmail":"Email",
+        "subject":"Subject",
+        "massage":"Massage",
+        "btn":"send "
+    },
+    "about":{
+        "pageName":"about ",
+        "insideSpan":"us",
+        "btn":"contact us"
+    },
+    "pageNotFound":{
+        "title":"404 page not found",
+        "btn":"home page"
+    },
+    "category":{
+        "pageName":"category :",
+        "more":"read more"
+    },
+    "readPage":{
+        "top":"top news",
+        "more":"more news"
+    },
+    "registration":{
+        "pageName":"Registration",
+        "username":"username",
+        "password":"password",
+        "rememberMe":"Remember Me",
+        "btn":"Register"
+    }
+}

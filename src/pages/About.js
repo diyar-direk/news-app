@@ -1,57 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./about.css";
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
 const About = () => {
+  const context = useContext(Context);
+  const language = context.langValue.about;
   return (
-    <>
-      <main className="about section" id="about">
-        <div className="about__container container grid">
-          <h2 className="section__title-1">
-            <span>About Us.</span>
-          </h2>
-
-          <div className="about__perfil">
-            <div className="about__image">
-              <img
-                src="https://images.unsplash.com/photo-1577565177023-d0f29c354b69?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTI3Njk4OTB8&ixlib=rb-4.0.3&q=85"
-                alt="imaghgje"
-                className="about__img"
-              />
-
-              <div className="about__shadow"></div>
-
-              <div className="geometric-box"></div>
-
-              <div className="about__box"></div>
-            </div>
+    <main className="center section-color">
+      <div className="container">
+        <div className="about flex">
+          <div className="about-logo center">
+            <h1>logo</h1>
           </div>
-
-          <div className="about__info">
-            <p className="about__description">
-              Passionate about delivering <b>news </b> with the
-              <b> most recent facts</b>, I have years of experience and many
-              clients are happy with the projects carried out.
-            </p>
-
-            <ul className="about__list">
-              <li className="about__item">
-                <b>My Skills Are:</b>
-              </li>
-            </ul>
-
-            <div className="about__buttons">
-              <Link to="/contact" className="button">
-                <i className="ri-send-plane-line"></i> Contact Me
+          <div className="about-info">
+            <h1>
+              {language && language.pageName}
+              <span className="inside-span">
+                {language && language.insideSpan}
+              </span>
+            </h1>
+            <h3>
+              loremElit officia consectetur minim in consectetur voluptate
+              occaecat tempor magna Lorem. Tempor pariatur culpa eu enim et
+              aliquip ad ipsum dolore anim cupidatat cupidatat in sunt. Nulla
+              officia ullamco proident dolor consequat veniam. Sint laboris
+              voluptate sit adipisicing. Eiusmod anim esse officia quis anim
+              laboris ut.
+            </h3>
+            <div className="flex">
+              <Link to={"/contact"} className="contact-btn">
+                <i className="fa-solid fa-paper-plane"></i>{" "}
+                {language && language.btn}
               </Link>
-
-              <a href=" " className="button__ghost">
-                <i className="fa-brands fa-facebook-f"></i>
+              <a href="#">
+                <i className="fa-brands fa-facebook"></i>
+              </a>
+              <a href="#">
+                <i className="fa-brands fa-instagram"></i>
               </a>
             </div>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 };
 

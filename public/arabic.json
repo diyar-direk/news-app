@@ -1,0 +1,53 @@
+{
+    "links":{
+        "about":"معلومات عنا",
+        "contact":"تواصل معنا"
+    },
+    "home":{
+        "pages":"صفحات الموقع",
+        "btn":" رؤية المزيد عن  ",
+        "search":"... بحث",
+        "theme":": اختيار المظهر",
+        "language":": اختيار اللغة"
+    },
+    "footer":{
+        "copyRight":"© جميع حقوق النشر محفوظة"
+    },
+    "contact":{
+        "pageName":"تواصل ",
+        "insideSpan":" معنا ",
+        "detail":" معلومات التواصل ",
+        "phone":": الرقم ",
+        "email":": البريد ",
+        "address":": العنوان ",
+        "name":" الاسم ",
+        "FormEmail":" البريد الإلكتروني ",
+        "subject":" الموضوع ",
+        "massage":" الرسالة ",
+        "btn":" إرسال "
+    },
+    "about":{
+        "pageName":" معلومات"   ,
+        "insideSpan":" عنا",
+        "btn":"تواصل معنا"
+    },
+    "pageNotFound":{
+        "title":"  الصفحة غير موجودة 404 ",
+        "btn":"الصفحة الرئيسية"
+    },
+    "category":{
+        "pageName":" : النوع ",
+        "more":" قراءة المزيد "
+    },
+    "readPage":{
+        "top":"احدث الأخبار",
+        "more":"مزيد من الأخبار"
+    },
+    "registration":{
+        "pageName":"تسجيل الدخول",
+        "username":"اسم المستخدم",
+        "password":"كلمة المرور",
+        "rememberMe":"تذكرني",
+        "btn":"تسجيل"
+    }
+}

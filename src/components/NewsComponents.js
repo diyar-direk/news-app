@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
 const NewsComponents = (props) => {
+  const context = useContext(Context);
+  const language = context.langValue.home;
   return (
     <div className="category container">
       {props.title && <Link>title</Link>}
@@ -89,7 +92,9 @@ const NewsComponents = (props) => {
             </div>
           </div>
 
-          {props.title && <Link className="all">see all link1</Link>}
+          {props.title && (
+            <Link className="all">{language && language.btn}</Link>
+          )}
         </div>
       </article>
     </div>

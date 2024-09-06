@@ -1,5 +1,5 @@
 .grid-card {
-  margin: auto;
+  margin: 10px auto 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
@@ -40,4 +40,27 @@
   color: white;
   border-color: var(--var-color);
   background-color: var(--var-color);
+}
+
+@media (max-width: 768px) {
+  .grid-card .card .info h2 {
+    font-size: 15px;
+  }
+  .grid-card .card .info p {
+    font-size: 13px;
+  }
+  .grid-card .card .info div a {
+    font-size: 11px;
+  }
+}
+@media (max-width: 408px) {
+  .grid-card .card .info h2 {
+    font-size: 14px;
+  }
+  .grid-card .card .info p {
+    font-size: 12px;
+  }
+  .grid-card .card .info div a {
+    font-size: 10px;
+  }
 }

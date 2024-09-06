@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./login.css";
 import axios from "axios";
+import { Context } from "../context/Context";
 const Login = () => {
+  const context = useContext(Context);
+  const language = context.langValue.registration;
+
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -32,9 +36,9 @@ const Login = () => {
       : (input.type = "password");
   }
   return (
-    <main className="login-div">
+    <main className="center section-color">
       <form onSubmit={loginSubmit} className="wrapper register">
-        <h2>Registration</h2>
+        <h2> {language && language.pageName} </h2>
 
         <div className="input-box">
           <span className="icon">
@@ -47,7 +51,7 @@ const Login = () => {
             type="text"
             required
           />
-          <label>Username</label>
+          <label> {language && language.username} </label>
         </div>
 
         <div className="input-box">
@@ -62,17 +66,17 @@ const Login = () => {
             required
             value={form.password}
           />
-          <label>Password</label>
+          <label> {language && language.password} </label>
         </div>
         <div className="remember-forgot">
           <label>
             <input type="checkbox" />
-            Remember me
+            {language && language.rememberMe}
           </label>
         </div>
         <a href="login.html">
           <button type="submit" className="btn">
-            Register
+            {language && language.btn}
           </button>
         </a>
       </form>

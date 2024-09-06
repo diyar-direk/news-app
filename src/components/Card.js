@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import "./card.css";
+import { useContext } from "react";
+import { Context } from "../context/Context";
 export default function Card(props) {
+  const context = useContext(Context);
+  const language = context.langValue.home;
   return (
     <div className="important card">
       <Link className="title">title</Link>
@@ -67,7 +71,7 @@ export default function Card(props) {
           </div>
         </div>
         <a className="all" href="/">
-          see all link1
+          {language && language.btn}
         </a>
       </article>
     </div>

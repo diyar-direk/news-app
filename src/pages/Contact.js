@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./contact.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
+import { Context } from "../context/Context";
 const Contact = () => {
-  //handle subimt with captcha
-  //6LeIOzYqAAAAAPhtoSrrgc15MY7JLxjPD-BiNgnd
+  const context = useContext(Context);
+  const language = context.langValue.contact;
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -27,37 +28,26 @@ const Contact = () => {
     console.log("email sent successfully");
   };
 
-  //handle subimt with captcha
   return (
     <>
       <section className="contact" id="contact">
         <div className="container">
           <div className="heading text-center">
             <h2>
-              Contact
-              <span> Us </span>
+              {language && language.pageName}
+              <span> {language && language.insideSpan} </span>
             </h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
-              <br />
-              incididunt ut labore et dolore magna aliqua.
-            </p>
           </div>
           <div className="row">
             <div className="col-md-5">
               <div className="title">
-                <h3>Contact detail</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor{" "}
-                </p>
+                <h3> {language && language.detail} </h3>
               </div>
               <div className="content">
                 <div className="info">
                   <i className="fas fa-mobile-alt"></i>
                   <h4 className="d-inline-block">
-                    PHONE :
+                    {language && language.phone}
                     <br />
                     <span>+12457836913 , +12457836913</span>
                   </h4>
@@ -65,7 +55,7 @@ const Contact = () => {
                 <div className="info">
                   <i className="far fa-envelope"></i>
                   <h4 className="d-inline-block">
-                    EMAIL :
+                    {language && language.email}
                     <br />
                     <span>example@info.com</span>
                   </h4>
@@ -73,7 +63,8 @@ const Contact = () => {
                 <div className="info">
                   <i className="fas fa-map-marker-alt"></i>
                   <h4 className="d-inline-block">
-                    ADDRESS :<br />
+                    {language && language.address}
+                    <br />
                     <span>6743 last street , Abcd, Xyz</span>
                   </h4>
                 </div>
@@ -87,7 +78,7 @@ const Contact = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Name"
+                      placeholder={language && language.name}
                       name="name"
                       value={form.name}
                       onChange={formChange}
@@ -97,7 +88,7 @@ const Contact = () => {
                     <input
                       type="email"
                       className="form-control"
-                      placeholder="Email"
+                      placeholder={language && language.FormEmail}
                       name="email"
                       value={form.email}
                       onChange={formChange}
@@ -107,7 +98,7 @@ const Contact = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Subject"
+                      placeholder={language && language.subject}
                       name="subject"
                       value={form.subject}
                       onChange={formChange}
@@ -119,7 +110,7 @@ const Contact = () => {
                     className="form-control"
                     rows="5"
                     id="comment"
-                    placeholder="Message"
+                    placeholder={language && language.massage}
                     name="message"
                     value={form.message}
                     onChange={formChange}
@@ -134,7 +125,7 @@ const Contact = () => {
                   className="btn btn-block"
                   type="submit"
                 >
-                  Send Now!
+                  {language && language.btn}
                 </button>
               </form>
             </div>

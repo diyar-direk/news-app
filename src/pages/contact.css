@@ -3,12 +3,6 @@
   color: var(--font-color) !important;
 }
 
-.contact .heading h2 {
-  font-size: 30px;
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-}
 .contact .heading {
   text-align: center;
 }
@@ -18,9 +12,11 @@
 }
 
 .contact .heading h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 30px;
   font-weight: 500;
   line-height: 1.2;
+  font-size: 40px;
+  text-transform: capitalize;
 }
 .contact .heading h2 span {
   color: var(--var-color);
@@ -42,11 +38,13 @@
   resize: none;
   border: 2px solid var(--border-color);
   margin-bottom: 10px;
-  background: var(--body-color);
+  background: var(--section-color);
   border-radius: 10px;
   width: 100%;
 }
-
+.contact .form-control:focus {
+  background-color: var(--border-color);
+}
 .contact button.btn {
   padding: 10px;
   border-radius: 10px;
@@ -62,11 +60,24 @@
   border: none;
   transition: 0.3s all;
   border: 2px solid transparent;
+  overflow: hidden;
+  text-transform: capitalize;
+  position: relative;
 }
-.contact button.btn:hover {
-  border: 2px solid var(--var-color);
-  color: var(--var-color);
-  background: var(--body-color);
+.contact button.btn::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 100%;
+  background: #ffffff73;
+  top: 0;
+  left: -20%;
+  transform: skewX(-36deg);
+  filter: blur(5px);
+  transition: 0.5s;
+}
+.contact button.btn:hover::before {
+  left: 110%;
 }
 .contact .title h3 {
   font-size: 18px;
@@ -90,19 +101,20 @@
   font-size: 30px;
   padding: 0;
   margin: 0;
-  color: #02434b;
+  color: var(--var-color);
   text-align: center;
   width: 20px;
 }
 .contact .content .info h4 {
   font-size: 13px;
   line-height: 1.4;
+  color: var(--font-color);
 }
 
 .contact .content .info h4 span {
   font-size: 13px;
-  font-weight: 300;
-  color: #999999;
+  font-weight: 600;
+  color: #777;
 }
 .contact .row {
   display: flex;
@@ -139,6 +151,11 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: block;
   width: 100%;
+  background-color: var(--section-color);
+  transition: 0.4s;
+}
+.contact .row .col-md-7 .row1 .form-control:focus {
+  background-color: var(--border-color);
 }
 .contact .row .col-md-7 .col-sm-6 {
   position: relative;
@@ -155,7 +172,7 @@
 .contact .row .col-md-7 .form-group {
   margin-bottom: 1rem;
 }
-@media (max-width: 670px) {
+@media (max-width: 860px) {
   .contact .row .col-md-5 {
     margin-bottom: 20px;
     max-width: 100%;
@@ -168,8 +185,18 @@
     max-width: 100%;
   }
 }
-@media (max-width: 300px) {
+@media (max-width: 600px) {
+  .contact .heading h2 {
+    font-size: 30px;
+  }
+  .contact .content .info i {
+    font-size: 20px;
+  }
   .contact .form-control {
-    padding: 18px;
+    padding: 20px 25px;
+  }
+  .contact button.btn {
+    padding: 4px;
+    font-size: 18px;
   }
 }

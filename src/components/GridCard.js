@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./gridcard.css";
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
 const GridCard = (props) => {
+  const context = useContext(Context);
+  const language = context.langValue.category;
   return (
     <div className="grid-card container">
       <div className="card">
@@ -14,7 +17,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -28,7 +31,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -42,7 +45,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -56,7 +59,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -70,7 +73,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -84,7 +87,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -98,7 +101,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -112,7 +115,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -126,7 +129,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -140,7 +143,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>
@@ -154,7 +157,7 @@ const GridCard = (props) => {
           </h2>
           <div className="between">
             <p>2020</p>
-            <Link>read more</Link>
+            <Link> {language && language.more} </Link>
           </div>
         </div>
       </div>

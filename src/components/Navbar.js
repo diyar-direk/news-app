@@ -9,6 +9,9 @@ export default function Navbar() {
   const themeValue = theme.theme;
   const themeFun = theme.setTheme;
 
+  const context = useContext(Context);
+  const languageVal = context.langValue.home;
+
   function pageTheme() {
     themeFun(themeValue ? 0 : 1);
   }
@@ -80,9 +83,11 @@ export default function Navbar() {
         {/* start search div  */}
         <article className="search" onClick={(e) => e.stopPropagation()}>
           <div className="flex">
-            <input type="text" />
+            <input
+              type="text"
+              placeholder={languageVal && languageVal.search}
+            />
             <h3 className="center">
-              search
               <i className="fa-solid fa-magnifying-glass"></i>
             </h3>
           </div>

@@ -8,7 +8,8 @@ export default function Menu() {
   const theme = useContext(Context);
   const themeValue = theme.theme;
   const themeFun = theme.setTheme;
-
+  const context = useContext(Context);
+  const language = context.langValue.home;
   function closeMemu() {
     const div = document.querySelector("nav > aside.mobile-link");
     div.classList.remove("active");
@@ -53,13 +54,17 @@ export default function Menu() {
     <aside className="mobile-link" onClick={(e) => e.stopPropagation()}>
       <h1>logo</h1>
       <div className="center">
-        <input type="text" className="flex-1" placeholder="search..." />
+        <input
+          type="text"
+          className="flex-1"
+          placeholder={language && language.search}
+        />
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       <div>
         <article>
           <p data-index="0" onClick={openNestedMenu}>
-            home pages
+            {language && language.pages}
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
@@ -71,7 +76,7 @@ export default function Menu() {
         </article>
         <article>
           <p data-index="1" onClick={openNestedMenu}>
-            home pages
+            {language && language.pages}
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
@@ -84,11 +89,11 @@ export default function Menu() {
       </div>
       <div className="sitting between w-100">
         <div>
-          <h4>Select theme:</h4>
+          <h4> {language && language.theme} </h4>
           <div className="theme" onClick={darkMode}></div>
         </div>
         <div className="relative">
-          <h4>Select language:</h4>
+          <h4>{language && language.language}</h4>
           <div className="menu-lang" onClick={langClick}>
             <span>english</span>
             <i className="fa-solid fa-chevron-down"></i>

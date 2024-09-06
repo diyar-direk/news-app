@@ -6,9 +6,6 @@ import NewsComponents from "../components/NewsComponents";
 let counter = 0;
 let intervlaValue;
 export default function Home() {
-
-
-  
   const [data, setData] = useState([]);
 
   useEffect(() => {

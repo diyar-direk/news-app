@@ -1,12 +1,16 @@
 .page_404 {
   background: var(--section-color);
+  flex-direction: column;
 }
 .error-container {
   text-align: center;
   font-size: 106px;
   font-family: "Catamaran", sans-serif;
   font-weight: 800;
-  margin: 70px 15px;
+  margin: 70px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .error-container > span {
   display: inline-block;
@@ -136,12 +140,13 @@
   display: block;
   position: absolute;
   border-radius: 999px;
-  width: 70px;
-  height: 70px;
-  left: 43px;
-  bottom: 43px;
-  background: #fdfaf5;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top: 50%;
+  background: var(--section-color);
   box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
 }
 
 .screen-reader-text {
@@ -170,12 +175,14 @@
 .page_404 h1 {
   text-align: center;
   margin: 30px 15px;
+  color: var(--font-color);
 }
 .zoom-area {
   max-width: 490px;
   margin: 30px auto 30px;
   font-size: 19px;
   text-align: center;
+  color: var(--font-color);
 }
 .link-container {
   text-align: center;
@@ -183,15 +190,53 @@
 a.more-link {
   text-transform: uppercase;
   font-size: 13px;
-  background-color: #de7e85;
+  background-color: var(--var-color);
   padding: 10px 15px;
   border-radius: 0;
   color: #fff;
   display: inline-block;
   margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
   line-height: 1.5;
   text-decoration: none;
   margin-top: 50px;
   letter-spacing: 1px;
+  border: solid 1px transparent;
+  font-weight: bold;
+}
+a.more-link:hover {
+  border: solid 1px var(--var-color);
+  background-color: transparent;
+  color: var(--var-color);
+}
+@media (max-width: 700px) {
+  .error-container {
+    transform: scale(0.6);
+  }
+  .page_404 h1 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 500px) {
+  .error-container > span.four {
+    width: 100px;
+    height: 20px;
+  }
+  .error-container > span.four:before {
+    width: 20px;
+    height: 136px;
+    left: 67px;
+    bottom: -43px;
+  }
+  .error-container > span.four:after {
+    width: 124px;
+    height: 20px;
+    transform: rotate(-49.5deg);
+    left: -21px;
+    bottom: 42px;
+  }
+  .error-container > span.zero {
+    width: 100px;
+    height: 100px;
+  }
 }

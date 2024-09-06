@@ -20,13 +20,15 @@ footer .footer-row article > a {
 }
 footer .footer-row article:hover > a,
 footer .footer-row article > div.language-div {
-  color: #777;
+  opacity: 0.5;
 }
 footer .footer-row article > a:hover,
 footer .footer-row article > div.language-div:hover,
-footer .footer-row article > div.language-div.active,
+footer .footer-row article > div.language-div.active {
+  opacity: 1;
+}
 footer .footer-row article > a.active {
-  color: #e5e5e5;
+  color: var(--var-color);
 }
 footer .footer-row article > div a {
   color: #777;
@@ -57,6 +59,7 @@ footer .footer-row article > div.language-div i {
 }
 footer .footer-row article > div.language-div i.fa-chevron-down {
   margin: 0 0 0 5px;
+  transition: 0.4s;
 }
 footer .lang {
   top: -100px;

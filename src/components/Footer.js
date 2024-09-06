@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./footer.css";
 import LanguageDiv from "./LanguageDiv";
+import { useContext } from "react";
+import { Context } from "../context/Context";
 export default function Footer() {
+  const context = useContext(Context);
+  const language = context.langValue;
+
   function footerLang() {
     let div = document.querySelector(
       "footer .footer-row article > div.language-div"
@@ -21,8 +26,10 @@ export default function Footer() {
             <h1>logo</h1>
           </article> */}
           <article className="row">
-            <NavLink to={"/about"}>about us</NavLink>
-            <NavLink to={"/contact"}>contact us</NavLink>
+            <NavLink to={"/about"}>{language && language.links.about}</NavLink>
+            <NavLink to={"/contact"}>
+              {language && language.links.contact}
+            </NavLink>
             <div className="flex">
               <a href="#">
                 <i className="fa-brands fa-facebook"></i>
@@ -54,7 +61,7 @@ export default function Footer() {
             <NavLink to="/link4">link 4</NavLink>
           </article>
         </div>
-        <div className="w-100">© 2024, All rights reserved</div>
+        <div className="w-100"> {language && language.footer.copyRight} </div>
       </div>
     </footer>
   );

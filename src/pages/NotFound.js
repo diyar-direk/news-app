@@ -1,32 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./notfound.css";
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
 
 const NotFound = () => {
+  const context = useContext(Context);
+  const language = context.langValue.pageNotFound;
   return (
     <>
-      <main className="page_404">
-        <h1 >404 Error Page #2</h1>
-        <p class="zoom-area">
-          <b>CSS</b> animations to make a cool 404 page.{" "}
-        </p>
-        <section class="error-container">
-          <span class="four">
-            <span class="screen-reader-text">4</span>
+      <main className="page_404 center">
+        <h1> {language && language.title} </h1>
+
+        <section className="error-container">
+          <span className="four">
+            <span className="screen-reader-text">4</span>
           </span>
-          <span class="zero">
-            <span class="screen-reader-text">0</span>
+          <span className="zero">
+            <span className="screen-reader-text">0</span>
           </span>
-          <span class="four">
-            <span class="screen-reader-text">4</span>
+          <span className="four">
+            <span className="screen-reader-text">4</span>
           </span>
         </section>
-        <div class="link-container">
-          <Link to="/"
-            href="https://www.silocreativo.com/en/creative-examples-404-error-css/"
-            class="more-link"
-          >
-            Home Page
+        <div className="link-container">
+          <Link to="/" className="more-link">
+            {language && language.btn}
           </Link>
         </div>
       </main>
