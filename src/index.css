@@ -628,6 +628,12 @@ nav.navbar > div.container > article.search input {
   background-color: var(--border-color);
   color: var(--font-color);
 }
+body.arabic nav.navbar > div.container > article.search input {
+  border-radius: 0px 4px 4px 0px;
+}
+body.arabic nav.navbar > div.container > article.search h3 {
+  border-radius: 4px 0px 0px 4px;
+}
 nav.navbar > div.container > article.search h3 {
   background: var(--var-color);
   color: white;
@@ -1023,7 +1029,7 @@ main > div.news > div.category > article > div.sub a.all,
   color: var(--var-color);
   width: 100%;
   padding: 4px 0;
-  background: var(--body-color);
+  background: transparent;
   font-size: 18px;
   border-radius: 6px;
   text-align: center;
@@ -1070,8 +1076,7 @@ main > div.news > div.category > article > div.sub a.all:hover,
     font-size: 18px;
   }
   nav > div.bottom-link a {
-    font-size: 16px;
-    width: 60px;
+    font-size: 15px;
     height: 40px;
     line-height: 40px;
   }
@@ -1164,7 +1169,6 @@ main > div.news > div.category > article > div.sub a.all:hover,
   }
   nav > div.bottom-link a {
     font-size: 14px;
-    width: 50px;
     height: 38px;
     line-height: 38px;
   }
@@ -1210,5 +1214,9 @@ main > div.news > div.category > article > div.sub a.all:hover,
   nav > div.container > .more i,
   nav > .container > i.fa-bars {
     font-size: 15px;
+  }
+  nav > div.bottom-link a {
+    padding: 0 8px;
+    font-size: 12px;
   }
 }

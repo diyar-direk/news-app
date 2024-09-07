@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 
@@ -12,6 +12,8 @@ import Read from "./pages/Read";
 import Login from "./pages/Login";
 import Loader from "./components/Loader";
 import { useEffect } from "react";
+import Dashboard from "./pages/dashboard/Dashboard"; 
+
 
 function App() {
   useEffect(() => {
@@ -27,10 +29,13 @@ function App() {
     }
   }, []);
 
+
+  const location = useLocation();
+  const showNavBar = !location.pathname.startsWith("/dashboard");
+
   return (
     <div className="App">
-      <Loader />
-      <Navbar />
+      {showNavBar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -41,8 +46,12 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="/read" element={<Read />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          
+        </Route>
       </Routes>
-      <Footer />
+
+      {showNavBar && <Footer />}
     </div>
   );
 }

@@ -40,6 +40,9 @@ div.the-news article.current-news .info .slider div.between {
   top: 50%;
   transform: translateY(-50%);
 }
+body.arabic div.the-news article.current-news .info .slider div.between {
+  flex-direction: row-reverse;
+}
 div.the-news article.current-news .info .slider div.between i {
   cursor: pointer;
   background: #0000003b;

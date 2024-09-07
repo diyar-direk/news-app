@@ -50,6 +50,9 @@ body.arabic .flex-card > div.card a.title::before {
   justify-content: flex-end;
   background: linear-gradient(to top, #0000008a, transparent);
 }
+body.arabic .flex-card > div.card .info p.time {
+  direction: rtl;
+}
 .flex-card > div.card .info h2 {
   color: white;
   line-height: 1.2;

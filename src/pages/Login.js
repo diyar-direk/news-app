@@ -69,7 +69,7 @@ const Login = () => {
           <label> {language && language.password} </label>
         </div>
         <div className="remember-forgot">
-          <label>
+          <label className="center">
             <input type="checkbox" />
             {language && language.rememberMe}
           </label>
