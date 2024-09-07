@@ -4,10 +4,18 @@ import Card from "../components/Card";
 import Videos from "../components/Videos";
 import NewsComponents from "../components/NewsComponents";
 import { Context } from "../context/Context";
+import axios from "axios";
 
 let counter = 0;
 let intervlaValue;
 export default function Home() {
+  const [topNews, setTopNews] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/top-news")
+      .then((res) => setTopNews(res.data.data))
+      .then(console.log(topNews));
+  }, []);
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -31,22 +39,22 @@ export default function Home() {
     intervalFun(counter);
   }
 
-  const obj = data.map((e, index) => {
+  const obj = topNews.map((e, index) => {
     if (index < 3)
       return (
         <div
           className={index === 0 ? "center w-100 active" : "center w-100"}
           key={e.id}
         >
-          <img alt={e.title} src={e.image} />
+          <img alt={e.title} src={e.photo} />
           <div className="container">
             <NavLink to="link1" className="category">
               {e.category}
             </NavLink>
             <Link to={"/"} className="title">
-              {e.title}
+              {e.headline}
             </Link>
-            <p>{e.price}</p>
+            <p>{e.publishedAt}</p>
           </div>
         </div>
       );
