@@ -22,15 +22,19 @@ nav > aside.mobile-link.active {
   opacity: 1;
   pointer-events: all;
 }
+nav > aside.mobile-link.active .menu-logo {
+  text-align: left;
+}
 nav > aside.mobile-link > i {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 30px;
   cursor: pointer;
   font-size: 19px;
   color: var(--font-color);
   transition: 0.4s;
 }
+
 nav > aside.mobile-link > i:hover {
   color: rgb(236, 13, 13);
   rotate: 90deg;
@@ -49,6 +53,11 @@ nav > aside.mobile-link article > p i {
   right: 10px;
   rotate: 90deg;
   pointer-events: none;
+}
+
+body.arabic nav > aside.mobile-link article > p i {
+  right: auto;
+  left: 10px;
 }
 nav > aside.mobile-link article > p.active i {
   rotate: 0deg;
@@ -90,6 +99,13 @@ aside.mobile-link > div.center > input {
   color: var(--font-color);
   border-right: solid 1px var(--border-color);
 }
+body.arabic aside.mobile-link > div.center > input {
+  padding-right: 0px;
+  padding-left: 8px;
+  color: var(--font-color);
+  border-left: solid 1px var(--border-color);
+  border-right: 0;
+}
 
 aside.mobile-link > div.center > i {
   cursor: pointer;
@@ -97,6 +113,12 @@ aside.mobile-link > div.center > i {
   font-size: 15px;
   color: #777;
 }
+body.arabic aside.mobile-link > div.center > i {
+  margin-right: 8px;
+  margin-left: 0px;
+
+}
+
 aside.mobile-link > div.sitting {
   position: absolute;
   left: 0;
@@ -141,6 +163,10 @@ aside.mobile-link > div.sitting h4 {
   color: #777;
   font-size: 14px;
 }
+
+body.arabic aside.mobile-link > div.sitting h4 {
+  direction: ltr;
+}
 aside.mobile-link > div.sitting div.menu-lang {
   font-size: 14px;
   color: #777;
@@ -158,6 +184,10 @@ aside.mobile-link > div.sitting div.menu-lang i {
   margin-left: 10px;
   transition: 0.4s;
 }
+body.arabic aside.mobile-link > div.sitting div.menu-lang i{
+  margin-left: 0px;
+  margin-right: 10px;
+} 
 aside.mobile-link > div.sitting div.menu-lang.active i {
   rotate: 180deg;
 }
@@ -179,6 +209,10 @@ aside.mobile-link > div.sitting div.lang p {
     cursor: pointer;
     margin-right: 10px;
     font-size: 16px;
+  }
+  body.arabic nav > .container > i.fa-bars {
+    margin-left: 10px;
+    margin-right: 0px;
   }
 }
 

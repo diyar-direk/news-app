@@ -19,6 +19,11 @@
   font-size: 30px;
   color: var(--font-color);
 }
+body.arabic .flex-card > div.card a.title {
+  padding-right: 15px;
+  padding-left: 0px;
+}
+
 .flex-card > div.card a.title::before {
   content: "";
   position: absolute;
@@ -29,6 +34,10 @@
   height: 8px;
   background: var(--var-color);
   border-radius: 50%;
+}
+body.arabic .flex-card > div.card a.title::before {
+  right: 0;
+  top: 56%;
 }
 .flex-card > div.card .info {
   position: absolute;
@@ -62,6 +71,10 @@
 .flex-card > div.card .center .image-hover {
   width: 100px;
   margin-right: 10px;
+}
+body.arabic .flex-card > div.card .center .image-hover {
+  margin-right: 0px;
+  margin-left: 10px;
 }
 .flex-card > div.card .center .flex-1 a {
   color: var(--font-color);

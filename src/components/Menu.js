@@ -52,7 +52,7 @@ export default function Menu() {
 
   return (
     <aside className="mobile-link" onClick={(e) => e.stopPropagation()}>
-      <h1>logo</h1>
+      <h1 className="menu-logo">logo</h1>
       <div className="center">
         <input
           type="text"
