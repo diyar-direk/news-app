@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import Loader from "./components/Loader";
 import { useEffect } from "react";
 import Dashboard from "./pages/dashboard/Dashboard";
+import News from "./pages/dashboard/pages/News";
+import AddNews from "./pages/dashboard/pages/AddNews";
 
 function App() {
   useEffect(() => {
@@ -37,15 +39,17 @@ function App() {
       {showNavBar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
-
         <Route path="/category" element={<Category />} />
         <Route path="/read" element={<Read />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/news" element={<News />} />
+          <Route path="/dashboard/add" element={<AddNews />} />
+        </Route>
       </Routes>
 
       {showNavBar && <Footer />}

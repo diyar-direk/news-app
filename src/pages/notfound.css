@@ -1,6 +1,7 @@
 .page_404 {
   background: var(--section-color);
   flex-direction: column;
+  overflow: hidden;
 }
 .error-container {
   text-align: center;

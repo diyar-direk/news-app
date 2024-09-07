@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Card from "../components/Card";
 import Videos from "../components/Videos";
 import NewsComponents from "../components/NewsComponents";
-import { Context } from "../context/Context";
 import axios from "axios";
 
 let counter = 0;
@@ -11,16 +10,10 @@ let intervlaValue;
 export default function Home() {
   const [topNews, setTopNews] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/top-news")
-      .then((res) => setTopNews(res.data.data))
-      .then(console.log(topNews));
-  }, []);
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    axios.get("http://localhost:8000/api/top-news").then((res) => {
+      setTopNews(res.data.data);
+      console.log(res.data.data);
+    });
   }, []);
 
   function handelClick(e) {
@@ -44,9 +37,9 @@ export default function Home() {
       return (
         <div
           className={index === 0 ? "center w-100 active" : "center w-100"}
-          key={e.id}
+          key={e._id}
+          style={{ backgroundImage: `url(${e.photo})` }}
         >
-          <img alt={e.title} src={e.photo} />
           <div className="container">
             <NavLink to="link1" className="category">
               {e.category}

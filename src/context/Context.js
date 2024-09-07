@@ -21,9 +21,7 @@ export default function PageContext({ children }) {
 
   const darkmode = () => {
     const i = document.querySelector("nav > div.container > .more i.mode");
-    const div = document.querySelector(
-      "aside.mobile-link > div.sitting div.theme"
-    );
+    const div = document.querySelector("div.sitting div.theme");
     if (theme) {
       document.documentElement.style.setProperty("--body-color", "#121417");
       document.documentElement.style.setProperty("--border-color", "#4c4c4c");
@@ -48,9 +46,7 @@ export default function PageContext({ children }) {
     const footerLang = document.querySelector(
       "footer .footer-row article > div.language-div span"
     );
-    const menuLang = document.querySelector(
-      "aside.mobile-link > div.sitting div.menu-lang span"
-    );
+    const menuLang = document.querySelector("div.sitting div.menu-lang span");
     footerLang && (footerLang.textContent = language);
     menuLang && (menuLang.textContent = language);
     window.localStorage.setItem("language", language);

@@ -2,15 +2,14 @@ import { NavLink } from "react-router-dom";
 import "./menu.css";
 import { useContext } from "react";
 import { Context } from "../context/Context";
-import LanguageDiv from "./LanguageDiv";
+import Setting from "./Setting";
 
 export default function Menu() {
-  const theme = useContext(Context);
-  const themeValue = theme.theme;
-  const themeFun = theme.setTheme;
   const context = useContext(Context);
   const language = context.langValue.home;
+
   const data = context.dataType;
+
   function closeMemu() {
     const div = document.querySelector("nav > aside.mobile-link");
     div.classList.remove("active");
@@ -38,16 +37,6 @@ export default function Menu() {
     p.forEach((ele, index) => {
       if (index != e.target.dataset.index) ele.classList.remove("active");
     });
-    e.target.classList.toggle("active");
-  }
-  function darkMode() {
-    themeFun(themeValue ? 0 : 1);
-  }
-  function langClick(e) {
-    const div = document.querySelector(
-      "aside.mobile-link > div.sitting div.lang"
-    );
-    div.classList.toggle("active");
     e.target.classList.toggle("active");
   }
 
@@ -91,20 +80,7 @@ export default function Menu() {
           </div>
         </article>
       </div>
-      <div className="sitting between w-100">
-        <div>
-          <h4> {language && language.theme} </h4>
-          <div className="theme" onClick={darkMode}></div>
-        </div>
-        <div className="relative">
-          <h4>{language && language.language}</h4>
-          <div className="menu-lang" onClick={langClick}>
-            <span>english</span>
-            <i className="fa-solid fa-chevron-down"></i>
-          </div>
-          <LanguageDiv />
-        </div>
-      </div>
+      <Setting />
       <i className="fa-solid fa-x" onClick={closeMemu}></i>
     </aside>
   );

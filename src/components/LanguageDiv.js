@@ -7,7 +7,7 @@ export default function LanguageDiv() {
   const langVal = context.language;
 
   function selects(e) {
-    const divs = document.querySelectorAll("nav .lang p");
+    const divs = document.querySelectorAll(".lang p");
     divs.forEach((e) => {
       e.classList.remove("active");
     });

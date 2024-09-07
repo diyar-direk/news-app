@@ -6,6 +6,8 @@ import { Context } from "../context/Context";
 const NotFound = () => {
   const context = useContext(Context);
   const language = context.langValue.pageNotFound;
+  console.log(language);
+
   return (
     <>
       <main className="page_404 center">
