@@ -19,6 +19,11 @@
   width: fit-content;
   padding-left: 20px;
 }
+
+body.arabic .videos .title {
+  padding-right: 20px;
+  padding-left: 0px;
+}
 .videos .title:hover {
   color: var(--var-color);
 }
@@ -33,7 +38,10 @@
   border-radius: 50%;
   background: var(--var-color);
 }
-
+body.arabic .videos .title::after {
+  right: 0;
+  top: 56%;
+}
 .videos .video {
   padding: 15px 0px;
   display: flex;
@@ -90,6 +98,17 @@
   border-right: solid 1px var(--border-color);
   display: flex;
   align-items: center;
+}
+
+
+body.arabic .videos .video .video-item .time a {
+  margin-left: 8px;
+  font-size: 14px;
+  padding-left: 8px;
+  border-left: solid 1px var(--border-color);
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none  ;
 }
 .videos .headline {
   margin-top: 10px;

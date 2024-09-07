@@ -187,6 +187,7 @@ nav > div.container > .links {
   padding: 0 10px;
   flex: 1;
 }
+
 body.arabic nav > div.container > .links {
   border-right: none;
   border-left: solid 1px var(--border-color);
@@ -244,6 +245,10 @@ nav > div.container > .more > div.active > div p.active::after {
   position: absolute;
   right: 10px;
 }
+body.arabic nav > div.container > .more > div.active > div p.active::after {
+  left: 10px;
+  right: auto;
+}
 nav > div.container > .more > div > div::before {
   content: "";
   position: absolute;
@@ -263,6 +268,8 @@ nav div.more div.lang {
 }
 nav div.lang p {
   color: var(--font-color);
+  display: flex;
+  align-items: center;
 }
 div.lang p:first-of-type {
   border-bottom: solid 1px var(--border-color);
@@ -450,7 +457,6 @@ body.arabic main > div.news > div.category div.time a {
   border-right: none;
   border-left: solid 1px var(--border-color);
   margin-right: 0;
-  padding-right: 0;
   margin-left: 8px;
   font-size: 14px;
   padding-left: 8px;
@@ -460,6 +466,11 @@ main > div.news > div.category p.time {
   color: #8d8a87;
   border-left: solid 2px;
   border: 0px;
+}
+
+body.arabic main > div.news > div.category p.time {
+  direction: ltr;
+  padding-right: 4px;
 }
 main > div.news > div.category > article > div > a:not(.image-hover) {
   color: var(--font-color);
