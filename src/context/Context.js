@@ -30,17 +30,17 @@ export default function PageContext({ children }) {
       document.documentElement.style.setProperty("--font-color", "#d8d8d8");
       document.documentElement.style.setProperty("--section-color", "#22252c");
 
-      div.classList.add("dark");
-      i.classList.remove("fa-sun");
-      i.classList.add("fa-moon");
+      div && div.classList.add("dark");
+      i && i.classList.remove("fa-sun");
+      i && i.classList.add("fa-moon");
     } else {
       document.documentElement.style.setProperty("--body-color", "white");
       document.documentElement.style.setProperty("--font-color", "black");
       document.documentElement.style.setProperty("--border-color", "#83838340");
       document.documentElement.style.setProperty("--section-color", "#f0f0f0");
-      i.classList.remove("fa-moon");
-      i.classList.add("fa-sun");
-      div.classList.remove("dark");
+      i && i.classList.remove("fa-moon");
+      i && i.classList.add("fa-sun");
+      div && div.classList.remove("dark");
     }
     localStorage.setItem("mode", theme ? 1 : 0);
   };
@@ -51,8 +51,8 @@ export default function PageContext({ children }) {
     const menuLang = document.querySelector(
       "aside.mobile-link > div.sitting div.menu-lang span"
     );
-    footerLang.textContent = language;
-    menuLang.textContent = language;
+    footerLang && (footerLang.textContent = language);
+    menuLang && (menuLang.textContent = language);
     window.localStorage.setItem("language", language);
     language === "arabic"
       ? document.body.classList.add("arabic")

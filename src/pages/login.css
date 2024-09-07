@@ -30,8 +30,12 @@
   pointer-events: none;
   transition: 0.5s;
 }
+body.arabic .input-box label {
+  right: 35px;
+}
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
+  opacity: 0.5;
   top: -5px;
   font-size: 14px;
 }
@@ -67,6 +71,9 @@
 .remember-forgot label input {
   accent-color: #000;
   margin-right: 3px;
+}
+body.arabic .remember-forgot label input {
+  margin-left: 3px;
 }
 .remember-forgot a {
   color: var(--font-color);

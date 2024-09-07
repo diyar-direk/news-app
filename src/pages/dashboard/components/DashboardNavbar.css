@@ -1,0 +1,14 @@
+div.navbar {
+  background: #f7f7f7;
+  padding: 10px 0;
+}
+div.navbar .flex {
+  gap: 10px;
+}
+div.navbar .flex > .btn {
+  width: auto;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+}

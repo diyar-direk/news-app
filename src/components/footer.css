@@ -73,7 +73,9 @@ footer .footer-row article > div.language-div.active .lang {
   z-index: 1;
   pointer-events: all;
 }
-
+body.arabic footer .footer-row article > div.language-div.active .lang {
+  right: 0;
+}
 body.arabic footer .footer-row article > div.language-div i {
   margin-right: 5px;
   margin-left: 5px;
