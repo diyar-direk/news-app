@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 export const Context = createContext({});
 
@@ -57,9 +58,15 @@ export default function PageContext({ children }) {
       ? document.body.classList.add("arabic")
       : document.body.classList.remove("arabic");
   };
+  const [dataType, setDataType] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/news/ALLcategories")
+      .then((data) => setDataType(data.data));
+  }, []);
   return (
     <Context.Provider
-      value={{ theme, setTheme, language, setLanguage, langValue }}
+      value={{ theme, setTheme, language, setLanguage, langValue, dataType }}
     >
       {children}
     </Context.Provider>

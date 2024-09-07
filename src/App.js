@@ -8,7 +8,7 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 import Category from "./pages/Category";
-import Read from "./pages/Read";
+import Read from "./pages/Read";   
 import Login from "./pages/Login";
 
 function App() {

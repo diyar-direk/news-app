@@ -10,6 +10,7 @@ export default function Menu() {
   const themeFun = theme.setTheme;
   const context = useContext(Context);
   const language = context.langValue.home;
+  const data = context.dataType;
   function closeMemu() {
     const div = document.querySelector("nav > aside.mobile-link");
     div.classList.remove("active");
@@ -68,10 +69,13 @@ export default function Menu() {
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
-            <NavLink to={"/link1"}>link1</NavLink>
-            <NavLink to={"/link1"}>link1</NavLink>
-            <NavLink to={"/link1"}>link1</NavLink>
-            <NavLink to={"/link1"}>link1</NavLink>
+            {data.map((e) => {
+              return (
+                <NavLink to={`/category/${e}`} key={e}>
+                  {e}
+                </NavLink>
+              );
+            })}
           </div>
         </article>
         <article>

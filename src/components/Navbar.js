@@ -11,6 +11,7 @@ export default function Navbar() {
 
   const context = useContext(Context);
   const languageVal = context.langValue.home;
+  const data = context.dataType;
 
   function pageTheme() {
     themeFun(themeValue ? 0 : 1);
@@ -76,6 +77,7 @@ export default function Navbar() {
     MobileDiv.classList.add("active");
     document.body.style.overflowY = "hidden";
   }
+
   return (
     <nav className="navbar center">
       <div className="flex container">
@@ -121,10 +123,15 @@ export default function Navbar() {
 
         <div className="logo">logo</div>
         <div className="links center">
-          <NavLink to="/link1">link 1</NavLink>
-          <NavLink to="link2">link 2</NavLink>
-          <NavLink to="/link3">link 3</NavLink>
-          <NavLink to="link4">link 4</NavLink>
+          {data.map((e, i) => {
+            if (i < 4) {
+              return (
+                <NavLink to={`/category/${e}`} key={e}>
+                  {e}
+                </NavLink>
+              );
+            }
+          })}
           <i className="fa-solid fa-ellipsis" onClick={showMoreLinke}></i>
         </div>
         <div className="more center">
@@ -138,10 +145,15 @@ export default function Navbar() {
       </div>
       <div className="bottom-link center">
         <div className="container">
-          <NavLink to="/link1">link 1</NavLink>
-          <NavLink to="link2">link 2</NavLink>
-          <NavLink to="/link3">link 3</NavLink>
-          <NavLink to="link4">link 4</NavLink>
+          {data.map((e, i) => {
+            if (i < 4) {
+              return (
+                <NavLink to={`/category/${e}`} key={e}>
+                  {e}
+                </NavLink>
+              );
+            }
+          })}
         </div>
       </div>
       <Menu />

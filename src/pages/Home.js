@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Card from "../components/Card";
 import Videos from "../components/Videos";
 import NewsComponents from "../components/NewsComponents";
+import { Context } from "../context/Context";
+
 let counter = 0;
 let intervlaValue;
 export default function Home() {
   const [data, setData] = useState([]);
-
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())

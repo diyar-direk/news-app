@@ -279,9 +279,9 @@ nav > div.bottom-link {
 }
 nav > div.bottom-link a {
   color: white;
-  font-size: 18px;
-  width: 70px;
+  font-size: 16px;
   height: 45px;
+  padding: 0 10px;
   line-height: 45px;
   text-align: center;
   display: inline-block;
@@ -415,7 +415,7 @@ body.arabic main > div.news > div.category > a {
 main > div.news > div.category > a:hover {
   color: var(--var-color);
 }
-body.arabic main > div.news > div.category > a::before{
+body.arabic main > div.news > div.category > a::before {
   right: 0;
 }
 main > div.news > div.category > a::before {
@@ -446,7 +446,7 @@ main > div.news > div.category div.time a {
   padding-right: 8px;
   border-right: solid 1px var(--border-color);
 }
-body.arabic main > div.news > div.category div.time a{
+body.arabic main > div.news > div.category div.time a {
   border-right: none;
   border-left: solid 1px var(--border-color);
   margin-right: 0;
