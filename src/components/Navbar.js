@@ -95,19 +95,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <div className="loader">
-        <div className="banter-loader">
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-          <div className="banter-loader__box"></div>
-        </div>
-      </div>
+      
       <nav className="navbar center">
         <div className="flex container">
           <i className="fa-solid fa-bars" onClick={showMobileAsid}></i>

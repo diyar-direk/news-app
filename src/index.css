@@ -83,14 +83,14 @@ h1 > span.inside-span {
 /*loader Start*/
 .loader {
   position: fixed;
-  z-index: 100;
+  z-index: 100000;
   display: flex;
   top: 0;
   justify-content: center;
   width: 100%;
   align-items: center;
   height: 100vh;
-  background: var(--body-color);
+  background: #000;
   opacity: 1;
 }
 .banter-loader {
