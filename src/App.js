@@ -8,12 +8,20 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 import Category from "./pages/Category";
-import Read from "./pages/Read";   
+import Read from "./pages/Read";
 import Login from "./pages/Login";
 
 function App() {
+  const loader = () => {
+    const loader = document.querySelector(".loader");
+    loader.style.opacity = 0;
+    loader.style.zIndex = -1;
+    document.body.style.overflowY = "auto";
+    console.log(1);
+    
+  };
   return (
-    <div className="App">
+    <div onLoad={loader} className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
