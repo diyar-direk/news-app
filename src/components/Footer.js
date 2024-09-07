@@ -6,6 +6,7 @@ import { Context } from "../context/Context";
 export default function Footer() {
   const context = useContext(Context);
   const language = context.langValue;
+  const data = context.dataType;
 
   function footerLang() {
     let div = document.querySelector(
@@ -18,6 +19,22 @@ export default function Footer() {
     );
     span.textContent = p.textContent;
   }
+  const loadLinks = (linksPerArticle) => {
+    const articles = [];
+    for (let i = 0; i < data.length; i += linksPerArticle) {
+      const chunk = data.slice(i, i + linksPerArticle);
+      articles.push(
+        <article key={i} className="flex-1">
+          {chunk.map((category, index) => (
+            <NavLink key={index} to={`/${category.toLowerCase()}`}>
+              {category}
+            </NavLink>
+          ))}
+        </article>
+      );
+    }
+    return articles;
+  };
   return (
     <footer className="center">
       <div className="container">
@@ -48,18 +65,7 @@ export default function Footer() {
               <LanguageDiv />
             </div>
           </article>
-          <article className="row">
-            <NavLink to="/link1">link 1</NavLink>
-            <NavLink to="link2">link 2</NavLink>
-            <NavLink to="/link3">link 3</NavLink>
-            <NavLink to="/link4">link 4</NavLink>
-          </article>
-          <article className="row">
-            <NavLink to="/link1">link 1</NavLink>
-            <NavLink to="link2">link 2</NavLink>
-            <NavLink to="/link3">link 3</NavLink>
-            <NavLink to="/link4">link 4</NavLink>
-          </article>
+          {loadLinks(4)}
         </div>
         <div className="w-100"> {language && language.footer.copyRight} </div>
       </div>

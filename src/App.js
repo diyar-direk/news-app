@@ -10,9 +10,26 @@ import NotFound from "./pages/NotFound";
 import Category from "./pages/Category";
 import Read from "./pages/Read";
 import Login from "./pages/Login";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Loader from "./components/Loader";
+import { useEffect } from "react";
+import Dashboard from "./pages/dashboard/Dashboard"; 
+
 
 function App() {
+  useEffect(() => {
+    const loader = document.querySelector(".loader");
+
+    if (loader) {
+      // Adding a slight delay to ensure the loader is visible before hiding it
+      setTimeout(() => {
+        loader.style.opacity = 0;
+        loader.style.zIndex = -1;
+        document.body.style.overflowY = "auto";
+      }, 100); // Adjust the delay as needed
+    }
+  }, []);
+
+
   const location = useLocation();
   const showNavBar = !location.pathname.startsWith("/dashboard");
 
