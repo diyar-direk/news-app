@@ -26,7 +26,6 @@ export default function Card(props) {
       }
     });
   const importantNews = propsData && propsData[0];
-  console.log(importantNews);
 
   return (
     <div className="important card">

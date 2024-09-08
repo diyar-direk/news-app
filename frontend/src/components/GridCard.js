@@ -5,6 +5,8 @@ import { Context } from "../context/Context";
 const GridCard = (props) => {
   const context = useContext(Context);
   const language = context.langValue.category;
+  console.log(props);
+  
   return (
     <div className="grid-card container">
       <div className="card">
