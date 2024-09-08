@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
+import axios from "axios";
 
 const AddNews = () => {
   function handleClick(e) {
@@ -25,6 +26,7 @@ const AddNews = () => {
     );
     if (document.body.contains(catDiv)) catDiv.classList.remove("active");
   });
+
   return (
     <div className="main">
       <div className="dashboard-container center">

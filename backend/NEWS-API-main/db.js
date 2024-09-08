@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const DB = "mongodb+srv://rawantemmo:rawan445153@cluster0.fa1yc.mongodb.net/";
+const DB = process.env.DB.replace("<db_password>", process.env.DB_PASSWORD);
 module.exports = async function connection() {
   try {
     const connectionParams = {

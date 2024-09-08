@@ -11,7 +11,7 @@ router.post("/login", authController.login); // Login route to authenticate user
 
 router.post("/sendEmail", newsController.sendEmail); // Login route to authenticate users
 // Public route
-router.route("/search/:search").get(newsController.getSearchItems);
+router.route("/search/:search?").get(newsController.getSearchItems);
 router.route("/categoriesNews").get(newsController.getFormatedCategories);
 router.route("/ALLcategories").get(newsController.getAllCategories);
 // Protected routes

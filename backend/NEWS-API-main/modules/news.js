@@ -24,7 +24,6 @@ const newsCardSchema = new Schema({
   publishedAt: {
     type: Date,
     default: Date.now, // Adjusted to use Date.now reference
-    required: true,
   },
   source: {
     name: {
@@ -63,7 +62,6 @@ const newsCardSchema = new Schema({
   },
   readMoreUrl: {
     type: String,
-    required: true,
     trim: true,
   },
 
@@ -73,7 +71,7 @@ const newsCardSchema = new Schema({
   },
 });
 newsCardSchema.index({ headline: "text", summary: "text", category: "text" });
-
+newsCardSchema.index({ category: 1 }); // Index for faster category-based queries
 // Create the model using the schema
 const NewsCard = mongoose.model("NewsCard", newsCardSchema);
 module.exports = NewsCard;

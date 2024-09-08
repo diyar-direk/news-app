@@ -47,7 +47,7 @@ body.arabic .videos .title::after {
   display: flex;
   justify-content: space-between;
 
-  align-items: center;
+  align-items: flex-start;
   margin: auto;
   gap: 30px;
   flex-wrap: wrap;
@@ -65,7 +65,8 @@ body.arabic .videos .title::after {
   cursor: pointer;
   border-radius: 4px;
   width: 100%;
-  max-height: 280px;
+  max-height: 320px;
+  aspect-ratio: 10/6;
 }
 .videos .video .video-item img {
   width: 100%;
@@ -100,7 +101,6 @@ body.arabic .videos .title::after {
   align-items: center;
 }
 
-
 body.arabic .videos .video .video-item .time a {
   margin-left: 8px;
   font-size: 14px;
@@ -108,7 +108,7 @@ body.arabic .videos .video .video-item .time a {
   border-left: solid 1px var(--border-color);
   margin-right: 0;
   padding-right: 0;
-  border-right: none  ;
+  border-right: none;
 }
 .videos .headline {
   margin-top: 10px;

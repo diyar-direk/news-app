@@ -7,15 +7,23 @@ import axios from "axios";
 
 let counter = 0;
 let intervlaValue;
+let count = 0;
 export default function Home() {
   const [topNews, setTopNews] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:8000/api/top-news").then((res) => {
       setTopNews(res.data.data);
-      console.log(res.data.data);
     });
   }, []);
 
+  const [dataCatgoreys, setDataCatgoreys] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/news/categoriesNews")
+      .then((res) => setDataCatgoreys(res.data.categories));
+  }, []);
+  let allKeys = dataCatgoreys && Object.keys(dataCatgoreys);
+  const halfKey = allKeys && allKeys[Math.floor(allKeys.length / 2)];
   function handelClick(e) {
     const divs = document.querySelectorAll("main > div.landing > div.w-100");
     divs.forEach((ele) => {
@@ -52,6 +60,7 @@ export default function Home() {
         </div>
       );
   });
+
   return (
     <main className="center">
       <div className="landing center">
@@ -64,14 +73,16 @@ export default function Home() {
       </div>
 
       <div className="news">
-        <NewsComponents title={true} />
-        <Videos />
+        <NewsComponents
+          data={dataCatgoreys && dataCatgoreys.Sports}
+          title={true}
+        />
+        <Videos data={dataCatgoreys && dataCatgoreys.Technology} />
         <div className="category container">
           <div className="flex-card">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Card data={dataCatgoreys && dataCatgoreys.Health} />
+            <Card data={dataCatgoreys && dataCatgoreys.Environment} />
+            <Card data={dataCatgoreys && dataCatgoreys.Economy} />
           </div>
         </div>
       </div>

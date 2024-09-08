@@ -74,6 +74,7 @@ body.arabic .flex-card > div.card .info p.time {
 .flex-card > div.card .center .image-hover {
   width: 100px;
   margin-right: 10px;
+  max-height: 100px;
 }
 body.arabic .flex-card > div.card .center .image-hover {
   margin-right: 0px;

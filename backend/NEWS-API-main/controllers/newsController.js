@@ -113,6 +113,7 @@ const getFormatedCategories = async (req, res) => {
         $group: {
           _id: "$category", // Group by category
           news: { $push: "$$ROOT" }, // Collect all news items in each category
+          count: { $sum: 1 }, // Count the number of news items in each category
         },
       },
       {
@@ -120,7 +121,11 @@ const getFormatedCategories = async (req, res) => {
           _id: 0,
           category: "$_id", // Rename _id to category
           news: { $slice: ["$news", 5] }, // Limit the 'news' array to the first 5 items
+          count: 1, // Include the count in the output
         },
+      },
+      {
+        $sort: { count: -1 }, // Sort by the count in descending order
       },
     ]);
 
@@ -130,15 +135,17 @@ const getFormatedCategories = async (req, res) => {
       return acc;
     }, {});
 
+    // Send the response
     res.status(200).json({
       NumOfCategories: categories.length,
       categories: formattedCategories,
     });
   } catch (err) {
     console.error(err);
-    res
-      .status(500)
-      .json({ message: "An error occurred while fetching categories" });
+    res.status(500).json({
+      message: "An error occurred while fetching categories",
+      error: err.message,
+    });
   }
 };
 
@@ -173,7 +180,6 @@ const getAllItems = async (req, res) => {
 
 // Controller function to handle creating a new item
 const postItem = async (req, res) => {
- 
   const itemData = { ...req.body };
   if (req.files) {
     // Check if `photos` field is an array and handle it
@@ -328,16 +334,17 @@ const deleteItemById = async (req, res) => {
 //SEARCH ITEMS
 const getSearchItems = async (req, res) => {
   // Query the database
-  const searchText = req.params.search;
+  let results;
+  if (req.params.search) {
+    const searchText = req.params.search;
+    results = await NewsCard.find(
+      { $text: { $search: searchText } },
 
-  const results = await NewsCard.find(
-    { $text: { $search: searchText } },
-
-    {
-      score: { $meta: "textScore" },
-    }
-  ).sort({ score: { $meta: "textScore" } });
-
+      {
+        score: { $meta: "textScore" },
+      }
+    ).sort({ score: { $meta: "textScore" } });
+  }
   // Count the total number of matching items (for pagination purposes)
 
   // Return the results
