@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LanguageDiv from "./LanguageDiv";
 import Menu from "./Menu";
 import { Context } from "../context/Context";
+import { useState } from "react";
+import Category from "../pages/Category";
 
 export default function Navbar() {
   const theme = useContext(Context);
@@ -93,9 +95,15 @@ export default function Navbar() {
     }
     return articles;
   };
+  const [query, setQuery] = useState("");
+
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const search = (param) => {};
   return (
     <>
-      
       <nav className="navbar center">
         <div className="flex container">
           <i className="fa-solid fa-bars" onClick={showMobileAsid}></i>
@@ -105,10 +113,12 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder={languageVal && languageVal.search}
+                value={query}
+                onChange={handleChange}
               />
-              <h3 className="center">
+              <Link to={`/category`} state={{ query }} className="center">
                 <i className="fa-solid fa-magnifying-glass"></i>
-              </h3>
+              </Link>
             </div>
           </article>
           {/* end search div  */}
