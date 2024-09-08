@@ -7,7 +7,7 @@ import axios from "axios";
 
 let counter = 0;
 let intervlaValue;
-let count = 0;
+
 export default function Home() {
   const [topNews, setTopNews] = useState([]);
   useEffect(() => {
@@ -24,6 +24,34 @@ export default function Home() {
   }, []);
   let allKeys = dataCatgoreys && Object.keys(dataCatgoreys);
   const halfKey = allKeys && allKeys[Math.floor(allKeys.length / 2)];
+  const showData =
+    allKeys &&
+    allKeys.map((e, index) => {
+      if (index % 2 === 0) {
+        return (
+          <NewsComponents key={index} data={dataCatgoreys[e]} title={true} />
+        );
+      }
+      else if(1){
+        return (
+          <>
+            <div className="category container">
+            <div className="flex-card">
+            {
+              
+            }
+            
+            </div>
+            </div>
+          </>
+        )
+
+        
+
+      }
+       else return <Videos key={index} data={dataCatgoreys[e]} />;
+    });
+
   function handelClick(e) {
     const divs = document.querySelectorAll("main > div.landing > div.w-100");
     divs.forEach((ele) => {
@@ -77,7 +105,9 @@ export default function Home() {
           data={dataCatgoreys && dataCatgoreys.Sports}
           title={true}
         />
+
         <Videos data={dataCatgoreys && dataCatgoreys.Technology} />
+
         <div className="category container">
           <div className="flex-card">
             <Card data={dataCatgoreys && dataCatgoreys.Health} />

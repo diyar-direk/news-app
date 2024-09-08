@@ -9,9 +9,9 @@ export default function Card(props) {
   const subNews =
     propsData &&
     propsData.map((e, index) => {
-      if (index < 4) {
+      if (index < 4 && index !== 0) {
         return (
-          <div className="center">
+          <div key={e._id} className="center">
             <Link className="image-hover">
               <img src={e.photo[0]} alt="1"></img>
             </Link>
@@ -26,7 +26,6 @@ export default function Card(props) {
       }
     });
   const importantNews = propsData && propsData[0];
-  console.log(importantNews);
 
   return (
     <div className="important card">
@@ -35,7 +34,7 @@ export default function Card(props) {
       <div className="important">
         <Link className="info">
           <p className="time">2024/10/11</p>
-          <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+          <h2>{importantNews && importantNews.headline}.</h2>
         </Link>
         <Link className="image-hover">
           <img src={importantNews && importantNews.photo[0]} alt="1"></img>
