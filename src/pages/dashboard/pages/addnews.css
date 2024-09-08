@@ -36,11 +36,13 @@ div.main .dashboard-container form.add-news .select-category {
   position: absolute;
   right: 0;
   top: 100%;
-  background: var(--body-color);
+  background: var(--section-color);
   color: var(--font-color);
   opacity: 0;
   z-index: -1;
   pointer-events: none;
+  width: 70%;
+  text-align: center;
 }
 div.main .dashboard-container form.add-news .select-category.active {
   opacity: 1;
@@ -48,8 +50,11 @@ div.main .dashboard-container form.add-news .select-category.active {
   pointer-events: all;
 }
 div.main .dashboard-container form.add-news .select-category p {
-  padding: 5px 20px;
+  padding: 2px 20px;
   cursor: pointer;
+}
+div.main .dashboard-container form.add-news .select-category p:hover {
+  background-color: var(--border-color);
 }
 div.main
   .dashboard-container
