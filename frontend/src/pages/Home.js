@@ -7,7 +7,7 @@ import axios from "axios";
 
 let counter = 0;
 let intervlaValue;
-let count = 0;
+
 export default function Home() {
   const [topNews, setTopNews] = useState([]);
   useEffect(() => {
@@ -22,8 +22,7 @@ export default function Home() {
       .get("http://localhost:8000/api/news/categoriesNews")
       .then((res) => setDataCatgoreys(res.data.categories));
   }, []);
-  let allKeys = dataCatgoreys && Object.keys(dataCatgoreys);
-  const halfKey = allKeys && allKeys[Math.floor(allKeys.length / 2)];
+
   function handelClick(e) {
     const divs = document.querySelectorAll("main > div.landing > div.w-100");
     divs.forEach((ele) => {
@@ -60,6 +59,15 @@ export default function Home() {
         </div>
       );
   });
+  const allKeys = dataCatgoreys && Object.keys(dataCatgoreys);
+
+  const showData =
+    dataCatgoreys &&
+    allKeys.map((e, i) => {
+      if (i > 0 && i < allKeys.length - 3) {
+        return <Card key={i} data={dataCatgoreys[e]} />;
+      }
+    });
 
   return (
     <main className="center">
@@ -71,20 +79,28 @@ export default function Home() {
           <span onClick={handelClick} data-index="2"></span>
         </div>
       </div>
-
       <div className="news">
         <NewsComponents
-          data={dataCatgoreys && dataCatgoreys.Sports}
+          data={dataCatgoreys && dataCatgoreys[allKeys[0]]}
           title={true}
         />
-        <Videos data={dataCatgoreys && dataCatgoreys.Technology} />
+
         <div className="category container">
-          <div className="flex-card">
-            <Card data={dataCatgoreys && dataCatgoreys.Health} />
-            <Card data={dataCatgoreys && dataCatgoreys.Environment} />
-            <Card data={dataCatgoreys && dataCatgoreys.Economy} />
-          </div>
+          <div className="flex-card">{showData}</div>
         </div>
+
+        <Videos
+          data={dataCatgoreys && dataCatgoreys[allKeys[allKeys.length - 3]]}
+        />
+
+        <NewsComponents
+          data={dataCatgoreys && dataCatgoreys[allKeys[allKeys.length - 2]]}
+          title={true}
+        />
+        <NewsComponents
+          data={dataCatgoreys && dataCatgoreys[allKeys[allKeys.length - 1]]}
+          title={true}
+        />
       </div>
     </main>
   );

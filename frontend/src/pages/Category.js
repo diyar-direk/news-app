@@ -11,7 +11,6 @@ const Category = () => {
   const state = location.state || {}; // Retrieve the state or default to an empty object
   const query = state.query || ""; // Access the query property from the state
   const [categories, setCategories] = useState();
-
   useEffect(() => {
     if (query) {
       axios
