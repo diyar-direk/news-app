@@ -9,19 +9,36 @@ const Read = () => {
   const state = location.state || {}; // Retrieve the state or default to an empty object
   const id = state.id || ""; // Access the query property from the state
   const [data, setData] = useState({});
-  console.log(id);
+  const [sideTop, setSideTop] = useState([]);
+  const [sideNews, setSideNews] = useState([]);
 
   useEffect(() => {
     try {
-      axios
-        .get(`http://localhost:8000/api/news/${id}`)
-        .then((response) => setData(response.data));
+      const fetchingData = async () => {
+        const response = await axios.get(
+          `http://localhost:8000/api/news/${id}`
+        );
+        setData(response.data);
 
-      console.log(data);
+        const top = await axios.get(`http://localhost:8000/api/top-news`);
+        setSideTop(top.data.data);
+      };
+      fetchingData();
     } catch (err) {
       console.log(err);
     }
   }, []);
+  useEffect(() => {
+    const fetchingData = async () => {
+      let category = data.item && data.item.category;
+      const side = await axios.get(
+        `http://localhost:8000/api/news?category=${category}&limit=5`
+      );
+
+      setSideNews(side.data.data.news);
+    };
+    fetchingData();
+  }, [data.item]);
 
   const context = useContext(Context);
   const language = context.langValue.readPage;
@@ -49,6 +66,7 @@ const Read = () => {
       allIMg[activeImg].classList.add("active");
     }
   }
+
   return (
     <main className="center">
       <div className="container">
@@ -101,57 +119,42 @@ const Read = () => {
           <article className="sub-news">
             <h1> {language && language.top} </h1>
             <article>
-              <Link className="image-hover">
-                <img alt="" src={require("./1.jpg")} />
-                <h4>
-                  Enim est officia laboris fugiat reprehenderit nisi cupidatat
-                </h4>
-              </Link>
-              <Link className="image-hover">
-                <img alt="" src={require("./1.jpg")} />
-                <h4>
-                  Enim est officia laboris fugiat reprehenderit nisi cupidatat
-                </h4>
-              </Link>
+              {sideTop &&
+                sideTop.map((ele, index) => {
+                  return (
+                    <Link
+                      to="/read"
+                      state={{ id: ele._id }}
+                      className="image-hover"
+                    >
+                      <img alt="" src={ele.photo[0]} />
+                      <h4>{ele.headline}</h4>
+                    </Link>
+                  );
+                })}
             </article>
             <h1> {language && language.more} </h1>
-
-            <div className="center">
-              <Link className="image-hover">
-                <img alt="" src={require("./1.jpg")} />
-              </Link>
-              <Link>
-                Enim est officia laboris fugiat reprehenderit nisi cupidatat
-                magna ex eiusmod re
-              </Link>
-            </div>
-            <div className="center">
-              <Link className="image-hover">
-                <img alt="" src={require("./1.jpg")} />
-              </Link>
-              <Link>
-                Enim est officia laboris fugiat reprehenderit nisi cupidatat
-                magna ex eiusmod re
-              </Link>
-            </div>
-            <div className="center">
-              <Link className="image-hover">
-                <img alt="" src={require("./1.jpg")} />
-              </Link>
-              <Link>
-                Enim est officia laboris fugiat reprehenderit nisi cupidatat
-                magna ex eiusmod re
-              </Link>
-            </div>
-            <div className="center">
-              <Link className="image-hover">
-                <img alt="" src={require("./1.jpg")} />
-              </Link>
-              <Link>
-                Enim est officia laboris fugiat reprehenderit nisi cupidatat
-                magna ex eiusmod re
-              </Link>
-            </div>
+            {sideNews &&
+              sideNews.map((ele, index) => {
+                return (
+                  <div className="center">
+                    <Link
+                      to="/read"
+                      state={{ id: ele._id }}
+                      className="image-hover"
+                    >
+                      <img alt="" src={`${ele.photo[0]}`} />
+                    </Link>
+                    <Link
+                      to="/read"
+                      state={{ id: ele._id }}
+                      onClick={window.location.reload}
+                    >
+                      {ele.headline}
+                    </Link>
+                  </div>
+                );
+              })}
           </article>
         </div>
       </div>
