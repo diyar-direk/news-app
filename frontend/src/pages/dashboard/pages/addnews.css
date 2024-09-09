@@ -1,6 +1,7 @@
 div.main .dashboard-container form.add-news {
   padding: 30px 20px;
   background-color: var(--section-color);
+  width: 90%;
 }
 div.main .dashboard-container form.add-news > input {
   border: solid 1px var(--border-color);
@@ -9,6 +10,7 @@ div.main .dashboard-container form.add-news > input {
   width: 100%;
   margin-bottom: 10px;
   border-radius: 6px;
+  color: var(--font-color);
 }
 .no-wrap {
   display: flex;
@@ -22,8 +24,13 @@ div.main .dashboard-container form.add-news .no-wrap input {
   padding: 4px 10px;
   width: 100%;
   border-radius: 6px;
+  color: var(--font-color);
 }
-div.main .dashboard-container form.add-news .no-wrap i {
+div.main .dashboard-container form.add-news .no-wrap input.disabled {
+  cursor: no-drop;
+  background-color: var(--border-color);
+}
+div.main .dashboard-container form.add-news .no-wrap > i {
   display: flex;
   color: var(--font-color);
   align-items: center;
@@ -56,11 +63,34 @@ div.main .dashboard-container form.add-news .select-category p {
 div.main .dashboard-container form.add-news .select-category p:hover {
   background-color: var(--border-color);
 }
-div.main
-  .dashboard-container
-  form.add-news
-  .select-category
-  p:not(:last-child) {
-  margin-bottom: 10px;
+div.main .dashboard-container form.add-news .select-category p {
+  margin-bottom: 3px;
   border-bottom: solid 1px var(--border-color);
+}
+div.main .dashboard-container form.add-news .select-category span {
+  display: block;
+  cursor: pointer;
+}
+div.main .dashboard-container form.add-news .select-category span::before {
+  content: "\2b";
+  margin-right: 10px;
+}
+div.main .dashboard-container form.add-news .select-category span:hover {
+  background-color: var(--border-color);
+}
+div.main .dashboard-container form.add-news > div.submit {
+  font-weight: bold;
+  color: white;
+  width: 80%;
+  padding: 4px 0;
+  background: var(--var-color);
+  font-size: 15px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+div.main .dashboard-container form.add-news > div.submit:hover {
+  background-color: var(--hover-color);
 }

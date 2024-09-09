@@ -19,9 +19,18 @@ const DashboardNavbar = () => {
         </div>
       </div>
       <aside className="dashboard-aside">
+        <NavLink to={"/dashboard/top-news"}>
+          <i className="fa-solid fa-newspaper"></i>
+          <span>top news</span>
+        </NavLink>
         <NavLink to={"/dashboard/news"}>
           <i className="fa-regular fa-newspaper"></i>
           <span>news</span>
+        </NavLink>
+
+        <NavLink to={"/dashboard/add-top-news"}>
+          <i className="fa-solid fa-circle-plus"></i>
+          <span>add top news</span>
         </NavLink>
 
         <NavLink to={"/dashboard/add"}>
