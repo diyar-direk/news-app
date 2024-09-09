@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const AddTopNews = () => {
+const UpdateNews = () => {
   const [category, setCategory] = useState("");
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
-  const [position, setPosition] = useState("");
   const [files, setFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const params = useParams();
 
   function handleClick(e) {
     e.stopPropagation();
@@ -77,7 +77,6 @@ const AddTopNews = () => {
       ? formData.append("photo", e)
       : formData.append("video", e);
   });
-  console.log(position);
 
   return (
     <div className="main">
@@ -139,17 +138,6 @@ const AddTopNews = () => {
             id="summary"
             rows={3}
           ></textarea>
-          <label htmlFor="position">position:</label>
-          <input
-            name="position"
-            type="number"
-            placeholder="add position to news"
-            id="position"
-            max={5}
-            min={1}
-            onChange={(e) => setPosition(e.target.value)}
-          />
-
           <label htmlFor="file">Add 2 photos and 1 video:</label>
           <label
             htmlFor="file"
@@ -187,4 +175,4 @@ const AddTopNews = () => {
   );
 };
 
-export default AddTopNews;
+export default UpdateNews;

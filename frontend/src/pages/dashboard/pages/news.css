@@ -52,7 +52,7 @@ td span i {
   pointer-events: none;
 }
 td i.fa-trash {
-  color: rgb(219, 12, 12);
+  color: #db0c0c;
 }
 td span::after {
   content: attr(data-content);
@@ -74,6 +74,55 @@ td span:hover::after {
   z-index: 1;
 }
 
-td i.fa-regular {
+td .fa-regular {
   color: #1d3cc5;
+}
+
+div.main > div.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #0000006e;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.main > div.overlay > div.content {
+  padding: 30px;
+  background: var(--section-color);
+}
+
+div.main > div.overlay > div.content h3 {
+  margin-bottom: 20px;
+  color: var(--font-color);
+}
+div.main > div.overlay > div.content .center {
+  gap: 20px;
+}
+div.main > div.overlay > div.content span {
+  cursor: pointer;
+  text-align: center;
+}
+div.main > div.overlay > div.content span.delete {
+  background-color: #db0c0c;
+  border: solid 2px transparent;
+  color: white;
+}
+div.main > div.overlay > div.content span.delete:hover {
+  background-color: #9d0c0c;
+}
+div.main > div.overlay > div.content span.cancel {
+  background-color: transparent;
+  border: solid 2px #1d3cc5;
+  color: #1d3cc5;
+}
+div.main > div.overlay > div.content span.cancel:hover {
+  color: white;
+  background-color: #1d3cc5;
+}
+div.main > div.overlay > div.content span i {
+  margin-right: 10px;
 }

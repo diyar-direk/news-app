@@ -66,7 +66,7 @@ const TopNews = () => {
         <table>
           <thead>
             <tr>
-              <th>id</th>
+              <th></th>
               <th>headline</th>
               <th>category</th>
               <th>action</th>

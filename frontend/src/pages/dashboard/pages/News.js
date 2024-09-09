@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./news.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const News = (props) => {
+const News = () => {
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
 
@@ -45,7 +46,10 @@ const News = (props) => {
           <i className="fa-solid fa-trash"></i>
         </span>
         <span data-content="update">
-          <i className="fa-regular fa-pen-to-square"></i>
+          <Link
+            to={`${item._id}`}
+            className="fa-regular fa-pen-to-square"
+          ></Link>
         </span>
       </td>
     </tr>
@@ -53,6 +57,18 @@ const News = (props) => {
 
   return (
     <div className="main">
+      <div className="overlay">
+        <div className="content">
+          <h3>are you shower you need delete this</h3>
+          <div className="center">
+            <span className="flex-1 cancel">cancel</span>
+            <span className="flex-1 delete">
+              <i className="fa-solid fa-trash"></i>
+              delete
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="dashboard-container">
         <article className="search no-wrap">
           <input
@@ -66,7 +82,7 @@ const News = (props) => {
         <table>
           <thead>
             <tr>
-              <th>id</th>
+              <th></th>
               <th>headline</th>
               <th>category</th>
               <th>action</th>

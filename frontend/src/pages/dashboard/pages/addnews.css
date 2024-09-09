@@ -1,17 +1,31 @@
 div.main .dashboard-container form.add-news {
-  padding: 30px 20px;
+  padding: 20px;
   background-color: var(--section-color);
-  width: 90%;
+  width: 80%;
+  border-radius: 5px;
 }
-div.main .dashboard-container form.add-news > input {
+div.main .dashboard-container form.add-news > input,
+div.main .dashboard-container form.add-news label.file,
+form.add-news > textarea {
   border: solid 1px var(--border-color);
+  resize: none;
   background: var(--body-color);
   padding: 4px 10px;
   width: 100%;
   margin-bottom: 10px;
   border-radius: 6px;
   color: var(--font-color);
+  caret-color: var(--var-color);
 }
+div.main .dashboard-container form.add-news > label {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 14px;
+  cursor: text;
+  width: fit-content;
+  color: var(--font-color);
+}
+
 .no-wrap {
   display: flex;
   align-items: center;
@@ -45,15 +59,17 @@ div.main .dashboard-container form.add-news .select-category {
   top: 100%;
   background: var(--section-color);
   color: var(--font-color);
-  opacity: 0;
   z-index: -1;
   pointer-events: none;
   width: 70%;
   text-align: center;
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.6s;
 }
 div.main .dashboard-container form.add-news .select-category.active {
-  opacity: 1;
   z-index: 1;
+  max-height: 300px;
   pointer-events: all;
 }
 div.main .dashboard-container form.add-news .select-category p {
@@ -77,6 +93,27 @@ div.main .dashboard-container form.add-news .select-category span::before {
 }
 div.main .dashboard-container form.add-news .select-category span:hover {
   background-color: var(--border-color);
+}
+div.main .dashboard-container form.add-news input[type="file"] {
+  display: none;
+}
+
+div.main .dashboard-container form.add-news div.file-flex {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+div.main .dashboard-container form.add-news div.file-flex > div {
+  flex: 200px;
+  overflow: hidden;
+  max-height: 800px;
+}
+div.main .dashboard-container form.add-news div.file-flex > div img,
+div.main .dashboard-container form.add-news div.file-flex > div video {
+  width: 100%;
+  object-fit: cover;
 }
 div.main .dashboard-container form.add-news > div.submit {
   font-weight: bold;

@@ -4,7 +4,6 @@ import LanguageDiv from "./LanguageDiv";
 import Menu from "./Menu";
 import { Context } from "../context/Context";
 import { useState } from "react";
-import Category from "../pages/Category";
 
 export default function Navbar() {
   const theme = useContext(Context);
@@ -86,7 +85,7 @@ export default function Navbar() {
       articles.push(
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
-            <Link key={index} to={`/category` } state={{query:category}}>
+            <Link key={index} to={`/category`} state={{ query: category }}>
               {category}
             </Link>
           ))}
@@ -157,12 +156,15 @@ export default function Navbar() {
         </div>
         <div className="bottom-link center">
           <div className="container">
+            <NavLink to={`/`}>home</NavLink>
+            <NavLink to={`/contact`}>contact</NavLink>
+            <NavLink to={`/about`}>about us</NavLink>
             {data.map((e, i) => {
-              if (i < 4) {
+              if (i < 2) {
                 return (
-                  <Link to={`/category`} state={{ query: e }} key={e}>
+                  <NavLink to={`/category`} state={{ query: e }} key={e}>
                     {e}
-                  </Link>
+                  </NavLink>
                 );
               }
             })}
