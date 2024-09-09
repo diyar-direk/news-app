@@ -45,13 +45,19 @@ export default function Home() {
         <div
           className={index === 0 ? "center w-100 active" : "center w-100"}
           key={e._id}
-          style={{ backgroundImage: `url(${e.photo})` }}
+          style={{
+            backgroundImage: `url(${e.photo[0]})`,
+          }}
         >
           <div className="container">
-            <NavLink to="link1" className="category">
+            <Link
+              to="/category"
+              state={{ query: e.category }}
+              className="category"
+            >
               {e.category}
-            </NavLink>
-            <Link to={"/"} className="title">
+            </Link>
+            <Link to="/read" state={{ id: e._id }} className="title">
               {e.headline}
             </Link>
             <p>{e.publishedAt}</p>

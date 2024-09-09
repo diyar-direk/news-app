@@ -10,6 +10,7 @@ const Category = () => {
   const location = useLocation();
   const state = location.state || {}; // Retrieve the state or default to an empty object
   const query = state.query || ""; // Access the query property from the state
+  
   const [categories, setCategories] = useState();
   useEffect(() => {
     if (query) {
@@ -23,8 +24,9 @@ const Category = () => {
         });
     }
   }, [query]);
+
+
   const nextData = categories && categories.filter((category, i) => i > 4);
-  console.log(nextData);
 
   const context = useContext(Context);
   const language = context.langValue.category;
@@ -34,7 +36,9 @@ const Category = () => {
       <div className="news">
         <h1 className="center">
           {language && language.pageName}
-          <span className="inside-span">{query}</span>
+          <span className="inside-span">
+            {categories && categories[0].category}
+          </span>
         </h1>
 
         <NewsComponents data={categories} title={false} />

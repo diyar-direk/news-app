@@ -12,15 +12,18 @@ const NewsComponents = (props) => {
       if (index > 0 && index < 5) {
         return (
           <div key={e._id} className="center">
-            <Link className="image-hover">
+            <Link to="/read" state={{ id: e._id }} className="image-hover">
               <img src={e.photo[0]} alt="1"></img>
             </Link>
             <div className="flex-1">
               <div className="time flex">
-                <Link> {e.category} </Link>
-                <p className="time">1 min ago</p>
+                <Link to="/category" state={{ query: e.category }}>
+                  {" "}
+                  {e.category}{" "}
+                </Link>
+                <p className="time">{e.publishedAt}</p>
               </div>
-              <Link>
+              <Link to="/read" state={{ id: e._id }}>
                 {e.headline.length < 37
                   ? e.headline
                   : e.headline.slice(0, 30) + "..."}
@@ -33,24 +36,46 @@ const NewsComponents = (props) => {
 
   return (
     <div className="category container">
-      {props.title && <Link>{importantNews && importantNews.category}</Link>}
+      {props.title && (
+        <Link
+          to="/category"
+          state={{ query: importantNews && importantNews.category }}
+        >
+          {importantNews && importantNews.category}
+        </Link>
+      )}
       <article className="flex">
         <div className="important card">
-          <Link className="image-hover">
+          <Link
+            to="/read"
+            state={{ id: importantNews && importantNews._id }}
+            className="image-hover"
+          >
             <img src={importantNews && importantNews.photo[0]} alt="1"></img>
           </Link>
           <div className="time flex">
-            <Link> {importantNews && importantNews.category} </Link>
+            <Link
+              to="/category"
+              state={{ query: importantNews && importantNews.category }}
+            >
+              {importantNews && importantNews.category}
+            </Link>
             <p className="time">1 min ago</p>
           </div>
-          <Link>{importantNews && importantNews.headline}</Link>
+          <Link to="/read" state={{ id: importantNews && importantNews._id }}>
+            {importantNews && importantNews.headline}
+          </Link>
           <p>{importantNews && importantNews.summary}</p>
         </div>
 
         <div className="sub">
           {subNews}
           {props.title && (
-            <Link className="all">{` ${language && language.btn} ${
+            <Link
+              to="/category"
+              state={{ query: importantNews && importantNews.category }}
+              className="all"
+            >{` ${language && language.btn} ${
               importantNews && importantNews.category
             }`}</Link>
           )}
