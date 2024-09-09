@@ -5,164 +5,30 @@ import { Context } from "../context/Context";
 const GridCard = (props) => {
   const context = useContext(Context);
   const language = context.langValue.category;
-  console.log(props);
-  
+
   return (
     <div className="grid-card container">
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <Link className="image-hover">
-          <img src={require("./1.jpg")} alt="" />
-        </Link>
-        <div className="info">
-          <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          </h2>
-          <div className="between">
-            <p>2020</p>
-            <Link> {language && language.more} </Link>
-          </div>
-        </div>
-      </div>
+      {props.data &&
+        props.data.map((e, index) => {
+          return (
+            <div className="card">
+              <Link className="image-hover">
+                <img src={e.photo[0]} alt="" />
+              </Link>
+              <div className="info">
+                <h2>
+                  {e.headline.length < 37
+                    ? e.headline
+                    : e.headline.slice(0, 30) + "..."}
+                </h2>
+                <div className="between">
+                  <p>{e.publishedAt}</p>
+                  <Link> {language && language.more} </Link>
+                </div>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 };

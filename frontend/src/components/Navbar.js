@@ -86,9 +86,9 @@ export default function Navbar() {
       articles.push(
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
-            <NavLink key={index} to={`/${category.toLowerCase()}`}>
+            <Link key={index} to={`/category` } state={{query:category}}>
               {category}
-            </NavLink>
+            </Link>
           ))}
         </article>
       );
@@ -101,7 +101,6 @@ export default function Navbar() {
     setQuery(event.target.value);
   };
 
-  const search = (param) => {};
   return (
     <>
       <nav className="navbar center">
@@ -161,9 +160,9 @@ export default function Navbar() {
             {data.map((e, i) => {
               if (i < 4) {
                 return (
-                  <NavLink to={`/category/${e}`} key={e}>
+                  <Link to={`/category`} state={{ query: e }} key={e}>
                     {e}
-                  </NavLink>
+                  </Link>
                 );
               }
             })}

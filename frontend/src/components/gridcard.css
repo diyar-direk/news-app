@@ -9,6 +9,12 @@
 .grid-card .card .image-hover {
   border-radius: 4px;
 }
+.grid-card .card .image-hover img {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 8 / 6;
+  object-fit: cover;
+}
 .grid-card .card {
   padding: 10px;
   background-color: var(--section-color);

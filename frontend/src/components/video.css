@@ -18,6 +18,9 @@
   cursor: pointer;
   width: fit-content;
   padding-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
 }
 
 body.arabic .videos .title {

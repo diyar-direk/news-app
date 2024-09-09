@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./footer.css";
 import LanguageDiv from "./LanguageDiv";
 import { useContext } from "react";
@@ -23,12 +23,17 @@ export default function Footer() {
     const articles = [];
     for (let i = 0; i < data.length; i += linksPerArticle) {
       const chunk = data.slice(i, i + linksPerArticle);
+
       articles.push(
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
-            <NavLink key={index} to={`/${category.toLowerCase()}`}>
+            <Link
+              key={index}
+              to={"/category"}
+              state={{ query: category }} // Directly pass the string or object
+            >
               {category}
-            </NavLink>
+            </Link>
           ))}
         </article>
       );

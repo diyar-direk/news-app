@@ -9,27 +9,36 @@ const Videos = (props) => {
       if (index <= 2) {
         return (
           <div key={e._id} className="video-item">
-            <div className="img">
+            <Link to="/read" state={{ id: e._id }} className="img">
               <img src={e.photo[0]} alt="img" />
-            </div>
+            </Link>
             <div className="headline">
               <div className="flex time">
-                <Link>{e.category}</Link>
+                <Link to="/category" state={{ query: e.category }}>
+                  {e.category}
+                </Link>
                 <p className="time"> 2042/22/22 </p>
               </div>
-              <Link>{e.headline}</Link>
+              <Link to="/read" state={{ id: e._id }}>
+                {e.headline}
+              </Link>
             </div>
           </div>
         );
       }
     });
-  
 
   return (
     <div className="videos">
       <div className="container ">
         <div className="w-100">
-          <h1 className="title">{[props.data && props.data[0].category]} </h1>
+          <Link
+            to="/category"
+            state={{ query: [props.data && props.data[0].category] }}
+            className="title"
+          >
+            {[props.data && props.data[0].category]}{" "}
+          </Link>
         </div>
         <div className="video">{data}</div>
       </div>

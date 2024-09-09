@@ -11,15 +11,19 @@ export default function Card(props) {
     propsData.map((e, index) => {
       if (index < 4 && index !== 0) {
         return (
+          <div className="center">
+            <Link to="/read" state={{ id: e._id }} className="image-hover">
           <div key={e._id} className="center">
             <Link className="image-hover">
               <img src={e.photo[0]} alt="1"></img>
             </Link>
             <div className="flex-1">
               <div className="time flex">
-                <p className="time">1 min ago</p>
+                <p className="time">{e.publishedAt}</p>
               </div>
-              <Link>{e.headline}</Link>
+              <Link to="/read" state={{ id: e._id }}>
+                {e.headline}
+              </Link>
             </div>
           </div>
         );
@@ -29,12 +33,20 @@ export default function Card(props) {
 
   return (
     <div key={importantNews && importantNews._id} className="important card">
-      <Link to={"/category"} className="title">
+      <Link
+        to={"/category"}
+        state={{ query: importantNews && importantNews.category }}
+        className="title"
+      >
         {importantNews && importantNews.category}
       </Link>
 
       <div className="important">
-        <Link className="info">
+        <Link
+          to="/read"
+          state={{ id: importantNews && importantNews._id }}
+          className="info"
+        >
           <p className="time">2024/10/11</p>
           <h2>{importantNews && importantNews.headline}.</h2>
         </Link>
@@ -45,11 +57,15 @@ export default function Card(props) {
 
       <article>
         {subNews}
-        <a className="all" href="/">
+        <Link
+          className="all"
+          to="/category"
+          state={{ query: importantNews && importantNews.category }}
+        >
           {`${language && language.btn} ${
             importantNews && importantNews.category
           }`}
-        </a>
+        </Link>
       </article>
     </div>
   );
