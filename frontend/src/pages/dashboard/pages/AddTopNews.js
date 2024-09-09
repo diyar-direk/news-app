@@ -3,7 +3,7 @@ import "./addnews.css";
 import { Context } from "../../../context/Context";
 import axios from "axios";
 
-const AddNews = () => {
+const AddTopNews = () => {
   const [category, setCategory] = useState("");
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
@@ -73,6 +73,7 @@ const AddNews = () => {
             type="text"
             placeholder="summary"
           />
+
           <div className="submit">submit</div>
         </form>
       </div>
@@ -80,4 +81,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default AddTopNews;

@@ -1,0 +1,79 @@
+div.main .dashboard-container article.search {
+  background-color: var(--section-color);
+  width: 50%;
+  padding: 6px 10px;
+  border-bottom: solid 1px var(--border-color);
+}
+div.main .dashboard-container article.search input {
+  background-color: transparent;
+  border: none;
+  color: var(--font-color);
+  border-right: solid 1px var(--border-color);
+  margin-right: 10px;
+}
+div.main .dashboard-container article.search i {
+  color: #777;
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  border-spacing: 0px;
+}
+thead {
+  background: #2e2e2e;
+  color: white;
+}
+
+th {
+  border: solid 1px var(--border-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--section-color);
+}
+td {
+  padding: 3px;
+  border: solid 1px var(--border-color);
+  text-align: center;
+  color: var(--font-color);
+}
+tr:hover {
+  background-color: var(--border-color);
+}
+tr:hover td {
+  border: solid 1px var(--section-color);
+}
+td span {
+  cursor: pointer;
+  margin: 0 4px;
+  position: relative;
+}
+td span i {
+  pointer-events: none;
+}
+td i.fa-trash {
+  color: rgb(219, 12, 12);
+}
+td span::after {
+  content: attr(data-content);
+  position: absolute;
+  font-size: 11px;
+  color: var(--font-color);
+  background: var(--section-color);
+  padding: 4px 10px;
+  left: -100%;
+  letter-spacing: 1px;
+  top: -26px;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.4s;
+}
+
+td span:hover::after {
+  opacity: 1;
+  z-index: 1;
+}
+
+td i.fa-regular {
+  color: #1d3cc5;
+}

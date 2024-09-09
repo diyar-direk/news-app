@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./news.css";
 import axios from "axios";
 
-const News = (props) => {
+const TopNews = () => {
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/news?fields=headline,category")
-      .then((res) => setData(res.data.data.news))
+      .get("http://localhost:8000/api/top-news")
+      .then((res) => setData(res.data.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -79,4 +79,4 @@ const News = (props) => {
   );
 };
 
-export default News;
+export default TopNews;

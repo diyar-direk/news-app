@@ -28,8 +28,10 @@ export default function Card(props) {
   const importantNews = propsData && propsData[0];
 
   return (
-    <div className="important card">
-      <Link className="title"> {importantNews && importantNews.category} </Link>
+    <div key={importantNews && importantNews._id} className="important card">
+      <Link to={"/category"} className="title">
+        {importantNews && importantNews.category}
+      </Link>
 
       <div className="important">
         <Link className="info">
