@@ -77,8 +77,6 @@ const AddTopNews = () => {
       ? formData.append("photo", e)
       : formData.append("video", e);
   });
-  console.log(position);
-
   return (
     <div className="main">
       <div className="dashboard-container center">
@@ -150,7 +148,7 @@ const AddTopNews = () => {
             onChange={(e) => setPosition(e.target.value)}
           />
 
-          <label htmlFor="file">Add 2 photos and 1 video:</label>
+          <label htmlFor="file">Add 3 photos and 1 video:</label>
           <label
             htmlFor="file"
             className="file"

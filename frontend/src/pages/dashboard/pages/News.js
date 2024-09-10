@@ -58,10 +58,10 @@ const News = () => {
   const tableData = searchData.map((item, index) => (
     <tr key={item._id}>
       <td>{index + 1}</td>
-      <td>
-        {item.headline.length <= 60
+      <td style={{ textAlign: "left", paddingLeft: "10px" }}>
+        {item.headline.length <= 90
           ? item.headline
-          : item.headline.slice(0, 60) + "..."}
+          : item.headline.slice(0, 90) + "..."}
       </td>
       <td>{item.category}</td>
       <td>
@@ -107,17 +107,20 @@ const News = () => {
           />
           <i className="fa-solid fa-magnifying-glass"></i>
         </article>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Headline</th>
-              <th>Category</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>{tableData}</tbody>
-        </table>
+
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Headline</th>
+                <th>Category</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>{tableData}</tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

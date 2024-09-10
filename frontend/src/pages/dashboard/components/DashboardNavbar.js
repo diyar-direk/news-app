@@ -3,6 +3,22 @@ import "./DashboardNavbar.css";
 import { Link, NavLink } from "react-router-dom";
 import Setting from "../../../components/Setting";
 const DashboardNavbar = () => {
+  function handelCilck(e) {
+    e.target.classList.toggle("close");
+    if (e.target.classList.contains("close")) {
+      document.querySelector("aside.dashboard-aside").classList.add("active");
+      document
+        .querySelector("div.main .dashboard-container")
+        .classList.add("active");
+    } else {
+      document
+        .querySelector("aside.dashboard-aside")
+        .classList.remove("active");
+      document
+        .querySelector("div.main .dashboard-container")
+        .classList.remove("active");
+    }
+  }
   return (
     <>
       <div className="navbar center">
@@ -19,6 +35,8 @@ const DashboardNavbar = () => {
         </div>
       </div>
       <aside className="dashboard-aside">
+        <h3>Dashboard</h3>
+        <h4 onClick={handelCilck}></h4>
         <NavLink to={"/dashboard/top-news"}>
           <i className="fa-solid fa-newspaper"></i>
           <span>top news</span>

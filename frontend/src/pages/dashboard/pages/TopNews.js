@@ -11,7 +11,7 @@ const TopNews = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/top-news")
+      .get("http://localhost:8000/api/top-news?sort=position")
       .then((res) => setData(res.data.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -66,6 +66,7 @@ const TopNews = () => {
             : item.headline.slice(0, 60) + "..."}
         </td>
         <td>{item.category}</td>
+        <td>{item.position}</td>
         <td>
           <span data-content="delete" onClick={() => handleDeleteClick(item)}>
             <i className="fa-solid fa-trash"></i>
@@ -109,17 +110,20 @@ const TopNews = () => {
           />
           <i className="fa-solid fa-magnifying-glass"></i>
         </article>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Headline</th>
-              <th>Category</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>{tableData}</tbody>
-        </table>
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Headline</th>
+                <th>Category</th>
+                <th>Positin</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>{tableData}</tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

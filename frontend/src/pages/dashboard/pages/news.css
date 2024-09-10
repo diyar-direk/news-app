@@ -15,9 +15,13 @@ div.main .dashboard-container article.search i {
   color: #777;
   cursor: pointer;
 }
+div.table {
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-spacing: 0px;
+  min-width: 800px;
 }
 thead {
   background: #2e2e2e;
@@ -32,6 +36,9 @@ tr:nth-child(even) {
   background-color: var(--section-color);
 }
 td {
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 3px;
   border: solid 1px var(--border-color);
   text-align: center;
@@ -125,4 +132,45 @@ div.main > div.overlay > div.content span.cancel:hover {
 }
 div.main > div.overlay > div.content span i {
   margin-right: 10px;
+}
+
+@media (max-width: 1050px) {
+  th {
+    padding: 0 5px;
+    font-size: 13px;
+  }
+  td {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+
+  td span {
+    font-size: 12px;
+  }
+  div.main .dashboard-container article.search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 750px) {
+  td {
+    font-size: 13px;
+  }
+  div.main .dashboard-container article.search {
+    padding: 3px 10px;
+  }
+  div.main .dashboard-container article.search i {
+    font-size: 13px;
+  }
+}
+@media (max-width: 550px) {
+  td {
+    font-size: 12px;
+  }
+  div.main .dashboard-container article.search {
+    padding: 2px 10px;
+  }
+  div.main .dashboard-container article.search i {
+    font-size: 12px;
+  }
 }

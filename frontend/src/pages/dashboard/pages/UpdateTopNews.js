@@ -10,6 +10,7 @@ const UpdateTopNews = () => {
   const [summary, setSummary] = useState("");
   const [files, setFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [position, setPosition] = useState("");
   const params = useParams();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const UpdateTopNews = () => {
       setCategory(res.data.item.category);
       setHeadline(res.data.item.headline);
       setSummary(res.data.item.summary);
+      setPosition(res.data.item.position);
       // setFiles(...res.data.item.photo,res.data.item.video);
     });
   }, []);
@@ -147,6 +149,16 @@ const UpdateTopNews = () => {
             id="summary"
             rows={3}
           ></textarea>
+          <label htmlFor="position">position:</label>
+          <input
+            name="position"
+            type="number"
+            placeholder="add position to news"
+            id="position"
+            min={1}
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+          />
           <label htmlFor="file">Add 2 photos and 1 video:</label>
           <label
             htmlFor="file"
