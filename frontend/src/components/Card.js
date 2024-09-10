@@ -12,7 +12,7 @@ export default function Card(props) {
       if (index < 4 && index !== 0) {
         return (
           <div key={e._id} className="center">
-            <Link className="image-hover">
+            <Link className="image-hover ">
               <img src={e.photo[0]} alt="1"></img>
             </Link>
             <div className="flex-1">
@@ -55,7 +55,7 @@ export default function Card(props) {
             .
           </h2>
         </Link>
-        <Link className="image-hover">
+        <Link className="image-hover bottom-before ">
           <img src={importantNews && importantNews.photo[0]} alt="1"></img>
         </Link>
       </div>
