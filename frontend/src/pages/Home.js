@@ -68,7 +68,9 @@ export default function Home() {
           {e.category}
         </Link>
         <Link to="/read" state={{ id: e._id }} className="title">
-          {e.headline}
+          {e.headline.length < 37
+            ? e.headline
+            : e.headline.slice(0, 30) + "..."}
         </Link>
         <p>{e.publishedAt}</p>
       </div>

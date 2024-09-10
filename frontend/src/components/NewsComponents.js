@@ -63,23 +63,28 @@ const NewsComponents = (props) => {
             <p className="time">1 min ago</p>
           </div>
           <Link to="/read" state={{ id: importantNews && importantNews._id }}>
-            {importantNews && importantNews.headline}
+            {importantNews.headline.length < 37
+              ? importantNews.headline
+              : importantNews.headline.slice(0, 30) + "..."}
           </Link>
           <p>{importantNews && importantNews.summary}</p>
         </div>
 
-        <div className="sub">
-          {subNews}
-          {props.title && (
-            <Link
-              to="/category"
-              state={{ query: importantNews && importantNews.category }}
-              className="all"
-            >{` ${language && language.btn} ${
-              importantNews && importantNews.category
-            }`}</Link>
-          )}
-        </div>
+        {propsData.length > 1 && (
+          <div className="sub">
+            {subNews}
+
+            {props.title && (
+              <Link
+                to="/category"
+                state={{ query: importantNews && importantNews.category }}
+                className="all"
+              >{` ${language && language.btn} ${
+                importantNews && importantNews.category
+              }`}</Link>
+            )}
+          </div>
+        )}
       </article>
     </div>
   );
