@@ -11,8 +11,6 @@ export default function Card(props) {
     propsData.map((e, index) => {
       if (index < 4 && index !== 0) {
         return (
-          <div className="center">
-            <Link to="/read" state={{ id: e._id }} className="image-hover">
           <div key={e._id} className="center">
             <Link className="image-hover">
               <img src={e.photo[0]} alt="1"></img>
