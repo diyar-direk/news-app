@@ -1,135 +1,116 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import Videos from "../components/Videos";
 import NewsComponents from "../components/NewsComponents";
 import axios from "axios";
-
-let counter = 0;
-let intervlaValue;
+import Loader from "../components/Loader"; // Assuming you have a Loader component
 
 export default function Home() {
   const [topNews, setTopNews] = useState([]);
+  const [dataCategories, setDataCategories] = useState({});
+  const [loading, setLoading] = useState(true); // Track loading state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const intervalRef = useRef(null);
+
   useEffect(() => {
-    axios.get("http://localhost:8000/api/top-news").then((res) => {
-      setTopNews(res.data.data);
-    });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const topNewsResponse = await axios.get(
+          "http://localhost:8000/api/top-news"
+        );
+        setTopNews(topNewsResponse.data.data);
 
-  const [dataCatgoreys, setDataCatgoreys] = useState();
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/news/categoriesNews")
-      .then((res) => setDataCatgoreys(res.data.categories));
-  }, []);
-
-  function handelClick(e) {
-    const divs = document.querySelectorAll("main > div.landing > div.w-100");
-    divs.forEach((ele) => {
-      ele.classList.remove("active");
-    });
-    divs[e.target.dataset.index].classList.add("active");
-    const dots = document.querySelectorAll("main > div.landing .dots span");
-    dots.forEach((ele) => {
-      ele.classList.remove("active");
-    });
-    dots[e.target.dataset.index].classList.add("active");
-    clearInterval(intervlaValue);
-    counter = parseInt(e.target.dataset.index);
-    intervalFun(counter);
-  }
-
-  const obj = topNews.map((e, index) => {
-    if (index < 3)
-      return (
-        <div
-          className={index === 0 ? "center w-100 active" : "center w-100"}
-          key={e._id}
-          style={{
-            backgroundImage: `url(${e.photo[0]})`,
-          }}
-        >
-          <div className="container">
-            <Link
-              to="/category"
-              state={{ query: e.category }}
-              className="category"
-            >
-              {e.category}
-            </Link>
-            <Link to="/read" state={{ id: e._id }} className="title">
-              {e.headline}
-            </Link>
-            <p>{e.publishedAt}</p>
-          </div>
-        </div>
-      );
-  });
-  const allKeys = dataCatgoreys && Object.keys(dataCatgoreys);
-
-  const showData =
-    dataCatgoreys &&
-    allKeys.map((e, i) => {
-      if (i > 0 && i < allKeys.length - 3) {
-        return <Card key={i} data={dataCatgoreys[e]} />;
+        const categoriesResponse = await axios.get(
+          "http://localhost:8000/api/news/categoriesNews"
+        );
+        setDataCategories(categoriesResponse.data.categories);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Data fetching complete, set loading to false
       }
-    });
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (topNews.length === 0) return;
+
+    intervalRef.current = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % topNews.length);
+    }, 10000);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [topNews]);
+
+  const handleDotClick = (index) => {
+    setCurrentSlide(index);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = setInterval(() => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % topNews.length);
+      }, 10000);
+    }
+  };
+
+  const topNewsSlides = topNews.slice(0, 3).map((e, index) => (
+    <div
+      className={`center w-100 ${index === currentSlide ? "active" : ""}`}
+      key={e._id}
+      style={{ backgroundImage: `url(${e.photo[0]})` }}
+    >
+      <div className="container">
+        <Link to="/category" state={{ query: e.category }} className="category">
+          {e.category}
+        </Link>
+        <Link to="/read" state={{ id: e._id }} className="title">
+          {e.headline}
+        </Link>
+        <p>{e.publishedAt}</p>
+      </div>
+    </div>
+  ));
+
+  const categoryKeys = Object.keys(dataCategories);
+  const showData = categoryKeys
+    .slice(1, -3)
+    .map((key, i) => <Card key={i} data={dataCategories[key]} />);
+
+  if (loading) {
+    return <Loader />; // Display loader while data is loading
+  }
 
   return (
     <main className="center">
       <div className="landing center">
-        {obj}
+        {topNewsSlides}
         <div className="dots">
-          <span onClick={handelClick} className="active" data-index="0"></span>
-          <span onClick={handelClick} data-index="1"></span>
-          <span onClick={handelClick} data-index="2"></span>
+          {topNews.slice(0, 3).map((_, index) => (
+            <span
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={index === currentSlide ? "active" : ""}
+            ></span>
+          ))}
         </div>
       </div>
       <div className="news">
-        <NewsComponents
-          data={dataCatgoreys && dataCatgoreys[allKeys[0]]}
-          title={true}
-        />
+        <NewsComponents data={dataCategories[categoryKeys[0]]} title={true} />
 
         <div className="category container">
           <div className="flex-card">{showData}</div>
         </div>
 
-        <Videos
-          data={dataCatgoreys && dataCatgoreys[allKeys[allKeys.length - 3]]}
-        />
+        <Videos data={dataCategories[categoryKeys[categoryKeys.length - 3]]} />
 
-        <NewsComponents
-          data={dataCatgoreys && dataCatgoreys[allKeys[allKeys.length - 2]]}
-          title={true}
-        />
-        <NewsComponents
-          data={dataCatgoreys && dataCatgoreys[allKeys[allKeys.length - 1]]}
-          title={true}
-        />
+        {categoryKeys.slice(-3).map((key, index) => (
+          <NewsComponents key={index} data={dataCategories[key]} title={true} />
+        ))}
       </div>
     </main>
   );
-}
-
-intervalFun(counter);
-function intervalFun(counter) {
-  intervlaValue = setInterval(() => {
-    const divs = document.querySelectorAll("main > div.landing > div.w-100");
-    if (divs.length !== 0) {
-      divs.forEach((ele) => {
-        ele.classList.remove("active");
-      });
-      divs[counter].classList.add("active");
-      const dots = document.querySelectorAll("main > div.landing .dots span");
-      dots.forEach((ele) => {
-        ele.classList.remove("active");
-      });
-      dots[counter].classList.add("active");
-      counter++;
-      if (counter === 3) {
-        counter = 0;
-      }
-    }
-  }, 10000);
 }
