@@ -10,7 +10,6 @@ const AddTopNews = () => {
   const [position, setPosition] = useState("");
   const [files, setFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-
   function handleClick(e) {
     e.stopPropagation();
     document
@@ -21,6 +20,7 @@ const AddTopNews = () => {
   }
 
   const context = useContext(Context);
+  const language = context.langValue;
   const dataType = context.dataType.map((e, index) => {
     return (
       <p onClick={handelSelect} key={index} data-type={e.toLowerCase()}>
@@ -92,7 +92,7 @@ const AddTopNews = () => {
                 .classList.toggle("active");
             }}
           >
-            category:
+            {language && language.dashboard.forms.category}
           </label>
           <div className="no-wrap">
             <input
@@ -102,22 +102,26 @@ const AddTopNews = () => {
               disabled={true}
               name="category"
               value={category}
-              placeholder="category"
+              placeholder={language && language.dashboard.forms.category}
               id="category"
             />
             <i className="fa-solid fa-chevron-down" onClick={handleClick}></i>
             <div className="select-category">
               {dataType}
-              <span onClick={addCat}>add category</span>
+              <span onClick={addCat}>
+                {language && language.dashboard.forms.add}
+              </span>
             </div>
           </div>
-          <label htmlFor="headline">headline:</label>
+          <label htmlFor="headline">
+            {language && language.dashboard.forms.headline}
+          </label>
           <input
             onInput={(e) => setHeadline(e.target.value)}
             value={headline}
             name="headline"
             type="text"
-            placeholder="headline"
+            placeholder={language && language.dashboard.forms.headline}
             id="headline"
           />
           <label
@@ -126,29 +130,34 @@ const AddTopNews = () => {
               document.querySelector("textarea").focus();
             }}
           >
-            summary:
+            {language && language.dashboard.forms.summary}
           </label>
           <textarea
             onInput={(e) => setSummary(e.target.value)}
             value={summary}
             name="summary"
             type="text"
-            placeholder="summary"
+            placeholder={language && language.dashboard.forms.summary}
             id="summary"
             rows={3}
           ></textarea>
-          <label htmlFor="position">position:</label>
+          <label htmlFor="position">
+            {language && language.dashboard.forms.position}
+          </label>
           <input
             name="position"
             type="number"
-            placeholder="add position to news"
+            placeholder={language && language.dashboard.forms.position}
             id="position"
             max={5}
             min={1}
+            value={position}
             onChange={(e) => setPosition(e.target.value)}
           />
 
-          <label htmlFor="file">Add 3 photos and 1 video:</label>
+          <label htmlFor="file">
+            {language && language.dashboard.forms.files}
+          </label>
           <label
             htmlFor="file"
             className="file"
@@ -178,7 +187,9 @@ const AddTopNews = () => {
             ))}
           </div>
 
-          <div className="submit">Submit</div>
+          <div className="submit">
+            {language && language.dashboard.forms.create}
+          </div>
         </form>
       </div>
     </div>

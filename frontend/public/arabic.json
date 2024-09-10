@@ -49,5 +49,37 @@
         "password":"كلمة المرور",
         "rememberMe":"تذكرني",
         "btn":"تسجيل"
+    },
+    "dashboard":{
+        "navbar":{
+            "title":"لوحة التحكم",
+            "home":"الصفحة الرئيسية",
+            "out":"تسجيل الخروج",
+            "topNews":"اهم الاخبار",
+            "news":"الاخبار",
+            "addTopNews":"اضافة اخبار مهمة",
+            "addNews":"اضافة اخبار"
+        },
+        "table":{
+            "headline":"العنوان",
+            "category":"النوع",
+            "position":"الترتيب",
+            "action":"الخيارات",
+            "search":" بحث ...",
+            "update":"تعديل",
+            "delete":"حذف",
+            "deleteMsg":"هل تريد بالفعل الحذف؟",
+            "cencel":"تجاهل"
+        },
+        "forms":{
+            "headline":"العنوان",
+            "category":"النوع",
+            "position":"الترتيب",
+            "add":"إضافة نوع",
+            "summary":"المقال",
+            "files":"تستطيع رفع 3 صور مع 1 فيديو",
+            "create":"إنشاء",
+            "updates":"تعديل"
+        }
     }
 }

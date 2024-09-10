@@ -49,5 +49,37 @@
         "password":"password",
         "rememberMe":"Remember Me",
         "btn":"Register"
+    },
+    "dashboard":{
+        "navbar":{
+            "title":"Dashboard",
+            "home":"Home Page",
+            "out":"Log Out",
+            "topNews":"Top News",
+            "news":"News",
+            "addTopNews":"Add Top News",
+            "addNews":"Add News"
+        },
+        "table":{
+            "headline":"Headline",
+            "category":"Category",
+            "position":"position",
+            "action":"Action",
+            "search":"search ...",
+            "update":"update",
+            "delete":"delete",
+            "deleteMsg":"Are you sure you want to delete?",
+            "cencel":"cencel"
+        },
+        "forms":{
+            "headline":"Headline",
+            "category":"Category",
+            "position":"position",
+            "add":"Add Category",
+            "summary":"Summary",
+            "files":"can uplude 3 photos and 1 video",
+            "create":"Create",
+            "updates":"Update"
+        }
     }
 }

@@ -14,9 +14,9 @@ export default function PageContext({ children }) {
 
   useEffect(() => {
     languageFun();
-    fetch(`${language}.json`)
+    fetch(`/${language}.json`)
       .then((res) => res.json())
-      .then((data) => setLanguageValue(data));
+      .then((data) => setLanguageValue(data))
   }, [language]);
 
   const darkmode = () => {

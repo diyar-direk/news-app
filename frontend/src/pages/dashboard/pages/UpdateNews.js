@@ -11,10 +11,9 @@ const UpdateNews = () => {
   const [files, setFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const params = useParams();
-
+  
   useEffect(() => {
     axios.get(`http://localhost:8000/api/news/${params.id}`).then((res) => {
-      console.log(res.data.item);
       setCategory(res.data.item.category);
       setHeadline(res.data.item.headline);
       setSummary(res.data.item.summary);
@@ -32,6 +31,7 @@ const UpdateNews = () => {
   }
 
   const context = useContext(Context);
+  const language = context.langValue;
   const dataType = context.dataType.map((e, index) => {
     return (
       <p onClick={handelSelect} key={index} data-type={e.toLowerCase()}>
@@ -104,7 +104,7 @@ const UpdateNews = () => {
                 .classList.toggle("active");
             }}
           >
-            category:
+            {language && language.dashboard.forms.category}
           </label>
           <div className="no-wrap">
             <input

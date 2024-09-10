@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./news.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Context } from "../../../context/Context";
 
 const News = () => {
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-
+  const context = useContext(Context);
+  const language = context.langValue;
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/news?fields=headline,category")
@@ -65,10 +67,13 @@ const News = () => {
       </td>
       <td>{item.category}</td>
       <td>
-        <span data-content="delete" onClick={() => handleDeleteClick(item)}>
+        <span
+          data-content={language.dashboard.table.delete}
+          onClick={() => handleDeleteClick(item)}
+        >
           <i className="fa-solid fa-trash"></i>
         </span>
-        <span data-content="update">
+        <span data-content={language && language.dashboard.table.update}>
           <Link
             to={`${item._id}`}
             className="fa-regular fa-pen-to-square"
@@ -83,14 +88,14 @@ const News = () => {
       {overlayVisible && (
         <div className="overlay">
           <div className="content">
-            <h3>Are you sure you want to delete?</h3>
+            <h3>{language && language.dashboard.table.deleteMsg}</h3>
             <div className="center">
               <span className="flex-1 cancel" onClick={handleCancelDelete}>
-                Cancel
+                {language && language.dashboard.table.cencel}
               </span>
               <span className="flex-1 delete" onClick={handleConfirmDelete}>
                 <i className="fa-solid fa-trash"></i>
-                Delete
+                {language && language.dashboard.table.delete}
               </span>
             </div>
           </div>
@@ -102,7 +107,7 @@ const News = () => {
           <input
             onChange={handleSearch}
             type="text"
-            placeholder="Search"
+            placeholder={language && language.dashboard.table.search}
             className="flex-1"
           />
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -113,9 +118,9 @@ const News = () => {
             <thead>
               <tr>
                 <th></th>
-                <th>Headline</th>
-                <th>Category</th>
-                <th>Action</th>
+                <th>{language && language.dashboard.table.headline}</th>
+                <th>{language && language.dashboard.table.category}</th>
+                <th>{language && language.dashboard.table.action}</th>
               </tr>
             </thead>
             <tbody>{tableData}</tbody>
