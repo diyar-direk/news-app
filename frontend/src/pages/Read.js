@@ -4,17 +4,23 @@ import { Link, useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import axios from "axios";
+import Loader from "../components/Loader";
+
 const Read = () => {
   const location = useLocation();
   const state = location.state || {}; // Retrieve the state or default to an empty object
-  const id = state.id || ""; // Access the query property from the state
+  const id = state.id || ""; // Access the id property from the state
+
   const [data, setData] = useState({});
   const [sideTop, setSideTop] = useState([]);
   const [sideNews, setSideNews] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch main data and side top news
   useEffect(() => {
-    try {
-      const fetchingData = async () => {
+    const fetchingData = async () => {
+      setLoading(true);
+      try {
         const response = await axios.get(
           `http://localhost:8000/api/news/${id}`
         );
@@ -22,107 +28,119 @@ const Read = () => {
 
         const top = await axios.get(`http://localhost:8000/api/top-news`);
         setSideTop(top.data.data);
-      };
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) {
       fetchingData();
-    } catch (err) {
-      console.log(err);
     }
-  }, []);
+  }, [id]);
+
+  // Fetch side news when main data changes
   useEffect(() => {
     const fetchingData = async () => {
-      let category = data.item && data.item.category;
-      const side = await axios.get(
-        `http://localhost:8000/api/news?category=${category}&limit=5`
-      );
-
-      setSideNews(side.data.data.news);
+      if (data.item && data.item.category) {
+        try {
+          const side = await axios.get(
+            `http://localhost:8000/api/news?category=${data.item.category}&limit=5`
+          );
+          setSideNews(side.data.data.news);
+        } catch (err) {
+          console.log(err);
+        }
+      }
     };
+
     fetchingData();
   }, [data.item]);
 
   const context = useContext(Context);
   const language = context.langValue.readPage;
 
-  function handelClick(e) {
+  function handleClick(e) {
     const leftArrow = document.querySelector(
       "div.the-news article.current-news .info .slider div.between i.fa-chevron-left"
     );
-    const allIMg = document.querySelectorAll(
+    const allImgs = document.querySelectorAll(
       "div.the-news article.current-news .info .slider .slide"
     );
     let activeImg = document.querySelector(
       "div.the-news article.current-news .info .slider .slide.active"
     ).dataset.index;
-    allIMg.forEach((ele) => {
+
+    allImgs.forEach((ele) => {
       ele.classList.remove("active");
     });
+
     if (e.target === leftArrow) {
       if (activeImg > 0) --activeImg;
-      else activeImg = allIMg.length - 1;
-      allIMg[activeImg].classList.add("active");
+      else activeImg = allImgs.length - 1;
     } else {
-      if (activeImg < allIMg.length - 1) ++activeImg;
+      if (activeImg < allImgs.length - 1) ++activeImg;
       else activeImg = 0;
-      allIMg[activeImg].classList.add("active");
     }
+
+    allImgs[activeImg].classList.add("active");
+  }
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (
-    <main className="center">
-      <div className="container">
-        <div className="the-news">
-          <article className="current-news flex-1">
-            <h1>{data.item && data.item.headline}</h1>
-            <p> {data.item && data.item.publishedAt}</p>
-            <video
-              src={`http://localhost:8000/video/${
-                data.item && data.item.video
-              }`}
-              controls
-              autoPlay
-            />
-            <div className="info">
-              <p>{data.item && data.item.summary}</p>
-
-              <div className="slider">
-                <img
-                  data-index="0"
-                  className=" slide"
-                  src={`${data.item && data.item.photo[0]}`}
-                  alt=""
+    <>
+      <main className="center">
+        <div className="container">
+          <div className="the-news">
+            {data.item ? (
+              <article className="current-news flex-1">
+                <h1>{data.item.headline}</h1>
+                <p>{data.item.publishedAt}</p>
+                <video
+                  src={`http://localhost:8000/video/${data.item.video}`}
+                  controls
+                  autoPlay
                 />
-                <img
-                  className="active slide"
-                  data-index="1"
-                  src={`${data.item && data.item.photo[0]}`}
-                  alt=""
-                />
-                <img
-                  className="slide"
-                  data-index="2"
-                  src={`${data.item && data.item.photo[0]}`}
-                  alt=""
-                />
-                <div className="between">
-                  <i
-                    onClick={handelClick}
-                    className="fa-solid fa-chevron-left"
-                  ></i>
-                  <i
-                    onClick={handelClick}
-                    className="fa-solid fa-chevron-right"
-                  ></i>
+                <div className="info">
+                  <p>{data.item.summary}</p>
+                  <div className="slider">
+                    {data.item.photo.map((photo, index) => (
+                      <img
+                        key={index}
+                        data-index={index}
+                        className={`slide ${index === 0 ? "active" : ""}`}
+                        src={photo}
+                        alt=""
+                      />
+                    ))}
+                    <div className="between">
+                      <i
+                        onClick={handleClick}
+                        className="fa-solid fa-chevron-left"
+                      ></i>
+                      <i
+                        onClick={handleClick}
+                        className="fa-solid fa-chevron-right"
+                      ></i>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </article>
-          <article className="sub-news">
-            <h1> {language && language.top} </h1>
-            <article>
-              {sideTop &&
-                sideTop.map((ele, index) => {
-                  return (
+              </article>
+            ) : (
+              <Loader />
+            )}
+
+            <article className="sub-news">
+              <h1>{language && language.top}</h1>
+              <article>
+                {sideTop &&
+                  sideTop.map((ele, index) => (
                     <Link
+                      key={ele._id}
                       to="/read"
                       state={{ id: ele._id }}
                       className="image-hover"
@@ -130,36 +148,31 @@ const Read = () => {
                       <img alt="" src={ele.photo[0]} />
                       <h4>{ele.headline}</h4>
                     </Link>
-                  );
-                })}
-            </article>
-            <h1> {language && language.more} </h1>
-            {sideNews &&
-              sideNews.map((ele, index) => {
-                return (
-                  <div className="center">
+                  ))}
+              </article>
+
+              <h1>{language && language.more}</h1>
+              {sideNews &&
+                sideNews.map((ele) => (
+                  <div key={ele._id} className="center">
                     <Link
                       to="/read"
                       state={{ id: ele._id }}
                       className="image-hover"
                     >
-                      <img alt="" src={`${ele.photo[0]}`} />
+                      <img alt="" src={ele.photo[0]} />
                     </Link>
-                    <Link
-                      to="/read"
-                      state={{ id: ele._id }}
-                      onClick={window.location.reload}
-                    >
+                    <Link to="/read" state={{ id: ele._id }}>
                       {ele.headline}
                     </Link>
                   </div>
-                );
-              })}
-          </article>
+                ))}
+            </article>
+          </div>
         </div>
-      </div>
-      <GridCard />
-    </main>
+        <GridCard />
+      </main>
+    </>
   );
 };
 

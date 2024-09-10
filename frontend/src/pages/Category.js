@@ -1,19 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import NewsComponents from "../components/NewsComponents";
 import GridCard from "../components/GridCard";
-
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { Context } from "../context/Context";
+import Loader from "../components/Loader";
 
 const Category = () => {
   const location = useLocation();
   const state = location.state || {}; // Retrieve the state or default to an empty object
   const query = state.query || ""; // Access the query property from the state
-  
-  const [categories, setCategories] = useState();
+
+  const [categories, setCategories] = useState(null); // Initialize with null to differentiate between loading and loaded states
+  const [loading, setLoading] = useState(true); // Track loading state
+
   useEffect(() => {
     if (query) {
+      setLoading(true); // Set loading to true before fetching data
       axios
         .get(`http://localhost:8000/api/news/search/${query}`)
         .then((response) => {
@@ -21,21 +24,24 @@ const Category = () => {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          setLoading(false); // Set loading to false after fetching data
         });
+    } else {
+      setCategories(null); // Reset categories if query is empty
+      setLoading(false); // Set loading to false if no query
     }
   }, [query]);
-
 
   const nextData = categories && categories.filter((category, i) => i > 4);
 
   const context = useContext(Context);
   const language = context.langValue.category;
-  const [dataCatgoreys, setDataCatgoreys] = useState();
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/news/categoriesNews")
-      .then((res) => setDataCatgoreys(res.data.categories));
-  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <main className="flex-start">
@@ -50,7 +56,7 @@ const Category = () => {
         <GridCard />
 
         <NewsComponents data={categories} title={false} />
-        <GridCard data={nextData} />
+        {nextData && <GridCard data={nextData} />}
       </div>
     </main>
   );
