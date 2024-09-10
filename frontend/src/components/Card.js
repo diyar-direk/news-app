@@ -12,7 +12,7 @@ export default function Card(props) {
       if (index < 4 && index !== 0) {
         return (
           <div key={e._id} className="center">
-            <Link className="image-hover">
+            <Link className="image-hover ">
               <img src={e.photo[0]} alt="1"></img>
             </Link>
             <div className="flex-1">
@@ -20,7 +20,9 @@ export default function Card(props) {
                 <p className="time">{e.publishedAt}</p>
               </div>
               <Link to="/read" state={{ id: e._id }}>
-                {e.headline}
+                {e.headline.length < 37
+                  ? e.headline
+                  : e.headline.slice(0, 30) + "..."}
               </Link>
             </div>
           </div>
@@ -46,24 +48,31 @@ export default function Card(props) {
           className="info"
         >
           <p className="time">2024/10/11</p>
-          <h2>{importantNews && importantNews.headline}.</h2>
+          <h2>
+            {importantNews.headline.length < 37
+              ? importantNews.headline
+              : importantNews.headline.slice(0, 30) + "..."}
+            .
+          </h2>
         </Link>
-        <Link className="image-hover">
+        <Link className="image-hover bottom-before ">
           <img src={importantNews && importantNews.photo[0]} alt="1"></img>
         </Link>
       </div>
 
       <article>
         {subNews}
-        <Link
-          className="all"
-          to="/category"
-          state={{ query: importantNews && importantNews.category }}
-        >
-          {`${language && language.btn} ${
-            importantNews && importantNews.category
-          }`}
-        </Link>
+        {propsData.length > 0 && (
+          <Link
+            className="all"
+            to="/category"
+            state={{ query: importantNews && importantNews.category }}
+          >
+            {`${language && language.btn} ${
+              importantNews && importantNews.category
+            }`}
+          </Link>
+        )}
       </article>
     </div>
   );

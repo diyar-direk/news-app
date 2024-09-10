@@ -36,8 +36,8 @@ body.arabic .videos .title {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--var-color);
 }
@@ -69,6 +69,7 @@ body.arabic .videos .title::after {
   border-radius: 4px;
   width: 100%;
   max-height: 320px;
+  position: relative;
   aspect-ratio: 10/6;
 }
 .videos .video .video-item img {
@@ -78,12 +79,15 @@ body.arabic .videos .title::after {
   display: flex;
   object-fit: cover;
 }
+.videos .video .video-item .img:hover::before{
+  bottom: -6px;
+}
 .videos .video .video-item img:hover {
   transform: scale(1.1);
 }
 .videos .video .video-item a {
   cursor: pointer;
-  padding: 3px 0px;
+
   font-size: 20px;
   color: white;
   line-height: 1;

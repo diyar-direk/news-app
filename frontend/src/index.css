@@ -17,9 +17,9 @@ img {
 :root {
   --font-color: black;
   --body-color: white;
-  --var-color: #ce0f2e;
+  --var-color: #177d93;
   --border-color: #83838340;
-  --hover-color: #b3142e;
+  --hover-color: #105867;
   --section-color: #f0f0f0;
 }
 body {
@@ -58,6 +58,18 @@ body.arabic {
   overflow: hidden;
   display: flex;
   margin-bottom: 15px;
+  position: relative;
+}
+.bottom-before::before {
+  position: absolute;
+  content: " ";
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 6px;
+  opacity: 0.5;
+  transition: 0.3s;
+  background-color: var(--var-color);
 }
 .image-hover img:hover {
   transform: scale(1.1);
@@ -285,14 +297,14 @@ div.lang p:first-of-type {
   border-bottom: solid 1px var(--border-color);
 }
 div.lang p:not(nav div.more div.lang p):hover {
-  background-color: var(--border-color);
+  background-color: #464a54;
 }
 nav > div.container > .more i.fa-sun {
   font-weight: normal;
 }
 nav > div.bottom-link {
   width: 100%;
-  background-color: var(--var-color);
+  background-color: #313641;
 }
 nav > div.bottom-link a {
   color: white;
@@ -302,13 +314,12 @@ nav > div.bottom-link a {
   line-height: 45px;
   text-align: center;
   display: inline-block;
-  background-color: var(--var-color);
-  border: solid 1px;
-  border-color: transparent #ab2a2a transparent #ab2a2a;
+  background-color: #313641;
+  border-left: solid 1px #4d5567a8;
 }
 nav > div.bottom-link a:hover,
 nav > div.bottom-link a.active {
-  background-color: var(--hover-color);
+  background-color: #464a54;
 }
 
 /* navbar end  */
@@ -493,6 +504,9 @@ main > div.news > div.category > article > div > a:not(.image-hover) {
 }
 main > div.news > div.category > article > div > a:hover {
   color: var(--var-color);
+}
+main > div.news > div.category > article > div > a.bottom-before:hover::before {
+  bottom: -6px;
 }
 main > div.news > div.category > article > div > p {
   font-size: 17px;
