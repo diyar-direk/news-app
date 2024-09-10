@@ -12,14 +12,13 @@ const NewsComponents = (props) => {
       if (index > 0 && index < 5) {
         return (
           <div key={e._id} className="center">
-            <Link to="/read" state={{ id: e._id }} className="image-hover">
+            <Link to="/read" state={{ id: e._id }} className="image-hover ">
               <img src={e.photo[0]} alt="1"></img>
             </Link>
             <div className="flex-1">
               <div className="time flex">
                 <Link to="/category" state={{ query: e.category }}>
-                  {" "}
-                  {e.category}{" "}
+                  {e.category}
                 </Link>
                 <p className="time">{e.publishedAt}</p>
               </div>
@@ -49,7 +48,7 @@ const NewsComponents = (props) => {
           <Link
             to="/read"
             state={{ id: importantNews && importantNews._id }}
-            className="image-hover"
+            className="image-hover bottom-before"
           >
             <img src={importantNews && importantNews.photo[0]} alt="1"></img>
           </Link>
@@ -63,23 +62,29 @@ const NewsComponents = (props) => {
             <p className="time">1 min ago</p>
           </div>
           <Link to="/read" state={{ id: importantNews && importantNews._id }}>
-            {importantNews && importantNews.headline}
+            {
+            importantNews.headline.length < 37
+              ? importantNews.headline
+              : importantNews.headline.slice(0, 30) + "..."}
           </Link>
           <p>{importantNews && importantNews.summary}</p>
         </div>
 
-        <div className="sub">
-          {subNews}
-          {props.title && (
-            <Link
-              to="/category"
-              state={{ query: importantNews && importantNews.category }}
-              className="all"
-            >{` ${language && language.btn} ${
-              importantNews && importantNews.category
-            }`}</Link>
-          )}
-        </div>
+        {propsData.length > 1 && (
+          <div className="sub">
+            {subNews}
+
+            {props.title && (
+              <Link
+                to="/category"
+                state={{ query: importantNews && importantNews.category }}
+                className="all"
+              >{` ${language && language.btn} ${
+                importantNews && importantNews.category
+              }`}</Link>
+            )}
+          </div>
+        )}
       </article>
     </div>
   );

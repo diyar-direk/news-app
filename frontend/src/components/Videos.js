@@ -9,7 +9,11 @@ const Videos = (props) => {
       if (index <= 2) {
         return (
           <div key={e._id} className="video-item">
-            <Link to="/read" state={{ id: e._id }} className="img">
+            <Link
+              to="/read"
+              state={{ id: e._id }}
+              className="img bottom-before"
+            >
               <img src={e.photo[0]} alt="img" />
             </Link>
             <div className="headline">

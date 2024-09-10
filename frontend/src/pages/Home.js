@@ -68,7 +68,9 @@ export default function Home() {
           {e.category}
         </Link>
         <Link to="/read" state={{ id: e._id }} className="title">
-          {e.headline}
+          {e.headline.length < 37
+            ? e.headline
+            : e.headline.slice(0, 30) + "..."}
         </Link>
         <p>{e.publishedAt}</p>
       </div>
@@ -107,9 +109,14 @@ export default function Home() {
 
         <Videos data={dataCategories[categoryKeys[categoryKeys.length - 3]]} />
 
-        {categoryKeys.slice(-3).map((key, index) => (
-          <NewsComponents key={index} data={dataCategories[key]} title={true} />
-        ))}
+        <NewsComponents
+          data={dataCategories[categoryKeys[categoryKeys.length - 2]]}
+          title={true}
+        />
+        <NewsComponents
+          data={dataCategories[categoryKeys[categoryKeys.length - 1]]}
+          title={true}
+        />
       </div>
     </main>
   );
