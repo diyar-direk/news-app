@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./news.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const News = (props) => {
+const News = () => {
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
+  const [overlayVisible, setOverlayVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     axios
@@ -31,6 +34,27 @@ const News = (props) => {
     }
   };
 
+  const handleDeleteClick = (item) => {
+    setSelectedItem(item);
+    setOverlayVisible(true);
+  };
+
+  const handleConfirmDelete = () => {
+    console.log("Deleting item:", selectedItem);
+    setOverlayVisible(false);
+  };
+
+  const handleCancelDelete = () => {
+    setOverlayVisible(false);
+    setSelectedItem(null);
+  };
+  document.body.addEventListener("click", (e) => {
+    const overlay = document.querySelector("div.main > div.overlay");
+    if (e.target === overlay) {
+      setOverlayVisible(false);
+      setSelectedItem(null);
+    } else return false;
+  });
   const tableData = searchData.map((item, index) => (
     <tr key={item._id}>
       <td>{index + 1}</td>
@@ -41,11 +65,14 @@ const News = (props) => {
       </td>
       <td>{item.category}</td>
       <td>
-        <span data-content="delete">
+        <span data-content="delete" onClick={() => handleDeleteClick(item)}>
           <i className="fa-solid fa-trash"></i>
         </span>
         <span data-content="update">
-          <i className="fa-regular fa-pen-to-square"></i>
+          <Link
+            to={`${item._id}`}
+            className="fa-regular fa-pen-to-square"
+          ></Link>
         </span>
       </td>
     </tr>
@@ -53,12 +80,29 @@ const News = (props) => {
 
   return (
     <div className="main">
+      {overlayVisible && (
+        <div className="overlay">
+          <div className="content">
+            <h3>Are you sure you want to delete?</h3>
+            <div className="center">
+              <span className="flex-1 cancel" onClick={handleCancelDelete}>
+                Cancel
+              </span>
+              <span className="flex-1 delete" onClick={handleConfirmDelete}>
+                <i className="fa-solid fa-trash"></i>
+                Delete
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="dashboard-container">
         <article className="search no-wrap">
           <input
-            onInput={handleSearch}
+            onChange={handleSearch}
             type="text"
-            placeholder="search"
+            placeholder="Search"
             className="flex-1"
           />
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -66,10 +110,10 @@ const News = (props) => {
         <table>
           <thead>
             <tr>
-              <th>id</th>
-              <th>headline</th>
-              <th>category</th>
-              <th>action</th>
+              <th></th>
+              <th>Headline</th>
+              <th>Category</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>{tableData}</tbody>

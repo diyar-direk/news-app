@@ -38,8 +38,6 @@ const DashboardNavbar = () => {
           <span>add news</span>
         </NavLink>
 
-        <NavLink to={"/link1"}>link1</NavLink>
-        <NavLink to={"/link1"}>link1</NavLink>
         <Setting />
       </aside>
     </>

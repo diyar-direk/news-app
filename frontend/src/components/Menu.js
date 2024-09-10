@@ -58,13 +58,9 @@ export default function Menu() {
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
-            {data.map((e) => {
-              return (
-                <NavLink to={`/category/${e}`} key={e}>
-                  {e}
-                </NavLink>
-              );
-            })}
+            <NavLink to={"/"}>home</NavLink>
+            <NavLink to={"/contact"}>contact</NavLink>
+            <NavLink to={"/about"}>about</NavLink>
           </div>
         </article>
         <article>
@@ -73,10 +69,13 @@ export default function Menu() {
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
-            <NavLink to={"/link1"}>link1</NavLink>
-            <NavLink to={"/link1"}>link1</NavLink>
-            <NavLink to={"/link1"}>link1</NavLink>
-            <NavLink to={"/link1"}>link1</NavLink>
+            {data.map((e) => {
+              return (
+                <NavLink to={`/category/${e}`} key={e}>
+                  {e}
+                </NavLink>
+              );
+            })}
           </div>
         </article>
       </div>

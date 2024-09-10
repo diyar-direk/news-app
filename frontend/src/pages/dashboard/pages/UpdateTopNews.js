@@ -1,13 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-const AddNews = () => {
+const UpdateTopNews = () => {
   const [category, setCategory] = useState("");
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [files, setFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const params = useParams();
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/api/news/${params.id}`).then((res) => {
+      console.log(res.data.item);
+      setCategory(res.data.item.category);
+      setHeadline(res.data.item.headline);
+      setSummary(res.data.item.summary);
+      // setFiles(...res.data.item.photo,res.data.item.video);
+    });
+  }, []);
 
   function handleClick(e) {
     e.stopPropagation();
@@ -59,7 +72,7 @@ const AddNews = () => {
       setErrorMessage("Please upload exactly 3 images and 1 video.");
       return;
     }
-    
+
     setErrorMessage("");
 
     setFiles([...images, ...videos]);
@@ -96,9 +109,7 @@ const AddNews = () => {
           <div className="no-wrap">
             <input
               onInput={(e) => setCategory(e.target.value)}
-              className="flex-1 disabled"
               type="text"
-              disabled={true}
               name="category"
               value={category}
               placeholder="category"
@@ -173,4 +184,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default UpdateTopNews;

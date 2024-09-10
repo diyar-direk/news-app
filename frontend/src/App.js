@@ -17,6 +17,8 @@ import News from "./pages/dashboard/pages/News";
 import AddNews from "./pages/dashboard/pages/AddNews";
 import TopNews from "./pages/dashboard/pages/TopNews";
 import AddTopNews from "./pages/dashboard/pages/AddTopNews.js";
+import UpdateNews from "./pages/dashboard/pages/UpdateNews.js";
+import UpdateTopNews from "./pages/dashboard/pages/UpdateTopNews.js";
 
 function App() {
   useEffect(() => {
@@ -49,10 +51,12 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="/dashboard/news" element={<News />} />
-          <Route path="/dashboard/top-news" element={<TopNews />} />
-          <Route path="/dashboard/add" element={<AddNews />} />
-          <Route path="/dashboard/add-top-news" element={<AddTopNews />} />
+          <Route path="news" element={<News />} />
+          <Route path="news/:id" element={<UpdateNews />} />
+          <Route path="top-news" element={<TopNews />} />
+          <Route path="top-news/:id" element={<UpdateTopNews />} />
+          <Route path="add" element={<AddNews />} />
+          <Route path="add-top-news" element={<AddTopNews />} />
         </Route>
       </Routes>
 
