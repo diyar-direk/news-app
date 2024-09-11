@@ -32,6 +32,9 @@ div.the-news article.current-news .info .slider img {
 div.the-news article.current-news .info .slider img.active {
   position: relative;
   opacity: 1;
+  max-height: 550px;
+  width: 100%;
+  object-fit: cover;
 }
 div.the-news article.current-news .info .slider div.between {
   position: absolute;

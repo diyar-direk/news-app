@@ -2,19 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import NewsComponents from "../components/NewsComponents";
 import GridCard from "../components/GridCard";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Context } from "../context/Context";
 import Loader from "../components/Loader";
 
 const Category = () => {
-  const location = useLocation();
-  const state = location.state || {}; // Retrieve the state or default to an empty object
-  const query = state.query || ""; // Access the query property from the state
+  // const location = useLocation();
+  // const state = location.state || {}; // Retrieve the state or default to an empty object
+  // const query = state.query || ""; // Access the query property from the state
 
   const [categories, setCategories] = useState(null); // Initialize with null to differentiate between loading and loaded states
   const [loading, setLoading] = useState(true); // Track loading state
+  const param = useParams();
+  console.log(param.category);
+  const query = param.category;
 
   useEffect(() => {
+    console.log(query);
+
     if (query) {
       setLoading(true); // Set loading to true before fetching data
       axios
@@ -53,7 +58,7 @@ const Category = () => {
           </span>
         </h1>
 
-        <NewsComponents data={categories} title={false} />
+        <NewsComponents data={categories && categories} title={false} />
         {nextData && <GridCard data={nextData} />}
       </div>
     </main>

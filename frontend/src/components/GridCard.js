@@ -41,7 +41,7 @@ const GridCard = (props) => {
         props.data.map((e, index) => {
           return (
             <div className="card">
-              <Link className="image-hover">
+              <Link to="/read" state={{ id: e._id }} className="image-hover">
                 <img src={e.photo[0]} alt="" />
               </Link>
               <div className="info">
@@ -52,7 +52,9 @@ const GridCard = (props) => {
                 </h2>
                 <div className="between">
                   <p>{timeAgo(e.publishedAt)}</p>
-                  <Link> {language && language.more} </Link>
+                  <Link to="/read" state={{ id: e._id }}>
+                    {language && language.more}{" "}
+                  </Link>
                 </div>
               </div>
             </div>

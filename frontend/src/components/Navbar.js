@@ -156,13 +156,20 @@ export default function Navbar() {
         </div>
         <div className="bottom-link center">
           <div className="container">
-            <NavLink to={`/`}>home</NavLink>
-            <NavLink to={`/contact`}>contact</NavLink>
-            <NavLink to={`/about`}>about us</NavLink>
+            <NavLink to={`/`}>
+              {context.langValue && context.langValue.links.Home}
+            </NavLink>
+            <NavLink to={`/about`}>
+              {context.langValue && context.langValue.links.about}
+            </NavLink>
+
+            <NavLink to={`/contact`}>
+              {context.langValue && context.langValue.links.contact}
+            </NavLink>
             {data.map((e, i) => {
               if (i < 2) {
                 return (
-                  <NavLink to={`/category`} state={{ query: e }} key={e}>
+                  <NavLink to={`/category/${e}`} key={e}>
                     {e}
                   </NavLink>
                 );

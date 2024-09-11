@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./card.css";
 import { useContext } from "react";
 import { Context } from "../context/Context";
@@ -65,13 +65,12 @@ export default function Card(props) {
 
   return (
     <div key={importantNews && importantNews._id} className="important card">
-      <Link
-        to={"/category"}
-        state={{ query: importantNews && importantNews.category }}
+      <NavLink
+        to={`/category/${importantNews && importantNews.category}`}
         className="title"
       >
         {importantNews && importantNews.category}
-      </Link>
+      </NavLink>
 
       <div className="important">
         <Link
@@ -97,15 +96,14 @@ export default function Card(props) {
       <article>
         {subNews}
         {propsData.length > 0 && (
-          <Link
+          <NavLink
             className="all"
-            to="/category"
-            state={{ query: importantNews && importantNews.category }}
+            to={`/category/${importantNews && importantNews.category}`}
           >
             {`${language && language.btn} ${
               importantNews && importantNews.category
             }`}
-          </Link>
+          </NavLink>
         )}
       </article>
     </div>
