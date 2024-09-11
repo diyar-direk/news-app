@@ -16,16 +16,17 @@ const Setting = () => {
   }
   const context = useContext(Context);
   const language = context.langValue.home;
+
   return (
     <div className="sitting between w-100">
       <div>
-        <h4> {language && language.theme} </h4>
+        <h4> {language ? language.theme : "select theme :"} </h4>
         <div className="theme" onClick={darkMode}></div>
       </div>
       <div className="relative">
-        <h4>{language && language.language}</h4>
+        <h4>{language ? language.language : "select language :"}  </h4>
         <div className="menu-lang" onClick={langClick}>
-          <span>english</span>
+          <span>English</span>
           <i className="fa-solid fa-chevron-down"></i>
         </div>
         <LanguageDiv />

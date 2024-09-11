@@ -66,6 +66,7 @@ div.main .dashboard-container form.add-news .select-category {
   max-height: 0px;
   overflow: hidden;
   transition: 0.6s;
+  border-bottom: solid 1px var(--border-color);
 }
 div.main .dashboard-container form.add-news .select-category.active {
   animation: overflow 0.2s;

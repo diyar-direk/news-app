@@ -22,7 +22,7 @@ export default function LanguageDiv() {
         data-index="0"
         onClick={selects}
       >
-        english
+        English
       </p>
       <p
         className={langVal === "arabic" ? "active" : undefined}

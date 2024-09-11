@@ -37,7 +37,6 @@ tr:nth-child(even) {
 }
 td {
   text-wrap: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
   padding: 3px;
   border: solid 1px var(--border-color);

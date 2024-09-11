@@ -146,7 +146,16 @@ div.main .dashboard-container {
     margin-left: 5px;
   }
   aside.dashboard-aside div.sitting div.lang {
-    top: -80px;
+    top: -65px;
+  }
+  aside.dashboard-aside div.sitting div.lang p {
+    font-size: 10px;
+  }
+  aside.dashboard-aside.active div.sitting div.lang {
+    top: -45px;
+  }
+  aside.dashboard-aside.active div.sitting div.lang p {
+    font-size: 12px;
   }
   aside.dashboard-aside div.sitting div.menu-lang {
     font-size: 10px;
@@ -185,6 +194,8 @@ div.main .dashboard-container {
   }
   aside.dashboard-aside.active div.sitting h4 {
     display: block;
+    text-wrap: nowrap;
+    overflow: hidden;
   }
   div.navbar .flex > .btn {
     font-size: 13px;
