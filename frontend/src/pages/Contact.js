@@ -13,6 +13,7 @@ const Contact = () => {
     message: "",
   });
   const [capVal, setCapVal] = useState(null);
+  
   const formChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };

@@ -22,7 +22,7 @@ const Login = () => {
         username: form.username,
         password: form.password,
       });
-      console.log(data.data.accessToken);
+      console.log(data.data.token);
     } catch (err) {
       console.log(err.message);
     }

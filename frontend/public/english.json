@@ -58,7 +58,9 @@
             "topNews":"Top News",
             "news":"News",
             "addTopNews":"Add Top News",
-            "addNews":"Add News"
+            "addNews":"Add News",
+            "user":"users",
+            "addUser":"add user"
         },
         "table":{
             "headline":"Headline",
@@ -69,7 +71,9 @@
             "update":"update",
             "delete":"delete",
             "deleteMsg":"Are you sure you want to delete?",
-            "cencel":"cencel"
+            "cencel":"cencel",
+            "role":"Role",
+            "user":"User"
         },
         "forms":{
             "headline":"Headline",
@@ -79,7 +83,17 @@
             "summary":"Summary",
             "files":"can uplude 3 photos and 1 video",
             "create":"Create",
-            "updates":"Update"
+            "updates":"Update",
+            "role":"Role",
+            "user":"User",
+            "userName":"User Name",
+            "admin":"admin",
+            "password":"Password",
+            "passwordConfirmation":"Password Confirmation",
+            "errorName":"name is required",
+            "errorPassword":"password must be longer then 6 charecters",
+            "errorRole":"you have to select role",
+            "errorPasswordcon":"password is wrong"
         }
     }
 }

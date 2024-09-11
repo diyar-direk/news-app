@@ -42,13 +42,20 @@ const DashboardNavbar = () => {
       <aside className="dashboard-aside">
         <h3>{language && language.dashboard.navbar.title}</h3>
         <h4 onClick={handelCilck}></h4>
+
+        <NavLink to={"/dashboard/users"}>
+          <i className="fa-solid fa-users"></i>
+          <span>{language && language.dashboard.navbar.user}</span>
+        </NavLink>
+
+        <NavLink to={"/dashboard/add-user"}>
+          <i className="fa-solid fa-user-plus"></i>
+          <span>{language && language.dashboard.navbar.addUser}</span>
+        </NavLink>
+
         <NavLink to={"/dashboard/top-news"}>
           <i className="fa-solid fa-newspaper"></i>
           <span>{language && language.dashboard.navbar.topNews}</span>
-        </NavLink>
-        <NavLink to={"/dashboard/news"}>
-          <i className="fa-regular fa-newspaper"></i>
-          <span>{language && language.dashboard.navbar.news}</span>
         </NavLink>
 
         <NavLink to={"/dashboard/add-top-news"}>
@@ -56,9 +63,14 @@ const DashboardNavbar = () => {
           <span>{language && language.dashboard.navbar.addTopNews}</span>
         </NavLink>
 
+        <NavLink to={"/dashboard/news"}>
+          <i className="fa-regular fa-newspaper"></i>
+          <span>{language && language.dashboard.navbar.news}</span>
+        </NavLink>
+
         <NavLink to={"/dashboard/add"}>
           <i className="fa-solid fa-plus"></i>
-          <span>{language && language.dashboard.navbar.addTopNews}</span>
+          <span>{language && language.dashboard.navbar.addNews}</span>
         </NavLink>
 
         <Setting />

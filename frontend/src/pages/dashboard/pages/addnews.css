@@ -35,7 +35,7 @@ div.main .dashboard-container form.add-news > label {
 div.main .dashboard-container form.add-news .no-wrap input {
   border: solid 1px var(--border-color);
   background: var(--body-color);
-  padding: 4px 10px;
+  padding: 4px 30px 4px 10px;
   width: 100%;
   border-radius: 6px;
   color: var(--font-color);
@@ -52,6 +52,12 @@ div.main .dashboard-container form.add-news .no-wrap > i {
   margin-left: 10px;
   cursor: pointer;
   font-size: 14px;
+}
+div.main .dashboard-container form.add-news .no-wrap > i.show {
+  margin: 0;
+  color: #777;
+  position: absolute;
+  right: 10px;
 }
 div.main .dashboard-container form.add-news .select-category {
   position: absolute;
@@ -127,7 +133,7 @@ div.main .dashboard-container form.add-news > div.submit {
   font-size: 15px;
   border-radius: 6px;
   text-align: center;
-  margin: 0 auto;
+  margin: 20px auto 0;
   letter-spacing: 1px;
   cursor: pointer;
 }
