@@ -53,8 +53,6 @@ const Category = () => {
           </span>
         </h1>
 
-        <GridCard />
-
         <NewsComponents data={categories} title={false} />
         {nextData && <GridCard data={nextData} />}
       </div>

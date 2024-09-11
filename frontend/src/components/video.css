@@ -19,8 +19,10 @@
   width: fit-content;
   padding-left: 20px;
   text-decoration: none;
-  color: #fff;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
   font-size: 30px;
+  font-weight: 800;
 }
 
 body.arabic .videos .title {
@@ -29,6 +31,7 @@ body.arabic .videos .title {
 }
 .videos .title:hover {
   color: var(--var-color);
+  -webkit-text-stroke-color: var(--var-color);
 }
 .videos .title::after {
   content: "";
