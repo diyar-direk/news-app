@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Card from "../components/Card";
 import Videos from "../components/Videos";
 import NewsComponents from "../components/NewsComponents";
@@ -41,7 +41,6 @@ export default function Home() {
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % topNews.length);
     }, 10000);
-    console.log(currentSlide);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -94,9 +93,9 @@ export default function Home() {
       style={{ backgroundImage: `url(${e.photo[0]})` }}
     >
       <div className="container">
-        <Link to="/category" state={{ query: e.category }} className="category">
+        <NavLink to={`/category/${e.category}`} className="category">
           {e.category}
-        </Link>
+        </NavLink>
         <Link to="/read" state={{ id: e._id }} className="title">
           {e.headline.length < 37
             ? e.headline

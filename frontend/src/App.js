@@ -48,7 +48,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/category" element={<Category />} />
+        <Route path="/category/:category" element={<Category />} />
         <Route path="/read" element={<Read />} />
         <Route path="/login" element={<Login />} />
 

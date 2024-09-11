@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { Context } from "../context/Context";
 const NewsComponents = (props) => {
   const context = useContext(Context);
   const language = context.langValue.home;
   const propsData = props.data && props.data;
   const importantNews = propsData && propsData[0];
+
   // Helper function to format time ago
   const timeAgo = (date) => {
     const now = new Date();
@@ -47,9 +48,9 @@ const NewsComponents = (props) => {
             </Link>
             <div className="flex-1">
               <div className="time flex">
-                <Link to="/category" state={{ query: e.category }}>
+                <NavLink to={`/category/${e.category}`} key={e}>
                   {e.category}
-                </Link>
+                </NavLink>
                 <p className="time">{timeAgo(e.publishedAt)}</p>
               </div>
               <Link to="/read" state={{ id: e._id }}>
@@ -66,12 +67,9 @@ const NewsComponents = (props) => {
   return (
     <div className="category container">
       {props.title && (
-        <Link
-          to="/category"
-          state={{ query: importantNews && importantNews.category }}
-        >
+        <NavLink to={`/category/${importantNews && importantNews.category}`}>
           {importantNews && importantNews.category}
-        </Link>
+        </NavLink>
       )}
       <article className="flex">
         <div className="important card">
@@ -83,12 +81,11 @@ const NewsComponents = (props) => {
             <img src={importantNews && importantNews.photo[0]} alt="1"></img>
           </Link>
           <div className="time flex">
-            <Link
-              to="/category"
-              state={{ query: importantNews && importantNews.category }}
+            <NavLink
+              to={`/category/${importantNews && importantNews.category}`}
             >
               {importantNews && importantNews.category}
-            </Link>
+            </NavLink>
             <p className="time">
               {importantNews && timeAgo(importantNews.publishedAt)}
             </p>
@@ -106,13 +103,12 @@ const NewsComponents = (props) => {
             {subNews}
 
             {props.title && (
-              <Link
-                to="/category"
-                state={{ query: importantNews && importantNews.category }}
+              <NavLink
+                to={`/category/${importantNews && importantNews.category}`}
                 className="all"
               >{` ${language && language.btn} ${
                 importantNews && importantNews.category
-              }`}</Link>
+              }`}</NavLink>
             )}
           </div>
         )}
