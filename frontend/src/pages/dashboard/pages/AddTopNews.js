@@ -1,13 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
-import axios from "axios";
 
 const AddTopNews = () => {
   const [category, setCategory] = useState("");
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [position, setPosition] = useState("");
+  const [positionError, setPositionError] = useState(false);
+  const [categoryError, setCategoryError] = useState(false);
+  const [headlineError, setHeadlineError] = useState(false);
+  const [summaryError, setSummaryError] = useState(false);
+  const [filesError, setFilesError] = useState(false);
   const [files, setFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   function handleClick(e) {
@@ -38,6 +42,7 @@ const AddTopNews = () => {
 
   function handelSelect(e) {
     setCategory(e.target.dataset.type);
+    setCategoryError(false);
   }
 
   function addCat() {
@@ -77,6 +82,14 @@ const AddTopNews = () => {
       ? formData.append("photo", e)
       : formData.append("video", e);
   });
+  function handelSubmit() {
+    if (category === "") setCategoryError(true);
+    else if (headline === "") setHeadlineError(true);
+    else if (summary === "") setSummaryError(true);
+    else if (position === "") setPositionError(true);
+    else if (files.length <= 0) setFilesError(true);
+  }
+
   return (
     <div className="main">
       <div className="dashboard-container center">
@@ -96,7 +109,10 @@ const AddTopNews = () => {
           </label>
           <div className="no-wrap">
             <input
-              onInput={(e) => setCategory(e.target.value)}
+              onInput={(e) => {
+                setCategory(e.target.value);
+                setCategoryError(false);
+              }}
               className="flex-1 disabled"
               type="text"
               disabled={true}
@@ -113,17 +129,34 @@ const AddTopNews = () => {
               </span>
             </div>
           </div>
+
+          {categoryError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorCategory}
+            </p>
+          )}
+
           <label htmlFor="headline">
             {language && language.dashboard.forms.headline}
           </label>
           <input
-            onInput={(e) => setHeadline(e.target.value)}
+            onInput={(e) => {
+              setHeadline(e.target.value);
+              setHeadlineError(false);
+            }}
             value={headline}
             name="headline"
             type="text"
             placeholder={language && language.dashboard.forms.headline}
             id="headline"
           />
+
+          {headlineError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorHeadline}
+            </p>
+          )}
+
           <label
             htmlFor="summray"
             onClick={() => {
@@ -133,7 +166,10 @@ const AddTopNews = () => {
             {language && language.dashboard.forms.summary}
           </label>
           <textarea
-            onInput={(e) => setSummary(e.target.value)}
+            onInput={(e) => {
+              setSummary(e.target.value);
+              setSummaryError(false);
+            }}
             value={summary}
             name="summary"
             type="text"
@@ -141,6 +177,13 @@ const AddTopNews = () => {
             id="summary"
             rows={3}
           ></textarea>
+
+          {summaryError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorSummary}
+            </p>
+          )}
+
           <label htmlFor="position">
             {language && language.dashboard.forms.position}
           </label>
@@ -152,8 +195,15 @@ const AddTopNews = () => {
             max={5}
             min={1}
             value={position}
-            onChange={(e) => setPosition(e.target.value)}
+            onChange={(e) => {
+              setPosition(e.target.value);
+              setPositionError(false);
+            }}
           />
+
+          {positionError && (
+            <p className="error">{language.dashboard.forms.errorPosition}</p>
+          )}
 
           <label htmlFor="file">
             {language && language.dashboard.forms.files}
@@ -173,6 +223,12 @@ const AddTopNews = () => {
             <i className="fa-solid fa-photo-film"></i>
           </label>
 
+          {filesError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorFiles}
+            </p>
+          )}
+
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
           <div className="file-flex">
@@ -187,7 +243,7 @@ const AddTopNews = () => {
             ))}
           </div>
 
-          <div className="submit">
+          <div className="submit" onClick={handelSubmit}>
             {language && language.dashboard.forms.create}
           </div>
         </form>

@@ -7,6 +7,10 @@ const AddNews = () => {
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [files, setFiles] = useState([]);
+  const [categoryError, setCategoryError] = useState(false);
+  const [headlineError, setHeadlineError] = useState(false);
+  const [summaryError, setSummaryError] = useState(false);
+  const [filesError, setFilesError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   function handleClick(e) {
     e.stopPropagation();
@@ -36,6 +40,7 @@ const AddNews = () => {
 
   function handelSelect(e) {
     setCategory(e.target.dataset.type);
+    setCategoryError(false);
   }
 
   function addCat() {
@@ -76,6 +81,13 @@ const AddNews = () => {
       : formData.append("video", e);
   });
 
+  function handelSubmit() {
+    if (category === "") setCategoryError(true);
+    else if (headline === "") setHeadlineError(true);
+    else if (summary === "") setSummaryError(true);
+    else if (files.length <= 0) setFilesError(true);
+  }
+
   return (
     <div className="main">
       <div className="dashboard-container center">
@@ -95,7 +107,10 @@ const AddNews = () => {
           </label>
           <div className="no-wrap">
             <input
-              onInput={(e) => setCategory(e.target.value)}
+              onInput={(e) => {
+                setCategory(e.target.value);
+                setCategoryError(false);
+              }}
               className="flex-1 disabled"
               type="text"
               disabled={true}
@@ -112,17 +127,34 @@ const AddNews = () => {
               </span>
             </div>
           </div>
+
+          {categoryError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorCategory}
+            </p>
+          )}
+
           <label htmlFor="headline">
             {language && language.dashboard.forms.headline}
           </label>
           <input
-            onInput={(e) => setHeadline(e.target.value)}
+            onInput={(e) => {
+              setHeadline(e.target.value);
+              setHeadlineError(false);
+            }}
             value={headline}
             name="headline"
             type="text"
             placeholder={language && language.dashboard.forms.headline}
             id="headline"
           />
+
+          {headlineError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorHeadline}
+            </p>
+          )}
+
           <label
             htmlFor="summray"
             onClick={() => {
@@ -132,7 +164,10 @@ const AddNews = () => {
             {language && language.dashboard.forms.summary}
           </label>
           <textarea
-            onInput={(e) => setSummary(e.target.value)}
+            onInput={(e) => {
+              setSummary(e.target.value);
+              setSummaryError(false);
+            }}
             value={summary}
             name="summary"
             type="text"
@@ -140,6 +175,13 @@ const AddNews = () => {
             id="summary"
             rows={3}
           ></textarea>
+
+          {summaryError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorSummary}
+            </p>
+          )}
+
           <label htmlFor="file">
             {language && language.dashboard.forms.files}
           </label>
@@ -158,6 +200,12 @@ const AddNews = () => {
             <i className="fa-solid fa-photo-film"></i>
           </label>
 
+          {filesError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorFiles}
+            </p>
+          )}
+
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
           <div className="file-flex">
@@ -172,7 +220,7 @@ const AddNews = () => {
             ))}
           </div>
 
-          <div className="submit">
+          <div className="submit" onClick={handelSubmit}>
             {language && language.dashboard.forms.create}
           </div>
         </form>

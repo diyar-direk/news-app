@@ -141,6 +141,11 @@ div.main .dashboard-container form.add-news > div.submit:hover {
   background-color: var(--hover-color);
 }
 
+div.main .error {
+  color: red;
+  letter-spacing: 1px;
+}
+
 @keyframes overflow {
   0%,
   99% {

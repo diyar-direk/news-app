@@ -9,9 +9,13 @@ const UpdateNews = () => {
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [files, setFiles] = useState([]);
+  const [categoryError, setCategoryError] = useState(false);
+  const [headlineError, setHeadlineError] = useState(false);
+  const [summaryError, setSummaryError] = useState(false);
+  const [filesError, setFilesError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const params = useParams();
-  
+
   useEffect(() => {
     axios.get(`http://localhost:8000/api/news/${params.id}`).then((res) => {
       setCategory(res.data.item.category);
@@ -51,13 +55,6 @@ const UpdateNews = () => {
     setCategory(e.target.dataset.type);
   }
 
-  function addCat() {
-    const inp = document.querySelector(`input[name="category"]`);
-    inp.disabled = false;
-    inp.classList.remove("disabled");
-    inp.focus();
-  }
-
   function handelFiles(e) {
     const selectedFiles = Array.from(e.target.files);
 
@@ -89,6 +86,12 @@ const UpdateNews = () => {
       : formData.append("video", e);
   });
 
+  function handelSubmit() {
+    if (category === "") setCategoryError(true);
+    else if (headline === "") setHeadlineError(true);
+    else if (summary === "") setSummaryError(true);
+    else if (files.length <= 0) setFilesError(true);
+  }
   return (
     <div className="main">
       <div className="dashboard-container center">
@@ -108,46 +111,81 @@ const UpdateNews = () => {
           </label>
           <div className="no-wrap">
             <input
-              onInput={(e) => setCategory(e.target.value)}
+              onInput={(e) => {
+                setCategory(e.target.value);
+                setCategoryError(false);
+              }}
+              className="flex-1"
               type="text"
               name="category"
               value={category}
-              placeholder="category"
+              placeholder={language && language.dashboard.forms.category}
               id="category"
             />
             <i className="fa-solid fa-chevron-down" onClick={handleClick}></i>
             <div className="select-category">
               {dataType}
-              <span onClick={addCat}>add category</span>
+              <span>{language && language.dashboard.forms.add}</span>
             </div>
           </div>
-          <label htmlFor="headline">headline:</label>
+
+          {categoryError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorCategory}
+            </p>
+          )}
+
+          <label htmlFor="headline">
+            {language && language.dashboard.forms.headline}
+          </label>
           <input
-            onInput={(e) => setHeadline(e.target.value)}
+            onInput={(e) => {
+              setHeadline(e.target.value);
+              setHeadlineError(false);
+            }}
             value={headline}
             name="headline"
             type="text"
-            placeholder="headline"
+            placeholder={language && language.dashboard.forms.headline}
             id="headline"
           />
+
+          {headlineError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorHeadline}
+            </p>
+          )}
+
           <label
             htmlFor="summray"
             onClick={() => {
               document.querySelector("textarea").focus();
             }}
           >
-            summary:
+            {language && language.dashboard.forms.summary}
           </label>
           <textarea
-            onInput={(e) => setSummary(e.target.value)}
+            onInput={(e) => {
+              setSummary(e.target.value);
+              setSummaryError(false);
+            }}
             value={summary}
             name="summary"
             type="text"
-            placeholder="summary"
+            placeholder={language && language.dashboard.forms.summary}
             id="summary"
             rows={3}
           ></textarea>
-          <label htmlFor="file">Add 2 photos and 1 video:</label>
+
+          {summaryError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorSummary}
+            </p>
+          )}
+
+          <label htmlFor="file">
+            {language && language.dashboard.forms.files}
+          </label>
           <label
             htmlFor="file"
             className="file"
@@ -163,6 +201,12 @@ const UpdateNews = () => {
             <i className="fa-solid fa-photo-film"></i>
           </label>
 
+          {filesError && (
+            <p className="error">
+              {language && language.dashboard.forms.errorFiles}
+            </p>
+          )}
+
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
           <div className="file-flex">
@@ -177,7 +221,9 @@ const UpdateNews = () => {
             ))}
           </div>
 
-          <div className="submit">Submit</div>
+          <div className="submit" onClick={handelSubmit}>
+            {language && language.dashboard.forms.updates}
+          </div>
         </form>
       </div>
     </div>

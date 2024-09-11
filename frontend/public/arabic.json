@@ -93,7 +93,12 @@
             "errorName":"عليك أن تختار الاسم",
             "errorPassword":"يجب أن تكون كلمة المرور أطول من 6 أحرف",
             "errorRole":"عليك أن تختار نوع المستخدم",
-            "errorPasswordcon":"كلمة المرور خاطئة"
+            "errorPasswordcon":"كلمة المرور خاطئة",
+            "errorCategory":"عليك أن تختار الفئة",
+            "errorHeadline":"عليك أن تختار العنوان",
+            "errorSummary":"عليك أن تكتب النص",
+            "errorPosition":"اختر موضعًا للخبر",
+            "errorFiles":"تحميل الملفات لإرسالها"
         }
     }
 }

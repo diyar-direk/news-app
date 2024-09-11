@@ -80,8 +80,8 @@
             "category":"Category",
             "position":"position",
             "add":"Add Category",
-            "summary":"Summary",
-            "files":"can uplude 3 photos and 1 video",
+            "summary":"text",
+            "files":"can upload 3 photos and 1 video",
             "create":"Create",
             "updates":"Update",
             "role":"Role",
@@ -93,7 +93,12 @@
             "errorName":"name is required",
             "errorPassword":"password must be longer then 6 charecters",
             "errorRole":"you have to select role",
-            "errorPasswordcon":"password is wrong"
+            "errorPasswordcon":"password is wrong",
+            "errorCategory":"category is required",
+            "errorHeadline":"Headline is required",
+            "errorSummary":"text is required",
+            "errorPosition":"position is required",
+            "errorFiles":"upload files to send"
         }
     }
 }

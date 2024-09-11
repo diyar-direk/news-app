@@ -80,7 +80,7 @@ const AddUser = () => {
           />
 
           {errorName && (
-            <p style={{ color: "red" }}>{language.dashboard.forms.errorName}</p>
+            <p className="error">{language.dashboard.forms.errorName}</p>
           )}
 
           <label
@@ -120,7 +120,7 @@ const AddUser = () => {
           </div>
 
           {errorRole && (
-            <p style={{ color: "red" }}>{language.dashboard.forms.errorRole}</p>
+            <p className="error">{language.dashboard.forms.errorRole}</p>
           )}
 
           <label htmlFor="password">
@@ -148,9 +148,7 @@ const AddUser = () => {
           </div>
 
           {errorPassword && (
-            <p style={{ color: "red" }}>
-              {language.dashboard.forms.errorPassword}
-            </p>
+            <p className="error">{language.dashboard.forms.errorPassword}</p>
           )}
 
           <label htmlFor="password confirmation">
@@ -180,9 +178,7 @@ const AddUser = () => {
           </div>
 
           {errorPasswordCon && (
-            <p style={{ color: "red" }}>
-              {language.dashboard.forms.errorPasswordcon}
-            </p>
+            <p className="error">{language.dashboard.forms.errorPasswordcon}</p>
           )}
 
           <div className="submit" onClick={handelSubmit}>

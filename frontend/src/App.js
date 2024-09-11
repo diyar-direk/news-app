@@ -57,9 +57,9 @@ function App() {
           <Route path="add-user" element={<AddUser />} />
           <Route path="news" element={<News />} />
           <Route path="news/:id" element={<UpdateNews />} />
+          <Route path="add" element={<AddNews />} />
           <Route path="top-news" element={<TopNews />} />
           <Route path="top-news/:id" element={<UpdateTopNews />} />
-          <Route path="add" element={<AddNews />} />
           <Route path="add-top-news" element={<AddTopNews />} />
         </Route>
       </Routes>
