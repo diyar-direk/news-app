@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./DashboardNavbar.css";
 import { Link, NavLink } from "react-router-dom";
 import Setting from "../../../components/Setting";
 import { Context } from "./../../../context/Context";
 const DashboardNavbar = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
   function handelCilck(e) {
     e.stopPropagation();
     e.target.classList.toggle("close");
@@ -21,6 +22,11 @@ const DashboardNavbar = () => {
   }
   const context = useContext(Context);
   const language = context.langValue;
+  const userDetails = context.userDetails.user;
+  userDetails &&
+    userDetails.forEach((element) => {
+      element === "adimn" && setIsAdmin(true);
+    });
 
   return (
     <>
@@ -43,15 +49,19 @@ const DashboardNavbar = () => {
         <h3>{language && language.dashboard.navbar.title}</h3>
         <h4 onClick={handelCilck}></h4>
 
-        <NavLink to={"/dashboard/users"}>
-          <i className="fa-solid fa-users"></i>
-          <span>{language && language.dashboard.navbar.user}</span>
-        </NavLink>
+        {isAdmin && (
+          <NavLink to={"/dashboard/users"}>
+            <i className="fa-solid fa-users"></i>
+            <span>{language && language.dashboard.navbar.user}</span>
+          </NavLink>
+        )}
 
-        <NavLink to={"/dashboard/add-user"}>
-          <i className="fa-solid fa-user-plus"></i>
-          <span>{language && language.dashboard.navbar.addUser}</span>
-        </NavLink>
+        {isAdmin && (
+          <NavLink to={"/dashboard/add-user"}>
+            <i className="fa-solid fa-user-plus"></i>
+            <span>{language && language.dashboard.navbar.addUser}</span>
+          </NavLink>
+        )}
 
         <NavLink to={"/dashboard/top-news"}>
           <i className="fa-solid fa-newspaper"></i>

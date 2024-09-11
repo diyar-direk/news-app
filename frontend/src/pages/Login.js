@@ -2,9 +2,15 @@ import React, { useContext, useState } from "react";
 import "./login.css";
 import axios from "axios";
 import { Context } from "../context/Context";
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const context = useContext(Context);
   const language = context.langValue.registration;
+  const [wrongData, setWrongData] = useState("");
+  const cookie = new Cookies();
+
+  const nav = useNavigate();
 
   const [form, setForm] = useState({
     username: "",
@@ -12,21 +18,29 @@ const Login = () => {
   });
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setWrongData(false);
   };
 
   const loginSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      console.log(form);
       const data = await axios.post("http://localhost:8000/api/news/login", {
         username: form.username,
         password: form.password,
       });
-      console.log(data.data.token);
+      cookie.set("Beare", data.data.token);
+      context.setUserDetails({
+        token: data.data.token,
+        user: data.data.userRole,
+      });
+      nav("/dashboard");
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
+      const errMessage = err.response.data.message;
+      if (errMessage === "Invalid email or password") setWrongData(true);
     }
   };
+
   function showPassword(e) {
     e.target.classList.toggle("fa-eye-slash");
     e.target.classList.toggle("fa-eye");
@@ -39,7 +53,6 @@ const Login = () => {
     <main className="center section-color">
       <form onSubmit={loginSubmit} className="wrapper register">
         <h2> {language && language.pageName} </h2>
-
         <div className="input-box">
           <span className="icon">
             <i className="bx bx-user"></i>
@@ -53,7 +66,6 @@ const Login = () => {
           />
           <label> {language && language.username} </label>
         </div>
-
         <div className="input-box">
           <span className="icon">
             <i onClick={showPassword} className="fa-regular show fa-eye"></i>
@@ -68,17 +80,10 @@ const Login = () => {
           />
           <label> {language && language.password} </label>
         </div>
-        <div className="remember-forgot">
-          <label className="center">
-            <input type="checkbox" />
-            {language && language.rememberMe}
-          </label>
-        </div>
-        <a href="login.html">
-          <button type="submit" className="btn">
-            {language && language.btn}
-          </button>
-        </a>
+        {wrongData && <p className="error">{language.wrongData}</p>}
+        <button type="submit" className="btn">
+          {language && language.btn}
+        </button>
       </form>
 
       <script src="script.js"></script>

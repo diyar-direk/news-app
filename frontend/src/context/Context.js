@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const Context = createContext({});
 
 export default function PageContext({ children }) {
+  const [userDetails, setUserDetails] = useState({});
   const [theme, setTheme] = useState(+localStorage.getItem("mode") || 0);
   const [language, setLanguage] = useState(
     localStorage.getItem("language") || "english"
@@ -16,14 +17,14 @@ export default function PageContext({ children }) {
     languageFun();
     fetch(`/${language}.json`)
       .then((res) => res.json())
-      .then((data) => setLanguageValue(data))
+      .then((data) => setLanguageValue(data));
   }, [language]);
 
   const darkmode = () => {
     const i = document.querySelector("nav > div.container > .more i.mode");
     const div = document.querySelector("div.sitting div.theme");
     if (theme) {
-      document.documentElement.style.setProperty("--body-color", "#121417");
+      document.documentElement.style.setProperty("--body-color", "#181B20");
       document.documentElement.style.setProperty("--border-color", "#4c4c4c");
       document.documentElement.style.setProperty("--font-color", "#d8d8d8");
       document.documentElement.style.setProperty("--section-color", "#22252c");
@@ -62,7 +63,16 @@ export default function PageContext({ children }) {
   }, []);
   return (
     <Context.Provider
-      value={{ theme, setTheme, language, setLanguage, langValue, dataType }}
+      value={{
+        theme,
+        setTheme,
+        language,
+        setLanguage,
+        langValue,
+        dataType,
+        userDetails,
+        setUserDetails,
+      }}
     >
       {children}
     </Context.Provider>

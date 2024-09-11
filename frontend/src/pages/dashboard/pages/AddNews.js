@@ -23,6 +23,7 @@ const AddNews = () => {
 
   const context = useContext(Context);
   const language = context.langValue;
+
   const dataType = context.dataType.map((e, index) => {
     return (
       <p onClick={handelSelect} key={index} data-type={e.toLowerCase()}>

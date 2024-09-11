@@ -59,7 +59,7 @@ div.main .dashboard-container form.add-news .no-wrap > i.show {
   position: absolute;
   right: 10px;
 }
-div.main .dashboard-container form.add-news .select-category {
+div.main .dashboard-container form.add-news .sele#13151Aect-category {
   position: absolute;
   right: 0;
   top: 100%;
@@ -141,7 +141,7 @@ div.main .dashboard-container form.add-news > div.submit:hover {
   background-color: var(--hover-color);
 }
 
-div.main .error {
+.error {
   color: red;
   letter-spacing: 1px;
 }

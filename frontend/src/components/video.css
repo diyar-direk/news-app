@@ -1,6 +1,6 @@
 .videos {
   width: 100%;
-  background: #000000;
+  background: #0e1013;
   color: aliceblue;
   padding: 30px 0px;
   display: flex;
@@ -19,8 +19,8 @@
   width: fit-content;
   padding-left: 20px;
   text-decoration: none;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #fff;
   font-size: 30px;
   font-weight: 800;
 }
@@ -82,7 +82,7 @@ body.arabic .videos .title::after {
   display: flex;
   object-fit: cover;
 }
-.videos .video .video-item .img:hover::before{
+.videos .video .video-item .img:hover::before {
   bottom: -6px;
 }
 .videos .video .video-item img:hover {

@@ -21,6 +21,7 @@ import UpdateNews from "./pages/dashboard/pages/UpdateNews.js";
 import UpdateTopNews from "./pages/dashboard/pages/UpdateTopNews.js";
 import User from "./pages/dashboard/pages/User.js";
 import AddUser from "./pages/dashboard/pages/AddUser.js";
+import Auth from "./pages/Auth/Auth.js";
 
 function App() {
   useEffect(() => {
@@ -52,15 +53,17 @@ function App() {
         <Route path="/read" element={<Read />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="users" element={<User />} />
-          <Route path="add-user" element={<AddUser />} />
-          <Route path="news" element={<News />} />
-          <Route path="news/:id" element={<UpdateNews />} />
-          <Route path="add" element={<AddNews />} />
-          <Route path="top-news" element={<TopNews />} />
-          <Route path="top-news/:id" element={<UpdateTopNews />} />
-          <Route path="add-top-news" element={<AddTopNews />} />
+        <Route element={<Auth />}>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="users" element={<User />} />
+            <Route path="add-user" element={<AddUser />} />
+            <Route path="news" element={<News />} />
+            <Route path="news/:id" element={<UpdateNews />} />
+            <Route path="add" element={<AddNews />} />
+            <Route path="top-news" element={<TopNews />} />
+            <Route path="top-news/:id" element={<UpdateTopNews />} />
+            <Route path="add-top-news" element={<AddTopNews />} />
+          </Route>
         </Route>
       </Routes>
 
