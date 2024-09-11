@@ -432,9 +432,12 @@ main > div.news > div.category > a {
   display: inline-block;
   padding-left: 20px;
   text-transform: capitalize;
+  transition: .3s;
+  font-weight: 800;
   letter-spacing: 1px;
   font-size: 40px;
-  color: var(--font-color);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--font-color);
 }
 body.arabic main > div.news > div.category > a {
   padding-left: 0;
@@ -442,6 +445,8 @@ body.arabic main > div.news > div.category > a {
 }
 main > div.news > div.category > a:hover {
   color: var(--var-color);
+
+  -webkit-text-stroke-color: var(--hover-color);
 }
 body.arabic main > div.news > div.category > a::before {
   right: 0;
@@ -458,7 +463,7 @@ main > div.news > div.category > a::before {
   border-radius: 50%;
 }
 main > div.news > div.category > article {
-  gap: 25px;
+  gap: 30px;
 }
 main > div.news > div.category > article > div.sub {
   flex: 42%;
@@ -522,6 +527,8 @@ main > div.news > div.category > article > div.sub > div a.image-hover {
 main > div.news > div.category > article > div.sub > div a.image-hover img {
   object-fit: cover;
   width: 100%;
+
+  border-radius: 5px;
 }
 main > div.news > div.category > article > div.sub > div:not(:last-of-type) {
   padding-bottom: 10px;
@@ -563,6 +570,7 @@ main > div.news > div.category > article > div.sub a.all:hover,
   color: white;
 }
 .important img {
+  border-radius: 5px;
   max-height: 400px;
   width: 100%;
   object-fit: cover;

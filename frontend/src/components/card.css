@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  gap: 20px;
+  gap: 30px;
   align-items: flex-start;
 }
 .flex-card > div.card {
@@ -19,7 +19,9 @@
   text-transform: capitalize;
   letter-spacing: 1px;
   font-size: 30px;
-  color: var(--font-color);
+  font-weight: 800;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--font-color);
 }
 body.arabic .flex-card > div.card a.title {
   padding-right: 15px;
@@ -70,7 +72,9 @@ body.arabic .flex-card > div.card .info p.time {
   max-height: 273px;
   border-radius: 4px;
 }
-
+.flex-card > div.card .top-images {
+  height: 260px;
+}
 .flex-card > div.card .center {
   border-top: solid 1px var(--border-color);
   padding: 20px 0 10px;
@@ -78,7 +82,7 @@ body.arabic .flex-card > div.card .info p.time {
 .flex-card > div.card .center .image-hover {
   width: 100px;
   margin-right: 10px;
-  max-height: 66px ;
+  max-height: 66px;
 }
 body.arabic .flex-card > div.card .center .image-hover {
   margin-right: 0px;
@@ -90,8 +94,9 @@ body.arabic .flex-card > div.card .center .image-hover {
 
 .flex-card > div.card a:not(.all):hover {
   color: var(--var-color) !important;
+  -webkit-text-stroke-color: var(--hover-color);
 }
-.flex-card > div.card .info:hover  + a.bottom-before::before {
+.flex-card > div.card .info:hover + a.bottom-before::before {
   bottom: -6px;
 }
 .flex-card > div.card a.all {
