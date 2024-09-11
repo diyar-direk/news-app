@@ -1,6 +1,6 @@
 import React from "react";
 import "./video.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Videos = (props) => {
   const timeAgo = (date) => {
     const now = new Date();
@@ -47,9 +47,7 @@ const Videos = (props) => {
             </Link>
             <div className="headline">
               <div className="flex time">
-                <Link to="/category" state={{ query: e.category }}>
-                  {e.category}
-                </Link>
+                <NavLink to={`/category/${e.category}`}>{e.category}</NavLink>
                 <p className="time"> {timeAgo(e.publishedAt)} </p>
               </div>
               <Link to="/read" state={{ id: e._id }}>
@@ -65,13 +63,12 @@ const Videos = (props) => {
     <div className="videos">
       <div className="container ">
         <div className="w-100">
-          <Link
-            to="/category"
-            state={{ query: [props.data && props.data[0].category] }}
+          <NavLink
+            to={`/category/${[props.data && props.data[0].category]}`}
             className="title"
           >
-            {[props.data && props.data[0].category]}{" "}
-          </Link>
+            {[props.data && props.data[0].category]}
+          </NavLink>
         </div>
         <div className="video">{data}</div>
       </div>

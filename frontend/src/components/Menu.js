@@ -58,9 +58,15 @@ export default function Menu() {
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
-            <NavLink to={"/"}>home</NavLink>
-            <NavLink to={"/contact"}>contact</NavLink>
-            <NavLink to={"/about"}>about</NavLink>
+            <NavLink to={"/"}>
+              {context.langValue && context.langValue.links.Home}
+            </NavLink>
+            <NavLink to={"/contact"}>
+              {context.langValue && context.langValue.links.contact}
+            </NavLink>
+            <NavLink to={"/about"}>
+              {context.langValue && context.langValue.links.about}
+            </NavLink>
           </div>
         </article>
         <article>

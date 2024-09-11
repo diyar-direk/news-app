@@ -53,8 +53,9 @@ const Read = () => {
         );
         setData(response.data);
 
-        const top = await axios.get(`http://localhost:8000/api/top-news`);
-        setSideTop(top.data.data);
+        const top = await axios.get(`http://localhost:8000/api/top-news?limit=5`);
+        const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
+        setSideTop(filteredTopNews);
       } catch (err) {
         console.log(err);
       } finally {
@@ -75,7 +76,10 @@ const Read = () => {
           const side = await axios.get(
             `http://localhost:8000/api/news?category=${data.item.category}&limit=5`
           );
-          setSideNews(side.data.data.news);
+          const filteredSideNews = side.data.data.news.filter(
+            (ele) => ele._id !== data.item._id
+          );
+          setSideNews(filteredSideNews);
         } catch (err) {
           console.log(err);
         }
@@ -190,7 +194,9 @@ const Read = () => {
                       <img alt="" src={ele.photo[0]} />
                     </Link>
                     <Link to="/read" state={{ id: ele._id }}>
-                      {ele.headline}
+                      {ele.headline.length < 37
+                        ? ele.headline
+                        : ele.headline.slice(0, 70) + "..."}
                     </Link>
                   </div>
                 ))}

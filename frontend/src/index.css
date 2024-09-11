@@ -432,7 +432,7 @@ main > div.news > div.category > a {
   display: inline-block;
   padding-left: 20px;
   text-transform: capitalize;
-  transition: .3s;
+  transition: 0.3s;
   font-weight: 800;
   letter-spacing: 1px;
   font-size: 40px;
@@ -548,6 +548,9 @@ main > div.news > div.category > article > div.sub .flex-1 > a {
   display: inline-block;
   color: var(--font-color);
 }
+body.arabic main > div.news > div.category > article > div.sub .flex-1 > a {
+  padding-right: 8px;
+}
 main > div.news > div.category > article > div.sub .flex-1 > a:hover {
   color: var(--var-color);
 }
@@ -637,7 +640,7 @@ main > div.news > div.category > article > div.sub a.all:hover,
     font-size: 12px;
   }
   main {
-    margin-top: 100px;
+    margin-top: 98px;
   }
   main > div.news > div.category > article > div.sub > div a.image-hover {
     max-width: 110px;
