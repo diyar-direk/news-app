@@ -54,7 +54,10 @@ const GridCard = (props) => {
           return (
             <div className="card">
               <Link to="/read" state={{ id: e._id }} className="image-hover">
-                <img src={e.photo[0]} alt="" />
+                <img
+                  src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                  alt=""
+                />
               </Link>
               <div className="info">
                 <h2>

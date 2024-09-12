@@ -58,7 +58,10 @@ const Videos = (props) => {
               state={{ id: e._id }}
               className="img bottom-before"
             >
-              <img src={e.photo[0]} alt="img" />
+              <img
+                src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                alt="img"
+              />
             </Link>
             <div className="headline">
               <div className="flex time">

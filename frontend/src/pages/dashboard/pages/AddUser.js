@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
+import axios from "axios";
 
 const AddUser = () => {
   const [userName, setUserName] = useState("");
@@ -58,6 +59,7 @@ const AddUser = () => {
       setErrorPasswordCon(true);
     }
     try {
+      // await axios.post("http://localhost:8000/api/users");
     } catch (err) {
       console.log(err);
     }
