@@ -4,9 +4,11 @@ import { Context } from "../context/Context";
 const NewsComponents = (props) => {
   const context = useContext(Context);
   const language = context.langValue.home;
+  
   const propsData = props.data && props.data;
   const importantNews = propsData && propsData[0];
-
+  
+  const time = context.langValue.time;
   // Helper function to format time ago
   const timeAgo = (date) => {
     const now = new Date();
@@ -21,19 +23,29 @@ const NewsComponents = (props) => {
     const years = Math.floor(days / 365);
 
     if (years > 0) {
-      return years === 1 ? "1 year ago" : `${years} years ago`;
+      return years === 1
+        ? `${time.oneYear}`
+        : `${time.beforeYears} ${years} ${time.years}`;
     }
     if (months > 0) {
-      return months === 1 ? "1 month ago" : `${months} months ago`;
+      return months === 1
+        ? `${time.oneMonth}`
+        : `${time.beforeMonth} ${months} ${time.months}`;
     }
     if (days > 0) {
-      return days === 1 ? "1 day ago" : `${days} days ago`;
+      return days === 1
+        ? `${time.oneDay}`
+        : `${time.beforeDays} ${days} ${time.days}`;
     }
     if (hours > 0) {
-      return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+      return hours === 1
+        ? `${time.oneHour}`
+        : `${time.beforeHours} ${hours} ${time.hours}`;
     }
     if (minutes > 0) {
-      return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+      return minutes === 1
+        ? `${time.oneMin}`
+        : `${time.beforeMinutes} ${minutes} ${time.minutes}`;
     }
     return "Just now";
   };

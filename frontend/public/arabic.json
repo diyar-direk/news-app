@@ -4,6 +4,25 @@
     "about": "معلومات عنا",
     "contact": "تواصل معنا"
   },
+  "time": {
+    "oneMin":" قبل دقيقة واحدة ",
+    "oneHour":" قبل ساعة واحدة",
+    "oneDay":" قبل يوم واحد",
+    "oneMonth":"قبل شهر واحد ",
+    "oneYear":" قبل سنة واحدة",
+
+
+    "beforeMinutes": "قبل",
+    "minutes": "دقائق",
+    "beforeHours": "قبل",
+    "hours": "ساعات",
+    "beforeDays": "قبل",
+    "days": "ايام",
+    "beforeMonth": "قبل",
+    "months": "اشهر",
+    "beforeYears": "قبل",
+    "years": "سنوات"
+  },
   "home": {
     "pages": "صفحات الموقع",
     "btn": " رؤية المزيد عن  ",

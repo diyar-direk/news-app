@@ -108,6 +108,11 @@ div.the-news article.sub-news > div:not(:last-of-type) {
 div.the-news article.sub-news > div > a.image-hover {
   max-width: 100px;
   margin: 0;
+  max-height: 66.66px;
+  object-fit: cover;
+}
+div.the-news article.sub-news > div > a.image-hover img{
+  object-fit: cover; 
 }
 div.the-news article.sub-news > div > a:not(.image-hover) {
   color: var(--font-color);

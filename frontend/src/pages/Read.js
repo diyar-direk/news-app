@@ -15,6 +15,11 @@ const Read = () => {
   const [sideTop, setSideTop] = useState([]);
   const [sideNews, setSideNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [extraCards, setExtraCards] = useState([]);
+  const context1 = useContext();
+  const time = context1.langValue.time;
+
+  // Helper function to format time ago
   const timeAgo = (date) => {
     const now = new Date();
     const diff = now - new Date(date);
@@ -23,23 +28,34 @@ const Read = () => {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
+
     const months = Math.floor(days / 30);
     const years = Math.floor(days / 365);
 
     if (years > 0) {
-      return years === 1 ? "1 year ago" : `${years} years ago`;
+      return years === 1
+        ? `${time.oneYear}`
+        : `${time.beforeYears} ${years} ${time.years}`;
     }
     if (months > 0) {
-      return months === 1 ? "1 month ago" : `${months} months ago`;
+      return months === 1
+        ? `${time.oneMonth}`
+        : `${time.beforeMonth} ${months} ${time.months}`;
     }
     if (days > 0) {
-      return days === 1 ? "1 day ago" : `${days} days ago`;
+      return days === 1
+        ? `${time.oneDay}`
+        : `${time.beforeDays} ${days} ${time.days}`;
     }
     if (hours > 0) {
-      return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+      return hours === 1
+        ? `${time.oneHour}`
+        : `${time.beforeHours} ${hours} ${time.hours}`;
     }
     if (minutes > 0) {
-      return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+      return minutes === 1
+        ? `${time.oneMin}`
+        : `${time.beforeMinutes} ${minutes} ${time.minutes}`;
     }
     return "Just now";
   };
@@ -53,7 +69,9 @@ const Read = () => {
         );
         setData(response.data);
 
-        const top = await axios.get(`http://localhost:8000/api/top-news?limit=5`);
+        const top = await axios.get(
+          `http://localhost:8000/api/top-news?limit=5`
+        );
         const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
         setSideTop(filteredTopNews);
       } catch (err) {
@@ -74,12 +92,13 @@ const Read = () => {
       if (data.item && data.item.category) {
         try {
           const side = await axios.get(
-            `http://localhost:8000/api/news?category=${data.item.category}&limit=5`
+            `http://localhost:8000/api/news?category=${data.item.category}&limit=10`
           );
           const filteredSideNews = side.data.data.news.filter(
             (ele) => ele._id !== data.item._id
           );
-          setSideNews(filteredSideNews);
+          setSideNews(filteredSideNews.slice(0, 4));
+          setExtraCards(filteredSideNews.slice(4, filteredSideNews.length));
         } catch (err) {
           console.log(err);
         }
@@ -121,6 +140,7 @@ const Read = () => {
   if (loading) {
     return <Loader />;
   }
+  console.log(sideNews);
 
   return (
     <>
@@ -177,7 +197,12 @@ const Read = () => {
                       className="image-hover"
                     >
                       <img alt="" src={ele.photo[0]} />
-                      <h4>{ele.headline}</h4>
+                      <h4>
+                        {" "}
+                        {ele.headline.length < 37
+                          ? ele.headline
+                          : ele.headline.slice(0, 70) + "..."}
+                      </h4>
                     </Link>
                   ))}
               </article>
@@ -203,7 +228,7 @@ const Read = () => {
             </article>
           </div>
         </div>
-        <GridCard />
+        {extraCards && <GridCard data={extraCards} />}
       </main>
     </>
   );

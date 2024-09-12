@@ -11,6 +11,12 @@ div.main .dashboard-container article.search input {
   border-right: solid 1px var(--border-color);
   margin-right: 10px;
 }
+body.arabic div.main .dashboard-container article.search input {
+  border-right: none;
+  margin-right: 0px;
+  border-left: solid 1px var(--border-color);
+  margin-left: 10px;
+}
 div.main .dashboard-container article.search i {
   color: #777;
   cursor: pointer;
@@ -42,6 +48,16 @@ td {
   border: solid 1px var(--border-color);
   text-align: center;
   color: var(--font-color);
+}
+td.align-left {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 0px;
+}
+body.arabic td.align-left {
+  text-align: right;
+  padding-right: 10px;
+  padding-left: 0px;
 }
 tr:hover {
   background-color: var(--border-color);
@@ -131,6 +147,10 @@ div.main > div.overlay > div.content span.cancel:hover {
 }
 div.main > div.overlay > div.content span i {
   margin-right: 10px;
+}
+body.arabic div.main > div.overlay > div.content span i {
+  margin-right: 0px;
+  margin-left: 10px;
 }
 
 @media (max-width: 1050px) {

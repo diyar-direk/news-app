@@ -67,7 +67,7 @@ const TopNews = () => {
     searchData.map((item, index) => (
       <tr key={item._id}>
         <td>{index + 1}</td>
-        <td>
+        <td className="align-left">
           {item.headline.length <= 60
             ? item.headline
             : item.headline.slice(0, 60) + "..."}
