@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Card from "../components/Card";
 import Videos from "../components/Videos";
 import NewsComponents from "../components/NewsComponents";
 import axios from "axios";
 import Loader from "../components/Loader"; // Assuming you have a Loader component
+import { Context } from "../context/Context";
 
 export default function Home() {
   const [topNews, setTopNews] = useState([]);
@@ -12,7 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true); // Track loading state
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef(null);
-
+  const context = useContext(Context);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -56,6 +57,8 @@ export default function Home() {
       }, 10000);
     }
   };
+
+  const time = context.langValue.time;
   // Helper function to format time ago
   const timeAgo = (date) => {
     const now = new Date();
@@ -70,19 +73,29 @@ export default function Home() {
     const years = Math.floor(days / 365);
 
     if (years > 0) {
-      return years === 1 ? "1 year ago" : `${years} years ago`;
+      return years === 1
+        ? `${time.oneYear}`
+        : `${time.beforeYears} ${years} ${time.years}`;
     }
     if (months > 0) {
-      return months === 1 ? "1 month ago" : `${months} months ago`;
+      return months === 1
+        ? `${time.oneMonth}`
+        : `${time.beforeMonth} ${months} ${time.months}`;
     }
     if (days > 0) {
-      return days === 1 ? "1 day ago" : `${days} days ago`;
+      return days === 1
+        ? `${time.oneDay}`
+        : `${time.beforeDays} ${days} ${time.days}`;
     }
     if (hours > 0) {
-      return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+      return hours === 1
+        ? `${time.oneHour}`
+        : `${time.beforeHours} ${hours} ${time.hours}`;
     }
     if (minutes > 0) {
-      return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+      return minutes === 1
+        ? `${time.oneMin}`
+        : `${time.beforeMinutes} ${minutes} ${time.minutes}`;
     }
     return "Just now";
   };
