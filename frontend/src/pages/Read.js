@@ -16,8 +16,8 @@ const Read = () => {
   const [sideNews, setSideNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [extraCards, setExtraCards] = useState([]);
-  const context1 = useContext();
-  const time = context1.langValue.time;
+  const context = useContext(Context);
+  const time = context.langValue.time;
 
   // Helper function to format time ago
   const timeAgo = (date) => {
@@ -108,7 +108,6 @@ const Read = () => {
     fetchingData();
   }, [data.item]);
 
-  const context = useContext(Context);
   const language = context.langValue.readPage;
 
   function handleClick(e) {
@@ -164,7 +163,7 @@ const Read = () => {
                         key={index}
                         data-index={index}
                         className={`slide ${index === 0 ? "active" : ""}`}
-                        src={photo}
+                        src={`http://localhost:8000/img/news/${photo}`}
                         alt=""
                       />
                     ))}
@@ -196,7 +195,10 @@ const Read = () => {
                       state={{ id: ele._id }}
                       className="image-hover"
                     >
-                      <img alt="" src={ele.photo[0]} />
+                      <img
+                        alt=""
+                        src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                      />
                       <h4>
                         {" "}
                         {ele.headline.length < 37
@@ -216,7 +218,10 @@ const Read = () => {
                       state={{ id: ele._id }}
                       className="image-hover"
                     >
-                      <img alt="" src={ele.photo[0]} />
+                      <img
+                        alt=""
+                        src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                      />
                     </Link>
                     <Link to="/read" state={{ id: ele._id }}>
                       {ele.headline.length < 37

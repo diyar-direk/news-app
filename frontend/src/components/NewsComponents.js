@@ -4,10 +4,10 @@ import { Context } from "../context/Context";
 const NewsComponents = (props) => {
   const context = useContext(Context);
   const language = context.langValue.home;
-  
+
   const propsData = props.data && props.data;
   const importantNews = propsData && propsData[0];
-  
+
   const time = context.langValue.time;
   // Helper function to format time ago
   const timeAgo = (date) => {
@@ -56,7 +56,10 @@ const NewsComponents = (props) => {
         return (
           <div key={e._id} className="center">
             <Link to="/read" state={{ id: e._id }} className="image-hover ">
-              <img src={e.photo[0]} alt="1"></img>
+              <img
+                src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                alt="1"
+              ></img>
             </Link>
             <div className="flex-1">
               <div className="time flex">
@@ -91,7 +94,10 @@ const NewsComponents = (props) => {
             className="image-hover bottom-before"
           >
             <img
-              src={importantNews && `http://localhost:8000/img/news/woman.png`}
+              src={
+                importantNews &&
+                `http://localhost:8000/img/news/${importantNews.photo[0]}`
+              }
               alt="1"
             ></img>
           </Link>
