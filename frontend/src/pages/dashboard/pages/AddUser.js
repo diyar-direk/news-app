@@ -23,7 +23,7 @@ const AddUser = () => {
 
   const context = useContext(Context);
   const language = context.langValue;
-
+  const token = context.userDetails.token;
   document.body.addEventListener("click", () => {
     const catDiv = document.querySelector(
       "div.main .dashboard-container form.add-news .select-category.active"
@@ -56,6 +56,10 @@ const AddUser = () => {
       setErrorPassword(true);
     } else if (password !== passwordConfirmation) {
       setErrorPasswordCon(true);
+    }
+    try {
+    } catch (err) {
+      console.log(err);
     }
   }
 

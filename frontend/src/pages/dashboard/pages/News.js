@@ -13,12 +13,16 @@ const News = () => {
   const language = context.langValue;
   const token = context.userDetails.token;
 
-  useEffect(() => {
+  function fetchData() {
     axios
       .get("http://localhost:8000/api/news?fields=headline,category")
       .then((res) => setData(res.data.data.news))
       .catch((error) => console.error("Error fetching data:", error));
-  }, [data]);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setSearchData(data);
@@ -43,13 +47,14 @@ const News = () => {
     setOverlayVisible(true);
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
     setOverlayVisible(false);
-    axios.delete(`http://localhost:8000/api/news/${selectedItem._id}`, {
+    await axios.delete(`http://localhost:8000/api/news/${selectedItem._id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
     });
+    fetchData();
   };
 
   const handleCancelDelete = () => {

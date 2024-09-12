@@ -17,7 +17,9 @@ const Refresh = () => {
       try {
         const data = await axios.get(
           "http://localhost:8000/api/users/profile",
-          { headers: { Authorization: "Bearer " + tokenValue } }
+          {
+            headers: { Authorization: "Bearer " + tokenValue },
+          }
         );
 
         context.setUserDetails({

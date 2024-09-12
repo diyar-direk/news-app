@@ -12,12 +12,17 @@ const TopNews = () => {
   const context = useContext(Context);
   const language = context.langValue;
   const token = context.userDetails.token;
-  useEffect(() => {
+  function fetchData() {
     axios
-      .get("http://localhost:8000/api/top-news?sort=position")
+      .get(
+        "http://localhost:8000/api/top-news?fields=headline,category,position"
+      )
       .then((res) => setData(res.data.data))
       .catch((error) => console.error("Error fetching data:", error));
-  }, [data]);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setSearchData(data);
@@ -42,12 +47,16 @@ const TopNews = () => {
     setOverlayVisible(true);
   };
 
-  const handleConfirmDelete = () => {
-    axios.delete(`http://localhost:8000/api/top-news/${selectedItem._id}`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+  const handleConfirmDelete = async () => {
+    await axios.delete(
+      `http://localhost:8000/api/top-news/${selectedItem._id}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    fetchData();
     setOverlayVisible(false);
   };
 

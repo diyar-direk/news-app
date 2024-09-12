@@ -28,6 +28,7 @@ const DashboardNavbar = () => {
   function logOut() {
     const cookie = new Cookies();
     cookie.set("Bearer", "");
+    context.setUserDetails(false);
     nav("/");
   }
   return (

@@ -9,13 +9,23 @@ const User = () => {
   const [searchData, setSearchData] = useState([]);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const context = useContext(Context); 
+  const context = useContext(Context);
   const language = context.langValue;
-  useEffect(() => {
+  const token = context.userDetails.token;
+
+  function fetchUsers() {
     axios
-      .get("http://localhost:8000/api/User?fields=headline,category")
-      .then((res) => setData(res.data.data.User))
+      .get("http://localhost:8000/api/users", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+      .then((res) => setData(res.data))
       .catch((error) => console.error("Error fetching data:", error));
+  }
+
+  useEffect(() => {
+    fetchUsers();
   }, []);
 
   useEffect(() => {
@@ -29,8 +39,8 @@ const User = () => {
     } else {
       const filteredData = data.filter(
         (item) =>
-          item.headline.toLowerCase().includes(inpValue) ||
-          item.category.toLowerCase().includes(inpValue)
+          item.username.toLowerCase().includes(inpValue) ||
+          item.roles[0].toLowerCase().includes(inpValue)
       );
       setSearchData(filteredData);
     }
@@ -42,7 +52,12 @@ const User = () => {
   };
 
   const handleConfirmDelete = () => {
-    console.log("Deleting item:", selectedItem);
+    axios.delete(`http://localhost:8000/api/users/${selectedItem._id}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    fetchUsers();
     setOverlayVisible(false);
   };
 
@@ -60,24 +75,14 @@ const User = () => {
   const tableData = searchData.map((item, index) => (
     <tr key={item._id}>
       <td>{index + 1}</td>
-      <td style={{ textAlign: "left", paddingLeft: "10px" }}>
-        {item.headline.length <= 90
-          ? item.headline
-          : item.headline.slice(0, 90) + "..."}
-      </td>
-      <td>{item.category}</td>
+      <td className="align-left">{item.username}</td>
+      <td>{item.roles}</td>
       <td>
         <span
           data-content={language.dashboard.table.delete}
           onClick={() => handleDeleteClick(item)}
         >
           <i className="fa-solid fa-trash"></i>
-        </span>
-        <span data-content={language && language.dashboard.table.update}>
-          <Link
-            to={`${item._id}`}
-            className="fa-regular fa-pen-to-square"
-          ></Link>
         </span>
       </td>
     </tr>
