@@ -4,6 +4,24 @@
     "about": "about us",
     "contact": "contact us"
   },
+  "time": {
+    "oneMin": "1 minute ago",
+    "oneHour": " 1 hour ago",
+    "oneDay": " 1 day ago",
+    "oneMonth": "1 month ago ",
+    "oneYear": " 1 year ago",
+
+    "beforeMinutes": " ",
+    "minutes": "minutes ago",
+    "beforeHours": "",
+    "hours": "hours ago",
+    "beforeDays": "",
+    "days": "days ago",
+    "beforeMonth": "",
+    "months": "month ago",
+    "beforeYears": "",
+    "years": "years ago"
+  },
   "home": {
     "pages": "home pages",
     "btn": "see all ",
