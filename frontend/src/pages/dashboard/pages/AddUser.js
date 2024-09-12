@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
   const [userName, setUserName] = useState("");
@@ -12,7 +13,7 @@ const AddUser = () => {
   const [errorRole, setErrorRole] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorPasswordCon, setErrorPasswordCon] = useState(false);
-
+  const nav = useNavigate();
   function handleClick(e) {
     e.stopPropagation();
     document
@@ -59,7 +60,16 @@ const AddUser = () => {
       setErrorPasswordCon(true);
     }
     try {
-      // await axios.post("http://localhost:8000/api/users");
+      const data = await axios.post(
+        "http://localhost:8000/api/users",
+        {
+          username: userName,
+          password: password,
+          roles: [role],
+        },
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      nav("/dashboard/users");
     } catch (err) {
       console.log(err);
     }
