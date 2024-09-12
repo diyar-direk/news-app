@@ -56,7 +56,10 @@ export default function Card(props) {
         return (
           <div key={e._id} className="center">
             <Link className="image-hover ">
-              <img src={e.photo[0]} alt="1"></img>
+              <img
+                src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                alt="1"
+              ></img>
             </Link>
             <div className="flex-1">
               <div className="time flex">
@@ -100,7 +103,13 @@ export default function Card(props) {
           </h2>
         </Link>
         <Link className="image-hover bottom-before top-images ">
-          <img src={importantNews && importantNews.photo[0]} alt="1"></img>
+          <img
+            src={
+              importantNews &&
+              `http://localhost:8000/img/news/${importantNews.photo[0]}`
+            }
+            alt="1"
+          ></img>
         </Link>
       </div>
 
