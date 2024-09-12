@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../../context/Context";
+import { Context } from "../context/Context";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const Auth = () => {
@@ -10,7 +10,7 @@ const Auth = () => {
   return context.userDetails.token ? (
     <Outlet />
   ) : (
-    <Navigate state={{ from: location }} replace to={"*"} />
+    <Navigate state={{ from: location }} replace to={"/login"} />
   );
 };
 

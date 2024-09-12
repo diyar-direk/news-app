@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import "./addnews.css";
 import { Context } from "../../../context/Context";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddTopNews = () => {
   const [category, setCategory] = useState("");
@@ -25,6 +27,7 @@ const AddTopNews = () => {
 
   const context = useContext(Context);
   const language = context.langValue;
+  const token = context.userDetails.token;
   const dataType = context.dataType.map((e, index) => {
     return (
       <p onClick={handelSelect} key={index} data-type={e.toLowerCase()}>
@@ -70,24 +73,44 @@ const AddTopNews = () => {
     setErrorMessage("");
 
     setFiles([...images, ...videos]);
+    setFilesError(false);
   }
-  const formData = new FormData();
 
-  formData.append("category", category);
-  formData.append("headline", headline);
-  formData.append("summary", summary);
+  const nav = useNavigate();
 
-  files.forEach((e, index) => {
-    e.type.startsWith("image/")
-      ? formData.append("photo", e)
-      : formData.append("video", e);
-  });
-  function handelSubmit() {
+  async function handelSubmit() {
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
     else if (summary === "") setSummaryError(true);
     else if (position === "") setPositionError(true);
     else if (files.length <= 0) setFilesError(true);
+    else {
+      try {
+        const formData = new FormData();
+        formData.append("category", category);
+        formData.append("headline", headline);
+        formData.append("summary", summary);
+        formData.append("position", position);
+
+        files.forEach((e, index) => {
+          e.type.startsWith("image/")
+            ? formData.append("photo", e)
+            : formData.append("video", e);
+        });
+        const data = await axios.post(
+          "http://localhost:8000/api/top-news",
+          formData,
+          {
+            headers: { Authorization: "Bearer " + token },
+          }
+        );
+
+        nav("/dashboard/top-news");
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 
   return (

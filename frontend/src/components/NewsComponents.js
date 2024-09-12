@@ -78,7 +78,10 @@ const NewsComponents = (props) => {
             state={{ id: importantNews && importantNews._id }}
             className="image-hover bottom-before"
           >
-            <img src={importantNews && importantNews.photo[0]} alt="1"></img>
+            <img
+              src={importantNews && `http://localhost:8000/img/news/woman.png`}
+              alt="1"
+            ></img>
           </Link>
           <div className="time flex">
             <NavLink

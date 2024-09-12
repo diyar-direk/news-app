@@ -28,11 +28,14 @@ const Login = () => {
         username: form.username,
         password: form.password,
       });
-      cookie.set("Beare", data.data.token);
+
+      cookie.set("Bearer", data.data.token);
       context.setUserDetails({
         token: data.data.token,
         user: data.data.userRole,
+        isAdmin: data.data.userRole.includes("admin"),
       });
+
       nav("/dashboard");
     } catch (err) {
       console.log(err);

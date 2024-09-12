@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./DashboardNavbar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Setting from "../../../components/Setting";
 import { Context } from "./../../../context/Context";
+import Cookies from "universal-cookie";
+
 const DashboardNavbar = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
   function handelCilck(e) {
     e.stopPropagation();
     e.target.classList.toggle("close");
@@ -22,12 +23,13 @@ const DashboardNavbar = () => {
   }
   const context = useContext(Context);
   const language = context.langValue;
-  const userDetails = context.userDetails.user;
-  userDetails &&
-    userDetails.forEach((element) => {
-      element === "adimn" && setIsAdmin(true);
-    });
-
+  const admin = context.userDetails.isAdmin;
+  const nav = useNavigate();
+  function logOut() {
+    const cookie = new Cookies();
+    cookie.set("Bearer", "");
+    nav("/");
+  }
   return (
     <>
       <div className="navbar center">
@@ -39,7 +41,7 @@ const DashboardNavbar = () => {
             <Link to={"/"} className="btn">
               {language && language.dashboard.navbar.home}
             </Link>
-            <div className="btn">
+            <div className="btn" onClick={logOut}>
               {language && language.dashboard.navbar.out}
             </div>
           </div>
@@ -49,14 +51,14 @@ const DashboardNavbar = () => {
         <h3>{language && language.dashboard.navbar.title}</h3>
         <h4 onClick={handelCilck}></h4>
 
-        {isAdmin && (
+        {admin && (
           <NavLink to={"/dashboard/users"}>
             <i className="fa-solid fa-users"></i>
             <span>{language && language.dashboard.navbar.user}</span>
           </NavLink>
         )}
 
-        {isAdmin && (
+        {admin && (
           <NavLink to={"/dashboard/add-user"}>
             <i className="fa-solid fa-user-plus"></i>
             <span>{language && language.dashboard.navbar.addUser}</span>
@@ -78,7 +80,7 @@ const DashboardNavbar = () => {
           <span>{language && language.dashboard.navbar.news}</span>
         </NavLink>
 
-        <NavLink to={"/dashboard/add"}>
+        <NavLink to={"/dashboard/add-news"}>
           <i className="fa-solid fa-plus"></i>
           <span>{language && language.dashboard.navbar.addNews}</span>
         </NavLink>

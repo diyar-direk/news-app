@@ -11,12 +11,14 @@ const News = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const context = useContext(Context);
   const language = context.langValue;
+  const token = context.userDetails.token;
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/news?fields=headline,category")
       .then((res) => setData(res.data.data.news))
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     setSearchData(data);
@@ -42,8 +44,12 @@ const News = () => {
   };
 
   const handleConfirmDelete = () => {
-    console.log("Deleting item:", selectedItem);
     setOverlayVisible(false);
+    axios.delete(`http://localhost:8000/api/news/${selectedItem._id}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
   };
 
   const handleCancelDelete = () => {
