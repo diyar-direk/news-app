@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Setting from "../../../components/Setting";
 import { Context } from "./../../../context/Context";
 import Cookies from "universal-cookie";
+import { linksClick } from "../../../components/Navbar";
 
 const DashboardNavbar = () => {
   function handelCilck(e) {
@@ -55,35 +56,105 @@ const DashboardNavbar = () => {
         <h4 onClick={handelCilck}></h4>
 
         {admin && (
-          <NavLink to={"/dashboard/users"}>
+          <NavLink
+            to={"/dashboard/activities"}
+            onClick={() => {
+              linksClick(
+                document.querySelector("aside.dashboard-aside"),
+                true,
+                document.querySelector("aside.dashboard-aside > h4")
+              );
+            }}
+          >
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>{language && language.dashboard.navbar.activities}</span>
+          </NavLink>
+        )}
+
+        {admin && (
+          <NavLink
+            to={"/dashboard/users"}
+            onClick={() => {
+              linksClick(
+                document.querySelector("aside.dashboard-aside"),
+                true,
+                document.querySelector("aside.dashboard-aside > h4")
+              );
+            }}
+          >
             <i className="fa-solid fa-users"></i>
             <span>{language && language.dashboard.navbar.user}</span>
           </NavLink>
         )}
 
         {admin && (
-          <NavLink to={"/dashboard/add-user"}>
+          <NavLink
+            to={"/dashboard/add-user"}
+            onClick={() => {
+              linksClick(
+                document.querySelector("aside.dashboard-aside"),
+                true,
+                document.querySelector("aside.dashboard-aside > h4")
+              );
+            }}
+          >
             <i className="fa-solid fa-user-plus"></i>
             <span>{language && language.dashboard.navbar.addUser}</span>
           </NavLink>
         )}
 
-        <NavLink to={"/dashboard/top-news"}>
+        <NavLink
+          to={"/dashboard/top-news"}
+          onClick={() => {
+            linksClick(
+              document.querySelector("aside.dashboard-aside"),
+              true,
+              document.querySelector("aside.dashboard-aside > h4")
+            );
+          }}
+        >
           <i className="fa-solid fa-newspaper"></i>
           <span>{language && language.dashboard.navbar.topNews}</span>
         </NavLink>
 
-        <NavLink to={"/dashboard/add-top-news"}>
+        <NavLink
+          to={"/dashboard/add-top-news"}
+          onClick={() => {
+            linksClick(
+              document.querySelector("aside.dashboard-aside"),
+              true,
+              document.querySelector("aside.dashboard-aside > h4")
+            );
+          }}
+        >
           <i className="fa-solid fa-circle-plus"></i>
           <span>{language && language.dashboard.navbar.addTopNews}</span>
         </NavLink>
 
-        <NavLink to={"/dashboard/news"}>
+        <NavLink
+          to={"/dashboard/news"}
+          onClick={() => {
+            linksClick(
+              document.querySelector("aside.dashboard-aside"),
+              true,
+              document.querySelector("aside.dashboard-aside > h4")
+            );
+          }}
+        >
           <i className="fa-regular fa-newspaper"></i>
           <span>{language && language.dashboard.navbar.news}</span>
         </NavLink>
 
-        <NavLink to={"/dashboard/add-news"}>
+        <NavLink
+          to={"/dashboard/add-news"}
+          onClick={() => {
+            linksClick(
+              document.querySelector("aside.dashboard-aside"),
+              true,
+              document.querySelector("aside.dashboard-aside > h4")
+            );
+          }}
+        >
           <i className="fa-solid fa-plus"></i>
           <span>{language && language.dashboard.navbar.addNews}</span>
         </NavLink>

@@ -82,7 +82,8 @@
       "addTopNews": "Add Top News",
       "addNews": "Add News",
       "user": "users",
-      "addUser": "add user"
+      "addUser": "add user",
+      "activities": "activities"
     },
     "table": {
       "headline": "Headline",

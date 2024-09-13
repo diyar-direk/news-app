@@ -58,13 +58,6 @@ const UpdateTopNews = () => {
     setCategory(e.target.dataset.type);
   }
 
-  function addCat() {
-    const inp = document.querySelector(`input[name="category"]`);
-    inp.disabled = false;
-    inp.classList.remove("disabled");
-    inp.focus();
-  }
-
   function handelFiles(e) {
     const selectedFiles = Array.from(e.target.files);
 

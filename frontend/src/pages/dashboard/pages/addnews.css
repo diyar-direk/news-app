@@ -41,6 +41,9 @@ div.main .dashboard-container form.add-news .no-wrap input {
   border-radius: 6px;
   color: var(--font-color);
 }
+body.arabic div.main .dashboard-container form.add-news .no-wrap input {
+  padding: 4px 10px 4px 30px;
+}
 div.main .dashboard-container form.add-news .no-wrap input.disabled {
   cursor: no-drop;
   background-color: var(--border-color);
@@ -54,6 +57,11 @@ div.main .dashboard-container form.add-news .no-wrap > i {
   cursor: pointer;
   font-size: 14px;
 }
+body.arabic div.main .dashboard-container form.add-news .no-wrap > i {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
 div.main .dashboard-container form.add-news .no-wrap > i.show {
   margin: 0;
   color: #777;
@@ -100,6 +108,15 @@ div.main .dashboard-container form.add-news .select-category span {
 div.main .dashboard-container form.add-news .select-category span::before {
   content: "\2b";
   margin-right: 10px;
+}
+body.arabic
+  div.main
+  .dashboard-container
+  form.add-news
+  .select-category
+  span::before {
+  margin-right: 0px;
+  margin-left: 10px;
 }
 div.main .dashboard-container form.add-news .select-category span:hover {
   background-color: var(--border-color);
@@ -177,5 +194,28 @@ div.main .dashboard-container form.add-news > div.submit:hover {
   div.main .dashboard-container form.add-news > div.submit {
     width: 100%;
     padding: 2px 0px;
+    font-size: 14px;
+  }
+  div.main .dashboard-container form.add-news .select-category {
+    width: 95%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 460px) {
+  div.main .dashboard-container form.add-news > label {
+    font-size: 12px;
+  }
+  div.main .dashboard-container form.add-news div.file-flex {
+    margin: 10px 0;
+  }
+  div.main .dashboard-container form.add-news > div.submit {
+    margin: auto;
+  }
+  div.main .dashboard-container form.add-news > div.submit {
+    font-size: 12px;
+  }
+  div.main .dashboard-container form.add-news .no-wrap > i {
+    font-size: 10px;
   }
 }

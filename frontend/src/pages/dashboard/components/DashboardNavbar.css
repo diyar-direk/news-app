@@ -197,6 +197,8 @@ div.main .dashboard-container {
   aside.dashboard-aside.active > h3 {
     display: block;
     margin: 0;
+    text-wrap: nowrap;
+    overflow: hidden;
   }
   aside.dashboard-aside.active div.sitting h4 {
     display: block;
@@ -246,5 +248,11 @@ div.main .dashboard-container {
   }
   body.arabic aside.dashboard-aside.active > a span {
     margin-right: 4px;
+  }
+}
+
+@media (max-width: 460px) {
+  div.navbar .flex > .btn {
+    font-size: 10px;
   }
 }

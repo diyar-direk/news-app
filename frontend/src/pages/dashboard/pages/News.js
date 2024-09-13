@@ -71,7 +71,7 @@ const News = () => {
   const tableData = searchData.map((item, index) => (
     <tr key={item._id}>
       <td>{index + 1}</td>
-      <td style={{ textAlign: "left", paddingLeft: "10px" }}>
+      <td className="align-left">
         {item.headline.length <= 90
           ? item.headline
           : item.headline.slice(0, 90) + "..."}

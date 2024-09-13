@@ -204,8 +204,9 @@ export default function Navbar() {
   );
 }
 
-export const linksClick = (div = "", remove = false) => {
+export const linksClick = (div = "", remove = false, div2 = "") => {
   remove && div.classList.remove("active");
+  remove && div2.classList.remove("close");
   remove && (document.body.style.overflowY = "auto");
   window.scrollTo({
     left: 0,
