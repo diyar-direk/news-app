@@ -2,6 +2,7 @@ div.main .dashboard-container form.add-news {
   padding: 20px;
   background-color: var(--section-color);
   width: 80%;
+  position: relative;
   border-radius: 5px;
 }
 div.main .dashboard-container form.add-news > input,

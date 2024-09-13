@@ -14,7 +14,6 @@ const Category = () => {
   const [categories, setCategories] = useState(null); // Initialize with null to differentiate between loading and loaded states
   const [loading, setLoading] = useState(true); // Track loading state
   const param = useParams();
-  console.log(param.category);
   const query = param.category;
 
   useEffect(() => {

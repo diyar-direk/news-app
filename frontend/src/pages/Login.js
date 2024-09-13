@@ -4,14 +4,14 @@ import axios from "axios";
 import { Context } from "../context/Context";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
+import FormLoading from "../components/FormLoading";
 const Login = () => {
   const context = useContext(Context);
   const language = context.langValue.registration;
   const [wrongData, setWrongData] = useState("");
   const cookie = new Cookies();
-
+  const [loading, setLoading] = useState(false);
   const nav = useNavigate();
-
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -22,22 +22,24 @@ const Login = () => {
   };
 
   const loginSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const data = await axios.post("http://localhost:8000/api/news/login", {
         username: form.username,
         password: form.password,
       });
-
+      setLoading(false);
       cookie.set("Bearer", data.data.token);
       context.setUserDetails({
         token: data.data.token,
         user: data.data.userRole,
         isAdmin: data.data.userRole.includes("admin"),
       });
-
+      setForm({ username: "", password: "" });
       nav("/dashboard");
     } catch (err) {
+      setLoading(false);
       console.log(err);
       const errMessage = err.response.data.message;
       if (errMessage === "Invalid email or password") setWrongData(true);
@@ -55,6 +57,7 @@ const Login = () => {
   return (
     <main className="center section-color">
       <form onSubmit={loginSubmit} className="wrapper register">
+        {loading && <FormLoading />}
         <h2> {language && language.pageName} </h2>
         <div className="input-box">
           <span className="icon">

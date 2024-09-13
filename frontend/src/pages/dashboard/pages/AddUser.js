@@ -3,6 +3,7 @@ import "./addnews.css";
 import { Context } from "../../../context/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import FormLoading from "../../../components/FormLoading";
 
 const AddUser = () => {
   const [userName, setUserName] = useState("");
@@ -13,6 +14,7 @@ const AddUser = () => {
   const [errorRole, setErrorRole] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorPasswordCon, setErrorPasswordCon] = useState(false);
+  const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   function handleClick(e) {
     e.stopPropagation();
@@ -60,6 +62,7 @@ const AddUser = () => {
       setErrorPasswordCon(true);
     }
     try {
+      setLoading(true);
       const data = await axios.post(
         "http://localhost:8000/api/users",
         {
@@ -69,8 +72,11 @@ const AddUser = () => {
         },
         { headers: { Authorization: "Bearer " + token } }
       );
+      setLoading(false);
       nav("/dashboard/users");
     } catch (err) {
+      setLoading(false);
+
       console.log(err);
     }
   }
@@ -79,6 +85,7 @@ const AddUser = () => {
     <div className="main">
       <div className="dashboard-container center">
         <form className="add-news">
+          {loading && <FormLoading />}
           <label htmlFor="user name">
             {language && language.dashboard.forms.userName}
           </label>

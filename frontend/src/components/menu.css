@@ -17,6 +17,16 @@ nav > aside.mobile-link {
   padding: 20px 30px;
   overflow-y: auto;
 }
+body.arabic nav > aside.mobile-link {
+  right: -100%;
+  left: auto;
+}
+body.arabic nav > aside.mobile-link.active {
+  right: 0;
+}
+body.arabic nav > aside.mobile-link.active {
+  right: 0;
+}
 nav > aside.mobile-link.active {
   left: 0;
   opacity: 1;

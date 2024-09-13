@@ -3,11 +3,12 @@ import "./footer.css";
 import LanguageDiv from "./LanguageDiv";
 import { useContext } from "react";
 import { Context } from "../context/Context";
+import { linksClick } from "./Navbar";
 export default function Footer() {
   const context = useContext(Context);
   const language = context.langValue;
   const data = context.dataType;
-
+  const token = context.userDetails.token;
   function footerLang() {
     let div = document.querySelector(
       "footer .footer-row article > div.language-div"
@@ -28,9 +29,9 @@ export default function Footer() {
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
             <Link
+              onClick={() => linksClick()}
               key={index}
-              to={"/category"}
-              state={{ query: category }} // Directly pass the string or object
+              to={"/category/" + category}
             >
               {category}
             </Link>
@@ -48,8 +49,13 @@ export default function Footer() {
             <h1>logo</h1>
           </article> */}
           <article className="row">
-            <NavLink to={"/about"}>{language && language.links.about}</NavLink>
-            <NavLink to={"/contact"}>
+            {token && (
+              <NavLink to={"/dashboard"}> {language.links.dashboard} </NavLink>
+            )}
+            <NavLink onClick={() => linksClick()} to={"/about"}>
+              {language && language.links.about}
+            </NavLink>
+            <NavLink onClick={() => linksClick()} to={"/contact"}>
               {language && language.links.contact}
             </NavLink>
             <div className="flex">
@@ -70,7 +76,7 @@ export default function Footer() {
               <LanguageDiv />
             </div>
           </article>
-          {loadLinks(4)}
+          {loadLinks(5)}
         </div>
         <div className="w-100"> {language && language.footer.copyRight} </div>
       </div>

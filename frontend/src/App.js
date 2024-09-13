@@ -23,7 +23,7 @@ import User from "./pages/dashboard/pages/User.js";
 import AddUser from "./pages/dashboard/pages/AddUser.js";
 import Auth from "./Auth/Auth.js";
 import Refresh from "./Auth/Refresh.js";
-import UserAuth from "./Auth/UserAuth.js";
+import AdminAuth from "./Auth/AdminAuth.js";
 
 function App() {
   useEffect(() => {
@@ -58,7 +58,7 @@ function App() {
         <Route element={<Refresh />}>
           <Route element={<Auth />}>
             <Route path="/dashboard" element={<Dashboard />}>
-              <Route element={<UserAuth />}>
+              <Route element={<AdminAuth />}>
                 <Route path="users" element={<User />} />
                 <Route path="add-user" element={<AddUser />} />
               </Route>

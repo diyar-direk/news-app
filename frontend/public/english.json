@@ -2,7 +2,8 @@
   "links": {
     "Home": "Home",
     "about": "about us",
-    "contact": "contact us"
+    "contact": "contact us",
+    "dashboard": "dashboard"
   },
   "time": {
     "oneMin": "1 minute ago",

@@ -29,6 +29,17 @@ body {
 body.arabic {
   direction: rtl;
 }
+::-webkit-scrollbar {
+  width: 12px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #515151;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #292929;
+}
 .container {
   width: 80%;
 }
@@ -169,13 +180,15 @@ nav.navbar > div.container > aside.more-link {
   left: 0;
   display: none;
   border-top: solid 1px var(--border-color);
+  max-height: 80vh;
+  overflow-y: auto;
 }
 nav.navbar > div.container > aside.more-link.active {
   display: block;
 }
 nav.navbar > div.container > aside.more-link .between {
   align-items: flex-start;
-  gap: 20px;
+  gap: 0px 20px;
 }
 
 nav.navbar > div.container > aside.more-link a {
@@ -183,18 +196,19 @@ nav.navbar > div.container > aside.more-link a {
   width: 100%;
   padding: 7px 0;
   color: var(--font-color);
-}
-
-nav.navbar > div.container > aside.more-link a:not(:last-of-type) {
   margin-bottom: 5px;
   border-bottom: solid 1px var(--border-color);
 }
+nav.navbar > div.container > aside.more-link .flex-1 {
+  flex: 300px;
+}
+
 nav.navbar > div.container > aside.more-link a:hover,
 nav.navbar > div.container > aside.more-link a.active {
   color: var(--var-color);
 }
-nav.navbar > div.container > aside.more-link a:not(:last-of-type):hover,
-nav.navbar > div.container > aside.more-link a.active:not(:last-of-type) {
+nav.navbar > div.container > aside.more-link a:hover,
+nav.navbar > div.container > aside.more-link a.active {
   border-bottom: solid 1px var(--var-color);
 }
 /* end more link  */
@@ -305,6 +319,12 @@ nav > div.container > .more i.fa-sun {
 nav > div.bottom-link {
   width: 100%;
   background-color: #313641;
+}
+nav > div.bottom-link > div.container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 nav > div.bottom-link a {
   color: white;

@@ -13,7 +13,7 @@ export default function Navbar() {
   const context = useContext(Context);
   const languageVal = context.langValue.home;
   const data = context.dataType;
-
+  const token = context.userDetails.token;
   function pageTheme() {
     themeFun(themeValue ? 0 : 1);
   }
@@ -85,7 +85,11 @@ export default function Navbar() {
       articles.push(
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
-            <Link key={index} to={`/category`} state={{ query: category }}>
+            <Link
+              key={index}
+              to={`/category/${category}`}
+              state={{ query: category }}
+            >
               {category}
             </Link>
           ))}
@@ -94,6 +98,7 @@ export default function Navbar() {
     }
     return articles;
   };
+
   const [query, setQuery] = useState("");
 
   const handleChange = (event) => {
@@ -122,7 +127,7 @@ export default function Navbar() {
           {/* end search div  */}
 
           {/* start more link div  */}
-          <aside className="more-link" onClick={(e) => e.stopPropagation()}>
+          <aside className="more-link">
             <div className="between">
               {loadLinks(4) /* Number of links per article */}
             </div>
@@ -134,7 +139,18 @@ export default function Navbar() {
             {data.map((e, i) => {
               if (i < 4) {
                 return (
-                  <NavLink to={`/category/${e}`} key={e}>
+                  <NavLink
+                    onClick={() =>
+                      linksClick(
+                        document.querySelector(
+                          "nav.navbar > div.container > aside.more-link"
+                        ),
+                        true
+                      )
+                    }
+                    to={`/category/${e}`}
+                    key={e}
+                  >
                     {e}
                   </NavLink>
                 );
@@ -166,8 +182,13 @@ export default function Navbar() {
             <NavLink to={`/contact`}>
               {context.langValue && context.langValue.links.contact}
             </NavLink>
+            {token && (
+              <NavLink to={`/dashboard`}>
+                {context.langValue.links.dashboard}
+              </NavLink>
+            )}
             {data.map((e, i) => {
-              if (i < 2) {
+              if (i < 30) {
                 return (
                   <NavLink to={`/category/${e}`} key={e}>
                     {e}
@@ -182,3 +203,13 @@ export default function Navbar() {
     </>
   );
 }
+
+export const linksClick = (div = "", remove = false) => {
+  remove && div.classList.remove("active");
+  remove && (document.body.style.overflowY = "auto");
+  window.scrollTo({
+    left: 0,
+    top: 0,
+    behavior: "smooth",
+  });
+};

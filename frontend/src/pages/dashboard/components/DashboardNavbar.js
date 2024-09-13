@@ -24,12 +24,14 @@ const DashboardNavbar = () => {
   const context = useContext(Context);
   const language = context.langValue;
   const admin = context.userDetails.isAdmin;
+  const cookie = new Cookies();
+
   const nav = useNavigate();
   function logOut() {
-    const cookie = new Cookies();
     cookie.set("Bearer", "");
-    context.setUserDetails(false);
+    context.setUserDetails("");
     nav("/");
+    window.location.reload();
   }
   return (
     <>

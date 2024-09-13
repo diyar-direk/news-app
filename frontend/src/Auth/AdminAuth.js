@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../context/Context";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-const UserAuth = () => {
+const AdminAuth = () => {
   const context = useContext(Context);
   const isAdmin = context.userDetails.isAdmin;
   const locatin = useLocation();
@@ -13,4 +13,4 @@ const UserAuth = () => {
   );
 };
 
-export default UserAuth;
+export default AdminAuth;

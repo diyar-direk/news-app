@@ -3,6 +3,7 @@ import "./addnews.css";
 import { Context } from "../../../context/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import FormLoading from "../../../components/FormLoading";
 
 const AddTopNews = () => {
   const [category, setCategory] = useState("");
@@ -15,6 +16,7 @@ const AddTopNews = () => {
   const [summaryError, setSummaryError] = useState(false);
   const [filesError, setFilesError] = useState(false);
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   function handleClick(e) {
     e.stopPropagation();
@@ -85,6 +87,7 @@ const AddTopNews = () => {
     else if (position === "") setPositionError(true);
     else if (files.length <= 0) setFilesError(true);
     else {
+      setLoading(true);
       try {
         const formData = new FormData();
         formData.append("category", category);
@@ -104,10 +107,13 @@ const AddTopNews = () => {
             headers: { Authorization: "Bearer " + token },
           }
         );
+        setLoading(false);
 
         nav("/dashboard/top-news");
         console.log(data);
       } catch (err) {
+        setLoading(false);
+
         console.log(err);
       }
     }
@@ -117,6 +123,7 @@ const AddTopNews = () => {
     <div className="main">
       <div className="dashboard-container center">
         <form className="add-news">
+          {loading && <FormLoading />}
           <label
             htmlFor="category"
             onClick={(e) => {

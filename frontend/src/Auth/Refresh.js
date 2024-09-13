@@ -9,6 +9,7 @@ const Refresh = () => {
   const [loading, setLoading] = useState(true);
   const context = useContext(Context);
   const tokenContext = context.userDetails.token;
+
   const cookie = new Cookies();
   const tokenValue = cookie.get("Bearer");
 

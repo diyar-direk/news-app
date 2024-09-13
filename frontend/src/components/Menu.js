@@ -3,11 +3,11 @@ import "./menu.css";
 import { useContext } from "react";
 import { Context } from "../context/Context";
 import Setting from "./Setting";
-
+import { linksClick } from "./Navbar";
 export default function Menu() {
   const context = useContext(Context);
   const language = context.langValue.home;
-
+  const token = context.userDetails.token;
   const data = context.dataType;
 
   function closeMemu() {
@@ -58,13 +58,42 @@ export default function Menu() {
             <i className="fa-solid fa-chevron-down"></i>
           </p>
           <div>
-            <NavLink to={"/"}>
+            {token && (
+              <NavLink to={"/dashboard"}>
+                {context.langValue.links.dashboard}
+              </NavLink>
+            )}
+            <NavLink
+              onClick={() => {
+                linksClick(
+                  document.querySelector("nav > aside.mobile-link.active"),
+                  true
+                );
+              }}
+              to={"/"}
+            >
               {context.langValue && context.langValue.links.Home}
             </NavLink>
-            <NavLink to={"/contact"}>
+            <NavLink
+              onClick={() => {
+                linksClick(
+                  document.querySelector("nav > aside.mobile-link.active"),
+                  true
+                );
+              }}
+              to={"/contact"}
+            >
               {context.langValue && context.langValue.links.contact}
             </NavLink>
-            <NavLink to={"/about"}>
+            <NavLink
+              onClick={() => {
+                linksClick(
+                  document.querySelector("nav > aside.mobile-link.active"),
+                  true
+                );
+              }}
+              to={"/about"}
+            >
               {context.langValue && context.langValue.links.about}
             </NavLink>
           </div>
@@ -77,7 +106,16 @@ export default function Menu() {
           <div>
             {data.map((e) => {
               return (
-                <NavLink to={`/category/${e}`} key={e}>
+                <NavLink
+                  onClick={() => {
+                    linksClick(
+                      document.querySelector("nav > aside.mobile-link.active"),
+                      true
+                    );
+                  }}
+                  to={`/category/${e}`}
+                  key={e}
+                >
                   {e}
                 </NavLink>
               );
