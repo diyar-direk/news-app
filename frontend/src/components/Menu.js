@@ -1,15 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import "./menu.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../context/Context";
 import Setting from "./Setting";
 import { linksClick } from "./Navbar";
 export default function Menu() {
+  const [query, setQuery] = useState("");
+
   const context = useContext(Context);
   const language = context.langValue.home;
   const token = context.userDetails.token;
   const data = context.dataType;
 
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
   function closeMemu() {
     const div = document.querySelector("nav > aside.mobile-link");
     div.classList.remove("active");
@@ -48,8 +53,12 @@ export default function Menu() {
           type="text"
           className="flex-1"
           placeholder={language && language.search}
+          value={query}
+          onChange={handleChange}
         />
-        <i className="fa-solid fa-magnifying-glass"></i>
+        <Link className="center " to={`/category/${query}`}>
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </Link>
       </div>
       <div>
         <article>

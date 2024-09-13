@@ -119,7 +119,7 @@ body.arabic aside.mobile-link > div.center > input {
   border-right: 0;
 }
 
-aside.mobile-link > div.center > i {
+aside.mobile-link > div.center a.center i {
   cursor: pointer;
   margin-left: 8px;
   font-size: 15px;

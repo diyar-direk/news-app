@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import LanguageDiv from "./LanguageDiv";
 import Menu from "./Menu";
 import { Context } from "../context/Context";
@@ -14,6 +14,7 @@ export default function Navbar() {
   const languageVal = context.langValue.home;
   const data = context.dataType;
   const token = context.userDetails.token;
+  const navigate = useNavigate();
   function pageTheme() {
     themeFun(themeValue ? 0 : 1);
   }
@@ -64,6 +65,12 @@ export default function Navbar() {
       "nav.navbar > div.container > article.search"
     );
     div.classList.toggle("active");
+    // Focus on the input element inside the search div
+    const input = div.querySelector("input[type='text']");
+
+    if (input) {
+      input.focus();
+    }
   }
   function showMoreLinke(e) {
     e.stopPropagation();
@@ -104,6 +111,23 @@ export default function Navbar() {
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
+  useEffect(() => {
+    // Add event listener for keydown when component is mounted
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        navigate(`/category/${query}`);
+      }
+    });
+
+    // Cleanup event listener when component is unmounted
+    return () => {
+      window.removeEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          navigate(`/category/${query}`);
+        }
+      });
+    };
+  }, [query]);
 
   return (
     <>
@@ -119,9 +143,14 @@ export default function Navbar() {
                 value={query}
                 onChange={handleChange}
               />
-              <Link to={`/category`} state={{ query }} className="center">
+              <button
+                className="center button-style"
+                onClick={() => {
+                  navigate(`/category/${query}`);
+                }}
+              >
                 <i className="fa-solid fa-magnifying-glass"></i>
-              </Link>
+              </button>
             </div>
           </article>
           {/* end search div  */}
