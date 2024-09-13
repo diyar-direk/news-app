@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 //hi
+
 import Category from "./pages/Category";
 import Read from "./pages/Read";
 import Login from "./pages/Login";
