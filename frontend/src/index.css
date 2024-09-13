@@ -155,7 +155,7 @@ body.arabic nav.navbar > div.container > article.search input {
 body.arabic nav.navbar > div.container > article.search a {
   border-radius: 4px 0px 0px 4px;
 }
-nav.navbar > div.container > article.search a {
+nav.navbar > div.container > article.search button {
   background: var(--var-color);
   color: white;
   padding: 3px 8px;
@@ -164,6 +164,17 @@ nav.navbar > div.container > article.search a {
   cursor: pointer;
   border-radius: 0 4px 4px 0;
   width: 50px;
+}
+
+nav.navbar > div.container > article.search button {
+  color: white; /* Icon color */
+  border: none; /* Remove default button borders */
+  font-size: 16px; /* Icon size */
+  cursor: pointer; /* Pointer cursor for button */
+  display: inline-flex; /* Align icon within the button */
+  align-items: center; /* Center icon vertically */
+  justify-content: center; /* Center icon horizontally */
+  outline: none;
 }
 
 nav.navbar > div.container > article.search a:hover {
