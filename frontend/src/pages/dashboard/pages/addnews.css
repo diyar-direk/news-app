@@ -1,0 +1,181 @@
+div.main .dashboard-container form.add-news {
+  padding: 20px;
+  background-color: var(--section-color);
+  width: 80%;
+  position: relative;
+  border-radius: 5px;
+}
+div.main .dashboard-container form.add-news > input,
+div.main .dashboard-container form.add-news label.file,
+form.add-news > textarea {
+  border: solid 1px var(--border-color);
+  resize: none;
+  background: var(--body-color);
+  padding: 4px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  color: var(--font-color);
+  caret-color: var(--var-color);
+}
+div.main .dashboard-container form.add-news > label {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 14px;
+  cursor: text;
+  width: fit-content;
+  color: var(--font-color);
+}
+
+.no-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+div.main .dashboard-container form.add-news .no-wrap input {
+  border: solid 1px var(--border-color);
+  background: var(--body-color);
+  padding: 4px 30px 4px 10px;
+  width: 100%;
+  border-radius: 6px;
+  color: var(--font-color);
+}
+div.main .dashboard-container form.add-news .no-wrap input.disabled {
+  cursor: no-drop;
+  background-color: var(--border-color);
+}
+div.main .dashboard-container form.add-news .no-wrap > i {
+  display: flex;
+  color: var(--font-color);
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+div.main .dashboard-container form.add-news .no-wrap > i.show {
+  margin: 0;
+  color: #777;
+  position: absolute;
+  right: 10px;
+}
+div.main .dashboard-container form.add-news .select-category {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: var(--section-color);
+  color: var(--font-color);
+  z-index: -1;
+  pointer-events: none;
+  width: 70%;
+  text-align: center;
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.6s;
+  border-bottom: solid 1px var(--border-color);
+}
+div.main .dashboard-container form.add-news .select-category.active {
+  animation: overflow 0.2s;
+  z-index: 1;
+  max-height: 300px;
+  pointer-events: all;
+  overflow-y: auto;
+}
+div.main .dashboard-container form.add-news .select-category p {
+  padding: 2px 20px;
+  cursor: pointer;
+}
+div.main .dashboard-container form.add-news .select-category p:hover {
+  background-color: var(--border-color);
+}
+div.main .dashboard-container form.add-news .select-category p {
+  margin-bottom: 3px;
+  border-bottom: solid 1px var(--border-color);
+}
+div.main .dashboard-container form.add-news .select-category span {
+  display: block;
+  cursor: pointer;
+}
+div.main .dashboard-container form.add-news .select-category span::before {
+  content: "\2b";
+  margin-right: 10px;
+}
+div.main .dashboard-container form.add-news .select-category span:hover {
+  background-color: var(--border-color);
+}
+div.main .dashboard-container form.add-news input[type="file"] {
+  display: none;
+}
+
+div.main .dashboard-container form.add-news div.file-flex {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+div.main .dashboard-container form.add-news div.file-flex > div {
+  flex: 200px;
+  overflow: hidden;
+  max-height: 800px;
+}
+div.main .dashboard-container form.add-news div.file-flex > div img,
+div.main .dashboard-container form.add-news div.file-flex > div video {
+  width: 100%;
+  object-fit: cover;
+}
+div.main .dashboard-container form.add-news > div.submit {
+  font-weight: bold;
+  color: white;
+  width: 80%;
+  padding: 4px 0;
+  background: var(--var-color);
+  font-size: 15px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 20px auto 0;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+div.main .dashboard-container form.add-news > div.submit:hover {
+  background-color: var(--hover-color);
+}
+
+.error {
+  color: red;
+  letter-spacing: 1px;
+}
+
+@keyframes overflow {
+  0%,
+  99% {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 900px) {
+  div.main .dashboard-container form.add-news {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  div.main .dashboard-container form.add-news > label {
+    font-size: 13px;
+  }
+  div.main .dashboard-container form.add-news .no-wrap input {
+    padding: 2px 10px;
+  }
+  div.main .dashboard-container form.add-news .no-wrap > i {
+    font-size: 12px;
+  }
+  div.main .dashboard-container form.add-news > input,
+  div.main .dashboard-container form.add-news label.file,
+  form.add-news > textarea {
+    padding: 3px 10px;
+  }
+  div.main .dashboard-container form.add-news > div.submit {
+    width: 100%;
+    padding: 2px 0px;
+  }
+}

@@ -1,0 +1,151 @@
+/* start aside mobail  */
+nav > .container > i.fa-bars {
+  display: none;
+  color: var(--font-color);
+}
+nav > aside.mobile-link {
+  position: absolute;
+  left: -100%;
+  top: 0;
+  background-color: var(--section-color);
+  width: 350px;
+  height: 100svh;
+  max-height: 100svh;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  padding: 20px 30px;
+  overflow-y: auto;
+}
+body.arabic nav > aside.mobile-link {
+  right: -100%;
+  left: auto;
+}
+body.arabic nav > aside.mobile-link.active {
+  right: 0;
+}
+body.arabic nav > aside.mobile-link.active {
+  right: 0;
+}
+nav > aside.mobile-link.active {
+  left: 0;
+  opacity: 1;
+  pointer-events: all;
+}
+nav > aside.mobile-link.active .menu-logo {
+  text-align: left;
+}
+nav > aside.mobile-link > i {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  cursor: pointer;
+  font-size: 19px;
+  color: var(--font-color);
+  transition: 0.4s;
+}
+
+nav > aside.mobile-link > i:hover {
+  color: rgb(236, 13, 13);
+  rotate: 90deg;
+}
+nav > aside.mobile-link article > p {
+  color: var(--font-color);
+  font-size: 17px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+nav > aside.mobile-link article > p i {
+  position: absolute;
+  font-size: 14px;
+  right: 10px;
+  rotate: 90deg;
+  pointer-events: none;
+}
+
+body.arabic nav > aside.mobile-link article > p i {
+  right: auto;
+  left: 10px;
+}
+nav > aside.mobile-link article > p.active i {
+  rotate: 0deg;
+}
+nav > aside.mobile-link article > div {
+  padding: 0 15px;
+  overflow: hidden;
+  max-height: 0px;
+}
+nav > aside.mobile-link article > div.active {
+  max-height: 400px;
+}
+nav > aside.mobile-link article > div a {
+  display: block;
+  color: var(--font-color);
+}
+nav > aside.mobile-link article > div:hover a {
+  color: #777;
+}
+nav > aside.mobile-link article > div a:hover {
+  color: var(--font-color);
+}
+nav > aside.mobile-link article > div a.active {
+  color: var(--var-color);
+}
+aside.mobile-link > div.center {
+  border: solid 1px var(--border-color);
+  background-color: var(--section-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin: 15px 0;
+}
+aside.mobile-link > div.center:focus-within {
+  border: solid 1px var(--var-color);
+}
+
+aside.mobile-link > div.center > input {
+  background: transparent;
+  border: none;
+  padding-right: 8px;
+  color: var(--font-color);
+  border-right: solid 1px var(--border-color);
+}
+body.arabic aside.mobile-link > div.center > input {
+  padding-right: 0px;
+  padding-left: 8px;
+  color: var(--font-color);
+  border-left: solid 1px var(--border-color);
+  border-right: 0;
+}
+
+aside.mobile-link > div.center > i {
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 15px;
+  color: #777;
+}
+body.arabic aside.mobile-link > div.center > i {
+  margin-right: 8px;
+  margin-left: 0px;
+}
+
+/* end aside mobail  */
+@media (max-width: 750px) {
+  nav > .container > i.fa-bars {
+    display: block;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  body.arabic nav > .container > i.fa-bars {
+    margin-left: 10px;
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav > aside.mobile-link {
+    width: 100%;
+  }
+}

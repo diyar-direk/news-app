@@ -1,0 +1,84 @@
+div.sitting {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0 30px 20px;
+  align-items: flex-start;
+}
+
+div.sitting div.theme {
+  width: 40px;
+  height: 22px;
+  border-radius: 10px;
+  background-color: var(--body-color);
+  position: relative;
+  cursor: pointer;
+  border: solid 2px var(--border-color);
+}
+div.sitting div.theme::before {
+  content: "\f185";
+  font-family: "Font Awesome 6 Free";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  position: absolute;
+  background: var(--border-color);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3px;
+  pointer-events: none;
+  transition: 0.4s;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+}
+div.sitting div.theme.dark::before {
+  left: 50%;
+  content: "\f186";
+}
+div.sitting h4 {
+  color: #777;
+  font-size: 14px;
+}
+
+body.arabic div.sitting h4 {
+  direction: ltr;
+}
+div.sitting div.menu-lang {
+  font-size: 14px;
+  color: #777;
+  cursor: pointer;
+}
+div.sitting div.menu-lang * {
+  pointer-events: none;
+}
+div.sitting div.menu-lang:hover *,
+div.sitting div.menu-lang.active * {
+  color: var(--font-color);
+}
+div.sitting div.menu-lang i {
+  font-size: 12px;
+  margin-left: 10px;
+  transition: 0.4s;
+}
+body.arabic div.sitting div.menu-lang i {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+div.sitting div.menu-lang.active i {
+  rotate: 180deg;
+}
+div.sitting div.lang {
+  width: 100%;
+  transform: translate(0);
+  top: -50px;
+  left: 0;
+  background-color: var(--body-color);
+}
+div.sitting div.lang p {
+  font-size: 14px;
+  padding: 5px;
+  color: var(--font-color);
+}
