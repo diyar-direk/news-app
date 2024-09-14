@@ -121,7 +121,8 @@
       "errorHeadline": "Headline is required",
       "errorSummary": "text is required",
       "errorPosition": "position is required",
-      "errorFiles": "upload files to send"
+      "errorFiles": "upload files to send",
+      "errorManyFiles": "You can only upload 3 photos and 1 video"
     }
   }
 }

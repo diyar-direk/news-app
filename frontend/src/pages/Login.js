@@ -36,7 +36,6 @@ const Login = () => {
         user: data.data.userRole,
         isAdmin: data.data.userRole.includes("admin"),
       });
-      setForm({ username: "", password: "" });
       nav("/dashboard");
     } catch (err) {
       setLoading(false);

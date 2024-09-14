@@ -10,14 +10,16 @@ const AddTopNews = () => {
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [position, setPosition] = useState("");
+  const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const [positionError, setPositionError] = useState(false);
   const [categoryError, setCategoryError] = useState(false);
   const [headlineError, setHeadlineError] = useState(false);
   const [summaryError, setSummaryError] = useState(false);
   const [filesError, setFilesError] = useState(false);
-  const [files, setFiles] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
+
   function handleClick(e) {
     e.stopPropagation();
     document
@@ -68,24 +70,26 @@ const AddTopNews = () => {
     );
 
     if (images.length > 3 || videos.length > 1) {
-      setErrorMessage("Please upload exactly 3 images and 1 video.");
+      setErrorMessage(true);
       return;
     }
 
-    setErrorMessage("");
-
-    setFiles([...images, ...videos]);
+    setFiles([...files, ...images, ...videos]);
     setFilesError(false);
   }
 
   const nav = useNavigate();
 
   async function handelSubmit() {
+    const images = files.filter((file) => file.type.startsWith("image/"));
+    const videos = files.filter((file) => file.type.startsWith("video/"));
+
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
     else if (summary === "") setSummaryError(true);
     else if (position === "") setPositionError(true);
     else if (files.length <= 0) setFilesError(true);
+    else if (images.length > 3 || videos.length > 1) setErrorMessage(true);
     else {
       setLoading(true);
       try {
@@ -110,7 +114,6 @@ const AddTopNews = () => {
         setLoading(false);
 
         nav("/dashboard/top-news");
-        console.log(data);
       } catch (err) {
         setLoading(false);
 
@@ -118,7 +121,10 @@ const AddTopNews = () => {
       }
     }
   }
-
+  function handelRemove(e) {
+    const fltr = files.filter((item) => item.name != e.target.dataset.name);
+    setFiles(fltr);
+  }
   return (
     <div className="main">
       <div className="dashboard-container center">
@@ -245,6 +251,10 @@ const AddTopNews = () => {
           >
             <input
               onChange={handelFiles}
+              onInput={() => {
+                setFilesError(false);
+                setErrorMessage(false);
+              }}
               id="file"
               type="file"
               accept="image/*,video/*"
@@ -259,8 +269,6 @@ const AddTopNews = () => {
             </p>
           )}
 
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-
           <div className="file-flex">
             {files.map((file, index) => (
               <div key={index}>
@@ -269,9 +277,19 @@ const AddTopNews = () => {
                 ) : (
                   <video src={URL.createObjectURL(file)} controls />
                 )}
+                <i
+                  data-name={file.name}
+                  className="fa-solid fa-x"
+                  onClick={handelRemove}
+                ></i>
               </div>
             ))}
           </div>
+          {errorMessage && (
+            <p className="error">
+              {language && language.dashboard.forms.errorManyFiles}
+            </p>
+          )}
 
           <div className="submit" onClick={handelSubmit}>
             {language && language.dashboard.forms.create}

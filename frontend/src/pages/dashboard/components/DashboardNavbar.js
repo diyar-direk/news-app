@@ -66,7 +66,7 @@ const DashboardNavbar = () => {
               );
             }}
           >
-            <i class="fa-solid fa-clock-rotate-left"></i>
+            <i className="fa-solid fa-clock-rotate-left"></i>
             <span>{language && language.dashboard.navbar.activities}</span>
           </NavLink>
         )}

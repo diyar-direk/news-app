@@ -121,7 +121,8 @@
       "errorHeadline": "عليك أن تختار العنوان",
       "errorSummary": "عليك أن تكتب النص",
       "errorPosition": "اختر موضعًا للخبر",
-      "errorFiles": "تحميل الملفات لإرسالها"
+      "errorFiles": "تحميل الملفات لإرسالها",
+      "errorManyFiles": "تستطيع فقط رفع 3 صور و 1 فيديو"
     }
   }
 }

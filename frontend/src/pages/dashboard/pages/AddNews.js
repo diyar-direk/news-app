@@ -15,7 +15,7 @@ const AddNews = () => {
   const [summaryError, setSummaryError] = useState(false);
   const [filesError, setFilesError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
   function handleClick(e) {
     e.stopPropagation();
     document
@@ -67,31 +67,22 @@ const AddNews = () => {
     );
 
     if (images.length > 3 || videos.length > 1) {
-      setErrorMessage("Please upload exactly 3 images and 1 video.");
+      setErrorMessage(true);
       return;
     }
 
-    setErrorMessage("");
-
-    setFiles([...images, ...videos]);
+    setFiles([...files, ...images, ...videos]);
   }
-  const formData = new FormData();
-
-  formData.append("category", category);
-  formData.append("headline", headline);
-  formData.append("summary", summary);
-
-  files.forEach((e, index) => {
-    e.type.startsWith("image/")
-      ? formData.append("photo", e)
-      : formData.append("video", e);
-  });
 
   async function handelSubmit() {
+    const images = files.filter((file) => file.type.startsWith("image/"));
+    const videos = files.filter((file) => file.type.startsWith("video/"));
+
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
     else if (summary === "") setSummaryError(true);
     else if (files.length <= 0) setFilesError(true);
+    else if (images.length > 3 || videos.length > 1) setErrorMessage(true);
     else {
       setLoading(true);
       try {
@@ -122,7 +113,10 @@ const AddNews = () => {
       }
     }
   }
-
+  function handelRemove(e) {
+    const fltr = files.filter((item) => item.name != e.target.dataset.name);
+    setFiles(fltr);
+  }
   return (
     <div className="main">
       <div className="dashboard-container center">
@@ -228,6 +222,10 @@ const AddNews = () => {
           >
             <input
               onChange={handelFiles}
+              onInput={() => {
+                setFilesError(false);
+                setErrorMessage(false);
+              }}
               id="file"
               type="file"
               accept="image/*,video/*"
@@ -242,8 +240,6 @@ const AddNews = () => {
             </p>
           )}
 
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-
           <div className="file-flex">
             {files.map((file, index) => (
               <div key={index}>
@@ -252,9 +248,19 @@ const AddNews = () => {
                 ) : (
                   <video src={URL.createObjectURL(file)} controls />
                 )}
+                <i
+                  data-name={file.name}
+                  className="fa-solid fa-x"
+                  onClick={handelRemove}
+                ></i>
               </div>
             ))}
           </div>
+          {errorMessage && (
+            <p className="error">
+              {language && language.dashboard.forms.errorManyFiles}
+            </p>
+          )}
 
           <div className="submit" onClick={handelSubmit}>
             {language && language.dashboard.forms.create}

@@ -130,19 +130,40 @@ div.main .dashboard-container form.add-news div.file-flex {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  margin: 20px 0;
 }
 div.main .dashboard-container form.add-news div.file-flex > div {
   flex: 200px;
-  overflow: hidden;
-  max-height: 800px;
+  max-height: 600px;
+  position: relative;
+}
+div.main .dashboard-container form.add-news div.file-flex > div > i {
+  position: absolute;
+  color: white;
+  right: -6px;
+  top: -6px;
+  background: var(--var-color);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 6px #33333369;
+  font-size: 13px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+div.main .dashboard-container form.add-news div.file-flex > div > i:hover {
+  background-color: var(--hover-color);
 }
 div.main .dashboard-container form.add-news div.file-flex > div img,
 div.main .dashboard-container form.add-news div.file-flex > div video {
   width: 100%;
   object-fit: cover;
+  max-height: 100%;
 }
-div.main .dashboard-container form.add-news > div.submit {
+div.main .dashboard-container form.add-news > .submit {
   font-weight: bold;
   color: white;
   width: 80%;
@@ -155,7 +176,7 @@ div.main .dashboard-container form.add-news > div.submit {
   letter-spacing: 1px;
   cursor: pointer;
 }
-div.main .dashboard-container form.add-news > div.submit:hover {
+div.main .dashboard-container form.add-news > .submit:hover {
   background-color: var(--hover-color);
 }
 
@@ -191,7 +212,7 @@ div.main .dashboard-container form.add-news > div.submit:hover {
   form.add-news > textarea {
     padding: 3px 10px;
   }
-  div.main .dashboard-container form.add-news > div.submit {
+  div.main .dashboard-container form.add-news > .submit {
     width: 100%;
     padding: 2px 0px;
     font-size: 14px;
@@ -209,10 +230,10 @@ div.main .dashboard-container form.add-news > div.submit:hover {
   div.main .dashboard-container form.add-news div.file-flex {
     margin: 10px 0;
   }
-  div.main .dashboard-container form.add-news > div.submit {
+  div.main .dashboard-container form.add-news > .submit {
     margin: auto;
   }
-  div.main .dashboard-container form.add-news > div.submit {
+  div.main .dashboard-container form.add-news > .submit {
     font-size: 12px;
   }
   div.main .dashboard-container form.add-news .no-wrap > i {

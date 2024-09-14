@@ -155,7 +155,7 @@ body.arabic nav.navbar > div.container > article.search input {
 body.arabic nav.navbar > div.container > article.search a {
   border-radius: 4px 0px 0px 4px;
 }
-nav.navbar > div.container > article.search button {
+nav.navbar > div.container > article.search .button-style {
   background: var(--var-color);
   color: white;
   padding: 3px 8px;
@@ -166,7 +166,7 @@ nav.navbar > div.container > article.search button {
   width: 50px;
 }
 
-nav.navbar > div.container > article.search button {
+nav.navbar > div.container > article.search .button-style {
   color: white; /* Icon color */
   border: none; /* Remove default button borders */
   font-size: 16px; /* Icon size */

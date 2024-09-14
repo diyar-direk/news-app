@@ -111,23 +111,23 @@ export default function Navbar() {
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
-  useEffect(() => {
-    // Add event listener for keydown when component is mounted
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        navigate(`/category/${query}`);
-      }
-    });
+  // useEffect(() => {
+  //   // Add event listener for keydown when component is mounted
+  //   window.addEventListener("keydown", (event) => {
+  //     if (event.key === "Enter") {
+  //       navigate(`/category/${query}`);
+  //     }
+  //   });
 
-    // Cleanup event listener when component is unmounted
-    return () => {
-      window.removeEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          navigate(`/category/${query}`);
-        }
-      });
-    };
-  }, [query]);
+  //   // Cleanup event listener when component is unmounted
+  //   return () => {
+  //     window.removeEventListener("keydown", (event) => {
+  //       if (event.key === "Enter") {
+  //         navigate(`/category/${query}`);
+  //       }
+  //     });
+  //   };
+  // }, [query]);
 
   return (
     <>
@@ -143,14 +143,14 @@ export default function Navbar() {
                 value={query}
                 onChange={handleChange}
               />
-              <button
+              <h3
                 className="center button-style"
                 onClick={() => {
                   navigate(`/category/${query}`);
                 }}
               >
                 <i className="fa-solid fa-magnifying-glass"></i>
-              </button>
+              </h3>
             </div>
           </article>
           {/* end search div  */}
@@ -217,7 +217,7 @@ export default function Navbar() {
               </NavLink>
             )}
             {data.map((e, i) => {
-              if (i < 30) {
+              if (i < 20) {
                 return (
                   <NavLink to={`/category/${e}`} key={e}>
                     {e}

@@ -99,6 +99,7 @@ export default function Home() {
     }
     return "Just now";
   };
+  
   const topNewsSlides = topNews.map((e, index) => (
     <div
       className={`center w-100 ${index === currentSlide ? "active" : ""}`}
