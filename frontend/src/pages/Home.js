@@ -155,18 +155,27 @@ export default function Home() {
           );
         }
       } else {
-        components.push(
-          <div className="category container">
-            <div className="flex-card">
-              {categoryKeys.slice(i, i + 3).map((key, j) => (
-                <Card key={j} data={dataCategories[key]} />
-              ))}
+        if (!dataCategories[categoryKeys[i + 3]]) {
+          components.push(
+            <NewsComponents
+              data={dataCategories[categoryKeys[i]]}
+              title={true}
+            />
+          );
+        } else {
+          components.push(
+            <div className="category container">
+              <div className="flex-card">
+                {categoryKeys.slice(i, i + 3).map((key, j) => (
+                  <Card key={j} data={dataCategories[key]} />
+                ))}
+              </div>
             </div>
-          </div>
-        );
+          );
 
-        // Increment i to skip the next 2 elements because they were already used
-        i += 2;
+          // Increment i to skip the next 2 elements because they were already used
+          i += 2;
+        }
       }
     }
 
