@@ -1,6 +1,6 @@
 import "./read.css";
 import GridCard from "../components/GridCard";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import axios from "axios";
@@ -18,7 +18,7 @@ const Read = () => {
   const [extraCards, setExtraCards] = useState([]);
   const context = useContext(Context);
   const time = context.langValue.time;
-
+  const nav = useNavigate();
   // Helper function to format time ago
   const timeAgo = (date) => {
     const now = new Date();
@@ -75,7 +75,7 @@ const Read = () => {
         const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
         setSideTop(filteredTopNews);
       } catch (err) {
-        console.log(err);
+        nav("/not");
       } finally {
         setLoading(false);
       }

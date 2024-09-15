@@ -123,6 +123,13 @@
       "errorPosition": "position is required",
       "errorFiles": "upload files to send",
       "errorManyFiles": "You can only upload 3 photos and 1 video"
+    },
+    "activity":{
+      "all":"all activities",
+      "delete":"delete",
+      "update":"update",
+      "create":"create",
+      "btn":"show article"
     }
   }
 }
