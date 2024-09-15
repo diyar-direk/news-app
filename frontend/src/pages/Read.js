@@ -73,6 +73,7 @@ const Read = () => {
           `http://localhost:8000/api/top-news?limit=5`
         );
         const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
+
         setSideTop(filteredTopNews);
       } catch (err) {
         console.log(err);
@@ -151,7 +152,8 @@ const Read = () => {
                 <h1>{data.item.headline}</h1>
                 <p>{timeAgo(data.item.publishedAt)}</p>
                 <video
-                  src={`http://localhost:8000/video/${data.item.video}`}
+                  // src={`http://localhost:8000/video/${data.item.video}`}
+                  src={`${data.item.video}`}
                   controls
                   autoPlay
                 />
@@ -163,7 +165,8 @@ const Read = () => {
                         key={index}
                         data-index={index}
                         className={`slide ${index === 0 ? "active" : ""}`}
-                        src={`http://localhost:8000/img/news/${photo}`}
+                        // src={`http://localhost:8000/img/news/${photo}`}
+                        src={`${photo}`}
                         alt=""
                       />
                     ))}
@@ -197,7 +200,8 @@ const Read = () => {
                     >
                       <img
                         alt=""
-                        src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                        // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                        src={`${ele.photo[0]}`}
                       />
                       <h4>
                         {" "}
@@ -220,7 +224,8 @@ const Read = () => {
                     >
                       <img
                         alt=""
-                        src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                        // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                        src={`${ele.photo[0]}`}
                       />
                     </Link>
                     <Link to="/read" state={{ id: ele._id }}>

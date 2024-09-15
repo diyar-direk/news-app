@@ -18,7 +18,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const topNewsResponse = await axios.get(
-          "http://localhost:8000/api/top-news"
+          "http://localhost:8000/api/top-news?sort=position"
         );
         setTopNews(topNewsResponse.data.data.slice(0, 5));
 
@@ -99,12 +99,15 @@ export default function Home() {
     }
     return "Just now";
   };
-  
+
   const topNewsSlides = topNews.map((e, index) => (
     <div
       className={`center w-100 ${index === currentSlide ? "active" : ""}`}
       key={e._id}
-      style={{ backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})` }}
+      style={{
+        // backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
+        backgroundImage: `url(${e.photo[0]})`,
+      }}
     >
       <div className="container">
         <NavLink to={`/category/${e.category}`} className="category">
@@ -125,10 +128,56 @@ export default function Home() {
     .slice(1, -3)
     .map((key, i) => <Card key={i} data={dataCategories[key]} />);
 
+  const loadComponents = () => {
+    const components = [];
+
+    // Iterate over categoryKeys
+    for (let i = 0; i < categoryKeys.length; i++) {
+      console.log(i);
+      // Log for debugging
+
+      // Determine which component to add based on the index
+      if (i % 5 === 0) {
+        components.push(
+          <NewsComponents data={dataCategories[categoryKeys[i]]} title={true} />
+        );
+      } else if (i % 5 === 1) {
+        console.log(!dataCategories[categoryKeys[i + 1]]);
+
+        if (dataCategories[categoryKeys[i + 1]]) {
+          components.push(<Videos data={dataCategories[categoryKeys[i]]} />);
+        } else {
+          components.push(
+            <NewsComponents
+              data={dataCategories[categoryKeys[i]]}
+              title={true}
+            />
+          );
+        }
+      } else {
+        components.push(
+          <div className="category container">
+            <div className="flex-card">
+              {categoryKeys.slice(i, i + 3).map((key, j) => (
+                <Card key={j} data={dataCategories[key]} />
+              ))}
+            </div>
+          </div>
+        );
+
+        // Increment i to skip the next 2 elements because they were already used
+        i += 2;
+      }
+    }
+
+    // Return the array of components to be rendered
+    return components;
+  };
+
   if (loading) {
     return <Loader />; // Display loader while data is loading
   }
-
+  loadComponents();
   return (
     <main className="center">
       <div className="landing center">
@@ -143,24 +192,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="news">
-        <NewsComponents data={dataCategories[categoryKeys[0]]} title={true} />
-
-        <div className="category container">
-          <div className="flex-card">{showData}</div>
-        </div>
-
-        <Videos data={dataCategories[categoryKeys[categoryKeys.length - 3]]} />
-
-        <NewsComponents
-          data={dataCategories[categoryKeys[categoryKeys.length - 2]]}
-          title={true}
-        />
-        <NewsComponents
-          data={dataCategories[categoryKeys[categoryKeys.length - 1]]}
-          title={true}
-        />
-      </div>
+      <div className="news">{loadComponents()}</div>
     </main>
   );
 }

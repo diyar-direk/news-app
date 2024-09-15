@@ -97,6 +97,7 @@ div.the-news article.sub-news > article h4 {
 }
 div.the-news article.sub-news > div {
   gap: 10px;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   font-size: 14px;
   padding: 8px 0;
@@ -111,8 +112,8 @@ div.the-news article.sub-news > div > a.image-hover {
   max-height: 66.66px;
   object-fit: cover;
 }
-div.the-news article.sub-news > div > a.image-hover img{
-  object-fit: cover; 
+div.the-news article.sub-news > div > a.image-hover img {
+  object-fit: cover;
 }
 div.the-news article.sub-news > div > a:not(.image-hover) {
   color: var(--font-color);

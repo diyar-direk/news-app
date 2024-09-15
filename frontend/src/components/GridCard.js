@@ -55,7 +55,8 @@ const GridCard = (props) => {
             <div className="card">
               <Link to="/read" state={{ id: e._id }} className="image-hover">
                 <img
-                  src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                  // src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                  src={`${e.photo[0]}`}
                   alt=""
                 />
               </Link>

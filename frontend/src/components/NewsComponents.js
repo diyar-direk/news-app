@@ -57,7 +57,8 @@ const NewsComponents = (props) => {
           <div key={e._id} className="center">
             <Link to="/read" state={{ id: e._id }} className="image-hover ">
               <img
-                src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                // src={`http://localhost:8000/img/news/${e.photo[0]}`}
+                src={`${e.photo[0]}`}
                 alt="1"
               ></img>
             </Link>
@@ -96,7 +97,8 @@ const NewsComponents = (props) => {
             <img
               src={
                 importantNews &&
-                `http://localhost:8000/img/news/${importantNews.photo[0]}`
+                // `http://localhost:8000/img/news/${importantNews.photo[0]}`
+                `${importantNews.photo[0]}`
               }
               alt="1"
             ></img>
