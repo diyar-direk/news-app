@@ -26,8 +26,16 @@ export default function LanguageDiv() {
         English
       </p>
       <p
-        className={langVal === "arabic" ? "active" : undefined}
+        className={langVal === "kurdish" ? "active" : undefined}
+        data-lang="kurdish"
         data-index="1"
+        onClick={selects}
+      >
+        Kurdish
+      </p>
+      <p
+        className={langVal === "arabic" ? "active" : undefined}
+        data-index="2"
         onClick={selects}
         data-lang="arabic"
       >

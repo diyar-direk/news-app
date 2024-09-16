@@ -31,7 +31,6 @@ const UpdateTopNews = () => {
       )
       .classList.toggle("active");
   }
-  console.log(oldImages);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/news/${params.id}`).then((res) => {
@@ -104,14 +103,12 @@ const UpdateTopNews = () => {
 
     let allVideo = videos;
     video && allVideo.push(video);
-    console.log(allVideo);
 
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
     else if (summary === "") setSummaryError(true);
     else if (position === "") setPositionError(true);
     else if (images.length + oldImages.length <= 0) setFilesError(true);
-    // fix this stupid
     else if (images.length + oldImages.length > 3 || allVideo.length > 1)
       setErrorMessage(true);
     else {
