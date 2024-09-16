@@ -44,6 +44,7 @@ div.main .dashboard-container form.add-news .no-wrap input {
 body.arabic div.main .dashboard-container form.add-news .no-wrap input {
   padding: 4px 10px 4px 30px;
 }
+
 div.main .dashboard-container form.add-news .no-wrap input.disabled {
   cursor: no-drop;
   background-color: var(--border-color);
@@ -67,6 +68,10 @@ div.main .dashboard-container form.add-news .no-wrap > i.show {
   color: #777;
   position: absolute;
   right: 10px;
+}
+body.arabic div.main .dashboard-container form.add-news .no-wrap > i.show {
+  right: auto;
+  left: 10px;
 }
 div.main .dashboard-container form.add-news .select-category {
   position: absolute;
@@ -220,6 +225,9 @@ div.main .dashboard-container form.add-news > .submit:hover {
   div.main .dashboard-container form.add-news .select-category {
     width: 95%;
     font-size: 14px;
+  }
+  .dashboard-container form.add-news .no-wrap input {
+    padding: 2px 10px 2px 30px;
   }
 }
 

@@ -192,4 +192,8 @@ body.arabic div.main > div.overlay > div.content span i {
   div.main .dashboard-container article.search i {
     font-size: 12px;
   }
+  th {
+    padding: 0 5px;
+    font-size: 11px;
+  }
 }

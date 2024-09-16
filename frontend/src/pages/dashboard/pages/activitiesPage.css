@@ -10,6 +10,14 @@ div.main .dashboard-container.activities > div.flex > div {
 div.main .dashboard-container.activities > div.flex > div:not(:last-of-type) {
   margin-right: 25px;
 }
+body.arabic
+  div.main
+  .dashboard-container.activities
+  > div.flex
+  > div:not(:last-of-type) {
+  margin-left: 25px;
+  margin-right: 0;
+}
 div.main .dashboard-container.activities > div.flex > div span {
   pointer-events: none;
   color: var(--font-color);
@@ -29,7 +37,10 @@ div.main .dashboard-container.activities > div.flex i {
   pointer-events: none;
   transition: 0.4s;
 }
-
+body.arabic div.main .dashboard-container.activities > div.flex i {
+  margin-right: 0px;
+  margin-left: 10px;
+}
 div.main .dashboard-container.activities > div.flex > div.delete i {
   background-color: #db0c0c91;
 }
@@ -69,6 +80,16 @@ div.main .dashboard-container.activities > article > h2 {
   flex: 1;
   padding-right: 15px;
 }
+body.arabic
+  .dashboard-container.activities
+  > article
+  .between
+  > div:first-child {
+  border-left: solid 1px var(--border-color);
+  border-right: none;
+  padding-right: 0;
+  padding-left: 15px;
+}
 .dashboard-container.activities > article .between > div:first-child p {
   font-size: 14px;
   color: var(--font-color);
@@ -80,6 +101,14 @@ div.main .dashboard-container.activities > article > h2 {
 .dashboard-container.activities > article .between > div:last-child {
   text-align: center;
   margin-left: 20px;
+}
+body.arabic
+  .dashboard-container.activities
+  > article
+  .between
+  > div:last-child {
+  margin-right: 20px;
+  margin-left: 0px;
 }
 .dashboard-container.activities > article .between > div:last-child p {
   font-size: 14px;
@@ -94,6 +123,8 @@ div.main .dashboard-container.activities > article > h2 {
   border-radius: 6px;
   padding: 3px 10px;
   font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 .dashboard-container.activities > article .between > div:last-child a:hover {
   color: white;
@@ -103,6 +134,10 @@ div.main .dashboard-container.activities > article > h2::before {
   font-family: "Font Awesome 6 Free";
   font-size: 12px;
   margin-right: 10px;
+}
+body.arabic div.main .dashboard-container.activities > article > h2::before {
+  margin-right: 0px;
+  margin-left: 10px;
 }
 div.main .dashboard-container.activities > article.CREATE > h2::before {
   content: "\2b";
@@ -150,6 +185,13 @@ div.main .dashboard-container.activities > article.DELETE {
   div.main .dashboard-container.activities > div.flex > div:not(:last-of-type) {
     margin-right: 15px;
   }
+  body.arabic
+    div.main
+    .dashboard-container.activities
+    > div.flex
+    > div:not(:last-of-type) {
+    margin-left: 15px;
+  }
   div.main .dashboard-container.activities > article > h2 {
     font-size: 15px;
   }
@@ -174,6 +216,9 @@ div.main .dashboard-container.activities > article.DELETE {
     margin-right: 8px;
     font-size: 8px;
   }
+  body.arabic div.main .dashboard-container.activities > div.flex i {
+    margin-left: 8px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -192,6 +237,13 @@ div.main .dashboard-container.activities > article.DELETE {
   }
   .dashboard-container.activities > article .between > div:last-child {
     margin-left: 10px;
+  }
+  body.arabic
+    .dashboard-container.activities
+    > article
+    .between
+    > div:last-child {
+    margin-right: 10px;
   }
   div.main .dashboard-container.activities > article {
     padding: 4px 8px;

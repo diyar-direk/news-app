@@ -151,6 +151,10 @@ div.main .dashboard-container {
     font-size: 9px;
     margin-left: 5px;
   }
+  body.arabic aside.dashboard-aside div.sitting div.menu-lang i {
+    margin-right: 5px;
+    margin-left: 0;
+  }
   aside.dashboard-aside div.sitting div.lang {
     top: -65px;
   }

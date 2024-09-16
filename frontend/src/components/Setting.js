@@ -16,7 +16,7 @@ const Setting = () => {
   }
   const context = useContext(Context);
   const language = context.langValue.home;
-
+  const seletctedLang = document.querySelector("div.lang p.active");
   return (
     <div className="sitting between w-100">
       <div>
@@ -24,9 +24,11 @@ const Setting = () => {
         <div className="theme" onClick={darkMode}></div>
       </div>
       <div className="relative">
-        <h4>{language ? language.language : "select language :"}  </h4>
+        <h4>{language ? language.language : "select language :"} </h4>
         <div className="menu-lang" onClick={langClick}>
-          <span>English</span>
+          <span className="span-lang">
+            {seletctedLang && seletctedLang.textContent}
+          </span>
           <i className="fa-solid fa-chevron-down"></i>
         </div>
         <LanguageDiv />

@@ -13,6 +13,7 @@ export default function LanguageDiv() {
     });
     divs[e.target.dataset.index].classList.add("active");
     language(e.target.dataset.lang);
+    e.target.parentNode.classList.remove("active");
   }
   return (
     <div className="lang">
