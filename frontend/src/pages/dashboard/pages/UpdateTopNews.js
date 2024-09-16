@@ -10,11 +10,11 @@ const UpdateTopNews = () => {
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [position, setPosition] = useState("");
-  const [oldImage, setOldImages] = useState([]);
-  const [video, setVideo] = useState("");
+  const [oldImages, setOldImages] = useState([]);
+  const [video, setVideo] = useState(false);
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [oldPosition, setOldPosition] = useState("");
   const [positionError, setPositionError] = useState(false);
   const [categoryError, setCategoryError] = useState(false);
   const [headlineError, setHeadlineError] = useState(false);
@@ -31,6 +31,7 @@ const UpdateTopNews = () => {
       )
       .classList.toggle("active");
   }
+  console.log(oldImages);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/news/${params.id}`).then((res) => {
@@ -38,8 +39,10 @@ const UpdateTopNews = () => {
       setHeadline(res.data.item.headline);
       setSummary(res.data.item.summary);
       setPosition(res.data.item.position);
+      setOldPosition(res.data.item.position);
       setOldImages([...res.data.item.photo]);
-      setVideo(res.data.item.video);
+      res.data.item.video !== "no video Available" &&
+        setVideo(res.data.item.video);
     });
   }, []);
 
@@ -96,17 +99,20 @@ const UpdateTopNews = () => {
 
   async function handelSubmit() {
     const images = files.filter((file) => file.type.startsWith("image/"));
+
     const videos = files.filter((file) => file.type.startsWith("video/"));
+
+    let allVideo = videos;
+    video && allVideo.push(video);
+    console.log(allVideo);
 
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
     else if (summary === "") setSummaryError(true);
     else if (position === "") setPositionError(true);
-    else if (images.length + oldImage.length <= 0) setFilesError(true);
-    else if (
-      images.length + oldImage.length > 3 ||
-      [...videos, video].length > 1
-    )
+    else if (images.length + oldImages.length <= 0) setFilesError(true);
+    // fix this stupid
+    else if (images.length + oldImages.length > 3 || allVideo.length > 1)
       setErrorMessage(true);
     else {
       setLoading(true);
@@ -115,11 +121,23 @@ const UpdateTopNews = () => {
         formData.append("category", category);
         formData.append("headline", headline);
         formData.append("summary", summary);
-        formData.append("position", position);
-        images.forEach((img) => formData.append("photo", img));
-        formData.append("video", videos.length !== 0 ? videos[0] : video);
-        oldImage.forEach((src) => formData.append("oldPhotoPath", src));
+        position !== oldPosition && formData.append("position", position);
 
+        if (images.length > 0) {
+          images.forEach((img) => formData.append("photo", img));
+        }
+
+        if (videos.length === 0) {
+          formData.append("oldVideo", "true");
+        } else {
+          formData.append("video", videos.length !== 0 ? videos[0] : video);
+        }
+
+        if (oldImages.length > 1) {
+          oldImages.forEach((src) => formData.append("oldPhotoPaths[]", src));
+        } else {
+          formData.append("oldPhotoPaths[]", oldImages);
+        }
         const data = await axios.patch(
           `http://localhost:8000/api/top-news/${params.id}`,
           formData,
@@ -127,6 +145,7 @@ const UpdateTopNews = () => {
             headers: { Authorization: "Bearer " + token },
           }
         );
+
         nav("/dashboard/top-news");
       } catch (err) {
         console.log(err);
@@ -142,7 +161,7 @@ const UpdateTopNews = () => {
   }
 
   function dataRemover(e) {
-    const fltr = oldImage.filter((item) => item != e.target.dataset.name);
+    const fltr = oldImages.filter((item) => item != e.target.dataset.name);
     setOldImages(fltr);
     setErrorMessage(false);
   }
@@ -292,7 +311,7 @@ const UpdateTopNews = () => {
           )}
 
           <div className="file-flex">
-            {oldImage.map((img, i) => {
+            {oldImages.map((img, i) => {
               return (
                 <div key={i}>
                   <img alt={i} src={`http://localhost:8000/img/news/${img}`} />
@@ -308,7 +327,10 @@ const UpdateTopNews = () => {
             {video && (
               <div>
                 <video controls src={`http://localhost:8000/video/${video}`} />
-                <i onClick={() => setVideo("")} className="fa-solid fa-x"></i>
+                <i
+                  onClick={() => setVideo(false)}
+                  className="fa-solid fa-x"
+                ></i>
               </div>
             )}
 
