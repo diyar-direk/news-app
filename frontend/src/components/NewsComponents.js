@@ -98,6 +98,7 @@ const NewsComponents = (props) => {
               src={
                 importantNews &&
                 // `http://localhost:8000/img/news/${importantNews.photo[0]}`
+
                 `${importantNews.photo[0]}`
               }
               alt="1"
