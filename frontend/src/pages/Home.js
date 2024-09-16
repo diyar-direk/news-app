@@ -105,8 +105,8 @@ export default function Home() {
       className={`center w-100 ${index === currentSlide ? "active" : ""}`}
       key={e._id}
       style={{
-        // backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
-        backgroundImage: `url(${e.photo[0]})`,
+        backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
+        // backgroundImage: `url(${e.photo[0]})`,
       }}
     >
       <div className="container">
