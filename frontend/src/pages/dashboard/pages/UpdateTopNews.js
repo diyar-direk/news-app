@@ -10,7 +10,7 @@ const UpdateTopNews = () => {
   const [headline, setHeadline] = useState("");
   const [summary, setSummary] = useState("");
   const [position, setPosition] = useState("");
-  const [oldImage, setOldImages] = useState([]);
+  const [oldImages, setOldImages] = useState([]);
   const [video, setVideo] = useState("");
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -96,15 +96,19 @@ const UpdateTopNews = () => {
 
   async function handelSubmit() {
     const images = files.filter((file) => file.type.startsWith("image/"));
+
     const videos = files.filter((file) => file.type.startsWith("video/"));
+    console.log(video);
+    console.log(videos);
 
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
     else if (summary === "") setSummaryError(true);
     else if (position === "") setPositionError(true);
-    else if (images.length + oldImage.length <= 0) setFilesError(true);
+    else if (images.length + oldImages.length <= 0) setFilesError(true);
+    // fix this you stupid prick
     else if (
-      images.length + oldImage.length > 3 ||
+      images.length + oldImages.length > 3 ||
       [...videos, video].length > 1
     )
       setErrorMessage(true);
@@ -116,10 +120,22 @@ const UpdateTopNews = () => {
         formData.append("headline", headline);
         formData.append("summary", summary);
         formData.append("position", position);
-        images.forEach((img) => formData.append("photo", img));
-        formData.append("video", videos.length !== 0 ? videos[0] : video);
-        oldImage.forEach((src) => formData.append("oldPhotoPath", src));
 
+        if (images.length > 0) {
+          images.forEach((img) => formData.append("photo", img));
+        }
+
+        if (videos.length === 0) {
+          formData.append("oldVideo", "true");
+        } else {
+          formData.append("video", videos.length !== 0 ? videos[0] : video);
+        }
+
+        if (oldImages.length > 1) {
+          oldImages.forEach((src) => formData.append("oldPhotoPaths[]", src));
+        } else {
+          formData.append("oldPhotoPaths[]", oldImages);
+        }
         const data = await axios.patch(
           `http://localhost:8000/api/top-news/${params.id}`,
           formData,
@@ -127,6 +143,8 @@ const UpdateTopNews = () => {
             headers: { Authorization: "Bearer " + token },
           }
         );
+        console.log(data);
+
         nav("/dashboard/top-news");
       } catch (err) {
         console.log(err);
@@ -142,7 +160,7 @@ const UpdateTopNews = () => {
   }
 
   function dataRemover(e) {
-    const fltr = oldImage.filter((item) => item != e.target.dataset.name);
+    const fltr = oldImages.filter((item) => item != e.target.dataset.name);
     setOldImages(fltr);
     setErrorMessage(false);
   }
@@ -292,7 +310,7 @@ const UpdateTopNews = () => {
           )}
 
           <div className="file-flex">
-            {oldImage.map((img, i) => {
+            {oldImages.map((img, i) => {
               return (
                 <div key={i}>
                   <img alt={i} src={`http://localhost:8000/img/news/${img}`} />
