@@ -95,11 +95,11 @@ const UpdateTopNews = () => {
   const nav = useNavigate();
 
   async function handelSubmit() {
-    const images = files.filter((file) => file.type.startsWith("image/"));
+    const images = files.filter(
+      (file) => file && file.type.startsWith("image/")
+    );
 
     const videos = files.filter((file) => file.type.startsWith("video/"));
-    console.log(video);
-    console.log(videos);
 
     if (category === "") setCategoryError(true);
     else if (headline === "") setHeadlineError(true);
@@ -121,8 +121,12 @@ const UpdateTopNews = () => {
         formData.append("summary", summary);
         formData.append("position", position);
 
-        if (images.length > 0) {
-          images.forEach((img) => formData.append("photo", img));
+        if (images.length >= 1) {
+          images.forEach((img) => {
+            formData.append("photo", img);
+          });
+        } else {
+          formData.append("photo", images);
         }
 
         if (videos.length === 0) {
@@ -132,7 +136,11 @@ const UpdateTopNews = () => {
         }
 
         if (oldImages.length > 1) {
-          oldImages.forEach((src) => formData.append("oldPhotoPaths[]", src));
+          oldImages.forEach((src) => {
+            console.log(src);
+
+            formData.append("oldPhotoPaths[]", src);
+          });
         } else {
           formData.append("oldPhotoPaths[]", oldImages);
         }
