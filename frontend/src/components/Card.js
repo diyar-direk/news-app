@@ -117,7 +117,7 @@ export default function Card(props) {
 
       <article>
         {subNews}
-        {propsData.length > 0 && (
+        {propsData.length > 1 && (
           <NavLink
             className="all"
             to={`/category/${importantNews && importantNews.category}`}

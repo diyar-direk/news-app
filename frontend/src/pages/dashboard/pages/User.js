@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./news.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Context } from "../../../context/Context";
 
 const User = () => {

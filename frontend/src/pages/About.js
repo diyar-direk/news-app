@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./about.css";
 import { Link } from "react-router-dom";
 import { Context } from "../context/Context";
+import Logo from "../components/Logo";
 const About = () => {
   const context = useContext(Context);
   const language = context.langValue.about;
@@ -10,7 +11,9 @@ const About = () => {
       <div className="container">
         <div className="about flex">
           <div className="about-logo center">
-            <h1>logo</h1>
+            <h1>
+              <Logo />
+            </h1>
           </div>
           <div className="about-info">
             <h1>

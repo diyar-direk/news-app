@@ -8,6 +8,10 @@ div.navbar {
   height: 60px;
   z-index: 2;
 }
+div.navbar .logo img {
+  max-width: 38px;
+  max-height: 38px;
+}
 div.navbar .flex {
   gap: 10px;
 }

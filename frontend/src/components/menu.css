@@ -33,7 +33,12 @@ nav > aside.mobile-link.active {
   pointer-events: all;
 }
 nav > aside.mobile-link.active .menu-logo {
-  text-align: left;
+  width: fit-content;
+}
+nav > aside.mobile-link.active .menu-logo img {
+  max-height: 34px;
+  max-width: 34px;
+  object-fit: contain;
 }
 nav > aside.mobile-link > i {
   position: absolute;
@@ -78,7 +83,8 @@ nav > aside.mobile-link article > div {
   max-height: 0px;
 }
 nav > aside.mobile-link article > div.active {
-  max-height: 400px;
+  max-height: 460px;
+  overflow-y: auto;
 }
 nav > aside.mobile-link article > div a {
   display: block;

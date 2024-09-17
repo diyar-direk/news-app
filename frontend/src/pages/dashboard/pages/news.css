@@ -59,10 +59,10 @@ body.arabic td.align-left {
   padding-right: 10px;
   padding-left: 0px;
 }
-tr:hover {
+tbody tr:hover {
   background-color: var(--border-color);
 }
-tr:hover td {
+tbody tr:hover td {
   border: solid 1px var(--section-color);
 }
 td span {

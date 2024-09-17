@@ -73,21 +73,21 @@ const ActivitiesPage = () => {
         <div className="flex">
           <div className="add" data-chose="CREATE" onClick={active}>
             <i className="fa-solid fa-plus"></i>
-            <span>add</span>
+            <span>{language.create}</span>
           </div>
 
           <div className="update" data-chose="UPDATE" onClick={active}>
             <i className="fa-solid fa-wrench"></i>
-            <span>update</span>
+            <span>{language.update}</span>
           </div>
 
           <div className="delete" data-chose="DELETE" onClick={active}>
             <i className="fa-solid fa-trash-can "></i>
-            <span>delete</span>
+            <span>{language.delete}</span>
           </div>
 
           <div className="active" data-chose="all" onClick={active}>
-            <span>all activities</span>
+            <span>{language.all}</span>
           </div>
         </div>
 
