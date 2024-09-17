@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: cairo;
   outline: none;
 }
 *:not(i) {
@@ -22,12 +21,25 @@ img {
   --hover-color: #105867;
   --section-color: #f0f0f0;
 }
+@font-face {
+  font-family: "BBC Reith Sans";
+  src: url("../public/fonts/bbcreith-v2.300/bbcreith_v2.300/BBCReithSerif_V2.300/Web/WOFF2/BBCReithSerif_W_Bd.woff2")
+      format("woff2"),
+    url("../public/fonts/bbcreith-v2.300/bbcreith_v2.300/BBCReithSerif_V2.300/Web/WOFF/BBCReithSerif_W_Bd.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   background: var(--body-color);
   overflow-y: hidden;
+  font-family: "BBC Reith Sans", Helvetica, Arial, sans-serif ;
 }
+
 body.arabic {
   direction: rtl;
+  font-family: cairo;
 }
 ::-webkit-scrollbar {
   width: 12px;
@@ -239,6 +251,7 @@ nav > div.container > .links {
 body.arabic nav > div.container > .links {
   border-right: none;
   border-left: solid 1px var(--border-color);
+  direction: ltr;
 }
 nav > div.container > .links a,
 nav > div.container > .links i {

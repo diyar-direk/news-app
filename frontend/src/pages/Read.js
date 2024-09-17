@@ -1,15 +1,14 @@
 import "./read.css";
 import GridCard from "../components/GridCard";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import axios from "axios";
 import Loader from "../components/Loader";
 
 const Read = () => {
-  const location = useLocation();
-  const state = location.state || {}; // Retrieve the state or default to an empty object
-  const id = state.id || ""; // Access the id property from the state
+  const param = useParams();
+  const id = param.id; // Access the id property from the state
 
   const [data, setData] = useState({});
   const [sideTop, setSideTop] = useState([]);
@@ -70,7 +69,7 @@ const Read = () => {
         setData(response.data);
 
         const top = await axios.get(
-          `http://localhost:8000/api/top-news?limit=5`
+          `http://localhost:8000/api/top-news?limit=5&lang=${context.language}`
         );
         const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
 
@@ -93,7 +92,7 @@ const Read = () => {
       if (data.item && data.item.category) {
         try {
           const side = await axios.get(
-            `http://localhost:8000/api/news?category=${data.item.category}&limit=10`
+            `http://localhost:8000/api/news?category=${data.item.category}&limit=10&lang=${context.language}`
           );
           const filteredSideNews = side.data.data.news.filter(
             (ele) => ele._id !== data.item._id
@@ -194,8 +193,7 @@ const Read = () => {
                   sideTop.map((ele, index) => (
                     <Link
                       key={ele._id}
-                      to="/read"
-                      state={{ id: ele._id }}
+                      to={`/read/${ele._id}`}
                       className="image-hover"
                     >
                       <img
@@ -204,7 +202,6 @@ const Read = () => {
                         src={`${ele.photo[0]}`}
                       />
                       <h4>
-                        {" "}
                         {ele.headline.length < 37
                           ? ele.headline
                           : ele.headline.slice(0, 70) + "..."}
@@ -217,18 +214,14 @@ const Read = () => {
               {sideNews &&
                 sideNews.map((ele) => (
                   <div key={ele._id} className="center">
-                    <Link
-                      to="/read"
-                      state={{ id: ele._id }}
-                      className="image-hover"
-                    >
+                    <Link to={`/read/${ele._id}`} className="image-hover">
                       <img
                         alt=""
                         // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
                         src={`${ele.photo[0]}`}
                       />
                     </Link>
-                    <Link to="/read" state={{ id: ele._id }}>
+                    <Link to={`/read/${ele._id}`}>
                       {ele.headline.length < 37
                         ? ele.headline
                         : ele.headline.slice(0, 70) + "..."}

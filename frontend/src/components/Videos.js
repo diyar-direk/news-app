@@ -53,11 +53,7 @@ const Videos = (props) => {
       if (index <= 2) {
         return (
           <div key={e._id} className="video-item">
-            <Link
-              to="/read"
-              state={{ id: e._id }}
-              className="img bottom-before"
-            >
+            <Link to={`/read/${e._id}`}  className="img bottom-before">
               <img
                 // src={`http://localhost:8000/img/news/${e.photo[0]}`}
                 src={`${e.photo[0]}`}
@@ -69,7 +65,7 @@ const Videos = (props) => {
                 <NavLink to={`/category/${e.category}`}>{e.category}</NavLink>
                 <p className="time"> {timeAgo(e.publishedAt)} </p>
               </div>
-              <Link to="/read" state={{ id: e._id }}>
+              <Link to={`/read/${e._id}`}>
                 {e.headline.length < 37
                   ? e.headline
                   : e.headline.slice(0, 30) + "..."}
