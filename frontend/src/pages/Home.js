@@ -14,16 +14,18 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef(null);
   const context = useContext(Context);
+  const language = context.language;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const topNewsResponse = await axios.get(
-          "http://localhost:8000/api/top-news?sort=position"
+          `http://localhost:8000/api/top-news?sort=position&lang=${language}`
         );
         setTopNews(topNewsResponse.data.data.slice(0, 5));
 
         const categoriesResponse = await axios.get(
-          "http://localhost:8000/api/news/categoriesNews"
+          `http://localhost:8000/api/news/categoriesNews?lang=${language}`
         );
         setDataCategories(categoriesResponse.data.categories);
       } catch (error) {
@@ -34,7 +36,7 @@ export default function Home() {
     };
 
     fetchData();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (topNews.length === 0) return;

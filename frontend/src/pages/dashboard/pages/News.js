@@ -15,7 +15,7 @@ const News = () => {
 
   function fetchData() {
     axios
-      .get("http://localhost:8000/api/news?fields=headline,category")
+      .get(`http://localhost:8000/api/news?fields=headline,category&lang=${context.language}`)
       .then((res) => setData(res.data.data.news))
       .catch((error) => console.error("Error fetching data:", error));
   }
