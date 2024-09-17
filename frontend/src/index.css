@@ -152,7 +152,7 @@ nav.navbar > div.container > article.search input {
 body.arabic nav.navbar > div.container > article.search input {
   border-radius: 0px 4px 4px 0px;
 }
-body.arabic nav.navbar > div.container > article.search a {
+body.arabic nav.navbar > div.container > article.search .button-style {
   border-radius: 4px 0px 0px 4px;
 }
 nav.navbar > div.container > article.search .button-style {
@@ -322,7 +322,7 @@ div.lang p:first-of-type {
   border-bottom: solid 1px var(--border-color);
 }
 div.lang p:not(nav div.more div.lang p):hover {
-  background-color: #464a54;
+  background-color: var(--border-color);
 }
 nav > div.container > .more i.fa-sun {
   font-weight: normal;

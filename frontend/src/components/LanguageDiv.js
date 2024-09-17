@@ -13,6 +13,7 @@ export default function LanguageDiv() {
     });
     divs[e.target.dataset.index].classList.add("active");
     language(e.target.dataset.lang);
+    e.target.parentNode.classList.remove("active");
   }
   return (
     <div className="lang">
@@ -25,8 +26,16 @@ export default function LanguageDiv() {
         English
       </p>
       <p
-        className={langVal === "arabic" ? "active" : undefined}
+        className={langVal === "kurdish" ? "active" : undefined}
+        data-lang="kurdish"
         data-index="1"
+        onClick={selects}
+      >
+        Kurdî
+      </p>
+      <p
+        className={langVal === "arabic" ? "active" : undefined}
+        data-index="2"
         onClick={selects}
         data-lang="arabic"
       >

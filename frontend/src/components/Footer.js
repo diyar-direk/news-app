@@ -41,6 +41,7 @@ export default function Footer() {
     }
     return articles;
   };
+  const seletctedLang = document.querySelector("div.lang p.active");
   return (
     <footer className="center">
       <div className="container">
@@ -71,7 +72,9 @@ export default function Footer() {
             </div>
             <div onClick={footerLang} className="flex language-div">
               <i className="fa-solid fa-earth-americas"></i>
-              <span>english</span>
+              <span className="span-lang">
+                {seletctedLang && seletctedLang.textContent}
+              </span>
               <i className="fa-solid fa-chevron-down"></i>
               <LanguageDiv />
             </div>

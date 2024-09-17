@@ -53,7 +53,6 @@ export default function Home() {
       clearInterval(intervalRef.current);
       intervalRef.current = setInterval(() => {
         setCurrentSlide((prevSlide) => (prevSlide + 1) % topNews.length);
-        console.log(currentSlide);
       }, 10000);
     }
   };
@@ -105,8 +104,8 @@ export default function Home() {
       className={`center w-100 ${index === currentSlide ? "active" : ""}`}
       key={e._id}
       style={{
-        // backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
-        backgroundImage: `url(${e.photo[0]})`,
+        backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
+        // backgroundImage: `url(${e.photo[0]})`,
       }}
     >
       <div className="container">
@@ -133,7 +132,6 @@ export default function Home() {
 
     // Iterate over categoryKeys
     for (let i = 0; i < categoryKeys.length; i++) {
-      console.log(i);
       // Log for debugging
 
       // Determine which component to add based on the index
@@ -142,8 +140,6 @@ export default function Home() {
           <NewsComponents data={dataCategories[categoryKeys[i]]} title={true} />
         );
       } else if (i % 5 === 1) {
-        console.log(!dataCategories[categoryKeys[i + 1]]);
-
         if (dataCategories[categoryKeys[i + 1]]) {
           components.push(<Videos data={dataCategories[categoryKeys[i]]} />);
         } else {

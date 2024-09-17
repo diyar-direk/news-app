@@ -44,12 +44,6 @@ export default function PageContext({ children }) {
     localStorage.setItem("mode", theme ? 1 : 0);
   };
   const languageFun = () => {
-    const footerLang = document.querySelector(
-      "footer .footer-row article > div.language-div span"
-    );
-    const menuLang = document.querySelector("div.sitting div.menu-lang span");
-    footerLang && (footerLang.textContent = language);
-    menuLang && (menuLang.textContent = language);
     window.localStorage.setItem("language", language);
     language === "arabic"
       ? document.body.classList.add("arabic")
