@@ -1,0 +1,26 @@
+==Release notes_BBC Reith Serif==
+
+Compiler of release notes: Dalton Maag
+Designer: Dalton Maag
+Designer URL: daltonmaag.com
+
+Date of creation: 2017-11-03
+
+Changes since previous release:
+- Added Medium and Medium Italic.
+- Added plus.alt glyph.
+
+Basic information
+1 Font name: BBC Reith Serif
+2 TrueType Version record: 2.300
+3 Regional package: Latin, Cyrillic
+4 Supported scripts: Latin, Cyrillic
+5 Number of glyphs: 825 Uprights; 831 Italics; 636 Medium and Medium Italic
+6 Weights/Styles: Light, Light Italic, Regular, Italic, Medium, Medium Italic, Bold, Bold Italic, ExtraBold, ExtraBold Italic
+7 Usage: Text and Display
+
+Technology
+1 File formats: The files have been delivered in the TrueType-based OpenType format, for use in all major Operating Systems, and also as TTF for use in apps, and in web font format: EOT; WOFF; WOFF2.
+2 Embedding settings: Editing of the document is allowed (editable mode), subsetting is allowed.
+3 Hinting information: All glyphs are manually hinted for optimized rasterization in Microsoft ClearType or for other LCD devices. Regular, Italic, Bold and Bold Italic have full manual hinting.
+4 Default numerals: Tabular. Proportional figures accessible via OpenType features.

@@ -15,7 +15,7 @@ const TopNews = () => {
   function fetchData() {
     axios
       .get(
-        "http://localhost:8000/api/top-news?fields=headline,category,position"
+        "http://localhost:8000/api/top-news?fields=headline,category,position&sort=position"
       )
       .then((res) => setData(res.data.data))
       .catch((error) => console.error("Error fetching data:", error));

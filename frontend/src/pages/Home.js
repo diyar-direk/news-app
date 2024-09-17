@@ -106,15 +106,15 @@ export default function Home() {
       className={`center w-100 ${index === currentSlide ? "active" : ""}`}
       key={e._id}
       style={{
-        backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
-        // backgroundImage: `url(${e.photo[0]})`,
+        // backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
+        backgroundImage: `url(${e.photo[0]})`, 
       }}
     >
       <div className="container">
         <NavLink to={`/category/${e.category}`} className="category">
           {e.category}
         </NavLink>
-        <Link to="/read" state={{ id: e._id }} className="title">
+        <Link to={`/read/${e._id}`}  className="title">
           {e.headline.length < 37
             ? e.headline
             : e.headline.slice(0, 30) + "..."}
