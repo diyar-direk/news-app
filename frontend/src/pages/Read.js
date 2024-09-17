@@ -160,14 +160,16 @@ const Read = () => {
                   <p>{data.item.summary}</p>
                   <div className="slider">
                     {data.item.photo.map((photo, index) => (
-                      <img
-                        key={index}
-                        data-index={index}
-                        className={`slide ${index === 0 ? "active" : ""}`}
-                        // src={`http://localhost:8000/img/news/${photo}`}
-                        src={`${photo}`}
-                        alt=""
-                      />
+                      <figure>
+                        <img
+                          key={index}
+                          data-index={index}
+                          className={`slide ${index === 0 ? "active" : ""}`}
+                          // src={`http://localhost:8000/img/news/${photo}`}
+                          src={`${photo}`}
+                          alt=""
+                        />
+                      </figure>
                     ))}
                     <div className="between">
                       <i
