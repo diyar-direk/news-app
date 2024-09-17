@@ -197,8 +197,9 @@ nav.navbar > div.container > aside.more-link {
 nav.navbar > div.container > aside.more-link.active {
   display: block;
 }
-nav.navbar > div.container > aside.more-link .between {
-  align-items: flex-start;
+nav.navbar > div.container > aside.more-link .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 0px 20px;
 }
 
@@ -224,9 +225,9 @@ nav.navbar > div.container > aside.more-link a.active {
 }
 /* end more link  */
 nav > div.container > .logo img {
-  max-width: 70px;
+  max-width: 40px;
   height: 100%;
-  max-height: 70px;
+  max-height: 34px;
   object-fit: cover;
 }
 nav > div.container > .links {
@@ -305,7 +306,7 @@ nav > div.container > .more > div > div::before {
   top: -12px;
 }
 div.lang p {
-  padding: 10px;
+  padding: 8px 10px;
   cursor: pointer;
   font-weight: bold;
   font-size: 15px;
@@ -318,7 +319,7 @@ nav div.lang p {
   display: flex;
   align-items: center;
 }
-div.lang p:first-of-type {
+div.lang p:not(:last-of-type) {
   border-bottom: solid 1px var(--border-color);
 }
 div.lang p:not(nav div.more div.lang p):hover {

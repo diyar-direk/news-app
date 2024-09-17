@@ -27,8 +27,8 @@
       "pages": "Rûpelên Malperê",
       "btn": "Bêtir Binêre",
       "search": "Lêgerîn...",
-      "theme": ": Hilbijartina Tema",
-      "language": ": Hilbijartina Ziman"
+      "theme": "Hilbijartina Tema :",
+      "language": "Hilbijartina Ziman :"
     },
     "footer": {
       "copyRight": "© Hemû Mafên Weşandin Misogerin"
@@ -47,7 +47,7 @@
       "btn": "Şandin"
     },
     "about": {
-      "pageName": "Agahdariyên",
+      "pageName": "Agahdariyên ",
       "insideSpan": "Derbarê me de",
       "btn": "Peywendî Bi Me re"
     },

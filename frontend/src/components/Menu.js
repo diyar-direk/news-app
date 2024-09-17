@@ -1,9 +1,10 @@
-import { Link, Navigate, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./menu.css";
 import { useContext, useState } from "react";
 import { Context } from "../context/Context";
 import Setting from "./Setting";
 import { linksClick } from "./Navbar";
+import Logo from "./Logo";
 export default function Menu() {
   const [query, setQuery] = useState("");
 
@@ -47,7 +48,9 @@ export default function Menu() {
 
   return (
     <aside className="mobile-link" onClick={(e) => e.stopPropagation()}>
-      <h1 className="menu-logo">logo</h1>
+      <h1 className="menu-logo">
+        <Logo />
+      </h1>
       <div className="center">
         <input
           type="text"

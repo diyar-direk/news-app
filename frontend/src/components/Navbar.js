@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import LanguageDiv from "./LanguageDiv";
 import Menu from "./Menu";
 import { Context } from "../context/Context";
 import { useState } from "react";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const theme = useContext(Context);
@@ -92,13 +93,13 @@ export default function Navbar() {
       articles.push(
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
-            <Link
+            <NavLink
               key={index}
               to={`/category/${category}`}
               state={{ query: category }}
             >
               {category}
-            </Link>
+            </NavLink>
           ))}
         </article>
       );
@@ -157,13 +158,15 @@ export default function Navbar() {
 
           {/* start more link div  */}
           <aside className="more-link">
-            <div className="between">
+            <div className="grid">
               {loadLinks(4) /* Number of links per article */}
             </div>
           </aside>
           {/* end more link div  */}
 
-          <div className="logo">logo</div>
+          <div className="logo">
+            <Logo />
+          </div>
           <div className="links center">
             {data.map((e, i) => {
               if (i < 4) {
@@ -217,7 +220,7 @@ export default function Navbar() {
               </NavLink>
             )}
             {data.map((e, i) => {
-              if (i < 20) {
+              if (i < 10) {
                 return (
                   <NavLink to={`/category/${e}`} key={e}>
                     {e}

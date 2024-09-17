@@ -10,7 +10,7 @@ div.about > div h1 {
   font-weight: 500;
   color: var(--font-color);
   text-transform: capitalize;
-  font-size: 40px;
+  font-size: 39px;
 }
 div.about > div.about-info div.flex {
   margin-top: 15px;
@@ -51,7 +51,7 @@ div.about > div.about-info a.contact-btn::after {
 }
 div.about > div.about-info a.contact-btn:hover::after {
   opacity: 1;
-  transform: scale(20);
+  transform: scale(23);
 }
 div.about > div.about-info a:not(.contact-btn) {
   margin: 0 10px;

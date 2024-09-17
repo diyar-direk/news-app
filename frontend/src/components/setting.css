@@ -73,7 +73,7 @@ div.sitting div.menu-lang.active i {
 div.sitting div.lang {
   width: 100%;
   transform: translate(0);
-  top: -50px;
+  top: -90px;
   left: 0;
   background-color: var(--body-color);
 }
