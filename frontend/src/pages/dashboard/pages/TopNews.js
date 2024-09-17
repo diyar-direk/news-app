@@ -97,6 +97,11 @@ const TopNews = () => {
               className="fa-regular fa-pen-to-square"
             ></Link>
           </span>
+          <span data-content="show">
+            <Link to={`/read/${item._id}`}>
+              <i className="fa-solid fa-eye"></i>
+            </Link>
+          </span>
         </td>
       </tr>
     ));

@@ -1,6 +1,9 @@
 .pointer-none {
   pointer-events: none;
 }
+div.main .dashboard-container {
+  font-family: cairo;
+}
 div.main .dashboard-container article.search {
   background-color: var(--section-color);
   width: 50%;
@@ -13,6 +16,7 @@ div.main .dashboard-container article.search input {
   color: var(--font-color);
   border-right: solid 1px var(--border-color);
   margin-right: 10px;
+  font-family: cairo;
 }
 body.arabic div.main .dashboard-container article.search input {
   border-right: none;

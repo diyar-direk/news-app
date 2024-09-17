@@ -17,6 +17,7 @@ form.add-news > textarea {
   border-radius: 6px;
   color: var(--font-color);
   caret-color: var(--var-color);
+  font-family: cairo;
 }
 div.main .dashboard-container form.add-news > label {
   margin-bottom: 5px;
@@ -40,12 +41,14 @@ div.main .dashboard-container form.add-news .no-wrap input {
   width: 100%;
   border-radius: 6px;
   color: var(--font-color);
+  font-family: cairo;
 }
 body.arabic div.main .dashboard-container form.add-news .no-wrap input {
   padding: 4px 10px 4px 30px;
 }
 
 div.main .dashboard-container form.add-news .no-wrap input.disabled {
+  font-family: cairo;
   cursor: no-drop;
   background-color: var(--border-color);
 }
