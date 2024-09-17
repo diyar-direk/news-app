@@ -1,9 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./footer.css";
 import LanguageDiv from "./LanguageDiv";
 import { useContext } from "react";
 import { Context } from "../context/Context";
 import { linksClick } from "./Navbar";
+import Logo from "./Logo";
 export default function Footer() {
   const context = useContext(Context);
   const language = context.langValue;
@@ -28,13 +29,13 @@ export default function Footer() {
       articles.push(
         <article key={i} className="flex-1">
           {chunk.map((category, index) => (
-            <Link
+            <NavLink
               onClick={() => linksClick()}
               key={index}
               to={"/category/" + category}
             >
               {category}
-            </Link>
+            </NavLink>
           ))}
         </article>
       );

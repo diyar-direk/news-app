@@ -12,13 +12,14 @@ const Category = () => {
   const [error, setError] = useState(false); // Track if there's an error during the API call
   const param = useParams();
   const query = param.category;
-
+  const context = useContext(Context);
+  const lang = context.language;
   useEffect(() => {
     if (query) {
       setLoading(true); // Set loading to true before fetching data
       setError(false); // Reset error state before fetching
       axios
-        .get(`http://localhost:8000/api/news/search/${query}`)
+        .get(`http://localhost:8000/api/news/search/${query}?lang=${lang}`)
         .then((response) => {
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -42,7 +43,6 @@ const Category = () => {
 
   const nextData = categories && categories.filter((category, i) => i > 4);
 
-  const context = useContext(Context);
   const language = context.langValue.category;
 
   if (loading) {
@@ -62,9 +62,7 @@ const Category = () => {
       <div className="news">
         <h1 className="center">
           {language && language.pageName}
-          <span className="inside-span">
-            {query}
-          </span>
+          <span className="inside-span">{query}</span>
         </h1>
 
         {categories && categories.length > 0 ? (

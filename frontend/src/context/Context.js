@@ -6,7 +6,7 @@ export default function PageContext({ children }) {
   const [userDetails, setUserDetails] = useState({});
   const [theme, setTheme] = useState(+localStorage.getItem("mode") || 0);
   const [language, setLanguage] = useState(
-    localStorage.getItem("language") || "english"
+    localStorage.getItem("language") || "arabic"
   );
   const [langValue, setLanguageValue] = useState("");
   useEffect(() => {
@@ -52,9 +52,9 @@ export default function PageContext({ children }) {
   const [dataType, setDataType] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/news/ALLcategories")
+      .get(`http://localhost:8000/api/news/ALLcategories?lang=${language}`)
       .then((data) => setDataType(data.data));
-  }, []);
+  }, [language]);
   return (
     <Context.Provider
       value={{

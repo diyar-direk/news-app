@@ -5,6 +5,7 @@ import Setting from "../../../components/Setting";
 import { Context } from "./../../../context/Context";
 import Cookies from "universal-cookie";
 import { linksClick } from "../../../components/Navbar";
+import Logo from "../../../components/Logo";
 
 const DashboardNavbar = () => {
   function handelCilck(e) {
@@ -39,7 +40,7 @@ const DashboardNavbar = () => {
       <div className="navbar center">
         <div className="between container">
           <div className="logo">
-            <Link to={"/"}>logo</Link>
+            <Logo />
           </div>
           <div className="flex">
             <Link to={"/"} className="btn">
@@ -159,7 +160,7 @@ const DashboardNavbar = () => {
           <span>{language && language.dashboard.navbar.addNews}</span>
         </NavLink>
 
-        <Setting />
+        <Setting position={true} />
       </aside>
     </>
   );

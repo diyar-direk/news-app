@@ -66,7 +66,7 @@ export default function Card(props) {
               <div className="time flex">
                 <p className="time">{timeAgo(e.publishedAt)}</p>
               </div>
-              <Link to="/read" state={{ id: e._id }}>
+              <Link to={`/read/${e._id}`}>
                 {e.headline.length < 37
                   ? e.headline
                   : e.headline.slice(0, 30) + "..."}
@@ -89,8 +89,7 @@ export default function Card(props) {
 
       <div className="important">
         <Link
-          to="/read"
-          state={{ id: importantNews && importantNews._id }}
+          to={`/read/${importantNews && importantNews._id}`}
           className="info"
         >
           <p className="time">
@@ -117,7 +116,7 @@ export default function Card(props) {
 
       <article>
         {subNews}
-        {propsData.length > 0 && (
+        {propsData.length > 1 && (
           <NavLink
             className="all"
             to={`/category/${importantNews && importantNews.category}`}

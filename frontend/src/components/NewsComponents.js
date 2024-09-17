@@ -55,7 +55,7 @@ const NewsComponents = (props) => {
       if (index > 0 && index < 5) {
         return (
           <div key={e._id} className="center">
-            <Link to="/read" state={{ id: e._id }} className="image-hover ">
+            <Link to={`/read/${e._id}`} className="image-hover ">
               <img
                 // src={`http://localhost:8000/img/news/${e.photo[0]}`}
                 src={`${e.photo[0]}`}
@@ -69,7 +69,7 @@ const NewsComponents = (props) => {
                 </NavLink>
                 <p className="time">{timeAgo(e.publishedAt)}</p>
               </div>
-              <Link to="/read" state={{ id: e._id }}>
+              <Link to={`/read/${e._id}`}>
                 {e.headline.length < 37
                   ? e.headline
                   : e.headline.slice(0, 30) + "..."}
@@ -90,8 +90,7 @@ const NewsComponents = (props) => {
       <article className="flex">
         <div className="important card">
           <Link
-            to="/read"
-            state={{ id: importantNews && importantNews._id }}
+            to={`/read/${importantNews && importantNews._id}`}
             className="image-hover bottom-before"
           >
             <img
@@ -114,7 +113,7 @@ const NewsComponents = (props) => {
               {importantNews && timeAgo(importantNews.publishedAt)}
             </p>
           </div>
-          <Link to="/read" state={{ id: importantNews && importantNews._id }}>
+          <Link to={`/read${importantNews && importantNews._id}`}>
             {importantNews.headline.length < 37
               ? importantNews.headline
               : importantNews.headline.slice(0, 30) + "..."}

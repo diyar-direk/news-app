@@ -53,7 +53,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/category/:category" element={<Category />} />
-        <Route path="/read" element={<Read />} />
+        <Route path="/read/:id" element={<Read />} />
         <Route path="/login" element={<Login />} />
 
         <Route element={<Refresh />}>
