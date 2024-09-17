@@ -98,6 +98,7 @@ const AddTopNews = () => {
         formData.append("headline", headline);
         formData.append("summary", summary);
         formData.append("position", position);
+        formData.append("lang", context.language);
 
         files.forEach((e, index) => {
           e.type.startsWith("image/")

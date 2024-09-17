@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 
-export default function LanguageDiv() {
+export default function LanguageDiv(props) {
   const context = useContext(Context);
   const language = context.setLanguage;
   const langVal = context.language;
@@ -15,7 +15,8 @@ export default function LanguageDiv() {
     divs[e.target.dataset.index].classList.add("active");
     language(e.target.dataset.lang);
     e.target.parentNode.classList.remove("active");
-    navigator("/")
+
+    props.position ? navigator("/dashboard") : navigator("/");
   }
   return (
     <div className="lang">

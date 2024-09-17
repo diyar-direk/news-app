@@ -90,6 +90,7 @@ const AddNews = () => {
         formData.append("category", category);
         formData.append("headline", headline);
         formData.append("summary", summary);
+        formData.append("lang", context.language);
 
         files.forEach((e, index) => {
           e.type.startsWith("image/")
@@ -97,7 +98,7 @@ const AddNews = () => {
             : formData.append("video", e);
         });
         const data = await axios.post(
-          "http://localhost:8000/api/news",
+          `http://localhost:8000/api/news`,
           formData,
           {
             headers: { Authorization: "Bearer " + token },

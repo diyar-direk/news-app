@@ -160,7 +160,7 @@ const DashboardNavbar = () => {
           <span>{language && language.dashboard.navbar.addNews}</span>
         </NavLink>
 
-        <Setting />
+        <Setting position={true} />
       </aside>
     </>
   );

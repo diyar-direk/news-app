@@ -239,6 +239,7 @@ nav > div.container > .links {
 body.arabic nav > div.container > .links {
   border-right: none;
   border-left: solid 1px var(--border-color);
+  direction: ltr;
 }
 nav > div.container > .links a,
 nav > div.container > .links i {

@@ -12,10 +12,11 @@ const TopNews = () => {
   const context = useContext(Context);
   const language = context.langValue;
   const token = context.userDetails.token;
+  const isAdmin = context.userDetails.isAdmin;
   function fetchData() {
     axios
       .get(
-        "http://localhost:8000/api/top-news?fields=headline,category,position"
+        `http://localhost:8000/api/top-news?fields=headline,category,position&sort=position&lang=${context.language}`
       )
       .then((res) => setData(res.data.data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -99,7 +100,36 @@ const TopNews = () => {
         </td>
       </tr>
     ));
-
+  function langClick(e) {
+    e.stopPropagation();
+    const div = document.querySelector(
+      "div.main .dashboard-container div.news-lang > div"
+    );
+    div.classList.toggle("active");
+  }
+  function category(e) {
+    const span = document.querySelector(
+      "div.main .dashboard-container div.news-lang h4 span"
+    );
+    const div = document.querySelector(
+      "div.main .dashboard-container div.news-lang > div"
+    );
+    span.textContent = e.target.textContent;
+    if (e.target.dataset.lang !== "all") {
+      axios
+        .get(
+          `http://localhost:8000/api/top-news?fields=headline,category,position&sort=position&lang=${e.target.dataset.lang}`
+        )
+        .then((res) => setData(res.data.data));
+    } else {
+      axios
+        .get(
+          `http://localhost:8000/api/top-news?fields=headline,category,position&sort=position`
+        )
+        .then((res) => setData(res.data.data));
+    }
+    div.classList.remove("active");
+  }
   return (
     <div className="main">
       {overlayVisible && (
@@ -120,15 +150,41 @@ const TopNews = () => {
       )}
 
       <div className="dashboard-container">
-        <article className="search no-wrap">
-          <input
-            onChange={handleSearch}
-            type="text"
-            placeholder={language && language.dashboard.table.search}
-            className="flex-1"
-          />
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </article>
+        <div className="flex">
+          <article className="search no-wrap">
+            <input
+              onChange={handleSearch}
+              type="text"
+              placeholder={language && language.dashboard.table.search}
+              className="flex-1"
+            />
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </article>
+
+          {isAdmin && (
+            <div className="news-lang">
+              <h4 onClick={langClick}>
+                <span className="pointer-none">{context.language}</span>
+                <i className="fa-solid fa-chevron-down pointer-none"></i>
+              </h4>
+
+              <div>
+                <p data-lang="all" onClick={category}>
+                  all langauges
+                </p>
+                <p data-lang="english" onClick={category}>
+                  English
+                </p>
+                <p data-lang="kurdish" onClick={category}>
+                  Kurdish
+                </p>
+                <p data-lang="arabic" onClick={category}>
+                  عربي
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="table">
           <table>
             <thead>
