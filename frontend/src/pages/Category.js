@@ -71,7 +71,9 @@ const Category = () => {
             {nextData && <GridCard data={nextData} />}
           </>
         ) : (
-          <p className="center">No results found for "{query}".</p>
+          <p className="center" style={{ color: "var(--font-color)" }}>
+            No results found for "{query}".
+          </p>
         )}
       </div>
     </main>

@@ -1,6 +1,6 @@
 import "./read.css";
 import GridCard from "../components/GridCard";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import axios from "axios";

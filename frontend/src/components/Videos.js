@@ -46,7 +46,6 @@ const Videos = (props) => {
     }
     return "Just now";
   };
-  const propsData = props.data && props.data;
   const data =
     props.data &&
     props.data.map((e, index) => {

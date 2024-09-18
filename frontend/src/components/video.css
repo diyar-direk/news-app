@@ -16,7 +16,6 @@
   position: relative;
   transition: 0.4s;
   cursor: pointer;
-  width: fit-content;
   padding-left: 20px;
   text-decoration: none;
   -webkit-text-fill-color: transparent;
@@ -91,10 +90,8 @@ body.arabic .videos .title::after {
 }
 .videos .video .video-item a {
   cursor: pointer;
-
-  font-size: 20px;
+  font-size: 17px;
   color: white;
-  line-height: 1;
 }
 .videos .video .video-item p {
   font-size: 10px;
@@ -136,7 +133,7 @@ body.arabic .videos .video .video-item .time a {
     flex: 100%;
   }
   .videos .title {
-    font-size: 28px;
+    font-size: 27px;
   }
   .videos .title::after {
     width: 12px;

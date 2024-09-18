@@ -86,7 +86,7 @@ const NewsComponents = (props) => {
             <p>{e.summary}</p>
             <div className="time flex">
               <Link href={`/category/${e.category}`}>Economy</Link>
-              <p class="time">{timeAgo(e.publishedAt)}</p>
+              <p className="time">{timeAgo(e.publishedAt)}</p>
             </div>
           </div>
         );
