@@ -23,7 +23,7 @@ const ActivitiesPage = () => {
       });
   }, []);
 
-  const data = dataFltr.map((e, i) => {
+  const data =dataFltr&& dataFltr.map((e, i) => {
     const action = e.action;
     const type = e.type;
     const actionVal =
@@ -41,7 +41,7 @@ const ActivitiesPage = () => {
             <span> {e.timestamp} </span>
           </div>
           <div>
-            <p> {e.userId.username} </p>
+            <p> {e.userId ? e.userId.username :"user not found   "} </p>
             {action !== "DELETE" && type === "news" && (
               <Link to={`/read`} state={{ id: e.target }}>
                 {language.btn}
