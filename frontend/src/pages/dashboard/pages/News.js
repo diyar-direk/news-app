@@ -74,11 +74,7 @@ const News = () => {
     return (
       <tr key={item._id}>
         <td>{index + 1}</td>
-        <td className="align-left">
-          {item.headline.length <= 90
-            ? item.headline
-            : item.headline.slice(0, 90) + "..."}
-        </td>
+        <td className="align-left">{item.headline}</td>
         <td>{item.category}</td>
         <td>
           <span

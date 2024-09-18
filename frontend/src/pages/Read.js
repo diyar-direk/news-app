@@ -201,11 +201,7 @@ const Read = () => {
                         // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
                         src={`${ele.photo[0]}`}
                       />
-                      <h4>
-                        {ele.headline.length < 37
-                          ? ele.headline
-                          : ele.headline.slice(0, 70) + "..."}
-                      </h4>
+                      <h4>{ele.headline}</h4>
                     </Link>
                   ))}
               </article>

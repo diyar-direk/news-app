@@ -61,11 +61,7 @@ const GridCard = (props) => {
                 />
               </Link>
               <div className="info">
-                <h2>
-                  {e.headline.length < 37
-                    ? e.headline
-                    : e.headline.slice(0, 30) + "..."}
-                </h2>
+                <h2>{e.headline}</h2>
                 <div className="between">
                   <p>{timeAgo(e.publishedAt)}</p>
                   <Link to="/read" state={{ id: e._id }}>

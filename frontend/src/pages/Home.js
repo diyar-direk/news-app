@@ -61,45 +61,6 @@ export default function Home() {
 
   const time = context.langValue.time;
   // Helper function to format time ago
-  const timeAgo = (date) => {
-    const now = new Date();
-    const diff = now - new Date(date);
-
-    const seconds = Math.floor(diff / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-
-    const months = Math.floor(days / 30);
-    const years = Math.floor(days / 365);
-
-    if (years > 0) {
-      return years === 1
-        ? `${time.oneYear}`
-        : `${time.beforeYears} ${years} ${time.years}`;
-    }
-    if (months > 0) {
-      return months === 1
-        ? `${time.oneMonth}`
-        : `${time.beforeMonth} ${months} ${time.months}`;
-    }
-    if (days > 0) {
-      return days === 1
-        ? `${time.oneDay}`
-        : `${time.beforeDays} ${days} ${time.days}`;
-    }
-    if (hours > 0) {
-      return hours === 1
-        ? `${time.oneHour}`
-        : `${time.beforeHours} ${hours} ${time.hours}`;
-    }
-    if (minutes > 0) {
-      return minutes === 1
-        ? `${time.oneMin}`
-        : `${time.beforeMinutes} ${minutes} ${time.minutes}`;
-    }
-    return "Just now";
-  };
 
   const topNewsSlides = topNews.map((e, index) => (
     <div
@@ -107,27 +68,22 @@ export default function Home() {
       key={e._id}
       style={{
         // backgroundImage: `url(http://localhost:8000/img/news/${e.photo[0]})`,
-        backgroundImage: `url(${e.photo[0]})`, 
+        backgroundImage: `url(${e.photo[0]})`,
       }}
     >
       <div className="container">
         <NavLink to={`/category/${e.category}`} className="category">
           {e.category}
         </NavLink>
-        <Link to={`/read/${e._id}`}  className="title">
-          {e.headline.length < 37
-            ? e.headline
-            : e.headline.slice(0, 30) + "..."}
+        <Link to={`/read/${e._id}`} className="title">
+          {e.headline}
         </Link>
-        <p>{timeAgo(e.publishedAt)}</p>
+        <p>{timeAgo(e.publishedAt, time)}</p>
       </div>
     </div>
   ));
 
   const categoryKeys = Object.keys(dataCategories);
-  const showData = categoryKeys
-    .slice(1, -3)
-    .map((key, i) => <Card key={i} data={dataCategories[key]} />);
 
   const loadComponents = () => {
     const components = [];
@@ -203,3 +159,42 @@ export default function Home() {
     </main>
   );
 }
+export const timeAgo = (date, time) => {
+  const now = new Date();
+  const diff = now - new Date(date);
+
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (years > 0) {
+    return years === 1
+      ? `${time.oneYear}`
+      : `${time.beforeYears} ${years} ${time.years}`;
+  }
+  if (months > 0) {
+    return months === 1
+      ? `${time.oneMonth}`
+      : `${time.beforeMonth} ${months} ${time.months}`;
+  }
+  if (days > 0) {
+    return days === 1
+      ? `${time.oneDay}`
+      : `${time.beforeDays} ${days} ${time.days}`;
+  }
+  if (hours > 0) {
+    return hours === 1
+      ? `${time.oneHour}`
+      : `${time.beforeHours} ${hours} ${time.hours}`;
+  }
+  if (minutes > 0) {
+    return minutes === 1
+      ? `${time.oneMin}`
+      : `${time.beforeMinutes} ${minutes} ${time.minutes}`;
+  }
+  return "Just now";
+};

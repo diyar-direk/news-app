@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Context } from "../context/Context";
 const NewsComponents = (props) => {
   const context = useContext(Context);
@@ -52,7 +52,7 @@ const NewsComponents = (props) => {
   const subNews =
     propsData &&
     propsData.map((e, index) => {
-      if (index > 3) {
+      if (index > 3 && index < 7) {
         return (
           <div key={e._id} className="center">
             <Link to={`/read/${e._id}`} className="image-hover ">
@@ -69,11 +69,7 @@ const NewsComponents = (props) => {
                 </NavLink>
                 <p className="time">{timeAgo(e.publishedAt)}</p>
               </div>
-              <Link to={`/read/${e._id}`}>
-                {e.headline.length < 37
-                  ? e.headline
-                  : e.headline.slice(0, 30) + "..."}
-              </Link>
+              <Link to={`/read/${e._id}`}>{e.headline}</Link>
             </div>
           </div>
         );
@@ -135,9 +131,7 @@ const NewsComponents = (props) => {
             </p>
           </div>
           <Link to={`/read${importantNews && importantNews._id}`}>
-            {importantNews.headline.length < 37
-              ? importantNews.headline
-              : importantNews.headline.slice(0, 30) + "..."}
+            {importantNews.headline}
           </Link>
           <p>{importantNews && importantNews.summary}</p>
         </div>

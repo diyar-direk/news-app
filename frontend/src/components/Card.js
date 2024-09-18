@@ -66,11 +66,7 @@ export default function Card(props) {
               <div className="time flex">
                 <p className="time">{timeAgo(e.publishedAt)}</p>
               </div>
-              <Link to={`/read/${e._id}`}>
-                {e.headline.length < 37
-                  ? e.headline
-                  : e.headline.slice(0, 30) + "..."}
-              </Link>
+              <Link to={`/read/${e._id}`}>{e.headline}</Link>
             </div>
           </div>
         );
@@ -95,12 +91,7 @@ export default function Card(props) {
           <p className="time">
             {timeAgo(importantNews && importantNews.publishedAt)}
           </p>
-          <h2>
-            {importantNews.headline.length < 37
-              ? importantNews.headline
-              : importantNews.headline.slice(0, 30) + "..."}
-            .
-          </h2>
+          <h2>{importantNews.headline}</h2>
         </Link>
         <Link className="image-hover bottom-before top-images ">
           <img
