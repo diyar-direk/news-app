@@ -71,6 +71,7 @@ const Read = () => {
         const top = await axios.get(
           `http://localhost:8000/api/top-news?limit=5&lang=${context.language}`
         );
+
         const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
 
         setSideTop(filteredTopNews);
@@ -139,7 +140,6 @@ const Read = () => {
   if (loading) {
     return <Loader />;
   }
-  console.log(sideNews);
 
   return (
     <>
@@ -150,24 +150,19 @@ const Read = () => {
               <article className="current-news flex-1">
                 <h1>{data.item.headline}</h1>
                 <p>{timeAgo(data.item.publishedAt)}</p>
-                <video
-                  // src={`http://localhost:8000/video/${data.item.video}`}
-                  src={`${data.item.video}`}
-                  controls
-                  autoPlay
-                />
                 <div className="info">
-                  <p>{data.item.summary}</p>
                   <div className="slider">
                     {data.item.photo.map((photo, index) => (
-                      <img
-                        key={index}
-                        data-index={index}
-                        className={`slide ${index === 0 ? "active" : ""}`}
-                        // src={`http://localhost:8000/img/news/${photo}`}
-                        src={`${photo}`}
-                        alt=""
-                      />
+                      <figure>
+                        <img
+                          key={index}
+                          data-index={index}
+                          className={`slide ${index === 0 ? "active" : ""}`}
+                          src={`http://localhost:8000/img/news/${photo}`}
+                          // src={`${photo}`}
+                          alt=""
+                        />
+                      </figure>
                     ))}
                     <div className="between">
                       <i
@@ -180,6 +175,16 @@ const Read = () => {
                       ></i>
                     </div>
                   </div>
+                </div>
+                <div className="info">
+                  <p>{data.item.summary}</p>
+                  {data.item.video !== "no video Available" && (
+                    <video
+                      src={`http://localhost:8000/video/${data.item.video}`}
+                      controls
+                      autoPlay
+                    />
+                  )}
                 </div>
               </article>
             ) : (

@@ -50,7 +50,8 @@ body.arabic .videos .title::after {
 }
 .videos .video {
   padding: 15px 0px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
   justify-content: space-between;
 
   align-items: flex-start;
@@ -166,6 +167,7 @@ body.arabic .videos .video .video-item .time a {
   .videos .title {
     font-size: 20px;
   }
+
   .videos .title::after {
     width: 6px;
     height: 6px;
@@ -175,5 +177,8 @@ body.arabic .videos .video .video-item .time a {
   }
   .videos .video .video-item a {
     font-size: 14px;
+  }
+  .videos .video {
+    grid-template-columns: 1fr;
   }
 }
