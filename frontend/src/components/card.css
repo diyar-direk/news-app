@@ -83,6 +83,7 @@ body.arabic .flex-card > div.card .info p.time {
 .flex-card > div.card .center {
   border-top: solid 1px var(--border-color);
   padding: 20px 0 10px;
+  flex-wrap: nowrap;
 }
 .flex-card > div.card .center .image-hover {
   width: 100px;
