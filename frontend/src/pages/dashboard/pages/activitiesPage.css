@@ -96,6 +96,13 @@ body.arabic
 .dashboard-container.activities > article .between > div:first-child p {
   font-size: 14px;
   color: var(--font-color);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  text-wrap: wrap;
+
+
 }
 .dashboard-container.activities > article .between > div:first-child span {
   font-size: 12px;
@@ -250,5 +257,17 @@ div.main .dashboard-container.activities > article.DELETE {
   }
   div.main .dashboard-container.activities > article {
     padding: 4px 8px;
+  }
+}
+@media (max-width: 400px) {
+  .between {
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .dashboard-container.activities > article .between > div:first-child{
+    border-right: none;
+    border-bottom: solid 1px var(--border-color);
   }
 }

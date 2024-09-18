@@ -204,7 +204,7 @@ const AddNews = () => {
             type="text"
             placeholder={language && language.dashboard.forms.summary}
             id="summary"
-            rows={3}
+            rows={8}
           ></textarea>
 
           {summaryError && (

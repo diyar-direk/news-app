@@ -95,6 +95,10 @@ body.arabic .videos .title::after {
   font-size: 20px;
   color: white;
   line-height: 1;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
 }
 .videos .video .video-item p {
   font-size: 10px;
@@ -123,6 +127,7 @@ body.arabic .videos .video .video-item .time a {
 }
 .videos .headline {
   margin-top: 10px;
+  max-width: 100%;
   display: flex;
   gap: 10px;
   flex-direction: column;
