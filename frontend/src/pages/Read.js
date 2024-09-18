@@ -71,6 +71,7 @@ const Read = () => {
         const top = await axios.get(
           `http://localhost:8000/api/top-news?limit=5&lang=${context.language}`
         );
+
         const filteredTopNews = top.data.data.filter((ele) => ele._id !== id);
 
         setSideTop(filteredTopNews);
@@ -139,7 +140,6 @@ const Read = () => {
   if (loading) {
     return <Loader />;
   }
-  console.log(sideNews);
 
   return (
     <>
@@ -150,14 +150,7 @@ const Read = () => {
               <article className="current-news flex-1">
                 <h1>{data.item.headline}</h1>
                 <p>{timeAgo(data.item.publishedAt)}</p>
-                <video
-                  // src={`http://localhost:8000/video/${data.item.video}`}
-                  src={`${data.item.video}`}
-                  controls
-                  autoPlay
-                />
                 <div className="info">
-                  <p>{data.item.summary}</p>
                   <div className="slider">
                     {data.item.photo.map((photo, index) => (
                       <figure>
@@ -165,8 +158,8 @@ const Read = () => {
                           key={index}
                           data-index={index}
                           className={`slide ${index === 0 ? "active" : ""}`}
-                          // src={`http://localhost:8000/img/news/${photo}`}
-                          src={`${photo}`}
+                          src={`http://localhost:8000/img/news/${photo}`}
+                          // src={`${photo}`}
                           alt=""
                         />
                       </figure>
@@ -183,6 +176,16 @@ const Read = () => {
                     </div>
                   </div>
                 </div>
+                <div className="info">
+                  <p>{data.item.summary}</p>
+                  {data.item.video !== "no video Available" && (
+                    <video
+                      src={`http://localhost:8000/video/${data.item.video}`}
+                      controls
+                      autoPlay
+                    />
+                  )}
+                </div>
               </article>
             ) : (
               <Loader />
@@ -192,24 +195,26 @@ const Read = () => {
               <h1>{language && language.top}</h1>
               <article>
                 {sideTop &&
-                  sideTop.map((ele, index) => (
-                    <Link
-                      key={ele._id}
-                      to={`/read/${ele._id}`}
-                      className="image-hover"
-                    >
-                      <img
-                        alt=""
-                        // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
-                        src={`${ele.photo[0]}`}
-                      />
-                      <h4>
-                        {ele.headline.length < 37
-                          ? ele.headline
-                          : ele.headline.slice(0, 70) + "..."}
-                      </h4>
-                    </Link>
-                  ))}
+                  sideTop.map((ele, index) => {
+                    return (
+                      <Link
+                        key={ele._id}
+                        to={`/read/${ele._id}`}
+                        className="image-hover"
+                      >
+                        <img
+                          alt=""
+                          // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
+                          src={`${ele.photo[0]}`}
+                        />
+                        <h4>
+                          {ele.headline.length < 37
+                            ? ele.headline
+                            : ele.headline.slice(0, 70) + "..."}
+                        </h4>
+                      </Link>
+                    );
+                  })}
               </article>
 
               <h1>{language && language.more}</h1>

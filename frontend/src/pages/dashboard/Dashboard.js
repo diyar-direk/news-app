@@ -8,7 +8,6 @@ const Dashboard = () => {
     );
     newsLang && newsLang.classList.remove("active");
     const navLang = document.querySelector("div.sitting div.lang.active");
-    console.log(navLang);
 
     navLang && navLang.classList.remove("active");
   });
