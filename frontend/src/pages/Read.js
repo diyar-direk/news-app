@@ -203,8 +203,7 @@ const Read = () => {
                     >
                       <img
                         alt=""
-                        // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
-                        src={`${ele.photo[0]}`}
+                        src={`http://localhost:8000/img/news/${ele.photo[0]}`}
                       />
                       <h4>{ele.headline}</h4>
                     </Link>
@@ -218,8 +217,7 @@ const Read = () => {
                     <Link to={`/read/${ele._id}`} className="image-hover">
                       <img
                         alt=""
-                        // src={`http://localhost:8000/img/news/${ele.photo[0]}`}
-                        src={`${ele.photo[0]}`}
+                        src={`http://localhost:8000/img/news/${ele.photo[0]}`}
                       />
                     </Link>
                     <Link to={`/read/${ele._id}`}>

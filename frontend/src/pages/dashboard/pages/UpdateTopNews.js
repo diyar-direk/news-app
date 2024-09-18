@@ -138,7 +138,6 @@ const UpdateTopNews = () => {
 
         if (oldImages.length > 1) {
           oldImages.forEach((src) => {
-            console.log(src);
 
             formData.append("oldPhotoPaths[]", src);
           });

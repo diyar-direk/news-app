@@ -57,8 +57,7 @@ export default function Card(props) {
           <div key={e._id} className="center">
             <Link className="image-hover ">
               <img
-                // src={`http://localhost:8000/img/news/${e.photo[0]}`}
-                src={`${e.photo[0]}`}
+                src={`http://localhost:8000/img/news/${e.photo[0]}`}
                 alt="1"
               ></img>
             </Link>
@@ -97,8 +96,7 @@ export default function Card(props) {
           <img
             src={
               importantNews &&
-              // `http://localhost:8000/img/news/${importantNews.photo[0]}`
-              `${importantNews.photo[0]}`
+              `http://localhost:8000/img/news/${importantNews.photo[0]}`
             }
             alt="1"
           ></img>

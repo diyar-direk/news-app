@@ -98,6 +98,7 @@ const News = () => {
       </tr>
     );
   });
+
   function langClick(e) {
     e.stopPropagation();
     const div = document.querySelector(

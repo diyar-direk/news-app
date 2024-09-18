@@ -11,6 +11,7 @@ const AddUser = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errorName, setErrorName] = useState(false);
+  const [usedName, setUsedName] = useState(false);
   const [errorRole, setErrorRole] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorPasswordCon, setErrorPasswordCon] = useState(false);
@@ -61,7 +62,21 @@ const AddUser = () => {
     } else if (password !== passwordConfirmation) {
       setErrorPasswordCon(true);
     }
+    const users = await axios.get("http://localhost:8000/api/users", {
+      headers: { Authorization: "Bearer " + token },
+    });
+
     try {
+      const users = await axios.get("http://localhost:8000/api/users", {
+        headers: { Authorization: "Bearer " + token },
+      });
+      users.data &&
+        users.data.map((e, index) => {
+          if (userName === e.username) {
+            setUsedName(true);
+          }
+        });
+
       setLoading(true);
       const data = await axios.post(
         "http://localhost:8000/api/users",
@@ -76,8 +91,6 @@ const AddUser = () => {
       nav("/dashboard/users");
     } catch (err) {
       setLoading(false);
-
-      console.log(err);
     }
   }
 
@@ -104,6 +117,9 @@ const AddUser = () => {
 
           {errorName && (
             <p className="error">{language.dashboard.forms.errorName}</p>
+          )}
+          {usedName && (
+            <p className="error"> {language.dashboard.forms.usedName} </p>
           )}
 
           <label

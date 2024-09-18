@@ -39,7 +39,6 @@ const Login = () => {
       nav("/dashboard");
     } catch (err) {
       setLoading(false);
-      console.log(err);
       const errMessage = err.response.data.message;
       if (errMessage === "Invalid email or password") setWrongData(true);
     }

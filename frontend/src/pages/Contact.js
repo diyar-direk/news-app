@@ -19,14 +19,12 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log(1);
     await axios.post("http://localhost:8000/api/news/sendEmail", {
       name: form.name,
       from: form.email,
       subject: form.subject,
       text: form.message,
     });
-    console.log("email sent successfully");
   };
 
   return (

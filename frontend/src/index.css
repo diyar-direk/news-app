@@ -516,6 +516,7 @@ main > div.news > div.category > article > div.sub {
   flex: 240px 1;
 }
 main > div.news > div.category > article > div.important {
+  flex: 45% 0;
   max-width: 45%;
 }
 main > div.news > div.category > article > article.article {
@@ -535,6 +536,10 @@ main
 main > div.news > div.category > article > article.article > div > a {
   color: var(--font-color);
   font-size: 14px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
 }
 main > div.news > div.category > article > article.article > div > a:hover {
   color: var(--var-color);
@@ -585,7 +590,7 @@ main > div.news > div.category > article > div > a:not(.image-hover) {
   font-weight: bold;
   text-transform: capitalize;
   line-height: 1.5;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   display: -webkit-box;
@@ -601,6 +606,10 @@ main > div.news > div.category > article > div > p {
   border: none;
   color: #8d8a87;
   line-height: 1.5;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
 }
 main > div.news > div.category > article > div.sub > div a.image-hover {
   margin: 0;
@@ -719,6 +728,7 @@ main > div.news > div.category > article > div.sub a.all:hover,
     gap: 10px 20px;
   }
 }
+
 @media (max-width: 750px) {
   nav > div.bottom-link a {
     font-size: 12px;
@@ -781,7 +791,14 @@ main > div.news > div.category > article > div.sub a.all:hover,
     max-width: 100%;
     width: 100%;
   }
+  main > div.landing .container a.title {
+    font-size: 20px;
+  }
+  main > div.landing .container p {
+    font-size: 14px;
+  }
 }
+
 @media (max-width: 560px) {
   nav.navbar {
     padding: 0;
