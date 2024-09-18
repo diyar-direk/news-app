@@ -9,20 +9,21 @@ const TopNews = () => {
   const [searchData, setSearchData] = useState([]);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [tableLang, setTableLang] = useState(false);
   const context = useContext(Context);
   const language = context.langValue;
   const token = context.userDetails.token;
   const isAdmin = context.userDetails.isAdmin;
-  function fetchData() {
+  function fetchData(data) {
     axios
       .get(
-        `http://localhost:8000/api/top-news?fields=headline,category,position&sort=position&lang=${context.language}`
+        `http://localhost:8000/api/top-news?fields=headline,category,position&sort=position&lang=${data}`
       )
       .then((res) => setData(res.data.data))
       .catch((error) => console.error("Error fetching data:", error));
   }
   useEffect(() => {
-    fetchData();
+    fetchData(context.language);
   }, []);
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const TopNews = () => {
         },
       }
     );
-    fetchData();
+    fetchData(tableData ? tableLang : context.language);
     setOverlayVisible(false);
   };
 
@@ -122,6 +123,7 @@ const TopNews = () => {
           `http://localhost:8000/api/top-news?fields=headline,category,position&sort=position&lang=${e.target.dataset.lang}`
         )
         .then((res) => setData(res.data.data));
+      setTableLang(e.target.dataset.lang);
     } else {
       axios
         .get(
