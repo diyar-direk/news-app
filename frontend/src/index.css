@@ -514,7 +514,7 @@ main > div.news > div.category > article > div.sub {
   flex: 240px 1;
 }
 main > div.news > div.category > article > div.important {
-  flex: 407px 2;
+  flex: 45% 0;
 }
 main > div.news > div.category > article > article.article {
   flex: 200px;

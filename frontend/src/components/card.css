@@ -1,6 +1,6 @@
 .flex-card {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 
   gap: 30px;
   align-items: flex-start;
@@ -18,7 +18,7 @@
   padding-left: 15px;
   text-transform: capitalize;
   letter-spacing: 1px;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 800;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 2px var(--font-color);
@@ -69,11 +69,11 @@ body.arabic .flex-card > div.card .info p.time {
 
 .flex-card > div.card .image-hover {
   margin-bottom: 0;
-  max-height: 273px;
+  max-height: 320px;
   border-radius: 4px;
 }
 .flex-card > div.card .top-images {
-  height: 260px;
+  height: 320px;
 }
 .flex-card > div.card .center {
   border-top: solid 1px var(--border-color);
@@ -126,6 +126,9 @@ body.arabic .flex-card > div.card .center .image-hover {
   .flex-card > div.card {
     flex: 100%;
   }
+  .flex-card {
+    grid-template-columns: 1fr;
+  }
   .flex-card > div.card a.all {
     font-size: 16px;
   }
@@ -142,6 +145,9 @@ body.arabic .flex-card > div.card .center .image-hover {
   }
   .flex-card > div.card a.all {
     font-size: 15px;
+  }
+  .flex-card > div.card .image-hover{
+    max-height: 250px;
   }
 }
 
