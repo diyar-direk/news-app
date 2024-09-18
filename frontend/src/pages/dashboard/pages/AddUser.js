@@ -60,25 +60,25 @@ const AddUser = () => {
       setErrorPassword(true);
     } else if (password !== passwordConfirmation) {
       setErrorPasswordCon(true);
-    }
-    try {
-      setLoading(true);
-      const data = await axios.post(
-        "http://localhost:8000/api/users",
-        {
-          username: userName,
-          password: password,
-          roles: [role],
-        },
-        { headers: { Authorization: "Bearer " + token } }
-      );
-      setLoading(false);
-      nav("/dashboard/users");
-    } catch (err) {
-      setLoading(false);
+    } else
+      try {
+        setLoading(true);
+        const data = await axios.post(
+          "http://localhost:8000/api/users",
+          {
+            username: userName,
+            password: password,
+            roles: [role],
+          },
+          { headers: { Authorization: "Bearer " + token } }
+        );
+        setLoading(false);
+        nav("/dashboard/users");
+      } catch (err) {
+        setLoading(false);
 
-      console.log(err);
-    }
+        console.log(err);
+      }
   }
 
   return (

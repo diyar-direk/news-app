@@ -295,18 +295,18 @@ div.lang.active {
   opacity: 1;
   z-index: 2;
 }
-nav > div.container > .more > div.active > div {
+nav > div.container > .more div.lang.active {
   opacity: 1;
   z-index: 1;
   pointer-events: all;
 }
-nav > div.container > .more > div.active > div p.active::after {
+nav > div.container > .more div.active.lang div p.active::after {
   content: "\f00c";
   font-family: "Font Awesome 6 Free";
   position: absolute;
   right: 10px;
 }
-body.arabic nav > div.container > .more > div.active > div p.active::after {
+body.arabic nav > div.container > .more div.active.lang div p.active::after {
   left: 10px;
   right: auto;
 }

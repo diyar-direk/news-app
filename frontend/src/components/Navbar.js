@@ -20,8 +20,8 @@ export default function Navbar() {
     themeFun(themeValue ? 0 : 1);
   }
   function language(e) {
-    const div = document.querySelector("nav > div.container > .more > div");
-    if (e.target === div) e.target.classList.toggle("active");
+    const div = document.querySelector("nav > div.container > .more div.lang");
+    div.classList.toggle("active");
     e.stopPropagation();
   }
   document.body.addEventListener("click", () => {
@@ -112,23 +112,30 @@ export default function Navbar() {
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
-  // useEffect(() => {
-  //   // Add event listener for keydown when component is mounted
-  //   window.addEventListener("keydown", (event) => {
-  //     if (event.key === "Enter") {
-  //       navigate(`/category/${query}`);
-  //     }
-  //   });
 
-  //   // Cleanup event listener when component is unmounted
-  //   return () => {
-  //     window.removeEventListener("keydown", (event) => {
-  //       if (event.key === "Enter") {
-  //         navigate(`/category/${query}`);
-  //       }
-  //     });
-  //   };
-  // }, [query]);
+  window.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      const searchNavbar = document.querySelector(
+        "nav.navbar > div.container > article.search.active"
+      );
+      const saerchAsid = document.querySelector(
+        "nav > aside.mobile-link.active"
+      );
+      const contactBtn = document.querySelector(".contact button.btn");
+
+      if (searchNavbar) {
+        document
+          .querySelector(
+            "nav.navbar > div.container > article.search .button-style"
+          )
+          .click();
+      } else if (saerchAsid) {
+        document
+          .querySelector("aside.mobile-link > div.center .center ")
+          .click();
+      } else if (contactBtn) contactBtn.click();
+    }
+  });
 
   return (
     <>

@@ -77,6 +77,9 @@ div.main .dashboard-container div.news-lang > div > p:hover {
 div.table {
   overflow-x: auto;
 }
+div.table::-webkit-scrollbar{
+  height: 13px;
+}
 table {
   width: 100%;
   border-spacing: 0px;

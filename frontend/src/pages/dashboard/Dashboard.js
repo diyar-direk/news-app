@@ -11,6 +11,14 @@ const Dashboard = () => {
 
     navLang && navLang.classList.remove("active");
   });
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      const submitBtn = document.querySelector(
+        "div.main .dashboard-container form.add-news > .submit"
+      );
+      submitBtn && submitBtn.click();
+    }
+  });
   return (
     <>
       <DashboardNavbar />
