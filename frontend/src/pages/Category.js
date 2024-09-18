@@ -12,8 +12,7 @@ const Category = () => {
   const [error, setError] = useState(false); // Track if there's an error during the API call
   const param = useParams();
   const query = param.category;
-  console.log(query);
-  
+
   const context = useContext(Context);
   const lang = context.language;
   useEffect(() => {
@@ -73,7 +72,9 @@ const Category = () => {
             {nextData && <GridCard data={nextData} />}
           </>
         ) : (
-          !query || <p className="center">No results found for "{query}".</p>
+          <p className="center" style={{ color: "var(--font-color)" }}>
+            No results found for "{query}".
+          </p>
         )}
       </div>
     </main>

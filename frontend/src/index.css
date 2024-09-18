@@ -160,6 +160,7 @@ nav.navbar > div.container > article.search input {
   border-radius: 4px 0 0 4px;
   background-color: var(--border-color);
   color: var(--font-color);
+  font-family: "Cairo";
 }
 body.arabic nav.navbar > div.container > article.search input {
   border-radius: 0px 4px 4px 0px;
@@ -189,7 +190,7 @@ nav.navbar > div.container > article.search .button-style {
   outline: none;
 }
 
-nav.navbar > div.container > article.search a:hover {
+nav.navbar > div.container > article.search .button-style:hover {
   background-color: var(--hover-color);
 }
 /* end search div  */
@@ -257,7 +258,7 @@ nav > div.container > .links a,
 nav > div.container > .links i {
   color: var(--font-color);
   margin: 0 10px;
-  font-size: 19px;
+  font-size: 17px;
   cursor: pointer;
 }
 nav > div.container > .links a:hover,
@@ -353,7 +354,7 @@ nav > div.bottom-link > div.container {
 }
 nav > div.bottom-link a {
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   height: 45px;
   padding: 0 10px;
   line-height: 45px;
@@ -480,9 +481,9 @@ main > div.news > div.category > a {
   transition: 0.3s;
   font-weight: 800;
   letter-spacing: 1px;
-  font-size: 40px;
+  font-size: 34px;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2px var(--font-color);
+  -webkit-text-stroke: 1px var(--font-color);
 }
 body.arabic main > div.news > div.category > a {
   padding-left: 0;
@@ -519,8 +520,6 @@ main > div.news > div.category > article > div.important {
   max-width: 45%;
 }
 main > div.news > div.category > article > article.article {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   flex: 200px;
 }
 main > div.news > div.category > article > article.article > div {
@@ -686,8 +685,15 @@ main > div.news > div.category > article > div.sub a.all:hover,
     max-width: 120px;
   }
   main > div.news > div.category > article > div.important {
-    flex: 500px 2;
+    max-width: 60%;
     order: -1;
+  }
+  nav > div.container > .links a,
+  nav > div.container > .links i {
+    font-size: 15px;
+  }
+  nav.navbar > div.container > aside.more-link a {
+    font-size: 14px;
   }
 }
 @media (max-width: 950px) {
@@ -704,10 +710,10 @@ main > div.news > div.category > article > div.sub a.all:hover,
   nav > div.container > .links a,
   nav > div.container > .links i {
     margin: 0 8px;
-    font-size: 18px;
+    font-size: 14px;
   }
   nav > div.bottom-link a {
-    font-size: 15px;
+    font-size: 13px;
     height: 40px;
     line-height: 40px;
   }
@@ -722,7 +728,11 @@ main > div.news > div.category > article > div.sub a.all:hover,
     gap: 10px 20px;
   }
 }
+
 @media (max-width: 750px) {
+  nav > div.bottom-link a {
+    font-size: 12px;
+  }
   nav > div.container > .links {
     display: none;
   }
@@ -742,17 +752,20 @@ main > div.news > div.category > article > div.sub a.all:hover,
     padding: 3px 10px;
     font-size: 13px;
   }
-  nav.navbar > div.container > article.search h3 {
+  nav.navbar > div.container > article.search .button-style {
     font-size: 12px;
   }
   main {
-    margin-top: 98px;
+    margin-top: 97px;
+  }
+  main > div.news > div.category > a,
+  .flex-card > div.card a.title {
+    font-size: 26px !important;
   }
   main > div.news > div.category > article > div.sub > div a.image-hover {
     max-width: 110px;
   }
   main > div.news > div.category > article > div.sub .flex-1 > a {
-    font-size: 16px;
     margin-top: 3px;
   }
   main > div.news > div.category div.time a {
@@ -775,10 +788,21 @@ main > div.news > div.category > article > div.sub a.all:hover,
     flex: 250px;
   }
   main > div.news > div.category > article > div.important {
+    max-width: 100%;
     width: 100%;
   }
+  main > div.landing .container a.title {
+    font-size: 20px;
+  }
+  main > div.landing .container p {
+    font-size: 14px;
+  }
 }
+
 @media (max-width: 560px) {
+  nav.navbar {
+    padding: 0;
+  }
   main > div.landing .container a.title {
     margin: 5px 0;
     font-size: 18px;
@@ -789,23 +813,23 @@ main > div.news > div.category > article > div.sub a.all:hover,
   }
   main > div.news > div.category > article > div > p,
   main > div.news > div.category > article > div.sub .flex-1 > a {
-    font-size: 15px;
+    font-size: 12px;
   }
   main > div.news > div.category > article > div > a:not(.image-hover) {
-    font-size: 17px;
+    font-size: 14px;
   }
   main > div.news > div.category div.time a,
   main > div.landing .container p {
-    font-size: 13px;
+    font-size: 11px;
   }
   main > div.news > div.category > article > div.sub a.all,
   .btn {
     font-size: 16px;
     padding: 3px 0;
   }
-  main > div.news > div.category > a {
-    margin-bottom: 0;
-    font-size: 34px;
+  main > div.news > div.category > a,
+  .flex-card > div.card a.title {
+    font-size: 23px !important;
     padding-left: 15px;
   }
   main > div.news > div.category > a::before {
@@ -816,7 +840,7 @@ main > div.news > div.category > article > div.sub a.all:hover,
     width: 94%;
   }
   nav > div.bottom-link a {
-    font-size: 14px;
+    font-size: 11px;
     height: 38px;
     line-height: 38px;
   }
@@ -826,6 +850,15 @@ main > div.news > div.category > article > div.sub a.all:hover,
   }
   footer .lang {
     top: -80px;
+  }
+  main > div.news > div.category > article > article.article > div > a {
+    font-size: 13px;
+  }
+  main > div.news > div.category > article > article.article > div > p {
+    font-size: 11px;
+  }
+  nav > div.container > .more i {
+    font-size: 15px;
   }
 }
 @media (max-width: 480px) {
@@ -844,27 +877,33 @@ main > div.news > div.category > article > div.sub a.all:hover,
     font-size: 12px;
   }
   main > div.news > div.category > article > div > a:not(.image-hover) {
-    font-size: 15px;
+    font-size: 11px;
   }
   main > div.news > div.category > article > div > p,
   main > div.news > div.category > article > div.sub .flex-1 > a,
   main > div.news > div.category > article > div.sub a.all,
   .btn {
-    font-size: 13px;
+    font-size: 11px;
   }
   main > div.news > div.category > article > div.sub > div a.image-hover {
     max-width: 100px;
   }
   main > div.news > div.category div.time a,
   main > div.landing .container p {
-    font-size: 12px;
+    font-size: 10px;
   }
   nav > div.container > .more i,
   nav > .container > i.fa-bars {
-    font-size: 15px;
+    font-size: 12px;
   }
   nav > div.bottom-link a {
     padding: 0 8px;
-    font-size: 12px;
+    font-size: 10px;
+  }
+  main > div.news > div.category > article > article.article > div > a {
+    font-size: 11px;
+  }
+  main > div.news > div.category > article > article.article > div > p {
+    font-size: 10px;
   }
 }

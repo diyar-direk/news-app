@@ -40,14 +40,15 @@ div.sitting div.theme.dark::before {
 }
 div.sitting h4 {
   color: #777;
-  font-size: 14px;
+  font-size: 11px;
+  margin-bottom: 10px;
 }
 
 body.arabic div.sitting h4 {
   direction: ltr;
 }
 div.sitting div.menu-lang {
-  font-size: 14px;
+  font-size: 12px;
   color: #777;
   cursor: pointer;
 }
@@ -60,7 +61,7 @@ div.sitting div.menu-lang.active * {
 }
 div.sitting div.menu-lang i {
   font-size: 12px;
-  margin-left: 10px;
+  margin-left: 8px;
   transition: 0.4s;
 }
 body.arabic div.sitting div.menu-lang i {

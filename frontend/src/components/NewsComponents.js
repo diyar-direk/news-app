@@ -57,8 +57,7 @@ const NewsComponents = (props) => {
           <div key={e._id} className="center">
             <Link to={`/read/${e._id}`} className="image-hover ">
               <img
-                // src={`http://localhost:8000/img/news/${e.photo[0]}`}
-                src={`${e.photo[0]}`}
+                src={`http://localhost:8000/img/news/${e.photo[0]}`}
                 alt="1"
               ></img>
             </Link>
@@ -86,7 +85,7 @@ const NewsComponents = (props) => {
             <p>{e.summary}</p>
             <div className="time flex">
               <Link href={`/category/${e.category}`}>Economy</Link>
-              <p class="time">{timeAgo(e.publishedAt)}</p>
+              <p className="time">{timeAgo(e.publishedAt)}</p>
             </div>
           </div>
         );
@@ -113,9 +112,8 @@ const NewsComponents = (props) => {
             <img
               src={
                 importantNews &&
-                // `http://localhost:8000/img/news/${importantNews.photo[0]}`
+                `http://localhost:8000/img/news/${importantNews.photo[0]}`
 
-                `${importantNews.photo[0]}`
               }
               alt="1"
             ></img>

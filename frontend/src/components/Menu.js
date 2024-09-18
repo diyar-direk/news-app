@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./menu.css";
 import { useContext, useState } from "react";
 import { Context } from "../context/Context";
@@ -7,7 +7,7 @@ import { linksClick } from "./Navbar";
 import Logo from "./Logo";
 export default function Menu() {
   const [query, setQuery] = useState("");
-
+  const navigate = useNavigate();
   const context = useContext(Context);
   const language = context.langValue.home;
   const token = context.userDetails.token;
@@ -59,12 +59,25 @@ export default function Menu() {
           value={query}
           onChange={handleChange}
         />
-        <Link className="center " to={`/category/${query}`}>
+        <p
+          className="center"
+          to={`/category/${query}`}
+          onClick={() => {
+            const parent = document.querySelector(
+              "nav > aside.mobile-link.active"
+            );
+            const inp = document.querySelector(
+              "aside.mobile-link > div.center > input"
+            );
+            inp.value !== "" && parent.classList.remove("active");
+            inp.value !== "" && navigate(`/category/${query}`);
+          }}
+        >
           <i className="fa-solid fa-magnifying-glass"></i>
-        </Link>
+        </p>
       </div>
       <div>
-        <article style={{ marginBottom: "20px" }}>
+        <article>
           <p data-index="0" onClick={openNestedMenu}>
             {language && language.pages}
             <i className="fa-solid fa-chevron-down"></i>

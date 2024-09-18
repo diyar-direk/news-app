@@ -101,8 +101,6 @@ body.arabic
   overflow: hidden;
   display: -webkit-box;
   text-wrap: wrap;
-
-
 }
 .dashboard-container.activities > article .between > div:first-child span {
   font-size: 12px;
@@ -260,14 +258,25 @@ div.main .dashboard-container.activities > article.DELETE {
   }
 }
 @media (max-width: 400px) {
-  .between {
+  div.main .dashboard-container.activities > article .between {
     align-items: stretch;
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: column;
   }
-  .dashboard-container.activities > article .between > div:first-child{
+
+  .dashboard-container.activities > article .between > div:first-child {
     border-right: none;
+    border-left: none;
     border-bottom: solid 1px var(--border-color);
+  }
+
+  body.arabic
+    .dashboard-container.activities
+    > article
+    .between
+    > div:first-child {
+    border-right: none;
+    border-left: none;
   }
 }

@@ -21,7 +21,7 @@
   font-size: 34px;
   font-weight: 800;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2px var(--font-color);
+  -webkit-text-stroke: 1px var(--font-color);
   margin-bottom: 15px;
 }
 body.arabic .flex-card > div.card a.title {
@@ -83,6 +83,7 @@ body.arabic .flex-card > div.card .info p.time {
 .flex-card > div.card .center {
   border-top: solid 1px var(--border-color);
   padding: 20px 0 10px;
+  margin-bottom: 5px;
   flex-wrap: nowrap;
 }
 .flex-card > div.card .center .image-hover {
@@ -132,6 +133,9 @@ body.arabic .flex-card > div.card .center .image-hover {
   .flex-card > div.card {
     flex: calc(35% - 20px);
   }
+  .flex-card > div.card a.title {
+    font-size: 32px;
+  }
 }
 @media (max-width: 700px) {
   .flex-card > div.card {
@@ -146,13 +150,13 @@ body.arabic .flex-card > div.card .center .image-hover {
 }
 @media (max-width: 560px) {
   main > div.news > div.category p.time {
-    font-size: 11px;
+    font-size: 10px;
   }
   .flex-card > div.card .info h2 {
-    font-size: 16px;
+    font-size: 14px;
   }
   .flex-card > div.card .center .flex-1 a {
-    font-size: 14px;
+    font-size: 12px;
   }
   .flex-card > div.card a.all {
     font-size: 15px;

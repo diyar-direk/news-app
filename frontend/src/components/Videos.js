@@ -46,7 +46,6 @@ const Videos = (props) => {
     }
     return "Just now";
   };
-  const propsData = props.data && props.data;
   const data =
     props.data &&
     props.data.map((e, index) => {
@@ -55,8 +54,7 @@ const Videos = (props) => {
           <div key={e._id} className="video-item">
             <Link to={`/read/${e._id}`} className="img bottom-before">
               <img
-                // src={`http://localhost:8000/img/news/${e.photo[0]}`}
-                src={`${e.photo[0]}`}
+                src={`http://localhost:8000/img/news/${e.photo[0]}`}
                 alt="img"
               />
             </Link>

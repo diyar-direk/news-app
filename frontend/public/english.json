@@ -116,6 +116,7 @@
       "password": "Password",
       "passwordConfirmation": "Password Confirmation",
       "errorName": "name is required",
+      "usedName": "username already used",
       "errorPassword": "password must be longer then 6 charecters",
       "errorRole": "you have to select role",
       "errorPasswordcon": "password is wrong",

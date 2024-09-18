@@ -154,7 +154,14 @@ export default function Navbar() {
               <h3
                 className="center button-style"
                 onClick={() => {
-                  navigate(`/category/${query}`);
+                  const parent = document.querySelector(
+                    "nav.navbar > div.container > article.search.active"
+                  );
+                  const inp = document.querySelector(
+                    "nav.navbar > div.container > article.search input"
+                  );
+                  inp.value !== "" && parent.classList.remove("active");
+                  inp.value !== "" && navigate(`/category/${query}`);
                 }}
               >
                 <i className="fa-solid fa-magnifying-glass"></i>

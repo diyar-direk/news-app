@@ -56,11 +56,12 @@ nav > aside.mobile-link > i:hover {
 }
 nav > aside.mobile-link article > p {
   color: var(--font-color);
-  font-size: 17px;
+  font-size: 16px;
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 nav > aside.mobile-link article > p i {
   position: absolute;
@@ -81,15 +82,17 @@ nav > aside.mobile-link article > div {
   padding: 0 15px;
   overflow: hidden;
   max-height: 0px;
+  animation: overflow 0.3s;
 }
 nav > aside.mobile-link article > div.active {
-  max-height: 460px;
+  max-height: 470px;
   overflow-y: auto;
 }
 nav > aside.mobile-link article > div a {
   display: block;
   color: var(--font-color);
   margin-bottom: 10px;
+  font-size: 15px;
 }
 nav > aside.mobile-link article > div:hover a {
   color: #777;
@@ -118,6 +121,7 @@ aside.mobile-link > div.center > input {
   padding-right: 8px;
   color: var(--font-color);
   border-right: solid 1px var(--border-color);
+  font-family: "Cairo";
 }
 body.arabic aside.mobile-link > div.center > input {
   padding-right: 0px;
@@ -127,7 +131,7 @@ body.arabic aside.mobile-link > div.center > input {
   border-right: 0;
 }
 
-aside.mobile-link > div.center a.center i {
+aside.mobile-link > div.center .center i {
   cursor: pointer;
   margin-left: 8px;
   font-size: 15px;
@@ -155,5 +159,12 @@ body.arabic aside.mobile-link > div.center > i {
 @media (max-width: 480px) {
   nav > aside.mobile-link {
     width: 100%;
+  }
+}
+
+@keyframes overflow {
+  0%,
+  99% {
+    overflow: hidden;
   }
 }

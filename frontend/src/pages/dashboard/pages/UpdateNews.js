@@ -138,7 +138,6 @@ const UpdateNews = () => {
 
         nav("/dashboard/news");
       } catch (err) {
-        console.log(err);
       } finally {
         setLoading(false);
       }
