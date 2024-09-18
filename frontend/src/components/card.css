@@ -111,6 +111,7 @@ body.arabic .flex-card > div.card .center .image-hover {
   margin: 20px auto 0 auto;
   border: 1px solid var(--var-color);
   text-transform: capitalize;
+  font-family: cairo;
 }
 .flex-card > div.card a.all:hover {
   background: var(--var-color);

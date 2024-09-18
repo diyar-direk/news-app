@@ -89,12 +89,14 @@ nav > aside.mobile-link article > div.active {
 nav > aside.mobile-link article > div a {
   display: block;
   color: var(--font-color);
+  margin-bottom: 10px;
 }
 nav > aside.mobile-link article > div:hover a {
   color: #777;
 }
 nav > aside.mobile-link article > div a:hover {
   color: var(--font-color);
+  transform: translateX(10px);
 }
 nav > aside.mobile-link article > div a.active {
   color: var(--var-color);

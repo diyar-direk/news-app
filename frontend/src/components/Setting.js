@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./setting.css";
 import LanguageDiv from "./LanguageDiv";
 import { Context } from "../context/Context";
-const Setting = () => {
+const Setting = (props) => {
   const theme = useContext(Context);
   const themeValue = theme.theme;
   const themeFun = theme.setTheme;
@@ -10,6 +10,7 @@ const Setting = () => {
     themeFun(themeValue ? 0 : 1);
   }
   function langClick(e) {
+    e.stopPropagation();
     const div = document.querySelector("div.sitting div.lang");
     div.classList.toggle("active");
     e.target.classList.toggle("active");
@@ -31,7 +32,7 @@ const Setting = () => {
           </span>
           <i className="fa-solid fa-chevron-down"></i>
         </div>
-        <LanguageDiv />
+        <LanguageDiv position={props.position} />
       </div>
     </div>
   );

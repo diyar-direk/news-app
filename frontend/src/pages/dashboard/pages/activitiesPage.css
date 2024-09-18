@@ -56,8 +56,8 @@ div.main .dashboard-container.activities > div.flex > div.delete.active i {
   background-color: #db0c0c;
 }
 
-div.main .dashboard-container.activities > div.flex > div.update:hover i,
-div.main .dashboard-container.activities > div.flex > div.update.active i {
+div.main .dashboard-container.activities > div.flex > div.add:hover i,
+div.main .dashboard-container.activities > div.flex > div.active.add i {
   background-color: #1d3cc5;
 }
 div.main .dashboard-container.activities > div.flex > div.add:hover i,

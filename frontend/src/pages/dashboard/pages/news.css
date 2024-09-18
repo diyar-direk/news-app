@@ -1,3 +1,9 @@
+.pointer-none {
+  pointer-events: none;
+}
+div.main .dashboard-container {
+  font-family: cairo;
+}
 div.main .dashboard-container article.search {
   background-color: var(--section-color);
   width: 50%;
@@ -10,6 +16,7 @@ div.main .dashboard-container article.search input {
   color: var(--font-color);
   border-right: solid 1px var(--border-color);
   margin-right: 10px;
+  font-family: cairo;
 }
 body.arabic div.main .dashboard-container article.search input {
   border-right: none;
@@ -20,6 +27,52 @@ body.arabic div.main .dashboard-container article.search input {
 div.main .dashboard-container article.search i {
   color: #777;
   cursor: pointer;
+}
+div.main .dashboard-container div.news-lang {
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+body.arabic div.main .dashboard-container div.news-lang {
+  margin-right: 15px;
+  margin-left: 0;
+}
+div.main .dashboard-container div.news-lang h4 {
+  color: var(--font-color);
+  text-transform: capitalize;
+  cursor: pointer;
+}
+div.main .dashboard-container div.news-lang h4 i {
+  color: var(--font-color);
+  margin-left: 10px;
+  font-size: 14px;
+}
+body.arabic div.main .dashboard-container div.news-lang h4 i {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+div.main .dashboard-container div.news-lang > div {
+  position: absolute;
+  width: 150px;
+  color: var(--font-color);
+  text-transform: capitalize;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+div.main .dashboard-container div.news-lang > div.active {
+  z-index: 1;
+  opacity: 1;
+  pointer-events: all;
+}
+div.main .dashboard-container div.news-lang > div > p {
+  background: var(--section-color);
+  padding: 5px 10px;
+  border-bottom: solid 1px var(--border-color);
+  cursor: pointer;
+}
+div.main .dashboard-container div.news-lang > div > p:hover {
+  background-color: #838383;
 }
 div.table {
   overflow-x: auto;
@@ -99,7 +152,9 @@ td span:hover::after {
 td .fa-regular {
   color: #1d3cc5;
 }
-
+td i.fa-eye {
+  color: #255c16ba;
+}
 div.main > div.overlay {
   width: 100%;
   height: 100vh;

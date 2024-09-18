@@ -96,7 +96,9 @@
       "deleteMsg": "Are you sure you want to delete?",
       "cencel": "cencel",
       "role": "Role",
-      "user": "User"
+      "user": "User",
+      "show": "show",
+      "all": "all languages"
     },
     "forms": {
       "headline": "Headline",
@@ -124,12 +126,12 @@
       "errorFiles": "upload files to send",
       "errorManyFiles": "You can only upload 3 photos and 1 video"
     },
-    "activity":{
-      "all":"all activities",
-      "delete":"delete",
-      "update":"update",
-      "create":"create",
-      "btn":"show article"
+    "activity": {
+      "all": "all activities",
+      "delete": "delete",
+      "update": "update",
+      "create": "create",
+      "btn": "show article"
     }
   }
 }
