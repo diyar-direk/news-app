@@ -64,7 +64,7 @@ export default function Menu() {
         </Link>
       </div>
       <div>
-        <article>
+        <article style={{ marginBottom: "20px" }}>
           <p data-index="0" onClick={openNestedMenu}>
             {language && language.pages}
             <i className="fa-solid fa-chevron-down"></i>

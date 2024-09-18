@@ -31,6 +31,11 @@ div.main .dashboard-container article.search i {
 div.main .dashboard-container div.news-lang {
   position: relative;
   margin-left: 15px;
+  margin-bottom: 10px;
+}
+body.arabic div.main .dashboard-container div.news-lang {
+  margin-right: 15px;
+  margin-left: 0;
 }
 div.main .dashboard-container div.news-lang h4 {
   color: var(--font-color);
@@ -41,6 +46,10 @@ div.main .dashboard-container div.news-lang h4 i {
   color: var(--font-color);
   margin-left: 10px;
   font-size: 14px;
+}
+body.arabic div.main .dashboard-container div.news-lang h4 i {
+  margin-left: 0px;
+  margin-right: 10px;
 }
 div.main .dashboard-container div.news-lang > div {
   position: absolute;
@@ -63,7 +72,7 @@ div.main .dashboard-container div.news-lang > div > p {
   cursor: pointer;
 }
 div.main .dashboard-container div.news-lang > div > p:hover {
-  background-color: var(--border-color);
+  background-color: #838383;
 }
 div.table {
   overflow-x: auto;

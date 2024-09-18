@@ -93,7 +93,7 @@ const News = () => {
               className="fa-regular fa-pen-to-square"
             ></Link>
           </span>
-          <span data-content="show">
+          <span data-content={language.dashboard.table.show}>
             <Link to={`/read/${item._id}`}>
               <i className="fa-solid fa-eye"></i>
             </Link>
@@ -170,13 +170,13 @@ const News = () => {
 
               <div>
                 <p data-lang="all" onClick={category}>
-                  all langauges
+                  {language.dashboard.table.all}
                 </p>
                 <p data-lang="english" onClick={category}>
                   English
                 </p>
                 <p data-lang="kurdish" onClick={category}>
-                  Kurdish
+                  Kurdî
                 </p>
                 <p data-lang="arabic" onClick={category}>
                   عربي

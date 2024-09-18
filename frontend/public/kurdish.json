@@ -1,136 +1,137 @@
 {
-    "links": {
-      "Home": "Rêzefa Sereke",
-      "about": "Derbarê me de",
-      "contact": "Peywendî",
-      "dashboard": "control panel"
+  "links": {
+    "Home": "Rêzefa Sereke",
+    "about": "Derbarê me de",
+    "contact": "Peywendî",
+    "dashboard": "control panel"
+  },
+  "time": {
+    "oneMin": "Berya Yek Kêlî",
+    "oneHour": "Berya Yek Saet",
+    "oneDay": "Berya Yek Roj",
+    "oneMonth": "Berya Yek Meh",
+    "oneYear": "Berya Yek Sal",
+
+    "beforeMinutes": "Berya",
+    "minutes": "Kêlî",
+    "beforeHours": "Berya",
+    "hours": "Saet",
+    "beforeDays": "Berya",
+    "days": "Rojan",
+    "beforeMonth": "Berya",
+    "months": "Mehan",
+    "beforeYears": "Berya",
+    "years": "Salan"
+  },
+  "home": {
+    "pages": "Rûpelên Malperê",
+    "btn": "Bêtir Binêre",
+    "search": "Lêgerîn...",
+    "theme": "Hilbijartina Tema :",
+    "language": "Hilbijartina Ziman :"
+  },
+  "footer": {
+    "copyRight": "© Hemû Mafên Weşandin Misogerin"
+  },
+  "contact": {
+    "pageName": "Peywendî",
+    "insideSpan": "Bi Me re",
+    "detail": "Agahdariyên Peywendiyê",
+    "phone": ": Hejmara Telefone",
+    "email": ": E-name",
+    "address": ": Navnîşan",
+    "name": "Nav",
+    "FormEmail": "E-name",
+    "subject": "Mijar",
+    "massage": "Peyam",
+    "btn": "Şandin"
+  },
+  "about": {
+    "pageName": "Agahdariyên ",
+    "insideSpan": "Derbarê me de",
+    "btn": "Peywendî Bi Me re"
+  },
+  "pageNotFound": {
+    "title": "Rûpela Nehat Dîtin 404",
+    "btn": "Rêzefa Sereke"
+  },
+  "category": {
+    "pageName": "Cûre:",
+    "more": "Bêtir Bixwîne"
+  },
+  "readPage": {
+    "top": "Nûçeyên Nû",
+    "more": "Nûçeyên Zêdetir"
+  },
+  "registration": {
+    "pageName": "Derbas bibe",
+    "username": "Navê Bikarhêner",
+    "password": "Şîfre",
+    "rememberMe": "Bibîrbînin",
+    "btn": "Tomarkirin",
+    "wrongData": "Şîfre an Navê Bikarhêner Çewt e"
+  },
+
+  "dashboard": {
+    "navbar": {
+      "title": "Control Panel",
+      "home": "Rêzefê Sereke",
+      "out": "Derkeve",
+      "topNews": "Nûçeyên Girîng",
+      "news": "Nûçe",
+      "addTopNews": "Nûçeyên Girîng Derbaske",
+      "addNews": "Nûçeyan Derbaske",
+      "user": "Bikarhêner",
+      "addUser": "Bikarhêner Zêde Bikin",
+      "activities": "Çalakî"
     },
-    "time": {
-      "oneMin": "Berya Yek Kêlî",
-      "oneHour": "Berya Yek Saet",
-      "oneDay": "Berya Yek Roj",
-      "oneMonth": "Berya Yek Meh",
-      "oneYear": "Berya Yek Sal",
-  
-      "beforeMinutes": "Berya",
-      "minutes": "Kêlî",
-      "beforeHours": "Berya",
-      "hours": "Saet",
-      "beforeDays": "Berya",
-      "days": "Rojan",
-      "beforeMonth": "Berya",
-      "months": "Mehan",
-      "beforeYears": "Berya",
-      "years": "Salan"
-    },
-    "home": {
-      "pages": "Rûpelên Malperê",
-      "btn": "Bêtir Binêre",
+    "table": {
+      "headline": "Sernav",
+      "category": "Cûre",
+      "position": "Rêzik",
+      "action": "Hilbijartin",
       "search": "Lêgerîn...",
-      "theme": "Hilbijartina Tema :",
-      "language": "Hilbijartina Ziman :"
+      "update": "Nûvekirin",
+      "delete": "Jêbirin",
+      "deleteMsg": "Ma rastî dixwazî jêbike?",
+      "cencel": "Betalkirin",
+      "role": "Cûreya Bikarhêner",
+      "user": "Bikarhêner",
+      "show": "Binêre",
+      "all": "Hemû ziman"
     },
-    "footer": {
-      "copyRight": "© Hemû Mafên Weşandin Misogerin"
-    },
-    "contact": {
-      "pageName": "Peywendî",
-      "insideSpan": "Bi Me re",
-      "detail": "Agahdariyên Peywendiyê",
-      "phone": ": Hejmara Telefone",
-      "email": ": E-name",
-      "address": ": Navnîşan",
-      "name": "Nav",
-      "FormEmail": "E-name",
-      "subject": "Mijar",
-      "massage": "Peyam",
-      "btn": "Şandin"
-    },
-    "about": {
-      "pageName": "Agahdariyên ",
-      "insideSpan": "Derbarê me de",
-      "btn": "Peywendî Bi Me re"
-    },
-    "pageNotFound": {
-      "title": "Rûpela Nehat Dîtin 404",
-      "btn": "Rêzefa Sereke"
-    },
-    "category": {
-      "pageName": "Cûre:",
-      "more": "Bêtir Bixwîne"
-    },
-    "readPage": {
-      "top": "Nûçeyên Nû",
-      "more": "Nûçeyên Zêdetir"
-    },
-    "registration": {
-      "pageName": "Derbas bibe",
-      "username": "Navê Bikarhêner",
+    "forms": {
+      "headline": "Sernav",
+      "category": "Cûre",
+      "position": "Rêzek",
+      "add": "Cûre Zêde Bikin",
+      "summary": "Gotar",
+      "files": "Dikarin 3 Wêne û 1 Video Bar bikin",
+      "create": "Afirandin",
+      "updates": "Nûvekirin",
+      "role": "Cûreya Bikarhêner",
+      "user": "Bikarhêner",
+      "userName": "Navê Bikarhêner",
+      "admin": "Berpir",
       "password": "Şîfre",
-      "rememberMe": "Bibîrbînin",
-      "btn": "Tomarkirin",
-      "wrongData": "Şîfre an Navê Bikarhêner Çewt e"
+      "passwordConfirmation": "Tekezkirina Şîfre",
+      "errorName": "Divê Nav Hilbijêre",
+      "errorPassword": "Şîfre divê ji 6 Tîpan dirêjtir be",
+      "errorRole": "Divê Cûreya Bikarhêner Hilbijêre",
+      "errorPasswordcon": "Şîfre Çewt e",
+      "errorCategory": "Divê Cûreya Hilbijêre",
+      "errorHeadline": "Divê Sernav Hilbijêre",
+      "errorSummary": "Divê Nivîsê Binivîse",
+      "errorPosition": "Cîhê Nûçeyê Hilbijêre",
+      "errorFiles": "Pelan Bar Bikin ji bo Şandinê",
+      "errorManyFiles": "Dikare Tenê 3 Wêne û 1 Video Bar Dike"
     },
-  
-    "dashboard": {
-      "navbar": {
-        "title": "Control Panel",
-        "home": "Rêzefê Sereke",
-        "out": "Derkeve",
-        "topNews": "Nûçeyên Girîng",
-        "news": "Nûçe",
-        "addTopNews": "Nûçeyên Girîng Derbaske",
-        "addNews": "Nûçeyan Derbaske",
-        "user": "Bikarhêner",
-        "addUser": "Bikarhêner Zêde Bikin",
-        "activities": "Çalakî"
-      },
-      "table": {
-        "headline": "Sernav",
-        "category": "Cûre",
-        "position": "Rêzik",
-        "action": "Hilbijartin",
-        "search": "Lêgerîn...",
-        "update": "Nûvekirin",
-        "delete": "Jêbirin",
-        "deleteMsg": "Ma rastî dixwazî jêbike?",
-        "cencel": "Betalkirin",
-        "role": "Cûreya Bikarhêner",
-        "user": "Bikarhêner"
-      },
-      "forms": {
-        "headline": "Sernav",
-        "category": "Cûre",
-        "position": "Rêzek",
-        "add": "Cûre Zêde Bikin",
-        "summary": "Gotar",
-        "files": "Dikarin 3 Wêne û 1 Video Bar bikin",
-        "create": "Afirandin",
-        "updates": "Nûvekirin",
-        "role": "Cûreya Bikarhêner",
-        "user": "Bikarhêner",
-        "userName": "Navê Bikarhêner",
-        "admin": "Berpir",
-        "password": "Şîfre",
-        "passwordConfirmation": "Tekezkirina Şîfre",
-        "errorName": "Divê Nav Hilbijêre",
-        "errorPassword": "Şîfre divê ji 6 Tîpan dirêjtir be",
-        "errorRole": "Divê Cûreya Bikarhêner Hilbijêre",
-        "errorPasswordcon": "Şîfre Çewt e",
-        "errorCategory": "Divê Cûreya Hilbijêre",
-        "errorHeadline": "Divê Sernav Hilbijêre",
-        "errorSummary": "Divê Nivîsê Binivîse",
-        "errorPosition": "Cîhê Nûçeyê Hilbijêre",
-        "errorFiles": "Pelan Bar Bikin ji bo Şandinê",
-        "errorManyFiles": "Dikare Tenê 3 Wêne û 1 Video Bar Dike"
-      },
-      "activity": {
-        "all": "Hemû Çalakî",
-        "delete": "Jêbirin",
-        "update": "Nûvekirin",
-        "create": "Afirandin",
-        "btn": "Coratan Bibîne"
-      }
+    "activity": {
+      "all": "Hemû Çalakî",
+      "delete": "Jêbirin",
+      "update": "Nûvekirin",
+      "create": "Afirandin",
+      "btn": "Coratan Bibîne"
     }
   }
-  
+}

@@ -52,7 +52,7 @@ const NewsComponents = (props) => {
   const subNews =
     propsData &&
     propsData.map((e, index) => {
-      if (index > 0 && index < 5) {
+      if (index > 3) {
         return (
           <div key={e._id} className="center">
             <Link to={`/read/${e._id}`} className="image-hover ">
@@ -80,6 +80,23 @@ const NewsComponents = (props) => {
       }
     });
 
+  const article =
+    propsData &&
+    propsData.map((e, i) => {
+      if (i > 0 && i < 4) {
+        return (
+          <div key={i}>
+            <Link to={`/read/${e._id}`}>{e.headline}</Link>
+            <p>{e.summary}</p>
+            <div className="time flex">
+              <Link href={`/category/${e.category}`}>Economy</Link>
+              <p class="time">{timeAgo(e.publishedAt)}</p>
+            </div>
+          </div>
+        );
+      }
+    });
+
   return (
     <div className="category container">
       {props.title && (
@@ -88,6 +105,10 @@ const NewsComponents = (props) => {
         </NavLink>
       )}
       <article className="flex">
+        {propsData.length > 1 && (
+          <article className="article">{article}</article>
+        )}
+
         <div className="important card">
           <Link
             to={`/read/${importantNews && importantNews._id}`}
@@ -121,7 +142,7 @@ const NewsComponents = (props) => {
           <p>{importantNews && importantNews.summary}</p>
         </div>
 
-        {propsData.length > 1 && (
+        {propsData.length > 4 && (
           <div className="sub">
             {subNews}
 

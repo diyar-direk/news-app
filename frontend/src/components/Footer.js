@@ -4,7 +4,6 @@ import LanguageDiv from "./LanguageDiv";
 import { useContext } from "react";
 import { Context } from "../context/Context";
 import { linksClick } from "./Navbar";
-import Logo from "./Logo";
 export default function Footer() {
   const context = useContext(Context);
   const language = context.langValue;
