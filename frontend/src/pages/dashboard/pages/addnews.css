@@ -13,6 +13,8 @@ form.add-news > textarea {
   background: var(--body-color);
   padding: 4px 10px;
   width: 100%;
+  resize: vertical;
+  max-width: 100%;
   margin-bottom: 10px;
   border-radius: 6px;
   color: var(--font-color);
