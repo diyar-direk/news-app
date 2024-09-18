@@ -1,0 +1,268 @@
+body div.navbar {
+  font-family: cairo !important;
+  background: var(--section-color);
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 2;
+}
+div.navbar .logo img {
+  max-width: 38px;
+  max-height: 38px;
+}
+div.navbar .flex {
+  gap: 10px;
+}
+div.navbar .flex > .btn {
+  width: auto;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+}
+
+aside.dashboard-aside {
+  background-color: var(--section-color);
+  width: 250px;
+  max-height: 100vh;
+  height: calc(100% - 60px);
+  padding: 30px 10px;
+  top: 60px;
+  position: fixed;
+  border-top: solid 2px var(--body-color);
+  z-index: 1;
+  font-family: cairo;
+}
+aside.dashboard-aside > h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--font-color);
+}
+aside.dashboard-aside > h4 {
+  display: none;
+  margin-bottom: 10px;
+  text-align: center;
+  cursor: pointer;
+  padding: 3px;
+  color: var(--font-color);
+}
+aside.dashboard-aside > h4::before {
+  content: "\f0c9";
+  font-family: "Font Awesome 6 Free";
+}
+aside.dashboard-aside > h4.close::before {
+  color: red;
+  content: "\f00d";
+}
+aside.dashboard-aside > a {
+  display: flex;
+  align-items: center;
+  color: var(--font-color);
+  font-size: 17px;
+  background-color: var(--body-color);
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  text-transform: capitalize;
+}
+body.arabic aside.dashboard-aside > a i {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+aside.dashboard-aside > a:hover,
+aside.dashboard-aside > a.active {
+  background-color: var(--border-color);
+}
+aside.dashboard-aside > a i {
+  color: #777;
+  margin-right: 10px;
+}
+aside.dashboard-aside div.sitting {
+  padding: 20px 10px;
+}
+aside.dashboard-aside div.sitting h4 {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+div.main {
+  width: 100%;
+  min-height: 200px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: flex-end;
+  min-height: calc(100vh - 60px);
+}
+
+div.main .dashboard-container {
+  width: calc(100% - 250px);
+  padding: 40px 50px;
+}
+
+@media (max-width: 1050px) {
+  aside.dashboard-aside {
+    width: 200px;
+  }
+  aside.dashboard-aside > a {
+    font-size: 15px;
+  }
+  aside.dashboard-aside div.sitting h4 {
+    font-size: 11px;
+  }
+  aside.dashboard-aside div.sitting {
+    display: flex;
+    align-items: center;
+  }
+  div.main .dashboard-container {
+    width: calc(100% - 200px);
+    padding: 40px;
+  }
+  div.navbar .flex > .btn {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 750px) {
+  aside.dashboard-aside {
+    width: 65px;
+  }
+  aside.dashboard-aside > a i,
+  body.arabic aside.dashboard-aside > a i {
+    margin: auto;
+  }
+
+  div.main .dashboard-container {
+    width: calc(100% - 65px);
+    padding: 40px 30px;
+  }
+  aside.dashboard-aside > a {
+    height: 38px;
+  }
+  aside.dashboard-aside div.sitting h4 {
+    display: none;
+  }
+  aside.dashboard-aside > a span {
+    display: none;
+  }
+  aside.dashboard-aside div.sitting {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  aside.dashboard-aside div.sitting div.theme {
+    margin-bottom: 10px;
+  }
+  aside.dashboard-aside div.sitting div.menu-lang i {
+    font-size: 9px;
+    margin-left: 5px;
+  }
+  body.arabic aside.dashboard-aside div.sitting div.menu-lang i {
+    margin-right: 5px;
+    margin-left: 0;
+  }
+  aside.dashboard-aside div.sitting div.lang {
+    top: -65px;
+  }
+  aside.dashboard-aside div.sitting div.lang p {
+    font-size: 10px;
+  }
+  aside.dashboard-aside.active div.sitting div.lang {
+    top: -45px;
+  }
+  aside.dashboard-aside.active div.sitting div.lang p {
+    font-size: 12px;
+  }
+  aside.dashboard-aside div.sitting div.menu-lang {
+    font-size: 10px;
+  }
+  aside.dashboard-aside > h3 {
+    display: none;
+  }
+  aside.dashboard-aside > h4 {
+    display: block;
+  }
+  aside.dashboard-aside.active {
+    width: 200px;
+  }
+  aside.dashboard-aside.active > a span {
+    flex: 1;
+    display: block;
+    margin-left: 10px;
+    text-wrap: nowrap;
+    overflow: hidden;
+  }
+  div.main .dashboard-container.active {
+    width: calc(100% - 200px);
+  }
+  aside.dashboard-aside div.sitting div.theme {
+    width: 38px;
+    height: 18px;
+  }
+  aside.dashboard-aside div.sitting div.theme::before {
+    height: 13px;
+    width: 13px;
+    font-size: 9px;
+  }
+  aside.dashboard-aside.active > h3 {
+    display: block;
+    margin: 0;
+    text-wrap: nowrap;
+    overflow: hidden;
+  }
+  aside.dashboard-aside.active div.sitting h4 {
+    display: block;
+    text-wrap: nowrap;
+    overflow: hidden;
+  }
+  div.navbar .flex > .btn {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 550px) {
+  aside.dashboard-aside {
+    width: 55px;
+  }
+  aside.dashboard-aside.active {
+    width: 150px;
+  }
+  aside.dashboard-aside.active > h3 {
+    font-size: 16px;
+  }
+  aside.dashboard-aside > a {
+    font-size: 12px;
+    height: 35px;
+  }
+  aside.dashboard-aside.active > a span {
+    margin-left: 4px;
+    font-size: 11px;
+  }
+  div.main .dashboard-container {
+    width: calc(100% - 55px);
+  }
+  div.navbar .flex > .btn {
+    font-size: 12px;
+  }
+  div.main .dashboard-container {
+    padding: 25px 10px;
+  }
+  div.main .dashboard-container.active {
+    width: calc(100% - 150px);
+  }
+  aside.dashboard-aside div.sitting div.lang {
+    top: -55px;
+  }
+  aside.dashboard-aside div.sitting div.lang p {
+    font-size: 8px;
+  }
+  body.arabic aside.dashboard-aside.active > a span {
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 460px) {
+  div.navbar .flex > .btn {
+    font-size: 10px;
+  }
+}

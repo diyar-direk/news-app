@@ -1,0 +1,283 @@
+div.main .dashboard-container.activities > div.flex > div {
+  text-transform: capitalize;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+div.main .dashboard-container.activities > div.flex > div:not(:last-of-type) {
+  margin-right: 25px;
+}
+body.arabic
+  div.main
+  .dashboard-container.activities
+  > div.flex
+  > div:not(:last-of-type) {
+  margin-left: 25px;
+  margin-right: 0;
+}
+div.main .dashboard-container.activities > div.flex > div span {
+  pointer-events: none;
+  color: var(--font-color);
+  opacity: 0.5;
+}
+div.main .dashboard-container.activities > div.flex > div.active span,
+div.main .dashboard-container.activities > div.flex > div span:hover {
+  opacity: 1;
+}
+
+div.main .dashboard-container.activities > div.flex i {
+  color: white;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 10px;
+  pointer-events: none;
+  transition: 0.4s;
+}
+body.arabic div.main .dashboard-container.activities > div.flex i {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+div.main .dashboard-container.activities > div.flex > div.delete i {
+  background-color: #db0c0c91;
+}
+
+div.main .dashboard-container.activities > div.flex > div.update i {
+  background-color: #1d3cc58c;
+}
+div.main .dashboard-container.activities > div.flex > div.add i {
+  background-color: #31911682;
+}
+div.main .dashboard-container.activities > div.flex > div.delete:hover i,
+div.main .dashboard-container.activities > div.flex > div.delete.active i {
+  background-color: #db0c0c;
+}
+
+div.main .dashboard-container.activities > div.flex > div.add:hover i,
+div.main .dashboard-container.activities > div.flex > div.active.add i {
+  background-color: #1d3cc5;
+}
+div.main .dashboard-container.activities > div.flex > div.add:hover i,
+div.main .dashboard-container.activities > div.flex > div.add.active i {
+  background-color: #319116;
+}
+
+div.main .dashboard-container.activities > article {
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+div.main .dashboard-container.activities > article > h2 {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: var(--font-color);
+}
+
+.dashboard-container.activities > article .between > div:first-child {
+  border-right: solid 1px var(--border-color);
+  flex: 1;
+  padding-right: 15px;
+}
+body.arabic
+  .dashboard-container.activities
+  > article
+  .between
+  > div:first-child {
+  border-left: solid 1px var(--border-color);
+  border-right: none;
+  padding-right: 0;
+  padding-left: 15px;
+}
+.dashboard-container.activities > article .between > div:first-child p {
+  font-size: 14px;
+  color: var(--font-color);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  text-wrap: wrap;
+}
+.dashboard-container.activities > article .between > div:first-child span {
+  font-size: 12px;
+  color: #777;
+}
+.dashboard-container.activities > article .between > div:last-child {
+  text-align: center;
+  margin-left: 20px;
+}
+body.arabic
+  .dashboard-container.activities
+  > article
+  .between
+  > div:last-child {
+  margin-right: 20px;
+  margin-left: 0px;
+}
+.dashboard-container.activities > article .between > div:last-child p {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--font-color);
+  margin-bottom: 5px;
+}
+.dashboard-container.activities > article .between > div:last-child a {
+  font-size: 12px;
+  border: solid 1px var(--var-color);
+  color: var(--var-color);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.dashboard-container.activities > article .between > div:last-child a:hover {
+  color: white;
+  background-color: var(--var-color);
+}
+div.main .dashboard-container.activities > article > h2::before {
+  font-family: "Font Awesome 6 Free";
+  font-size: 12px;
+  margin-right: 10px;
+}
+body.arabic div.main .dashboard-container.activities > article > h2::before {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+div.main .dashboard-container.activities > article.CREATE > h2::before {
+  content: "\2b";
+  color: #319116;
+}
+div.main .dashboard-container.activities > article.UPDATE > h2::before {
+  content: "\f0ad";
+  color: #1d3cc5;
+}
+div.main .dashboard-container.activities > article.DELETE > h2::before {
+  content: "\f2ed";
+  color: #db0c0c;
+}
+div.main .dashboard-container.activities > article.CREATE {
+  background: #3191160f;
+}
+div.main .dashboard-container.activities > article.UPDATE {
+  background: #1d3cc50d;
+}
+div.main .dashboard-container.activities > article.DELETE {
+  background: #db0c0c14;
+}
+
+@media (max-width: 1000px) {
+  div.main .dashboard-container.activities > article > h2 {
+    font-size: 17px;
+  }
+  .dashboard-container.activities > article .between > div:first-child p,
+  div.main .dashboard-container.activities > div.flex > div {
+    font-size: 12px;
+  }
+  .dashboard-container.activities > article .between > div:first-child span {
+    font-size: 11px;
+  }
+  .dashboard-container.activities > article .between > div:last-child a {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  div.main .dashboard-container.activities > article {
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  div.main .dashboard-container.activities > div.flex > div:not(:last-of-type) {
+    margin-right: 15px;
+  }
+  body.arabic
+    div.main
+    .dashboard-container.activities
+    > div.flex
+    > div:not(:last-of-type) {
+    margin-left: 15px;
+  }
+  div.main .dashboard-container.activities > article > h2 {
+    font-size: 15px;
+  }
+  .dashboard-container.activities > article .between > div:first-child p,
+  div.main .dashboard-container.activities > div.flex > div {
+    font-size: 10px;
+  }
+  .dashboard-container.activities > article .between > div:first-child span {
+    font-size: 9px;
+  }
+  .dashboard-container.activities > article .between > div:last-child a {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  div.main .dashboard-container.activities > article {
+    padding: 4px 10px;
+  }
+  .dashboard-container.activities > article .between > div:last-child p {
+    font-size: 12px;
+  }
+  div.main .dashboard-container.activities > div.flex i {
+    margin-right: 8px;
+    font-size: 8px;
+  }
+  body.arabic div.main .dashboard-container.activities > div.flex i {
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  div.main .dashboard-container.activities > article > h2 {
+    font-size: 13px;
+  }
+  .dashboard-container.activities > article .between > div:last-child p {
+    font-size: 11px;
+  }
+  .dashboard-container.activities > article .between > div:first-child p,
+  div.main .dashboard-container.activities > div.flex > div {
+    font-size: 9px;
+  }
+  .dashboard-container.activities > article .between > div:first-child span {
+    font-size: 8px;
+  }
+  .dashboard-container.activities > article .between > div:last-child {
+    margin-left: 10px;
+  }
+  body.arabic
+    .dashboard-container.activities
+    > article
+    .between
+    > div:last-child {
+    margin-right: 10px;
+  }
+  div.main .dashboard-container.activities > article {
+    padding: 4px 8px;
+  }
+}
+@media (max-width: 400px) {
+  div.main .dashboard-container.activities > article .between {
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .dashboard-container.activities > article .between > div:first-child {
+    border-right: none;
+    border-left: none;
+    border-bottom: solid 1px var(--border-color);
+  }
+
+  body.arabic
+    .dashboard-container.activities
+    > article
+    .between
+    > div:first-child {
+    border-right: none;
+    border-left: none;
+  }
+}

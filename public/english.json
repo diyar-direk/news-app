@@ -1,0 +1,138 @@
+{
+  "links": {
+    "Home": "Home",
+    "about": "about us",
+    "contact": "contact us",
+    "dashboard": "dashboard"
+  },
+  "time": {
+    "oneMin": "1 minute ago",
+    "oneHour": " 1 hour ago",
+    "oneDay": " 1 day ago",
+    "oneMonth": "1 month ago ",
+    "oneYear": " 1 year ago",
+
+    "beforeMinutes": " ",
+    "minutes": "minutes ago",
+    "beforeHours": "",
+    "hours": "hours ago",
+    "beforeDays": "",
+    "days": "days ago",
+    "beforeMonth": "",
+    "months": "month ago",
+    "beforeYears": "",
+    "years": "years ago"
+  },
+  "home": {
+    "pages": "home pages",
+    "btn": "see all ",
+    "search": "search ...",
+    "theme": "select theme : ",
+    "language": "select language : "
+  },
+  "footer": {
+    "copyRight": "© 2024, All rights reserved"
+  },
+  "contact": {
+    "pageName": "contact",
+    "insideSpan": "us",
+    "detail": "contact detail",
+    "phone": "PHONE : ",
+    "email": "EMAIL : ",
+    "address": "ADDRESS : ",
+    "name": "Name",
+    "FormEmail": "Email",
+    "subject": "Subject",
+    "massage": "Massage",
+    "btn": "send "
+  },
+  "about": {
+    "pageName": "about ",
+    "insideSpan": "us",
+    "btn": "contact us"
+  },
+  "pageNotFound": {
+    "title": "404 page not found",
+    "btn": "home page"
+  },
+  "category": {
+    "pageName": "category :",
+    "more": "read more"
+  },
+  "readPage": {
+    "top": "top news",
+    "more": "more news"
+  },
+  "registration": {
+    "pageName": "Registration",
+    "username": "username",
+    "password": "password",
+    "rememberMe": "Remember Me",
+    "btn": "Register",
+    "wrongData": "wrong password or user name"
+  },
+
+  "dashboard": {
+    "navbar": {
+      "title": "Dashboard",
+      "home": "Home Page",
+      "out": "Log Out",
+      "topNews": "Top News",
+      "news": "News",
+      "addTopNews": "Add Top News",
+      "addNews": "Add News",
+      "user": "users",
+      "addUser": "add user",
+      "activities": "activities"
+    },
+    "table": {
+      "headline": "Headline",
+      "category": "Category",
+      "position": "position",
+      "action": "Action",
+      "search": "search ...",
+      "update": "update",
+      "delete": "delete",
+      "deleteMsg": "Are you sure you want to delete?",
+      "cencel": "cencel",
+      "role": "Role",
+      "user": "User",
+      "show": "show",
+      "all": "all languages"
+    },
+    "forms": {
+      "headline": "Headline",
+      "category": "Category",
+      "position": "position",
+      "add": "Add Category",
+      "summary": "text",
+      "files": "can upload 3 photos and 1 video",
+      "create": "Create",
+      "updates": "Update",
+      "role": "Role",
+      "user": "User",
+      "userName": "User Name",
+      "admin": "admin",
+      "password": "Password",
+      "passwordConfirmation": "Password Confirmation",
+      "errorName": "name is required",
+      "usedName": "username already used",
+      "errorPassword": "password must be longer then 6 charecters",
+      "errorRole": "you have to select role",
+      "errorPasswordcon": "password is wrong",
+      "errorCategory": "category is required",
+      "errorHeadline": "Headline is required",
+      "errorSummary": "text is required",
+      "errorPosition": "position is required",
+      "errorFiles": "upload files to send",
+      "errorManyFiles": "You can only upload 3 photos and 1 video"
+    },
+    "activity": {
+      "all": "all activities",
+      "delete": "delete",
+      "update": "update",
+      "create": "create",
+      "btn": "show article"
+    }
+  }
+}

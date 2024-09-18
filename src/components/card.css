@@ -1,0 +1,176 @@
+.flex-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+
+  gap: 30px;
+  align-items: flex-start;
+}
+.flex-card > div.card {
+  flex: calc(30% - 20px);
+}
+.flex-card > div.card > .important {
+  position: relative;
+  margin-bottom: 20px;
+}
+.flex-card > div.card a.title {
+  position: relative;
+  display: inline-block;
+  padding-left: 15px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-size: 34px;
+  font-weight: 800;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--font-color);
+  margin-bottom: 15px;
+}
+body.arabic .flex-card > div.card a.title {
+  padding-right: 15px;
+  padding-left: 0px;
+}
+
+.flex-card > div.card a.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--var-color);
+  border-radius: 50%;
+}
+body.arabic .flex-card > div.card a.title::before {
+  right: 0;
+  top: 56%;
+}
+.flex-card > div.card .info {
+  position: absolute;
+  padding: 20px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, #0000008a, transparent);
+}
+body.arabic .flex-card > div.card .info p.time {
+  direction: rtl;
+}
+.flex-card > div.card .info h2 {
+  color: white;
+  line-height: 1.2;
+  font-size: 16px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+.flex-card > div.card .info:hover + .image-hover img {
+  object-fit: cover;
+  transform: scale(1.1);
+}
+
+.flex-card > div.card .image-hover {
+  margin-bottom: 0;
+  max-height: 320px;
+  border-radius: 4px;
+}
+.flex-card > div.card .top-images {
+  height: 320px;
+}
+.flex-card > div.card .center {
+  border-top: solid 1px var(--border-color);
+  padding: 20px 0 10px;
+  margin-bottom: 5px;
+  flex-wrap: nowrap;
+}
+.flex-card > div.card .center .image-hover {
+  width: 100px;
+  margin-right: 10px;
+  max-height: 66px;
+}
+body.arabic .flex-card > div.card .center .image-hover {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.flex-card > div.card .center .flex-1 a {
+  color: var(--font-color);
+  font-size: 14px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.flex-card > div.card a:not(.all):hover {
+  color: var(--var-color) !important;
+  -webkit-text-stroke-color: var(--hover-color);
+}
+.flex-card > div.card .info:hover + a.bottom-before::before {
+  bottom: -6px;
+}
+.flex-card > div.card a.all {
+  font-weight: normal;
+  color: var(--var-color);
+  width: 100%;
+  display: inline-block;
+  background: var(--body-color);
+  font-size: 18px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 20px auto 0 auto;
+  border: 1px solid var(--var-color);
+  text-transform: capitalize;
+  font-family: cairo;
+}
+.flex-card > div.card a.all:hover {
+  background: var(--var-color);
+  color: white;
+}
+@media (max-width: 1100px) {
+  .flex-card > div.card {
+    flex: calc(35% - 20px);
+  }
+  .flex-card > div.card a.title {
+    font-size: 32px;
+  }
+}
+@media (max-width: 700px) {
+  .flex-card > div.card {
+    flex: 100%;
+  }
+  .flex-card {
+    grid-template-columns: 1fr;
+  }
+  .flex-card > div.card a.all {
+    font-size: 16px;
+  }
+}
+@media (max-width: 560px) {
+  main > div.news > div.category p.time {
+    font-size: 10px;
+  }
+  .flex-card > div.card .info h2 {
+    font-size: 14px;
+  }
+  .flex-card > div.card .center .flex-1 a {
+    font-size: 12px;
+  }
+  .flex-card > div.card a.all {
+    font-size: 15px;
+  }
+  .flex-card > div.card .image-hover {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-card > div.card a.all {
+    font-size: 13px;
+  }
+  .flex-card > div.card .center .flex-1 a {
+    font-size: 12px;
+  }
+}

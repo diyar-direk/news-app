@@ -1,0 +1,138 @@
+{
+  "links": {
+    "Home": "الصفحة الرئيسية",
+    "about": "معلومات عنا",
+    "contact": "تواصل معنا",
+    "dashboard": "لوحة التحكم"
+  },
+  "time": {
+    "oneMin": " قبل دقيقة واحدة ",
+    "oneHour": " قبل ساعة واحدة",
+    "oneDay": " قبل يوم واحد",
+    "oneMonth": "قبل شهر واحد ",
+    "oneYear": " قبل سنة واحدة",
+
+    "beforeMinutes": "قبل",
+    "minutes": "دقائق",
+    "beforeHours": "قبل",
+    "hours": "ساعات",
+    "beforeDays": "قبل",
+    "days": "ايام",
+    "beforeMonth": "قبل",
+    "months": "اشهر",
+    "beforeYears": "قبل",
+    "years": "سنوات"
+  },
+  "home": {
+    "pages": "صفحات الموقع",
+    "btn": " رؤية المزيد عن  ",
+    "search": " بحث ...",
+    "theme": ": اختيار المظهر",
+    "language": ": اختيار اللغة"
+  },
+  "footer": {
+    "copyRight": "© جميع حقوق النشر محفوظة"
+  },
+  "contact": {
+    "pageName": "تواصل ",
+    "insideSpan": " معنا ",
+    "detail": " معلومات التواصل ",
+    "phone": ": الرقم ",
+    "email": ": البريد ",
+    "address": ": العنوان ",
+    "name": " الاسم ",
+    "FormEmail": " البريد الإلكتروني ",
+    "subject": " الموضوع ",
+    "massage": " الرسالة ",
+    "btn": " إرسال "
+  },
+  "about": {
+    "pageName": " معلومات",
+    "insideSpan": " عنا",
+    "btn": "تواصل معنا"
+  },
+  "pageNotFound": {
+    "title": "  الصفحة غير موجودة 404 ",
+    "btn": "الصفحة الرئيسية"
+  },
+  "category": {
+    "pageName": "  النوع : ",
+    "more": " قراءة المزيد "
+  },
+  "readPage": {
+    "top": "احدث الأخبار",
+    "more": "مزيد من الأخبار"
+  },
+  "registration": {
+    "pageName": "تسجيل الدخول",
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "rememberMe": "تذكرني",
+    "btn": "تسجيل",
+    "wrongData": " خطأ في كلمة المرور أو اسم المستخدم "
+  },
+
+  "dashboard": {
+    "navbar": {
+      "title": "لوحة التحكم",
+      "home": "الصفحة الرئيسية",
+      "out": "تسجيل الخروج",
+      "topNews": "اهم الاخبار",
+      "news": "الاخبار",
+      "addTopNews": "اضافة اخبار مهمة",
+      "addNews": "اضافة اخبار",
+      "user": "المستخدمين",
+      "addUser": " إضافة مستخدم",
+      "activities": "النشاطات"
+    },
+    "table": {
+      "headline": "العنوان",
+      "category": "النوع",
+      "position": "الترتيب",
+      "action": "الخيارات",
+      "search": " بحث ...",
+      "update": "تعديل",
+      "delete": "حذف",
+      "deleteMsg": "هل تريد بالفعل الحذف؟",
+      "cencel": "تجاهل",
+      "role": " نوع المستخدم ",
+      "user": "المستخدم",
+      "show": "عرض",
+      "all":"جميع اللغات"
+    },
+    "forms": {
+      "headline": "العنوان",
+      "category": "النوع",
+      "position": "الترتيب",
+      "add": "إضافة نوع",
+      "summary": "المقال",
+      "files": "تستطيع رفع 3 صور مع 1 فيديو",
+      "create": "إنشاء",
+      "updates": "تعديل",
+      "role": " نوع المستخدم ",
+      "user": "المستخدم",
+      "userName": "اسم المستخدم",
+      "admin": "مسؤل",
+      "password": "كلمة المرور",
+      "passwordConfirmation": "تأكيد كلمة المرور",
+      "errorName": "عليك أن تختار الاسم",
+      "usedName": "الاسم مستخدم بالفعل",
+      "errorPassword": "يجب أن تكون كلمة المرور أطول من 6 أحرف",
+      "errorRole": "عليك أن تختار نوع المستخدم",
+      "errorPasswordcon": "كلمة المرور خاطئة",
+      "errorCategory": "عليك أن تختار الفئة",
+      "errorHeadline": "عليك أن تختار العنوان",
+      "errorSummary": "عليك أن تكتب النص",
+      "errorPosition": "اختر موضعًا للخبر",
+      "errorFiles": "تحميل الملفات لإرسالها",
+      "errorManyFiles": "تستطيع فقط رفع 3 صور و 1 فيديو"
+    },
+    "activity": {
+      "all": "جميع النشاطات",
+      "delete": "حذف",
+      "update": "تعديل",
+      "create": "إنشاء",
+      "btn": "رؤية المقال"
+    }
+  }
+}

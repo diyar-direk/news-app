@@ -1,0 +1,909 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+*:not(i) {
+  transition: 0.4s;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+:root {
+  --font-color: black;
+  --body-color: white;
+  --var-color: #177d93;
+  --border-color: #83838340;
+  --hover-color: #105867;
+  --section-color: #f0f0f0;
+}
+@font-face {
+  font-family: "BBC Reith Sans";
+  src: url("../public/fonts/bbcreith-v2.300/bbcreith_v2.300/BBCReithSerif_V2.300/Web/WOFF2/BBCReithSerif_W_Bd.woff2")
+      format("woff2"),
+    url("../public/fonts/bbcreith-v2.300/bbcreith_v2.300/BBCReithSerif_V2.300/Web/WOFF/BBCReithSerif_W_Bd.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  background: var(--body-color);
+  overflow-y: hidden;
+  font-family: "BBC Reith Sans", Helvetica, Arial, sans-serif;
+}
+
+body.arabic {
+  direction: rtl;
+  font-family: cairo;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #515151;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #292929;
+}
+.container {
+  width: 80%;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-1 {
+  flex: 1;
+}
+.w-100 {
+  width: 100%;
+}
+.image-hover {
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 15px;
+  position: relative;
+}
+.bottom-before::before {
+  position: absolute;
+  content: " ";
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 6px;
+  opacity: 0.5;
+  transition: 0.3s;
+  background-color: var(--var-color);
+}
+.image-hover img:hover {
+  transform: scale(1.1);
+  object-fit: cover;
+}
+input {
+  caret-color: var(--var-color);
+}
+.relative {
+  position: relative;
+}
+.flex-start {
+  display: flex;
+  justify-content: center;
+}
+h1 > span.inside-span {
+  color: var(--var-color);
+}
+.section-color {
+  background-color: var(--section-color);
+}
+/* navbar start  */
+/*loader Start*/
+
+/*loader end*/
+nav.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  padding-top: 10px;
+  text-transform: capitalize;
+  z-index: 100000;
+  background: var(--body-color);
+  top: 0;
+}
+nav > div.container {
+  padding: 10px 0;
+  position: relative;
+  align-items: center;
+}
+/* start search div  */
+nav.navbar > div.container > article.search {
+  position: absolute;
+  width: 100%;
+  background-color: var(--section-color);
+  top: 100%;
+  left: 0;
+  padding: 20px;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 0px 0px 10px 10px;
+}
+nav.navbar > div.container > article.search.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+nav.navbar > div.container > article.search input {
+  padding: 5px 10px;
+  flex: 1;
+  border: none;
+  font-size: 14px;
+  caret-color: var(--var-color);
+  border-radius: 4px 0 0 4px;
+  background-color: var(--border-color);
+  color: var(--font-color);
+  font-family: "Cairo";
+}
+body.arabic nav.navbar > div.container > article.search input {
+  border-radius: 0px 4px 4px 0px;
+}
+body.arabic nav.navbar > div.container > article.search .button-style {
+  border-radius: 4px 0px 0px 4px;
+}
+nav.navbar > div.container > article.search .button-style {
+  background: var(--var-color);
+  color: white;
+  padding: 3px 8px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  width: 50px;
+}
+
+nav.navbar > div.container > article.search .button-style {
+  color: white; /* Icon color */
+  border: none; /* Remove default button borders */
+  font-size: 16px; /* Icon size */
+  cursor: pointer; /* Pointer cursor for button */
+  display: inline-flex; /* Align icon within the button */
+  align-items: center; /* Center icon vertically */
+  justify-content: center; /* Center icon horizontally */
+  outline: none;
+}
+
+nav.navbar > div.container > article.search .button-style:hover {
+  background-color: var(--hover-color);
+}
+/* end search div  */
+/* start more link   */
+nav.navbar > div.container > aside.more-link {
+  position: absolute;
+  top: 100%;
+  background: var(--body-color);
+  padding: 20px;
+  width: 100%;
+  left: 0;
+  display: none;
+  border-top: solid 1px var(--border-color);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+nav.navbar > div.container > aside.more-link.active {
+  display: block;
+}
+nav.navbar > div.container > aside.more-link .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 0px 20px;
+}
+
+nav.navbar > div.container > aside.more-link a {
+  display: block;
+  width: 100%;
+  padding: 7px 0;
+  color: var(--font-color);
+  margin-bottom: 5px;
+  border-bottom: solid 1px var(--border-color);
+}
+nav.navbar > div.container > aside.more-link .flex-1 {
+  flex: 300px;
+}
+
+nav.navbar > div.container > aside.more-link a:hover,
+nav.navbar > div.container > aside.more-link a.active {
+  color: var(--var-color);
+}
+nav.navbar > div.container > aside.more-link a:hover,
+nav.navbar > div.container > aside.more-link a.active {
+  border-bottom: solid 1px var(--var-color);
+}
+/* end more link  */
+nav > div.container > .logo img {
+  max-width: 40px;
+  height: 100%;
+  max-height: 34px;
+  object-fit: cover;
+}
+nav > div.container > .links {
+  border-right: solid 1px var(--border-color);
+  padding: 0 10px;
+  flex: 1;
+}
+
+body.arabic nav > div.container > .links {
+  border-right: none;
+  border-left: solid 1px var(--border-color);
+  direction: ltr;
+}
+nav > div.container > .links a,
+nav > div.container > .links i {
+  color: var(--font-color);
+  margin: 0 10px;
+  font-size: 17px;
+  cursor: pointer;
+}
+nav > div.container > .links a:hover,
+nav > div.container > .links a.active {
+  color: var(--var-color);
+}
+nav > div.container > .more i {
+  margin: 0 10px;
+  font-size: 18px;
+  color: var(--font-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav > div.container > .more > div {
+  position: relative;
+  cursor: pointer;
+}
+nav > div.container > .more > div i {
+  pointer-events: none;
+}
+div.lang {
+  position: absolute;
+  background: var(--section-color);
+  width: 150px;
+  top: 30px;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+div.lang.active {
+  pointer-events: all;
+  opacity: 1;
+  z-index: 2;
+}
+nav > div.container > .more div.lang.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+nav > div.container > .more div.active.lang div p.active::after {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  position: absolute;
+  right: 10px;
+}
+body.arabic nav > div.container > .more div.active.lang div p.active::after {
+  left: 10px;
+  right: auto;
+}
+nav > div.container > .more > div > div::before {
+  content: "";
+  position: absolute;
+  border: solid 7px;
+  border-color: transparent transparent var(--section-color) transparent;
+  left: 37%;
+  top: -12px;
+}
+div.lang p {
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+nav div.more div.lang {
+  left: calc(-100% - 2px);
+}
+nav div.lang p {
+  color: var(--font-color);
+  display: flex;
+  align-items: center;
+}
+div.lang p:not(:last-of-type) {
+  border-bottom: solid 1px var(--border-color);
+}
+div.lang p:not(nav div.more div.lang p):hover {
+  background-color: var(--border-color);
+}
+nav > div.container > .more i.fa-sun {
+  font-weight: normal;
+}
+nav > div.bottom-link {
+  width: 100%;
+  background-color: #313641;
+}
+nav > div.bottom-link > div.container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+nav > div.bottom-link a {
+  color: white;
+  font-size: 15px;
+  height: 45px;
+  padding: 0 10px;
+  line-height: 45px;
+  text-align: center;
+  display: inline-block;
+  background-color: #313641;
+  border-left: solid 1px #4d5567a8;
+}
+nav > div.bottom-link a:hover,
+nav > div.bottom-link a.active {
+  background-color: #464a54;
+}
+
+/* navbar end  */
+
+/* start home page  */
+main {
+  position: relative;
+  margin-top: 109px;
+  min-height: 80svh;
+}
+main > div.landing {
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+main > div.landing > div.w-100 {
+  position: absolute;
+  max-height: 500px;
+  opacity: 0;
+  z-index: -1;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.center.w-100.active::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to top, #0000008a, transparent);
+  width: 100%;
+  height: 100%;
+}
+main > div.landing > div.w-100.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+main > div.landing .container {
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  font-weight: bold;
+  top: 0;
+  padding-bottom: 60px;
+}
+main > div.landing .container * {
+  display: block;
+  color: white;
+  width: fit-content;
+}
+main > div.landing .container a.category {
+  font-size: 18px;
+  background: #2a29293b;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+main > div.landing .container a.title {
+  margin: 20px 0;
+  font-size: 25px;
+}
+main > div.landing .container a.title:hover {
+  color: var(--var-color);
+}
+main > div.landing .container p {
+  color: #dddddd;
+}
+main > div.landing .dots {
+  position: absolute;
+  top: 90%;
+  z-index: 2;
+}
+main > div.landing .dots span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #8d8a87;
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+}
+main > div.landing .dots span:hover,
+main > div.landing .dots span.active {
+  background-color: var(--var-color);
+}
+main > div.news {
+  margin: 20px 0;
+  width: 100%;
+}
+main > div.news > h1 {
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: var(--font-color);
+}
+
+main > div.news > div.category {
+  padding: 20px 0;
+  border-top: solid 1px var(--border-color);
+  margin: auto;
+}
+main > div.news > div.category > a {
+  position: relative;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding-left: 20px;
+  text-transform: capitalize;
+  transition: 0.3s;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 34px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--font-color);
+}
+body.arabic main > div.news > div.category > a {
+  padding-left: 0;
+  padding-right: 20px;
+}
+main > div.news > div.category > a:hover {
+  color: var(--var-color);
+
+  -webkit-text-stroke-color: var(--hover-color);
+}
+body.arabic main > div.news > div.category > a::before {
+  right: 0;
+}
+main > div.news > div.category > a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--var-color);
+  border-radius: 50%;
+}
+main > div.news > div.category > article {
+  gap: 10px 30px;
+  align-items: flex-start;
+}
+main > div.news > div.category > article > div.sub {
+  flex: 240px 1;
+}
+main > div.news > div.category > article > div.important {
+  flex: 45% 0;
+  max-width: 45%;
+}
+main > div.news > div.category > article > article.article {
+  flex: 200px;
+}
+main > div.news > div.category > article > article.article > div {
+  padding: 10px 0;
+}
+main
+  > div.news
+  > div.category
+  > article
+  > article.article
+  > div:not(:last-child) {
+  border-bottom: solid 1px var(--border-color);
+}
+main > div.news > div.category > article > article.article > div > a {
+  color: var(--font-color);
+  font-size: 14px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+main > div.news > div.category > article > article.article > div > a:hover {
+  color: var(--var-color);
+}
+main > div.news > div.category > article > article.article > div > p {
+  color: var(--font-color);
+  opacity: 0.5;
+  font-size: 13px;
+  margin: 5px 0;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+main > div.news > div.category div.time a {
+  color: var(--var-color);
+  text-transform: capitalize;
+  margin-right: 8px;
+  font-size: 12px;
+  padding-right: 8px;
+  border-right: solid 1px var(--border-color);
+}
+body.arabic main > div.news > div.category div.time a {
+  border-right: none;
+  border-left: solid 1px var(--border-color);
+  margin-right: 0;
+  margin-left: 8px;
+  font-size: 14px;
+  padding-left: 8px;
+}
+main > div.news > div.category p.time {
+  font-size: 11px;
+  color: #8d8a87;
+  border-left: solid 2px;
+  border: 0px;
+  margin-bottom: 10px;
+}
+
+body.arabic main > div.news > div.category p.time {
+  direction: ltr;
+  padding-right: 4px;
+}
+main > div.news > div.category > article > div > a:not(.image-hover) {
+  color: var(--font-color);
+  margin: 10px 0;
+  display: inline-block;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.5;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+main > div.news > div.category > article > div > a:hover {
+  color: var(--var-color);
+}
+main > div.news > div.category > article > div > a.bottom-before:hover::before {
+  bottom: -6px;
+}
+main > div.news > div.category > article > div > p {
+  font-size: 14px;
+  border: none;
+  color: #8d8a87;
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+main > div.news > div.category > article > div.sub > div a.image-hover {
+  margin: 0;
+  width: 110px;
+  height: 100px;
+}
+main > div.news > div.category > article > div.sub > div a.image-hover img {
+  object-fit: cover;
+  width: 100%;
+
+  border-radius: 5px;
+}
+main > div.news > div.category > article > div.sub > div:not(:last-of-type) {
+  padding-bottom: 10px;
+  border-bottom: solid 1px var(--border-color);
+  margin-bottom: 20px;
+}
+main > div.news > div.category > article > div.sub > div {
+  flex-wrap: nowrap;
+}
+main > div.news > div.category > article > div.sub .flex-1 {
+  padding-left: 10px;
+}
+main > div.news > div.category > article > div.sub .flex-1 > a {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  color: var(--font-color);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+body.arabic main > div.news > div.category > article > div.sub .flex-1 > a {
+  padding-right: 8px;
+}
+main > div.news > div.category > article > div.sub .flex-1 > a:hover {
+  color: var(--var-color);
+}
+main > div.news > div.category > article > div.sub a.all,
+.btn {
+  font-weight: normal;
+  color: var(--var-color);
+  width: 100%;
+  padding: 4px 0;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 20px auto 0 auto;
+  border: 1px solid var(--var-color);
+}
+main > div.news > div.category > article > div.sub a.all:hover,
+.btn:hover {
+  background: var(--var-color);
+  color: white;
+}
+.important img {
+  border-radius: 5px;
+  max-height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+/* end home page  */
+
+@media (max-width: 1100px) {
+  .container {
+    width: 90%;
+  }
+
+  main > div.news > div.category > article > div.sub > div a.image-hover {
+    max-width: 120px;
+  }
+  main > div.news > div.category > article > div.important {
+    max-width: 60%;
+    order: -1;
+  }
+  nav > div.container > .links a,
+  nav > div.container > .links i {
+    font-size: 15px;
+  }
+  nav.navbar > div.container > aside.more-link a {
+    font-size: 14px;
+  }
+}
+@media (max-width: 950px) {
+  main > div.landing .container a.category {
+    font-size: 16px;
+  }
+  main > div.landing .dots span {
+    width: 10px;
+    height: 10px;
+  }
+  nav > div.container > .more i {
+    font-size: 16px;
+  }
+  nav > div.container > .links a,
+  nav > div.container > .links i {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+  nav > div.bottom-link a {
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+  }
+  main {
+    margin-top: 104px;
+  }
+  main > div.news > div.category > article > div.sub {
+    flex: 100%;
+    width: 100%;
+  }
+  main > div.news > div.category > article > article.article {
+    gap: 10px 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  nav > div.bottom-link a {
+    font-size: 12px;
+  }
+  nav > div.container > .links {
+    display: none;
+  }
+  nav > div.container > .more i:not(.fa-magnifying-glass) {
+    display: none;
+  }
+  nav.navbar > div.container > article.search.active {
+    padding: 10px 15px;
+  }
+  nav .logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-right: solid 1px var(--border-color);
+  }
+  nav.navbar > div.container > article.search input {
+    padding: 3px 10px;
+    font-size: 13px;
+  }
+  nav.navbar > div.container > article.search .button-style {
+    font-size: 12px;
+  }
+  main {
+    margin-top: 97px;
+  }
+  main > div.news > div.category > a,
+  .flex-card > div.card a.title {
+    font-size: 26px !important;
+  }
+  main > div.news > div.category > article > div.sub > div a.image-hover {
+    max-width: 110px;
+  }
+  main > div.news > div.category > article > div.sub .flex-1 > a {
+    margin-top: 3px;
+  }
+  main > div.news > div.category div.time a {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  main > div.news > div.category p.time {
+    font-size: 12px;
+  }
+  main > div.news > div.category > article > div.sub a.all,
+  .btn {
+    padding: 3px 0;
+    font-size: 16px;
+  }
+  main > div.news > div.category > article {
+    flex-direction: column;
+  }
+
+  main > div.news > div.category > article > article.article > div {
+    flex: 250px;
+  }
+  main > div.news > div.category > article > div.important {
+    max-width: 100%;
+    width: 100%;
+  }
+  main > div.landing .container a.title {
+    font-size: 20px;
+  }
+  main > div.landing .container p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  nav.navbar {
+    padding: 0;
+  }
+  main > div.landing .container a.title {
+    margin: 5px 0;
+    font-size: 18px;
+  }
+  main > div.landing .container a.category {
+    font-size: 14px;
+    padding: 3px 8px;
+  }
+  main > div.news > div.category > article > div > p,
+  main > div.news > div.category > article > div.sub .flex-1 > a {
+    font-size: 12px;
+  }
+  main > div.news > div.category > article > div > a:not(.image-hover) {
+    font-size: 14px;
+  }
+  main > div.news > div.category div.time a,
+  main > div.landing .container p {
+    font-size: 11px;
+  }
+  main > div.news > div.category > article > div.sub a.all,
+  .btn {
+    font-size: 16px;
+    padding: 3px 0;
+  }
+  main > div.news > div.category > a,
+  .flex-card > div.card a.title {
+    font-size: 23px !important;
+    padding-left: 15px;
+  }
+  main > div.news > div.category > a::before {
+    height: 8px;
+    width: 8px;
+  }
+  .container {
+    width: 94%;
+  }
+  nav > div.bottom-link a {
+    font-size: 11px;
+    height: 38px;
+    line-height: 38px;
+  }
+  div.lang p {
+    font-size: 13px;
+    padding: 8px;
+  }
+  footer .lang {
+    top: -80px;
+  }
+  main > div.news > div.category > article > article.article > div > a {
+    font-size: 13px;
+  }
+  main > div.news > div.category > article > article.article > div > p {
+    font-size: 11px;
+  }
+  nav > div.container > .more i {
+    font-size: 15px;
+  }
+}
+@media (max-width: 480px) {
+  main > div.landing .container {
+    padding-bottom: 40px;
+  }
+  main > div.landing .dots span {
+    width: 8px;
+    height: 8px;
+    margin: 0 8px;
+  }
+  main > div.landing .container a.title {
+    font-size: 15px;
+  }
+  main > div.landing .container a.category {
+    font-size: 12px;
+  }
+  main > div.news > div.category > article > div > a:not(.image-hover) {
+    font-size: 11px;
+  }
+  main > div.news > div.category > article > div > p,
+  main > div.news > div.category > article > div.sub .flex-1 > a,
+  main > div.news > div.category > article > div.sub a.all,
+  .btn {
+    font-size: 11px;
+  }
+  main > div.news > div.category > article > div.sub > div a.image-hover {
+    max-width: 100px;
+  }
+  main > div.news > div.category div.time a,
+  main > div.landing .container p {
+    font-size: 10px;
+  }
+  nav > div.container > .more i,
+  nav > .container > i.fa-bars {
+    font-size: 12px;
+  }
+  nav > div.bottom-link a {
+    padding: 0 8px;
+    font-size: 10px;
+  }
+  main > div.news > div.category > article > article.article > div > a {
+    font-size: 11px;
+  }
+  main > div.news > div.category > article > article.article > div > p {
+    font-size: 10px;
+  }
+}
