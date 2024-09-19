@@ -15,7 +15,7 @@ export default function PageContext({ children }) {
 
   useEffect(() => {
     languageFun();
-    fetch(`/${language}.json`)
+    fetch(`/${language ? language : "arabic"}.json`)
       .then((res) => res.json())
       .then((data) => setLanguageValue(data));
   }, [language]);

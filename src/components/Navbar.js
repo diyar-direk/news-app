@@ -182,26 +182,27 @@ export default function Navbar() {
             <Logo />
           </div>
           <div className="links center">
-            {data.map((e, i) => {
-              if (i < 4) {
-                return (
-                  <NavLink
-                    onClick={() =>
-                      linksClick(
-                        document.querySelector(
-                          "nav.navbar > div.container > aside.more-link"
-                        ),
-                        true
-                      )
-                    }
-                    to={`/category/${e}`}
-                    key={e}
-                  >
-                    {e}
-                  </NavLink>
-                );
-              }
-            })}
+            {data &&
+              data.map((e, i) => {
+                if (i < 4) {
+                  return (
+                    <NavLink
+                      onClick={() =>
+                        linksClick(
+                          document.querySelector(
+                            "nav.navbar > div.container > aside.more-link"
+                          ),
+                          true
+                        )
+                      }
+                      to={`/category/${e}`}
+                      key={e}
+                    >
+                      {e}
+                    </NavLink>
+                  );
+                }
+              })}
             <i className="fa-solid fa-ellipsis" onClick={showMoreLinke}></i>
           </div>
           <div className="more center">
@@ -250,10 +251,17 @@ export default function Navbar() {
   );
 }
 
-export const linksClick = (div = "", remove = false, div2 = "") => {
-  remove && div.classList.remove("active");
-  remove && div2.classList.remove("close");
-  remove && (document.body.style.overflowY = "auto");
+export const linksClick = (div = null, remove = false, div2 = null) => {
+  if (remove) {
+    if (div && div.classList) {
+      div.classList.remove("active");
+    }
+    if (div2 && div2.classList) {
+      div2.classList.remove("close");
+    }
+    document.body.style.overflowY = "auto";
+  }
+
   window.scrollTo({
     left: 0,
     top: 0,

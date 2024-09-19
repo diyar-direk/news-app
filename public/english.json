@@ -14,13 +14,13 @@
 
     "beforeMinutes": " ",
     "minutes": "minutes ago",
-    "beforeHours": "",
+    "beforeHours": " ",
     "hours": "hours ago",
-    "beforeDays": "",
+    "beforeDays": " ",
     "days": "days ago",
-    "beforeMonth": "",
+    "beforeMonth": " ",
     "months": "month ago",
-    "beforeYears": "",
+    "beforeYears": " ",
     "years": "years ago"
   },
   "home": {

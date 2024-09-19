@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../../context/Context";
 import axios from "axios";
 import { timeAgo } from "../../Home";
+import Loader from "../../../components/Loader";
 
 const ActivitiesPage = () => {
   const [api, setApi] = useState([]);
@@ -69,7 +70,10 @@ const ActivitiesPage = () => {
       setDataFltr(api);
     }
   }
-
+  if (!context.langValue) {
+    // Handle the case where context is undefined
+    return <Loader />;
+  }
   return (
     <div className="main">
       <div className="dashboard-container activities">

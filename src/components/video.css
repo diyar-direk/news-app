@@ -168,7 +168,9 @@ body.arabic .videos .video .video-item .time a {
 
 @media (max-width: 480px) {
   .videos .title {
-    font-size: 20px;
+    font-size: 18px;
+    -webkit-text-fill-color: var(--font-color);
+    -webkit-text-stroke: 0px var(--font-color);
   }
 
   .videos .title::after {
@@ -176,10 +178,10 @@ body.arabic .videos .video .video-item .time a {
     height: 6px;
   }
   .videos .video .video-item .time a {
-    font-size: 11px;
+    font-size: 10px;
   }
   .videos .video .video-item a {
-    font-size: 14px;
+    font-size: 13px;
   }
   .videos .video {
     grid-template-columns: 1fr;

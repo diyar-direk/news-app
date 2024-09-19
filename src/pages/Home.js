@@ -59,7 +59,7 @@ export default function Home() {
     }
   };
 
-  const time = context.langValue.time;
+  const time = context && context.langValue.time;
   // Helper function to format time ago
 
   const topNewsSlides = topNews.map((e, index) => (
@@ -135,7 +135,10 @@ export default function Home() {
     // Return the array of components to be rendered
     return components;
   };
-
+  if (!context.langValue) {
+    // Handle the case where context is undefined
+    return <Loader />;
+  }
   if (loading) {
     return <Loader />; // Display loader while data is loading
   }
@@ -162,6 +165,10 @@ export const timeAgo = (date, time) => {
   const now = new Date();
   const diff = now - new Date(date);
 
+  
+
+  
+
   const seconds = Math.floor(diff / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
@@ -170,30 +177,32 @@ export const timeAgo = (date, time) => {
   const months = Math.floor(days / 30);
   const years = Math.floor(days / 365);
 
-  if (years > 0) {
-    return years === 1
-      ? `${time.oneYear}`
-      : `${time.beforeYears} ${years} ${time.years}`;
-  }
-  if (months > 0) {
-    return months === 1
-      ? `${time.oneMonth}`
-      : `${time.beforeMonth} ${months} ${time.months}`;
-  }
-  if (days > 0) {
-    return days === 1
-      ? `${time.oneDay}`
-      : `${time.beforeDays} ${days} ${time.days}`;
-  }
-  if (hours > 0) {
-    return hours === 1
-      ? `${time.oneHour}`
-      : `${time.beforeHours} ${hours} ${time.hours}`;
-  }
-  if (minutes > 0) {
-    return minutes === 1
-      ? `${time.oneMin}`
-      : `${time.beforeMinutes} ${minutes} ${time.minutes}`;
-  }
+    if (years > 0) {
+      return years === 1
+        ? `${time && time.oneYear}`
+        : `${time && time.beforeYears} ${years} ${time && time.years}`;
+    }
+    if (months > 0) {
+      return months === 1
+        ? `${time && time.oneMonth}`
+        : `${time && time.beforeMonth} ${months} ${time && time.months}`;
+    }
+    if (days > 0) {
+      return days === 1
+        ? `${time && time.oneDay}`
+        : `${time && time.beforeDays} ${days} ${time && time.days}`;
+    }
+    if (hours > 0) {
+      return hours === 1
+        ? `${time && time.oneHour}`
+        : `${time.beforeHours && time.beforeHours} ${hours} ${
+            time && time.hours
+          }`;
+    }
+    if (minutes > 0) {
+      return minutes === 1
+        ? `${time && time.oneMin}`
+        : `${time && time.beforeMinutes} ${minutes} ${time && time.minutes}`;
+    }
   return "Just now";
 };

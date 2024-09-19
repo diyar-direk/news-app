@@ -870,6 +870,12 @@ main > div.news > div.category > article > div.sub a.all:hover,
     height: 8px;
     margin: 0 8px;
   }
+  main > div.news > div.category > a,
+  .flex-card > div.card a.title {
+    -webkit-text-fill-color: var(--font-color) !important;
+    -webkit-text-stroke: 0px var(--font-color) !important;
+    font-size: 18px !important;
+  }
   main > div.landing .container a.title {
     font-size: 15px;
   }

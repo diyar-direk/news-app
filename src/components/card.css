@@ -173,4 +173,7 @@ body.arabic .flex-card > div.card .center .image-hover {
   .flex-card > div.card .center .flex-1 a {
     font-size: 12px;
   }
+  .flex-card > div.card .info h2 {
+    font-size: 12px;
+  }
 }

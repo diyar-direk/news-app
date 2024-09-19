@@ -110,3 +110,18 @@ body.arabic footer .footer-row article > div.language-div i {
     font-size: 12px;
   }
 }
+
+@media (max-width: 480px) {
+  footer .footer-row article > a {
+    font-size: 13px;
+  }
+  footer .footer-row article > div.language-div span {
+    font-size: 13px;
+  }
+  footer .footer-row article > div a {
+    font-size: 14px;
+  }
+  footer .footer-row article > div.language-div i {
+    font-size: 11px;
+  }
+}

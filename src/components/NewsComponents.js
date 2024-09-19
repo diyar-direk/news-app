@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../context/Context";
+import Loader from "./Loader";
 const NewsComponents = (props) => {
   const context = useContext(Context);
   const language = context.langValue.home;
@@ -14,7 +15,6 @@ const NewsComponents = (props) => {
   const timeAgo = (date) => {
     const now = new Date();
     const diff = now - new Date(date);
-
     const seconds = Math.floor(diff / 1000);
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
@@ -92,7 +92,10 @@ const NewsComponents = (props) => {
         );
       }
     });
-
+  if (!context.langValue) {
+    // Handle the case where context is undefined
+    return <Loader />;
+  }
   return (
     <div className="category container">
       {props.title && (
@@ -128,7 +131,7 @@ const NewsComponents = (props) => {
               {importantNews && timeAgo(importantNews.publishedAt)}
             </p>
           </div>
-          <Link to={`/read${importantNews && importantNews._id}`}>
+          <Link to={`/read/${importantNews && importantNews._id}`}>
             {importantNews.headline}
           </Link>
           <p>{importantNews && importantNews.summary}</p>

@@ -136,7 +136,10 @@ const Read = () => {
 
     allImgs[activeImg].classList.add("active");
   }
-
+  if (!context.langValue) {
+    // Handle the case where context is undefined
+    return <Loader />;
+  }
   if (loading) {
     return <Loader />;
   }

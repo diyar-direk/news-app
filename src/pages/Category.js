@@ -45,7 +45,10 @@ const Category = () => {
   const nextData = categories && categories.filter((category, i) => i > 4);
 
   const language = context.langValue.category;
-
+  if (!context.langValue) {
+    // Handle the case where context is undefined
+    return <Loader />;
+  }
   if (loading) {
     return <Loader />;
   }
